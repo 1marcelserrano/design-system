@@ -1168,12 +1168,51 @@ section {
 .codex-label--style  { color: #FF4D8C; }
 .codex-label--neuro  { color: #00C9C8; }
 .codex-label--exec   { color: #FF8C00; }
+.codex-label--oracle { color: #D4AF37; }
+.codex-label--mscs   { color: #F5F7FA; }
+
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+  margin-bottom: 48px;
+}
+.eco-card {
+  background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s ease;
+}
+.eco-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.eco-card canvas {
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.eco-divider {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border-subtle);
+}
 
 @media (max-width: 1200px) {
   .codex-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .codex-grid { grid-template-columns: 1fr; }
+  .eco-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1186,7 +1225,7 @@ section {
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.3</div>
+    <div class="version">DESIGN SYSTEM V2.4</div>
   </div>
   <nav>
     <div class="nav-section">Fundamentos</div>
@@ -1196,7 +1235,7 @@ section {
     <a href="#chumbo-quente">Chumbo Quente</a>
     <div class="nav-section">Produtos</div>
     <a href="#color-system">Sistema Cromático</a>
-    <a href="#codex-geometries">Codex Geometries</a>
+    <a href="#codex-geometries">3D Geometries</a>
     <div class="nav-section">Formatos</div>
     <a href="#story-format">Story (9:16)</a>
     <a href="#carousel">Carousel Pipeline</a>
@@ -1542,16 +1581,36 @@ section {
     </div>
   </section>
 
-  <!-- ═══════ CODEX GEOMETRIES ═══════ -->
+  <!-- ═══════ 3D GEOMETRIES ═══════ -->
   <section id="codex-geometries">
     <div class="section-header">
       <div class="section-label">Seção 3.5</div>
-      <h2 class="section-title">Codex Geometries</h2>
+      <h2 class="section-title">3D Geometries</h2>
       <p class="section-desc">
-        Cada Codex possui uma forma geométrica 3D wireframe que rotaciona continuamente.
-        As formas são renderizadas via Canvas 2D com projeção perspectiva e matrizes de rotação nos 3 eixos.
+        Cada entidade do ecossistema possui uma forma geométrica 3D wireframe com rotação contínua.
+        Canvas 2D com projeção perspectiva e matrizes de rotação nos 3 eixos.
       </p>
     </div>
+
+    <!-- ECOSYSTEM LEVEL: MSCS + Oracle -->
+    <div class="eco-grid">
+      <div class="eco-card" style="border-color: rgba(245, 247, 250, 0.08);">
+        <span class="codex-label codex-label--mscs">MSCREATIVE.SYSTEMS™</span>
+        <span class="codex-name">Icosaedro</span>
+        <span class="codex-shape">20 faces · sólido platônico máximo</span>
+        <canvas id="cx-mscs" width="240" height="240"></canvas>
+        <p class="codex-meta">Completude do ecossistema. Cada face é um produto, cada aresta uma conexão.</p>
+      </div>
+      <div class="eco-card" style="border-color: rgba(212, 175, 55, 0.1);">
+        <span class="codex-label codex-label--oracle">Creative Oracle™</span>
+        <span class="codex-name">Möbius</span>
+        <span class="codex-shape">Fita torcida · loop infinito</span>
+        <canvas id="cx-oracle" width="240" height="240"></canvas>
+        <p class="codex-meta">Síntese recursiva. Sem início, sem fim. Input vira output vira input.</p>
+      </div>
+    </div>
+
+    <div class="eco-divider">4 Codexes</div>
 
     <div class="codex-grid">
       <!-- DESIGN CODEX -->
@@ -1913,6 +1972,11 @@ section {
           <td>17.04.2026</td>
           <td>Codex Geometries (§3.5): 4 formas 3D wireframe — Design (Tensegrity), Style (Turbine), Neuro (Dendrítico), Execution (Gyroscope). Canvas 2D com projeção perspectiva e rotação contínua.</td>
         </tr>
+        <tr>
+          <td><code>v2.4</code></td>
+          <td>17.04.2026</td>
+          <td>§3.5 expandida para 3D Geometries: MSCREATIVE.SYSTEMS (Icosaedro) + Creative Oracle (Möbius Strip) acima dos 4 Codexes. 6 formas wireframe no total.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -1924,7 +1988,7 @@ section {
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.3</span></span>
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.4</span></span>
     <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
   </footer>
 
@@ -2176,7 +2240,61 @@ navLinks.forEach(link => {
     return { vertices: verts, edges: edges };
   })();
 
+  // ── MSCREATIVE.SYSTEMS: Icosaedro ──
+  const mscsGeo = (function() {
+    const verts = [];
+    const edges = [];
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const s = 0.85;
+    const raw = [
+      [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
+      [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
+      [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1]
+    ];
+    raw.forEach(v => {
+      const len = Math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
+      verts.push([v[0]/len * s, v[1]/len * s, v[2]/len * s]);
+    });
+    [[0,1],[0,5],[0,7],[0,10],[0,11],
+     [1,5],[1,7],[1,8],[1,9],
+     [2,3],[2,4],[2,6],[2,10],[2,11],
+     [3,4],[3,6],[3,8],[3,9],
+     [4,5],[4,9],[4,11],
+     [5,9],[5,11],
+     [6,7],[6,8],[6,10],
+     [7,8],[7,10],
+     [8,9],[10,11]].forEach(e => edges.push(e));
+    return { vertices: verts, edges: edges };
+  })();
+
+  // ── CREATIVE ORACLE: Möbius Strip ──
+  const oracleGeo = (function() {
+    const verts = [];
+    const edges = [];
+    const segs = 40;
+    const R = 1.0, w = 0.35;
+    for (let i = 0; i < segs; i++) {
+      const t = (i / segs) * Math.PI * 2;
+      const halfT = t / 2;
+      const cx = Math.cos(t) * R, cy = Math.sin(t) * R;
+      const dx = Math.cos(halfT) * w, dz = Math.sin(halfT) * w;
+      verts.push([cx - Math.cos(t)*dx, cy - Math.sin(t)*dx, -dz]);
+      verts.push([cx + Math.cos(t)*dx, cy + Math.sin(t)*dx, dz]);
+    }
+    for (let i = 0; i < segs; i++) {
+      const next = (i + 1) % segs;
+      edges.push([i*2, next*2]);
+      edges.push([i*2+1, next*2+1]);
+      if (i % 2 === 0) edges.push([i*2, i*2+1]);
+    }
+    return { vertices: verts, edges: edges };
+  })();
+
   // ── RENDER ──
+  // Ecosystem level
+  renderWireframe('cx-mscs',   mscsGeo,   '#F5F7FA', '#8A8D93', [0.12, 0.16, 0.06]);
+  renderWireframe('cx-oracle', oracleGeo, '#D4AF37', '#8B6914', [0.12, 0.18, 0.04]);
+  // Codexes
   renderWireframe('cx-design', designGeo, '#2563EB', '#1E3A8A', [0.13, 0.16, 0.09]);
   renderWireframe('cx-style',  styleGeo,  '#FF4D8C', '#FF6B35', [0.10, 0.25, 0.06]);
   renderWireframe('cx-neuro',  neuroGeo,  '#00C9C8', '#007A7A', [0.14, 0.22, 0.10]);
