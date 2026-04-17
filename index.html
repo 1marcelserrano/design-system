@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSCREATIVE.SYSTEMS — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── ROOT TOKENS ─── */
+:root {
+  --bg-primary: #0A0C10;
+  --bg-secondary: #12141A;
+  --bg-surface: #1A1D26;
+  --bg-surface-hover: #22262F;
+  --text-primary: #F5F7FA;
+  --text-body: rgba(245, 247, 250, 0.85);
+  --text-muted: rgba(245, 247, 250, 0.5);
+  --grid-color: rgba(255, 255, 255, 0.025);
+  --grid-size: 54px;
+  --accent-gold: #D4AF37;
+  --accent-gold-dark: #8B6914;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --sidebar-width: 280px;
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-label: 'Space Mono', monospace;
+}
+
+/* ─── BODY ─── */
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-size: 16px;
+  font-weight: 400;
+  background-attachment: fixed;
+}
+
+/* ─── GRID OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: rgba(10, 12, 16, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border-subtle);
+  padding: 32px 0;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo {
+  padding: 0 24px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 24px;
+}
+
+.sidebar-logo h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.sidebar-logo .version {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.sidebar nav { padding: 0 16px; }
+
+.sidebar nav a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+  color: var(--text-primary);
+  background: var(--bg-surface);
+}
+
+.sidebar nav a.active {
+  color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.sidebar nav .nav-section {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+  padding: 20px 12px 8px;
+}
+
+/* ─── MOBILE TOGGLE ─── */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  width: 44px; height: 44px;
+  background: rgba(10, 12, 16, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--accent-gold);
+  font-size: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  margin-left: var(--sidebar-width);
+  padding: 48px 64px 120px;
+  max-width: 1100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 64px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 72px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero .subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.hero .rule {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
+  border-radius: 2px;
+  margin: 24px 0;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  margin-bottom: 80px;
+  scroll-margin-top: 32px;
+}
+
+.section-header {
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.section-desc {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* ─── TYPOGRAPHY SPECIMENS ─── */
+.type-specimens {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.type-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.type-card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type-card-header .name {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+}
+
+.type-card-header .role {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.type-card-specimen {
+  padding: 40px 24px;
+}
+
+.type-card-specimen.display-font {
+  font-family: var(--font-display);
+  font-size: 56px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.type-card-specimen.body-font {
+  font-family: var(--font-body);
+  font-size: 20px;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.type-card-specimen.label-font {
+  font-family: var(--font-label);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+}
+
+.type-card-meta {
+  padding: 16px 24px;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.type-card-meta .meta-item {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.type-card-meta .meta-item span {
+  color: var(--text-body);
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ─── COLOR SYSTEM ─── */
+.base-colors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.color-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.color-chip .swatch {
+  height: 80px;
+  position: relative;
+}
+
+.color-chip .swatch::after {
+  content: attr(data-value);
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.color-chip .chip-info {
+  padding: 12px 16px;
+}
+
+.color-chip .chip-token {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+}
+
+.color-chip .chip-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ─── PRODUCT CARDS ─── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  transition: transform 0.2s, border-color 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.product-card-bg {
+  padding: 32px 24px 24px;
+  position: relative;
+}
+
+.product-card-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 27px 27px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.product-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.product-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: relative;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.product-tier {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.product-colors {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  position: relative;
+}
+
+.product-color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.1);
+  position: relative;
+  cursor: pointer;
+}
+
+.product-color-swatch::after {
+  content: attr(data-hex);
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.product-color-swatch:hover::after {
+  opacity: 1;
+}
+
+.product-reason {
+  padding: 16px 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(0,0,0,0.15);
+  position: relative;
+}
+
+/* ─── CAROUSEL SECTION ─── */
+.carousel-rhythm {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.carousel-slide {
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.2s;
+  cursor: default;
+  position: relative;
+}
+
+.carousel-slide:hover {
+  transform: translateY(-2px);
+}
+
+.carousel-slide.dark {
+  background: linear-gradient(145deg, #0A0C10, #12141A);
+}
+
+.carousel-slide.light {
+  background: linear-gradient(145deg, #F5F7FA, #E8EAEF);
+}
+
+.carousel-slide .slide-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.carousel-slide.dark .slide-num { color: var(--accent-gold); }
+.carousel-slide.light .slide-num { color: #0A0C10; }
+
+.carousel-slide .slide-label {
+  font-family: var(--font-label);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+}
+
+.carousel-slide.dark .slide-label { color: var(--text-muted); }
+.carousel-slide.light .slide-label { color: rgba(10, 12, 16, 0.5); }
+
+.carousel-slide .slide-type {
+  font-family: var(--font-label);
+  font-size: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.carousel-slide.dark .slide-type { color: rgba(255,255,255,0.3); }
+.carousel-slide.light .slide-type { color: rgba(10, 12, 16, 0.3); border-top-color: rgba(0,0,0,0.08); }
+
+/* Carousel specs */
+.carousel-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.spec-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.spec-card .spec-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.spec-card .spec-value {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ─── CONTRAST PREVIEW ─── */
+.contrast-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.contrast-box {
+  border-radius: 12px;
+  padding: 32px 24px;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.contrast-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 27px 27px;
+  pointer-events: none;
+}
+
+.contrast-box.dark-mode {
+  background: linear-gradient(145deg, #0A0C10, #12141A);
+}
+
+.contrast-box.light-mode {
+  background: linear-gradient(145deg, #F5F7FA, #E8EAEF);
+}
+
+.contrast-box .box-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.contrast-box.dark-mode .box-label { color: var(--accent-gold); }
+.contrast-box.light-mode .box-label { color: rgba(10, 12, 16, 0.4); }
+
+.contrast-box .box-headline {
+  font-family: var(--font-display);
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.contrast-box.dark-mode .box-headline { color: var(--accent-gold); }
+.contrast-box.light-mode .box-headline { color: #0A0C10; }
+
+.contrast-box .box-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.contrast-box.dark-mode .box-body { color: var(--text-body); }
+.contrast-box.light-mode .box-body { color: rgba(10, 12, 16, 0.75); }
+
+.contrast-box .box-quote {
+  font-family: var(--font-body);
+  font-size: 24px;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 16px;
+  border-left: 3px solid;
+}
+
+.contrast-box.light-mode .box-quote {
+  color: #0A0C10;
+  border-color: var(--accent-gold);
+}
+
+/* ─── DO'S AND DON'TS ─── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.rule-card {
+  background: var(--bg-surface);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border-subtle);
+}
+
+.rule-card.do { border-left: 3px solid #22C55E; }
+.rule-card.dont { border-left: 3px solid #EF4444; }
+
+.rule-badge {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.rule-card.do .rule-badge { color: #22C55E; background: rgba(34, 197, 94, 0.1); }
+.rule-card.dont .rule-badge { color: #EF4444; background: rgba(239, 68, 68, 0.1); }
+
+.rule-text {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.rule-reason {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ─── TABLES ─── */
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+
+.ds-table th {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ds-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 14px;
+  color: var(--text-body);
+  vertical-align: top;
+}
+
+.ds-table code {
+  font-family: var(--font-label);
+  font-size: 12px;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--accent-gold);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ─── VERSION BADGE ─── */
+.version-table {
+  margin-top: 32px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.footer-accent {
+  color: var(--accent-gold);
+}
+
+/* ─── COPY TO CLIPBOARD TOAST ─── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--bg-surface);
+  border: 1px solid var(--accent-gold);
+  color: var(--text-primary);
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ─── CHUMBO QUENTE PREVIEW ─── */
+.chumbo-preview {
+  background: linear-gradient(145deg, #0A0C10 0%, #111318 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.chumbo-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 54px 54px;
+  pointer-events: none;
+}
+
+.chumbo-preview .cp-tag {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 6px 14px;
+  border-radius: 4px;
+  color: #9A7A28;
+  border: 1px solid rgba(154, 122, 40, 0.25);
+  background: rgba(154, 122, 40, 0.05);
+  display: inline-block;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.chumbo-preview .cp-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #6B6358;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.chumbo-preview .cp-title em {
+  font-style: normal;
+  color: #9A7A28;
+}
+
+.chumbo-preview .cp-rule {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #9A7A28 0%, #6A5418 60%, transparent 100%);
+  margin: 20px 0 24px;
+  border-radius: 1px;
+  position: relative;
+}
+
+.chumbo-preview .cp-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: rgba(140, 130, 115, 0.4);
+  line-height: 1.5;
+  position: relative;
+  max-width: 560px;
+}
+
+.chumbo-preview .cp-num {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: #8A6C20;
+  position: relative;
+}
+
+.chumbo-preview .cp-attribution {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(140, 130, 115, 0.55);
+  font-style: italic;
+  margin-top: 32px;
+  position: relative;
+}
+
+.chumbo-preview .cp-meta {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(140, 130, 115, 0.18);
+  margin-top: 6px;
+  position: relative;
+}
+
+.chumbo-preview .cp-brand {
+  color: rgba(154, 122, 40, 0.06);
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+}
+
+.chumbo-preview .cp-brand svg {
+  width: 48px;
+  height: auto;
+}
+
+.chumbo-tokens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.chumbo-token-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chumbo-token-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.chumbo-token-info .ct-name {
+  font-family: var(--font-label);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9A7A28;
+  margin-bottom: 2px;
+}
+
+.chumbo-token-info .ct-value {
+  font-family: var(--font-label);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ─── STORY FORMAT ─── */
+.story-preview {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.story-mockup {
+  width: 216px;
+  height: 384px;
+  background: linear-gradient(145deg, #0A0C10 0%, #111318 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.story-mockup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 11px 11px;
+  pointer-events: none;
+}
+
+.story-mockup-content {
+  position: relative;
+  padding: 24px 14px 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-mockup .sm-tag {
+  font-family: var(--font-label);
+  font-size: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #9A7A28;
+  border: 1px solid rgba(154, 122, 40, 0.25);
+  padding: 2px 5px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.story-mockup .sm-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #6B6358;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.story-mockup .sm-title em {
+  font-style: normal;
+  color: #9A7A28;
+}
+
+.story-mockup .sm-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #9A7A28, #6A5418 60%, transparent);
+  margin-bottom: 8px;
+}
+
+.story-mockup .sm-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+
+.story-mockup .sm-line {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.story-mockup .sm-line-num {
+  font-family: var(--font-display);
+  font-size: 7px;
+  color: #8A6C20;
+}
+
+.story-mockup .sm-line-text {
+  height: 2px;
+  background: rgba(140, 130, 115, 0.15);
+  border-radius: 1px;
+  flex: 1;
+  margin-top: 3px;
+}
+
+.story-mockup .sm-attr {
+  font-family: var(--font-body);
+  font-size: 5px;
+  color: rgba(140, 130, 115, 0.4);
+  font-style: italic;
+  margin-top: auto;
+}
+
+.story-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-spec-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.story-spec-item .ssi-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #9A7A28;
+  min-width: 120px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.story-spec-item .ssi-value {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.story-spec-item .ssi-value code {
+  font-family: var(--font-label);
+  font-size: 12px;
+  background: rgba(154, 122, 40, 0.08);
+  color: #9A7A28;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .story-preview { grid-template-columns: 1fr; }
+  .story-mockup { margin: 0 auto; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .main { padding: 48px 32px 120px; }
+  .carousel-rhythm { grid-template-columns: repeat(5, 1fr); }
+  .product-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+  .main { margin-left: 0; padding: 80px 20px 120px; }
+  .carousel-rhythm { grid-template-columns: repeat(3, 1fr); }
+  .contrast-preview { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .base-colors { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR TOGGLE (MOBILE) -->
+<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h1>MSCREATIVE<br>SYSTEMS</h1>
+    <div class="version">DESIGN SYSTEM V2.2</div>
+  </div>
+  <nav>
+    <div class="nav-section">Fundamentos</div>
+    <a href="#overview" class="active">Overview</a>
+    <a href="#typography">Tipografia</a>
+    <a href="#base-colors">Base Cromática</a>
+    <a href="#chumbo-quente">Chumbo Quente</a>
+    <div class="nav-section">Produtos</div>
+    <a href="#color-system">Sistema Cromático</a>
+    <div class="nav-section">Formatos</div>
+    <a href="#story-format">Story (9:16)</a>
+    <a href="#carousel">Carousel Pipeline</a>
+    <a href="#contrast">Hierarquia de Contraste</a>
+    <div class="nav-section">Governança</div>
+    <a href="#rules">Do's & Don'ts</a>
+    <a href="#versioning">Versionamento</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero" id="overview">
+    <div class="rule"></div>
+    <h1><span>Design</span><br>System</h1>
+    <p class="subtitle">
+      Regras visuais, arquitetura tipográfica e sistema cromático hierárquico
+      do ecossistema MSCREATIVE.SYSTEMS. Agentes e pipelines leem este arquivo
+      para garantir consistência estrutural. Design não é decoração — é protocolo.
+    </p>
+  </header>
+
+  <!-- ═══════ TIPOGRAFIA ═══════ -->
+  <section id="typography">
+    <div class="section-header">
+      <div class="section-label">Seção 2.1</div>
+      <h2 class="section-title">Tipografia</h2>
+      <p class="section-desc">
+        Três pilares funcionais. Cada fonte tem jurisdição estrita.
+        A escolha não é estética — é operação.
+      </p>
+    </div>
+
+    <div class="type-specimens">
+      <!-- ANTON -->
+      <div class="type-card">
+        <div class="type-card-header">
+          <span class="name">Anton — Display</span>
+          <span class="role">Headlines & Nomes de Produto</span>
+        </div>
+        <div class="type-card-specimen display-font">
+          Infraestrutura do Improviso
+        </div>
+        <div class="type-card-meta">
+          <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
+          <div class="meta-item">Kerning<span>letter-spacing: -0.02em</span></div>
+          <div class="meta-item">Uso<span>Forma arquitetural, não texto</span></div>
+        </div>
+      </div>
+
+      <!-- DM SANS -->
+      <div class="type-card">
+        <div class="type-card-header">
+          <span class="name">DM Sans — Body</span>
+          <span class="role">Leitura Contínua & Descrições</span>
+        </div>
+        <div class="type-card-specimen body-font">
+          Existe uma diferença entre improvisar e ter infraestrutura de improviso.
+          Uma é aposta. A outra é arquitetura. A Moment Factory construiu a segunda
+          para um show que ninguém sabia quanto tempo ia durar.
+        </div>
+        <div class="type-card-meta">
+          <div class="meta-item">Pesos<span>400 (Regular) / 700 (Bold)</span></div>
+          <div class="meta-item">Opacidade<span>0.85 no modo Dark</span></div>
+          <div class="meta-item">Contraste<span>Limpo com Anton</span></div>
+        </div>
+      </div>
+
+      <!-- SPACE MONO -->
+      <div class="type-card">
+        <div class="type-card-header">
+          <span class="name">Space Mono — Labels</span>
+          <span class="role">Tiers, Datas & Metadados</span>
+        </div>
+        <div class="type-card-specimen label-font">
+          EXPERIENCE ARCHITECTURE &nbsp;·&nbsp; PRESENCE STACK &nbsp;·&nbsp; TIER S &nbsp;·&nbsp; PRIORIDADE A
+        </div>
+        <div class="type-card-meta">
+          <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
+          <div class="meta-item">Tracking<span>letter-spacing: 0.2em</span></div>
+          <div class="meta-item">Cor<span>Accent 1 do produto</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BASE CROMÁTICA ═══════ -->
+  <section id="base-colors">
+    <div class="section-header">
+      <div class="section-label">Seção 2.2</div>
+      <h2 class="section-title">Base Cromática</h2>
+      <p class="section-desc">
+        F7 Dark Heavy. Tokens globais imutáveis — apenas Accent 1/2 muda por produto.
+      </p>
+    </div>
+
+    <div class="base-colors">
+      <div class="color-chip" onclick="copyColor('#0A0C10')">
+        <div class="swatch" style="background: linear-gradient(145deg, #0A0C10, #12141A);" data-value="#0A0C10 → #12141A"></div>
+        <div class="chip-info">
+          <div class="chip-token">color-background</div>
+          <div class="chip-desc">Varia por produto. Nunca branco puro.</div>
+        </div>
+      </div>
+
+      <div class="color-chip" onclick="copyColor('#F5F7FA')">
+        <div class="swatch" style="background: #F5F7FA;" data-value="#F5F7FA"></div>
+        <div class="chip-info">
+          <div class="chip-token">color-text-primary</div>
+          <div class="chip-desc">Off-white. Reduz fadiga visual.</div>
+        </div>
+      </div>
+
+      <div class="color-chip" onclick="copyColor('rgba(245, 247, 250, 0.85)')">
+        <div class="swatch" style="background: rgba(245, 247, 250, 0.85); border: 1px solid rgba(0,0,0,0.1);" data-value="rgba(F5F7FA, 0.85)"></div>
+        <div class="chip-info">
+          <div class="chip-token">color-text-body</div>
+          <div class="chip-desc">Opacidade fixa. Legível sem competir.</div>
+        </div>
+      </div>
+
+      <div class="color-chip" onclick="copyColor('rgba(255, 255, 255, 0.025)')">
+        <div class="swatch" style="background: #0A0C10; position: relative;">
+          <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 27px 27px;"></div>
+          <span style="position: absolute; bottom: 8px; right: 12px; font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px;">54×54 GRID</span>
+        </div>
+        <div class="chip-info">
+          <div class="chip-token">color-grid / grid-size</div>
+          <div class="chip-desc">Textura de sistema, 54×54px fixo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CHUMBO QUENTE ═══════ -->
+  <section id="chumbo-quente">
+    <div class="section-header">
+      <div class="section-label">Seção 2.3</div>
+      <h2 class="section-title">Modo Chumbo Quente</h2>
+      <p class="section-desc">
+        Paleta alternativa para peças de inteligência e conteúdo editorial standalone.
+        Zero branco puro. Opera no limiar da legibilidade — a informação emerge do escuro como relevo.
+      </p>
+    </div>
+
+    <!-- LIVE PREVIEW -->
+    <div class="chumbo-preview">
+      <span class="cp-tag">Inteligência</span>
+      <div class="cp-title">6 Princípios de Criação<br>Experiencial de <em>Catherine Turf</em></div>
+      <div class="cp-rule"></div>
+      <div style="display: flex; gap: 16px; align-items: flex-start; position: relative;">
+        <span class="cp-num">1.</span>
+        <div>
+          <div style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: #6B6358; line-height: 1.3; margin-bottom: 4px; position: relative;">O lugar precisa existir antes da tecnologia.</div>
+          <div class="cp-body">Tecnologia aplicada a um espaço ruim produz experiência ruim em alta resolução.</div>
+        </div>
+      </div>
+      <div class="cp-attribution">Catherine Turf, Moment Factory</div>
+      <div class="cp-meta">HEAD OF CREATIVE · 25+ ANOS · 40+ PAÍSES</div>
+      <div class="cp-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.19667 51.75458"><path fill="currentColor" d="M8.15479,17.66986c-.10727,4.76875.03115,9.5285.41527,14.27922.25365,3.1651,1.03955,6.29608,1.74645,9.47888C12.17932,49.84272-.28837,51.03399.0051,42.2846c.35921-10.7694,2.02753-21.07894,5.00492-30.92856.43105-1.41773,1.65413-3.47677,3.2464-2.21435.53746.42306.92911.9969,1.17496,1.72154l5.78538,16.91602c.23584.68769.41046.67353.52387-.04254,1.02383-6.35386,2.74577-12.56867,5.16579-18.64433,2.42341-6.08573,7.57839-4.14271,9.40284.91599,2.77922,7.71993,3.71882,15.26481,4.54493,24.0988.01976.18583.11541.20673.28695.06271,5.16382-4.20649,10.48613-8.20113,15.96693-11.98388.2477-.17071.22158-.25977-.07835-.26709-3.61598-.09368-7.23981-.18066-10.87148-.26095-7.39821-.16475-4.36055-6.1619-1.09576-9.14847,3.1263-2.86316,6.25148-5.72857,9.37556-8.59623,1.40786-1.29146,2.61261-3.41267,5.0914-3.82386,5.89972-.9766,7.89921,6.29685,3.23346,9.68677-3.83797,2.79228-7.80539,5.39743-11.90226,7.81541-.15464.09367-.14189.15021.03827.16962,3.88277.43335,7.73249.3423,11.54916-.27318,2.22015-.35804,3.71273-2.03541,5.76647-2.29809,3.64903-.46082,6.04224,3.15361,4.51287,6.37544-.40245.85424-1.13742,1.76487-2.20492,2.73191-9.11467,8.26941-20.20634,14.6041-28.33323,22.56665-1.08504,1.06379-2.30373,3.42673-3.57933,4.09058-4.6234,2.39615-8.52986-.9142-8.76183-5.62878-.18359-3.7576-1.48526-26.94142-1.86815-26.88513-.09989.01549-.20829.14727-.27434.33352-1.46726,4.3048-2.51335,8.71175-3.13827,13.2209-.12499.90632-.43616,1.72773-.9335,2.46426-1.56103,2.29841-3.54903-.8048-4.06681-2.08179-2.07112-5.11908-3.79413-9.98508-5.16903-14.59797-.02544-.08589-.07445-.14821-.12558-.15976l-.05874-.0085c-.02576-.00602-.05156.01476-.05761.04636-.00077.00405-.00119.00814-.00126.01226l-.00003-.00003Z"/></svg>
+      </div>
+    </div>
+
+    <!-- TOKENS GRID -->
+    <div class="chumbo-tokens">
+      <div class="chumbo-token-card" onclick="copyColor('#6B6358')">
+        <div class="chumbo-token-swatch" style="background: #6B6358;"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Headline</div>
+          <div class="ct-value">#6B6358</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('#9A7A28')">
+        <div class="chumbo-token-swatch" style="background: #9A7A28;"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Emphasis</div>
+          <div class="ct-value">#9A7A28</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('#8A6C20')">
+        <div class="chumbo-token-swatch" style="background: #8A6C20;"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Accent Num</div>
+          <div class="ct-value">#8A6C20</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('#6A5418')">
+        <div class="chumbo-token-swatch" style="background: #6A5418;"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Rule End</div>
+          <div class="ct-value">#6A5418</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.4)')">
+        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.4);"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Body</div>
+          <div class="ct-value">rgba(140,130,115, 0.4)</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.55)')">
+        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.55);"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Attribution</div>
+          <div class="ct-value">rgba(140,130,115, 0.55)</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.18)')">
+        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.18);"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Meta</div>
+          <div class="ct-value">rgba(140,130,115, 0.18)</div>
+        </div>
+      </div>
+      <div class="chumbo-token-card" onclick="copyColor('rgba(154, 122, 40, 0.06)')">
+        <div class="chumbo-token-swatch" style="background: rgba(154, 122, 40, 0.06); border: 1px dashed rgba(154,122,40,0.2);"></div>
+        <div class="chumbo-token-info">
+          <div class="ct-name">Brand Mark</div>
+          <div class="ct-value">rgba(154,122,40, 0.06)</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted); font-style: italic;">
+      Se o leitor percebe as cores antes de perceber o conteúdo, o Chumbo Quente falhou.
+    </p>
+  </section>
+
+  <!-- ═══════ SISTEMA CROMÁTICO ═══════ -->
+  <section id="color-system">
+    <div class="section-header">
+      <div class="section-label">Seção 3</div>
+      <h2 class="section-title">Sistema Cromático</h2>
+      <p class="section-desc">
+        Código cromático derivado da essência funcional de cada produto.
+        Diálogo de temperatura e profundidade.
+      </p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- MSCREATIVE.SYSTEMS -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1419 0%, #1a1f2e 100%);">
+          <div class="product-icon">MS</div>
+          <div class="product-name" style="color: #D4AF37;">MSCREATIVE.SYSTEMS</div>
+          <div class="product-tier" style="color: #D4AF37;">SISTEMA-MÃE</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #D4AF37;" data-hex="#D4AF37" onclick="copyColor('#D4AF37')"></div>
+            <div class="product-color-swatch" style="background: #8B6914;" data-hex="#8B6914" onclick="copyColor('#8B6914')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Único metal que não enferruja. Permanência como posicionamento.</div>
+      </div>
+
+      <!-- FRONTEIRISTAS -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #141210 0%, #1E1C18 100%);">
+          <div class="product-icon">◇</div>
+          <div class="product-name" style="color: #C4B89A;">FRONTEIRISTAS</div>
+          <div class="product-tier" style="color: #C4B89A;">CANAL EDITORIAL</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #C4B89A;" data-hex="#C4B89A" onclick="copyColor('#C4B89A')"></div>
+            <div class="product-color-swatch" style="background: #8A7A62;" data-hex="#8A7A62" onclick="copyColor('#8A7A62')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Cor de arquivo, de leitura, de consciência. Sem urgência, sem ruído.</div>
+      </div>
+
+      <!-- CREATIVE ORACLE -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1008 0%, #1E1A08 100%);">
+          <div class="product-icon">※</div>
+          <div class="product-name" style="color: #C8860A;">CREATIVE ORACLE V20</div>
+          <div class="product-tier" style="color: #C8860A;">PRODUTO CORE</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #C8860A;" data-hex="#C8860A" onclick="copyColor('#C8860A')"></div>
+            <div class="product-color-swatch" style="background: #7A4F00;" data-hex="#7A4F00" onclick="copyColor('#7A4F00')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Luz filtrada, julgamento com calor. O árbitro que vê tudo mas não é frio.</div>
+      </div>
+
+      <!-- NEURO CODEX -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #080618 0%, #110E2E 100%);">
+          <div class="product-icon">◎</div>
+          <div class="product-name" style="color: #00C9C8;">NEURO CODEX</div>
+          <div class="product-tier" style="color: #00C9C8;">CODEX — PERCEPÇÃO</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #00C9C8;" data-hex="#00C9C8" onclick="copyColor('#00C9C8')"></div>
+            <div class="product-color-swatch" style="background: #007A7A;" data-hex="#007A7A" onclick="copyColor('#007A7A')"></div>
+          </div>
+        </div>
+        <div class="product-reason">O indigo representa o inconsciente; o turquesa é o sinal que emerge.</div>
+      </div>
+
+      <!-- STYLE CODEX -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #180A12 0%, #261018 100%);">
+          <div class="product-icon">❋</div>
+          <div class="product-name" style="color: #FF4D8C;">STYLE CODEX</div>
+          <div class="product-tier" style="color: #FF4D8C;">CODEX — IDENTIDADE</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #FF4D8C;" data-hex="#FF4D8C" onclick="copyColor('#FF4D8C')"></div>
+            <div class="product-color-swatch" style="background: #FF6B35;" data-hex="#FF6B35" onclick="copyColor('#FF6B35')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Gradiente dual cria tensão visual. Identidade que não para quieta.</div>
+      </div>
+
+      <!-- DESIGN CODEX -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #080C1A 0%, #0F1530 100%);">
+          <div class="product-icon">⊞</div>
+          <div class="product-name" style="color: #2563EB;">DESIGN CODEX</div>
+          <div class="product-tier" style="color: #2563EB;">CODEX — ESTRATÉGIA</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #2563EB;" data-hex="#2563EB" onclick="copyColor('#2563EB')"></div>
+            <div class="product-color-swatch" style="background: #1E3A8A;" data-hex="#1E3A8A" onclick="copyColor('#1E3A8A')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Confiança estrutural, clareza estratégica. O azul que governa, não decora.</div>
+      </div>
+
+      <!-- EXECUTION CODEX -->
+      <div class="product-card">
+        <div class="product-card-bg" style="background: linear-gradient(145deg, #0E0A06 0%, #1A1006 100%);">
+          <div class="product-icon">▶</div>
+          <div class="product-name" style="color: #FF8C00;">EXECUTION CODEX</div>
+          <div class="product-tier" style="color: #FF8C00;">CODEX — EXECUÇÃO</div>
+          <div class="product-colors">
+            <div class="product-color-swatch" style="background: #FF8C00;" data-hex="#FF8C00" onclick="copyColor('#FF8C00')"></div>
+            <div class="product-color-swatch" style="background: #CC5500;" data-hex="#CC5500" onclick="copyColor('#CC5500')"></div>
+          </div>
+        </div>
+        <div class="product-reason">Ação, urgência controlada. O botão que importa quando a estratégia está definida.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════ STORY FORMAT ═══════ -->
+  <section id="story-format">
+    <div class="section-header">
+      <div class="section-label">Seção 4.0</div>
+      <h2 class="section-title">Story Format</h2>
+      <p class="section-desc">
+        Formato vertical 9:16 para conteúdo de inteligência standalone.
+        Não depende de sequência nem de CTA — a peça se basta.
+        Paleta padrão: Modo Chumbo Quente.
+      </p>
+    </div>
+
+    <div class="story-preview">
+      <!-- MINIATURA -->
+      <div class="story-mockup">
+        <div class="story-mockup-content">
+          <span class="sm-tag">Princípios</span>
+          <div class="sm-title">6 Princípios de<br><em>Catherine Turf</em></div>
+          <div class="sm-rule"></div>
+          <div class="sm-lines">
+            <div class="sm-line"><span class="sm-line-num">1.</span><div class="sm-line-text" style="width: 85%;"></div></div>
+            <div class="sm-line"><span class="sm-line-num">2.</span><div class="sm-line-text" style="width: 70%;"></div></div>
+            <div class="sm-line"><span class="sm-line-num">3.</span><div class="sm-line-text" style="width: 90%;"></div></div>
+            <div class="sm-line"><span class="sm-line-num">4.</span><div class="sm-line-text" style="width: 75%;"></div></div>
+            <div class="sm-line"><span class="sm-line-num">5.</span><div class="sm-line-text" style="width: 80%;"></div></div>
+            <div class="sm-line"><span class="sm-line-num">6.</span><div class="sm-line-text" style="width: 65%;"></div></div>
+          </div>
+          <div class="sm-attr">Catherine Turf, Moment Factory</div>
+        </div>
+      </div>
+
+      <!-- SPECS -->
+      <div class="story-specs-list">
+        <div class="story-spec-item">
+          <span class="ssi-label">Resolução</span>
+          <span class="ssi-value"><code>1080 × 1920px</code> (Instagram Story / 9:16)</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Safe Zone Topo</span>
+          <span class="ssi-value"><code>120px</code> mínimo (barra de nome do IG)</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Safe Zone Base</span>
+          <span class="ssi-value"><code>160px</code> mínimo (swipe bar + reply)</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Paleta</span>
+          <span class="ssi-value">Modo Chumbo Quente (§2.3) — accent Âmbar Elétrico</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Background</span>
+          <span class="ssi-value"><code>#0A0C10</code> → <code>#111318</code> (gradient 145deg)</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Grid</span>
+          <span class="ssi-value"><code>54×54px</code>, opacity 0.025</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Tecnologia</span>
+          <span class="ssi-value">HTML/CSS → Playwright → PNG</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Ícone MS</span>
+          <span class="ssi-value">SVG inline, <code>fill="currentColor"</code>. Source line (20px, 15%) + brand mark (48px, 6%)</span>
+        </div>
+        <div class="story-spec-item">
+          <span class="ssi-label">Estrutura</span>
+          <span class="ssi-value">Tag strip → Título Anton → Rule gradient → Lista numerada → Atribuição → Source line + brand mark</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CAROUSEL PIPELINE ═══════ -->
+  <section id="carousel">
+    <div class="section-header">
+      <div class="section-label">Seção 4</div>
+      <h2 class="section-title">Carousel Pipeline</h2>
+      <p class="section-desc">
+        Estrutura rígida de 9 slides. Dark = densidade. Light = respiro.
+        O ciclo de tensão e alívio mantém o usuário no carrossel.
+      </p>
+    </div>
+
+    <!-- VISUAL RHYTHM -->
+    <div class="carousel-rhythm">
+      <div class="carousel-slide dark">
+        <div class="slide-num">1</div>
+        <div class="slide-label">Capa</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">2</div>
+        <div class="slide-label">Problema</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">3</div>
+        <div class="slide-label">Dados</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">4</div>
+        <div class="slide-label">Paradoxo</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide light">
+        <div class="slide-num">5</div>
+        <div class="slide-label">Pullquote</div>
+        <div class="slide-type">Light</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">6</div>
+        <div class="slide-label">Solução</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">7</div>
+        <div class="slide-label">Prova</div>
+        <div class="slide-type">Dark</div>
+      </div>
+      <div class="carousel-slide light">
+        <div class="slide-num">8</div>
+        <div class="slide-label">Reflexão</div>
+        <div class="slide-type">Light</div>
+      </div>
+      <div class="carousel-slide dark">
+        <div class="slide-num">9</div>
+        <div class="slide-label">CTA</div>
+        <div class="slide-type">Dark</div>
+      </div>
+    </div>
+
+    <!-- SLIDE DETAIL TABLE -->
+    <table class="ds-table">
+      <thead>
+        <tr>
+          <th>Slide</th>
+          <th>Modo</th>
+          <th>Conteúdo</th>
+          <th>Tipografia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Capa (Dark)</td><td>Headline + Subtitle + Rule Gradient</td><td><code>Anton 72px</code> + <code>DM Sans 20px</code></td></tr>
+        <tr><td>2</td><td>Dark</td><td>O Problema — Categoria label + Body</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
+        <tr><td>3</td><td>Dark</td><td>Os Dados — Dado numérico em destaque</td><td><code>Anton 48px</code> + <code>DM Sans 18px</code></td></tr>
+        <tr><td>4</td><td>Dark</td><td>O Paradoxo — Frase de impacto</td><td><code>Anton 56px</code> + <code>DM Sans 16px</code></td></tr>
+        <tr><td>5</td><td>Light</td><td>Pullquote — Borda Accent 1</td><td><code>DM Sans 32px</code></td></tr>
+        <tr><td>6</td><td>Dark</td><td>A Solução — Lista ou 3 pontos</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
+        <tr><td>7</td><td>Dark</td><td>Prova Social / Validação</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
+        <tr><td>8</td><td>Light</td><td>Reflexão Final — Espaço em branco</td><td><code>DM Sans 32px</code></td></tr>
+        <tr><td>9</td><td>CTA (Dark)</td><td>Chamada para ação + Ícone MS</td><td><code>Anton 56px</code> + <code>DM Sans 16px</code></td></tr>
+      </tbody>
+    </table>
+
+    <!-- RENDER SPECS -->
+    <div class="carousel-specs">
+      <div class="spec-card">
+        <div class="spec-label">Resolução</div>
+        <div class="spec-value">1080 × 1350px</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">Instagram Portrait</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">Tecnologia</div>
+        <div class="spec-value">HTML/CSS → Playwright → PNG</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">Grid</div>
+        <div class="spec-value">54×54px, opacity 0.025</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">BG Dark</div>
+        <div class="spec-value">#0A0C10 → #12141A</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-label">BG Light</div>
+        <div class="spec-value">#F5F7FA → #E8EAEF</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ HIERARQUIA DE CONTRASTE ═══════ -->
+  <section id="contrast">
+    <div class="section-header">
+      <div class="section-label">Seção 4.3</div>
+      <h2 class="section-title">Hierarquia de Contraste</h2>
+      <p class="section-desc">Preview ao vivo dos dois modos de slide.</p>
+    </div>
+
+    <div class="contrast-preview">
+      <div class="contrast-box dark-mode">
+        <div class="box-label">DARK SLIDE</div>
+        <div class="box-headline">Camadas de Presença</div>
+        <div class="box-body">
+          O lugar precisa existir antes da tecnologia. Tecnologia aplicada a um espaço ruim
+          produz experiência ruim em alta resolução. O ambiente físico tem que justificar
+          a presença do visitante por si só.
+        </div>
+      </div>
+
+      <div class="contrast-box light-mode">
+        <div class="box-label">LIGHT SLIDE</div>
+        <div class="box-quote">
+          Se o visitante sabe como foi feito, não funcionou.
+          Quando a tecnologia aparece, a mágica desaparece.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ DO'S AND DON'TS ═══════ -->
+  <section id="rules">
+    <div class="section-header">
+      <div class="section-label">Seção 5</div>
+      <h2 class="section-title">Do's & Don'ts</h2>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <div class="rule-badge">DO</div>
+        <div class="rule-text">Use Anton apenas para títulos curtos e nomes de produtos.</div>
+        <div class="rule-reason">Ela deve funcionar como bloco arquitetural, não como texto de leitura.</div>
+      </div>
+
+      <div class="rule-card dont">
+        <div class="rule-badge">DON'T</div>
+        <div class="rule-text">Não use o símbolo TM nos layouts visuais.</div>
+        <div class="rule-reason">Ele existe apenas em texto corrido (copy), nunca nas artes renderizadas.</div>
+      </div>
+
+      <div class="rule-card do">
+        <div class="rule-badge">DO</div>
+        <div class="rule-text">Respeite o grid background (opacity: 0.025).</div>
+        <div class="rule-reason">Serve para dar textura de sistema/engenharia, sem poluir.</div>
+      </div>
+
+      <div class="rule-card dont">
+        <div class="rule-badge">DON'T</div>
+        <div class="rule-text">Não inverta as cores dos Codexes.</div>
+        <div class="rule-reason">A cor é a principal âncora de memorização para diferenciar produtos.</div>
+      </div>
+
+      <div class="rule-card do">
+        <div class="rule-badge">DO</div>
+        <div class="rule-text">Mantenha opacidade do Body Text em 0.85 no modo Dark.</div>
+        <div class="rule-reason">Garante que o texto não compita com títulos e ícones.</div>
+      </div>
+
+      <div class="rule-card dont">
+        <div class="rule-badge">DON'T</div>
+        <div class="rule-text">Não use Anton em parágrafos.</div>
+        <div class="rule-reason">A condensação extrema destrói legibilidade em blocos de texto.</div>
+      </div>
+
+      <div class="rule-card do">
+        <div class="rule-badge">DO</div>
+        <div class="rule-text">Use os ícones exatos definidos na Seção 3.</div>
+        <div class="rule-reason">Eles carregam carga semântica essencial.</div>
+      </div>
+
+      <div class="rule-card dont">
+        <div class="rule-badge">DON'T</div>
+        <div class="rule-text">Não adicione "Accent Slides" (fundo 100% colorido).</div>
+        <div class="rule-reason">O sistema F7 Dark Heavy depende do escuro para manter a gravidade.</div>
+      </div>
+
+      <div class="rule-card do">
+        <div class="rule-badge">DO</div>
+        <div class="rule-text">Aplique o rule gradient na capa (Accent 1 → Accent 2).</div>
+        <div class="rule-reason">Marca visual que identifica o produto e cria hierarquia imediata.</div>
+      </div>
+
+      <div class="rule-card dont">
+        <div class="rule-badge">DON'T</div>
+        <div class="rule-text">Não altere o tamanho do grid (54×54px).</div>
+        <div class="rule-reason">Proporcional à resolução Instagram e ao ritmo visual do design.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ VERSIONAMENTO ═══════ -->
+  <section id="versioning">
+    <div class="section-header">
+      <div class="section-label">Seção 7</div>
+      <h2 class="section-title">Versionamento</h2>
+      <p class="section-desc">Este documento é vivo. Qualquer mudança deve ser registrada aqui.</p>
+    </div>
+
+    <table class="ds-table version-table">
+      <thead>
+        <tr>
+          <th>Versão</th>
+          <th>Data</th>
+          <th>Mudanças</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>v1.0</code></td>
+          <td>17.04.2026</td>
+          <td>Tipografia: Playfair Display → Anton. Refinamento de contraste e espaçamento. Aprovação final de paletas e ícones.</td>
+        </tr>
+        <tr>
+          <td><code>v2.1</code></td>
+          <td>17.04.2026</td>
+          <td>Modo Chumbo Quente aprovado (§2.3). Formato Story 1080×1920 adicionado (§4.0). Ícone MS SVG inline como padrão de assinatura.</td>
+        </tr>
+        <tr>
+          <td><code>v2.2</code></td>
+          <td>17.04.2026</td>
+          <td>Accent Chumbo Quente: Ouro Oxidado (#8B7A4A) → Âmbar Elétrico (#9A7A28/#8A6C20/#6A5418). Mais vibração, mesma disciplina low-contrast.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top: 32px; font-size: 14px; color: var(--text-muted);">
+      <strong style="color: var(--text-primary);">Próximas iterações:</strong>
+      Expansão para os demais 6 produtos (Fronteiristas, Creative Oracle, 4 Codexes) com suas paletas e ícones específicos.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.2</span></span>
+    <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
+  </footer>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+// Sidebar toggle (mobile)
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Active nav tracking
+const sections = document.querySelectorAll('section, .hero');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const id = entry.target.id;
+      const activeLink = document.querySelector(`.sidebar nav a[href="#${id}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(section => observer.observe(section));
+
+// Copy color to clipboard
+function copyColor(value) {
+  navigator.clipboard.writeText(value).then(() => {
+    const toast = document.getElementById('toast');
+    toast.textContent = `Copiado: ${value}`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+// Close sidebar on link click (mobile)
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
