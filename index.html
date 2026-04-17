@@ -1111,6 +1111,70 @@ section {
   .rules-grid { grid-template-columns: 1fr; }
   .base-colors { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ─── CODEX GEOMETRIES ─── */
+.codex-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+.codex-card {
+  background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s ease;
+}
+.codex-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.codex-card canvas {
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.codex-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+.codex-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.codex-shape {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.codex-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.codex-label--design { color: #2563EB; }
+.codex-label--style  { color: #FF4D8C; }
+.codex-label--neuro  { color: #00C9C8; }
+.codex-label--exec   { color: #FF8C00; }
+
+@media (max-width: 1200px) {
+  .codex-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .codex-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -1122,7 +1186,7 @@ section {
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.2</div>
+    <div class="version">DESIGN SYSTEM V2.3</div>
   </div>
   <nav>
     <div class="nav-section">Fundamentos</div>
@@ -1132,6 +1196,7 @@ section {
     <a href="#chumbo-quente">Chumbo Quente</a>
     <div class="nav-section">Produtos</div>
     <a href="#color-system">Sistema Cromático</a>
+    <a href="#codex-geometries">Codex Geometries</a>
     <div class="nav-section">Formatos</div>
     <a href="#story-format">Story (9:16)</a>
     <a href="#carousel">Carousel Pipeline</a>
@@ -1477,6 +1542,56 @@ section {
     </div>
   </section>
 
+  <!-- ═══════ CODEX GEOMETRIES ═══════ -->
+  <section id="codex-geometries">
+    <div class="section-header">
+      <div class="section-label">Seção 3.5</div>
+      <h2 class="section-title">Codex Geometries</h2>
+      <p class="section-desc">
+        Cada Codex possui uma forma geométrica 3D wireframe que rotaciona continuamente.
+        As formas são renderizadas via Canvas 2D com projeção perspectiva e matrizes de rotação nos 3 eixos.
+      </p>
+    </div>
+
+    <div class="codex-grid">
+      <!-- DESIGN CODEX -->
+      <div class="codex-card">
+        <span class="codex-label codex-label--design">Design Codex</span>
+        <span class="codex-name">Tensegrity</span>
+        <span class="codex-shape">Barras + cabos de tensão</span>
+        <canvas id="cx-design" width="200" height="200"></canvas>
+        <p class="codex-meta">Equilíbrio de forças. Estrutura que desafia a percepção.</p>
+      </div>
+
+      <!-- STYLE CODEX -->
+      <div class="codex-card">
+        <span class="codex-label codex-label--style">Style Codex</span>
+        <span class="codex-name">Turbine</span>
+        <span class="codex-shape">Eixo + pás helicoidais</span>
+        <canvas id="cx-style" width="200" height="200"></canvas>
+        <p class="codex-meta">Energia cinética. Gramática visual em movimento perpétuo.</p>
+      </div>
+
+      <!-- NEURO CODEX -->
+      <div class="codex-card">
+        <span class="codex-label codex-label--neuro">Neuro Codex</span>
+        <span class="codex-name">Dendrítico</span>
+        <span class="codex-shape">Núcleo + ramificações sinápticas</span>
+        <canvas id="cx-neuro" width="200" height="200"></canvas>
+        <p class="codex-meta">Padrões neurais. Percepção ramificada e conexão transversal.</p>
+      </div>
+
+      <!-- EXECUTION CODEX -->
+      <div class="codex-card">
+        <span class="codex-label codex-label--exec">Execution Codex</span>
+        <span class="codex-name">Gyroscope</span>
+        <span class="codex-shape">3 anéis orbitais + núcleo</span>
+        <canvas id="cx-exec" width="200" height="200"></canvas>
+        <p class="codex-meta">Movimento perpétuo. Precisão mecânica em 3 eixos.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ STORY FORMAT ═══════ -->
   <section id="story-format">
     <div class="section-header">
@@ -1793,6 +1908,11 @@ section {
           <td>17.04.2026</td>
           <td>Accent Chumbo Quente: Ouro Oxidado (#8B7A4A) → Âmbar Elétrico (#9A7A28/#8A6C20/#6A5418). Mais vibração, mesma disciplina low-contrast.</td>
         </tr>
+        <tr>
+          <td><code>v2.3</code></td>
+          <td>17.04.2026</td>
+          <td>Codex Geometries (§3.5): 4 formas 3D wireframe — Design (Tensegrity), Style (Turbine), Neuro (Dendrítico), Execution (Gyroscope). Canvas 2D com projeção perspectiva e rotação contínua.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -1804,7 +1924,7 @@ section {
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.2</span></span>
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.3</span></span>
     <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
   </footer>
 
@@ -1854,6 +1974,214 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// ═══════════════════════════════════════════════════════════
+// CODEX WIREFRAME ENGINE
+// ═══════════════════════════════════════════════════════════
+
+(function() {
+  function rotateX(v, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    return [v[0], v[1]*c - v[2]*s, v[1]*s + v[2]*c];
+  }
+  function rotateY(v, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    return [v[0]*c + v[2]*s, v[1], -v[0]*s + v[2]*c];
+  }
+  function rotateZ(v, a) {
+    const c = Math.cos(a), s = Math.sin(a);
+    return [v[0]*c - v[1]*s, v[0]*s + v[1]*c, v[2]];
+  }
+
+  function project(v, fov, size) {
+    const z = v[2] + fov;
+    const scale = fov / z;
+    return [v[0] * scale * size/2 + size/2, v[1] * scale * size/2 + size/2];
+  }
+
+  function renderWireframe(canvasId, geometry, color1, color2, speeds, fov) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const size = canvas.width;
+    fov = fov || 3.5;
+    let start = null;
+
+    function draw(timestamp) {
+      if (!start) start = timestamp;
+      const elapsed = (timestamp - start) / 1000;
+      ctx.clearRect(0, 0, size, size);
+
+      const ax = elapsed * speeds[0];
+      const ay = elapsed * speeds[1];
+      const az = elapsed * speeds[2];
+
+      const projected = geometry.vertices.map(v => {
+        let r = rotateX(v, ax);
+        r = rotateY(r, ay);
+        r = rotateZ(r, az);
+        return project(r, fov, size);
+      });
+
+      const depths = geometry.vertices.map(v => {
+        let r = rotateX(v, ax);
+        r = rotateY(r, ay);
+        r = rotateZ(r, az);
+        return r[2];
+      });
+
+      geometry.edges.forEach(([a, b]) => {
+        const [x1, y1] = projected[a];
+        const [x2, y2] = projected[b];
+        const avgDepth = (depths[a] + depths[b]) / 2;
+        const alpha = Math.min(1, Math.max(0.15, 0.3 + 0.7 * ((avgDepth + 2) / 4) * 0.85));
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        const grad = ctx.createLinearGradient(x1, y1, x2, y2);
+        grad.addColorStop(0, color1);
+        grad.addColorStop(1, color2);
+        ctx.strokeStyle = grad;
+        ctx.globalAlpha = alpha;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      });
+
+      projected.forEach((p, i) => {
+        const alpha = Math.min(1, Math.max(0.2, 0.3 + 0.7 * ((depths[i] + 2) / 4)));
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = color1;
+        ctx.globalAlpha = alpha * 0.6;
+        ctx.fill();
+      });
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  }
+
+  // ── DESIGN CODEX: Tensegrity ──
+  const designGeo = {
+    vertices: [
+      [0.9,0.5,0.3],[-0.9,-0.5,-0.3],[-0.3,0.9,-0.5],[0.3,-0.9,0.5],
+      [-0.5,-0.3,0.9],[0.5,0.3,-0.9],[0,0,0],
+      [1.2,0.8,0.5],[-1.2,-0.8,-0.5],[-0.5,1.2,-0.8],
+      [0.5,-1.2,0.8],[-0.8,-0.5,1.2],[0.8,0.5,-1.2]
+    ],
+    edges: [
+      [0,1],[2,3],[4,5],
+      [0,2],[0,4],[0,5],[0,3],[1,2],[1,4],[1,3],[1,5],[2,4],[3,5],
+      [0,7],[1,8],[2,9],[3,10],[4,11],[5,12],
+      [6,0],[6,1],[6,2],[6,3],[6,4],[6,5]
+    ]
+  };
+
+  // ── STYLE CODEX: Turbine ──
+  const styleGeo = (function() {
+    const verts = [];
+    const edges = [];
+    const blades = 5;
+    // Central axis
+    verts.push([0, 1.2, 0]);   // 0 top
+    verts.push([0, 0.4, 0]);   // 1 upper mid
+    verts.push([0, -0.4, 0]);  // 2 lower mid
+    verts.push([0, -1.2, 0]);  // 3 bottom
+    // 5 blades: hub + tip + trail
+    for (let i = 0; i < blades; i++) {
+      const angle = (i / blades) * Math.PI * 2;
+      const twist = i * 0.3;
+      const ca = Math.cos(angle), sa = Math.sin(angle);
+      const hy = 0.3 - i * 0.15;
+      verts.push([ca * 0.15, hy, sa * 0.15]);          // hub: 4+i*3
+      const tipA = angle + twist;
+      verts.push([Math.cos(tipA) * 1.1, hy - 0.2, Math.sin(tipA) * 1.1]); // tip: 4+i*3+1
+      const trA = angle - 0.4 + twist;
+      verts.push([Math.cos(trA) * 0.85, hy + 0.15, Math.sin(trA) * 0.85]); // trail: 4+i*3+2
+    }
+    // Outer ring nodes
+    for (let i = 0; i < blades; i++) {
+      const angle = (i / blades) * Math.PI * 2 + i * 0.3;
+      verts.push([Math.cos(angle) * 1.25, -0.5 + Math.sin(angle * 0.5) * 0.3, Math.sin(angle) * 1.25]);
+    }
+    // Edges: axis
+    edges.push([0, 1], [1, 2], [2, 3]);
+    for (let i = 0; i < blades; i++) {
+      const hub = 4 + i * 3, tip = hub + 1, trail = hub + 2;
+      edges.push([hub, tip], [hub, trail], [tip, trail]);
+      edges.push([1, hub], [2, hub]);
+      edges.push([tip, 19 + i]);
+      const nextHub = 4 + ((i + 1) % blades) * 3;
+      edges.push([trail, nextHub]);
+    }
+    for (let i = 0; i < blades; i++) {
+      edges.push([19 + i, 19 + (i + 1) % blades]);
+    }
+    edges.push([0, 4], [3, 4 + (blades - 1) * 3]);
+    return { vertices: verts, edges: edges };
+  })();
+
+  // ── NEURO CODEX: Dendrítico ──
+  const neuroGeo = {
+    vertices: [
+      [0,0,0],
+      [0.1,0.7,0.1],[0.3,1.1,-0.2],[-0.2,1.3,0.1],[0.1,1,0.5],
+      [0.8,0.2,0.1],[1.2,0.5,-0.1],[1.1,0.1,0.5],[0.9,-0.3,0.2],
+      [-0.7,0.3,0.2],[-1.1,0,-0.2],[-0.9,0.5,-0.4],[-0.8,-0.2,0.4],
+      [0.2,0.1,0.9],[-0.1,0.4,1.2],[0.4,-0.2,1.1],
+      [0.1,-0.8,0.1],[0.4,-1.1,-0.2],[-0.2,-1.2,0.1],[0.1,-0.9,0.5]
+    ],
+    edges: [
+      [0,1],[0,5],[0,9],[0,13],[0,16],
+      [1,2],[1,3],[1,4],[2,3],[3,4],
+      [5,6],[5,7],[5,8],[6,7],[7,8],
+      [9,10],[9,11],[9,12],[10,11],[11,12],
+      [13,14],[13,15],[14,15],
+      [16,17],[16,18],[16,19],[17,18],[18,19],
+      [1,5],[5,13],[13,9],[9,1],[2,6],[10,14],[17,8]
+    ]
+  };
+
+  // ── EXECUTION CODEX: Gyroscope ──
+  const execGeo = (function() {
+    const verts = [];
+    const edges = [];
+    const segs = 16;
+    const r = 1.1;
+    // Ring 1: XY plane (0..15)
+    for (let i = 0; i < segs; i++) {
+      const a = (i / segs) * Math.PI * 2;
+      verts.push([Math.cos(a) * r, Math.sin(a) * r, 0]);
+    }
+    // Ring 2: XZ plane (16..31)
+    for (let i = 0; i < segs; i++) {
+      const a = (i / segs) * Math.PI * 2;
+      verts.push([Math.cos(a) * r, 0, Math.sin(a) * r]);
+    }
+    // Ring 3: YZ plane (32..47)
+    for (let i = 0; i < segs; i++) {
+      const a = (i / segs) * Math.PI * 2;
+      verts.push([0, Math.cos(a) * r, Math.sin(a) * r]);
+    }
+    // Nucleus (48) + axis tips (49-54)
+    verts.push([0,0,0]);
+    verts.push([0.3,0,0],[-0.3,0,0],[0,0.3,0],[0,-0.3,0],[0,0,0.3],[0,0,-0.3]);
+
+    for (let i = 0; i < segs; i++) edges.push([i, (i+1) % segs]);
+    for (let i = 0; i < segs; i++) edges.push([16+i, 16+(i+1) % segs]);
+    for (let i = 0; i < segs; i++) edges.push([32+i, 32+(i+1) % segs]);
+    edges.push([48,49],[48,50],[48,51],[48,52],[48,53],[48,54]);
+
+    return { vertices: verts, edges: edges };
+  })();
+
+  // ── RENDER ──
+  renderWireframe('cx-design', designGeo, '#2563EB', '#1E3A8A', [0.13, 0.16, 0.09]);
+  renderWireframe('cx-style',  styleGeo,  '#FF4D8C', '#FF6B35', [0.10, 0.25, 0.06]);
+  renderWireframe('cx-neuro',  neuroGeo,  '#00C9C8', '#007A7A', [0.14, 0.22, 0.10]);
+  renderWireframe('cx-exec',   execGeo,   '#FF8C00', '#CC5500', [0.12, 0.18, 0.08]);
+})();
 </script>
 </body>
 </html>
