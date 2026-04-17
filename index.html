@@ -581,6 +581,250 @@ section {
   font-weight: 500;
 }
 
+/* ─── VISUAL STUDIES ─── */
+.vs-override-banner {
+  background: linear-gradient(135deg, rgba(168,90,48,0.08), rgba(168,90,48,0.02));
+  border: 1px solid rgba(168,90,48,0.15);
+  border-left: 3px solid #A85A30;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+
+.vs-override-banner .vs-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #A85A30;
+  margin-bottom: 8px;
+}
+
+.vs-override-banner p {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.vs-palette-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.vs-palette-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vs-palette-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.vs-palette-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.vs-palette-header .vs-product-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.vs-palette-header .vs-product-identity {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.vs-palette-tokens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.vs-token {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vs-token-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.vs-token-info {
+  min-width: 0;
+}
+
+.vs-token-name {
+  font-family: var(--font-label);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.vs-token-value {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+.vs-geo-table {
+  margin: 40px 0;
+}
+
+.vs-headline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.vs-headline-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-headline-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.vs-headline-card .vs-hl-product {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+
+.vs-headline-card .vs-hl-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.vs-headline-card .vs-hl-title em {
+  font-style: normal;
+}
+
+.vs-headline-card .vs-hl-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.vs-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.vs-layout-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.vs-layout-item .vs-li-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.vs-layout-item .vs-li-desc {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.vs-layout-item code {
+  font-family: var(--font-label);
+  font-size: 11px;
+  background: rgba(255,255,255,0.05);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--accent-gold);
+}
+
+.vs-ascii-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.vs-ascii-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.vs-ascii-card .vs-ascii-product {
+  font-family: var(--font-label);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.vs-ascii-card pre {
+  font-family: var(--font-label);
+  font-size: 10px;
+  color: rgba(255,255,255,0.12);
+  line-height: 1.4;
+  white-space: pre;
+}
+
+@media (max-width: 768px) {
+  .vs-headline-grid { grid-template-columns: 1fr; }
+  .vs-palette-tokens { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ─── CONTRAST PREVIEW ─── */
 .contrast-preview {
   display: grid;
@@ -1225,7 +1469,7 @@ section {
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.4</div>
+    <div class="version">DESIGN SYSTEM V2.5</div>
   </div>
   <nav>
     <div class="nav-section">Fundamentos</div>
@@ -1240,6 +1484,8 @@ section {
     <a href="#story-format">Story (9:16)</a>
     <a href="#carousel">Carousel Pipeline</a>
     <a href="#contrast">Hierarquia de Contraste</a>
+    <div class="nav-section">Visual Studies</div>
+    <a href="#visual-studies">Carousel Capa (Study 01)</a>
     <div class="nav-section">Governança</div>
     <a href="#rules">Do's & Don'ts</a>
     <a href="#versioning">Versionamento</a>
@@ -1865,6 +2111,297 @@ section {
     </div>
   </section>
 
+  <!-- ═══════ VISUAL STUDIES — CAROUSEL CAPA (STUDY 01) ═══════ -->
+  <section id="visual-studies">
+    <div class="section-header">
+      <div class="section-label">Seção 5</div>
+      <h2 class="section-title">Visual Studies — Carousel Capa</h2>
+      <p class="section-desc">
+        Study 01: Capa de carrossel para 7 produtos MSCREATIVE.SYSTEMS. Formato 1080×1350px (Instagram Portrait 4:5).
+        Aprovado em 18 Abr 2026 — versão final V1.
+      </p>
+    </div>
+
+    <!-- OVERRIDE BANNER -->
+    <div class="vs-override-banner">
+      <div class="vs-label">⚠ Chumbo Quente Override</div>
+      <p>
+        O §2.3 recomenda Chumbo Quente apenas para stories/editorial, NÃO para carrosséis.
+        <strong style="color: var(--text-primary);">Override aprovado por Marcel:</strong> todos os slides de carousel
+        usam Chumbo Quente como base, com paletas por produto derivadas do filtro de baixo contraste/saturação.
+        Cada produto mantém identidade cromática própria, processada pelo filtro Chumbo Quente.
+      </p>
+    </div>
+
+    <!-- ── 7 PRODUCT PALETTES ── -->
+    <h3 class="subsection-title" style="margin-bottom: 20px;">Paletas Chumbo Quente por Produto</h3>
+
+    <div class="vs-palette-grid">
+      <!-- MSCS -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #A85A30;">MSCREATIVE.SYSTEMS</div>
+            <div class="vs-product-identity">Chumbo Puro + Electric Orange</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0A0E, #111114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0A0E → #111114</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#A85A30</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #A85A30, #6A3818);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#A85A30 → #6A3818</div></div></div>
+        </div>
+      </div>
+
+      <!-- ORACLE -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #8A6A18;">Creative Oracle</div>
+            <div class="vs-product-identity">Âmbar Profundo</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #12100A);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #12100A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5E5545;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5E5545</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A6A18;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A6A18</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #8A6A18, #5A4010);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A6A18 → #5A4010</div></div></div>
+        </div>
+      </div>
+
+      <!-- FRONTEIRISTAS -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #8A7A62;">Fronteiristas</div>
+            <div class="vs-product-identity">Pergaminho Oxidado</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #111010);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #111010</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5550;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5550</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A7A62;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A7A62</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #8A7A62, #5A5040);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A7A62 → #5A5040</div></div></div>
+        </div>
+      </div>
+
+      <!-- NEURO CODEX -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #5A9AAA;">Neuro Codex</div>
+            <div class="vs-product-identity">Índigo-Lilás + Cyan</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #0E0E18);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #0E0E18</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A4460;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A4460</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A9AAA;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A9AAA</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #5A9AAA, #3A5A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A9AAA → #3A5A6A</div></div></div>
+        </div>
+      </div>
+
+      <!-- STYLE CODEX -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #9A6068;">Style Codex</div>
+            <div class="vs-product-identity">Rosewood Empoeirado</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #131114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #131114</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5B4C50;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5B4C50</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A6068;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A6068</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #9A6068, #6A3A42);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A6068 → #6A3A42</div></div></div>
+        </div>
+      </div>
+
+      <!-- DESIGN CODEX -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #5A7A9A;">Design Codex</div>
+            <div class="vs-product-identity">Aço Azul Oxidado</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #0E1018);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #0E1018</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A5060;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A5060</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A7A9A;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A7A9A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #5A7A9A, #3A4A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A7A9A → #3A4A6A</div></div></div>
+        </div>
+      </div>
+
+      <!-- EXECUTION CODEX -->
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #9A7048;">Execution Codex</div>
+            <div class="vs-product-identity">Terracota Queimado</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #131008);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #131008</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5040;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5040</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A7048;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A7048</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #9A7048, #6A4828);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A7048 → #6A4828</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3D GEOMETRIES TABLE ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Polígonos 3D Assinatura</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Produto</th><th>Geometria</th><th>Rotation [X, Y, Z]</th><th>FOV</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="color:#A85A30;">MSCS</td><td>Icosaedro</td><td><code>[0.08, 0.12, 0.05]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#8A6A18;">Oracle</td><td>Möbius Strip (24 seg, twisted loop)</td><td><code>[0.06, 0.10, 0.04]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#8A7A62;">Fronteiristas</td><td>Losango/Diamond (dual-pyramid, 14v)</td><td><code>[0.05, 0.08, 0.03]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#5A9AAA;">Neuro</td><td>Dendrítico (20v, 5 ramos)</td><td><code>[0.14, 0.22, 0.10]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#9A6068;">Style</td><td>Romboédrico (18v, cristalino)</td><td><code>[0.18, 0.12, 0.14]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#5A7A9A;">Design</td><td>Tensegrity (13v, tensão estrutural)</td><td><code>[0.13, 0.16, 0.09]</code></td><td>3.5</td></tr>
+        <tr><td style="color:#9A7048;">Execution</td><td>Gyroscope (3 anéis × 16 seg + hub)</td><td><code>[0.12, 0.18, 0.08]</code></td><td>3.5</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+      <strong style="color: var(--text-primary);">Engine:</strong> vanilla JS, rotação rotX/rotY/rotZ, projeção perspectiva, gradient stroke com alpha por depth, vertex dots 2px. Canvas 320×320px, opacity ~0.3, posição bottom-right do slide.
+    </p>
+
+    <!-- ── LAYOUT ELEMENTS ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Elementos de Layout</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Info Strips (W+K ref)</div>
+        <div class="vs-li-desc">Barras de <code>54px</code> (= 1 grid unit) no topo e base. <strong>Top:</strong> ✕ ✕ ✕ | Frase editorial | Produto. <strong>Bottom:</strong> slide N/9 | Série + data | MS sig. Space Mono 10px, uppercase, 0.15em.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Ghost Layers</div>
+        <div class="vs-li-desc">3 divs border-only atrás do slide, offset <code>-8px</code> incremental. Opacidade: <code>0.06 → 0.04 → 0.025</code>. Cor = accent do produto.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Glitch Lines</div>
+        <div class="vs-li-desc">2 linhas horizontais (top 287px, 943px), 1px. CSS gradient com fragmentos accent <code>0.05–0.08</code> opacity.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Product Marker</div>
+        <div class="vs-li-desc">Barra vertical <code>3px</code> left, gradient accent <code>12% → transparent</code>.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Grid Overlay</div>
+        <div class="vs-li-desc"><code>54×54px</code>, <code>rgba(255,255,255,0.025)</code> — ::before do .slide</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Scan Lines</div>
+        <div class="vs-li-desc">repeating-linear-gradient 3px/1px, <code>rgba(140,130,115,0.005)</code> — ::after do .slide</div>
+      </div>
+    </div>
+
+    <!-- ── TYPOGRAPHY ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Tipografia do Carousel</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Elemento</th><th>Font</th><th>Size</th><th>Weight</th><th>Transform</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Headline</td><td><code>Anton</code></td><td>72px</td><td>400</td><td>uppercase, -0.02em</td></tr>
+        <tr><td>Subtitle</td><td><code>DM Sans</code></td><td>21px</td><td>400</td><td>none, lh 1.55</td></tr>
+        <tr><td>Tags</td><td><code>Space Mono</code></td><td>11px</td><td>400</td><td>uppercase, 0.18em</td></tr>
+        <tr><td>Info strip</td><td><code>Space Mono</code></td><td>10px</td><td>400</td><td>uppercase, 0.15em</td></tr>
+        <tr><td>Slide number</td><td><code>Space Mono</code></td><td>11px</td><td>400</td><td>uppercase, 0.20em</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── HEADLINES PER PRODUCT ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Headlines por Produto</h3>
+    <div class="vs-headline-grid">
+      <div class="vs-headline-card" style="border-left: 3px solid #A85A30;">
+        <div class="vs-hl-product" style="color: #A85A30;">MSCREATIVE.SYSTEMS</div>
+        <div class="vs-hl-title">A Morte do Gosto <em style="color: #A85A30; font-style: normal;">Pessoal</em></div>
+        <div class="vs-hl-sub">Por que empresas criativas sem governança perdem identidade — e chamam isso de evolução.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #8A6A18;">
+        <div class="vs-hl-product" style="color: #8A6A18;">Creative Oracle</div>
+        <div class="vs-hl-title">Árbitro Não <em style="color: #8A6A18; font-style: normal;">Opina</em> — Governa</div>
+        <div class="vs-hl-sub">Toda empresa criativa tem um sistema de julgamento. A maioria só não sabe qual é.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #8A7A62;">
+        <div class="vs-hl-product" style="color: #8A7A62;">Fronteiristas</div>
+        <div class="vs-hl-title">Curadoria É o Último Ato <em style="color: #8A7A62; font-style: normal;">Criativo</em></div>
+        <div class="vs-hl-sub">Quem escolhe o que entra define o que existe. A edição é o gesto que transforma arquivo em argumento.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #5A9AAA;">
+        <div class="vs-hl-product" style="color: #5A9AAA;">Neuro Codex</div>
+        <div class="vs-hl-title">Seu Cliente Não <em style="color: #5A9AAA; font-style: normal;">Decide</em> — Reage</div>
+        <div class="vs-hl-sub">O cérebro resolve em 0,3s o que a sua marca tenta explicar em 30 slides.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #9A6068;">
+        <div class="vs-hl-product" style="color: #9A6068;">Style Codex</div>
+        <div class="vs-hl-title">Tendência É <em style="color: #9A6068; font-style: normal;">Preguiça</em> de Identidade</div>
+        <div class="vs-hl-sub">Marcas que seguem tendência estão terceirizando a única coisa que não deveriam delegar: o próprio rosto.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #5A7A9A;">
+        <div class="vs-hl-product" style="color: #5A7A9A;">Design Codex</div>
+        <div class="vs-hl-title">Estratégia Sem <em style="color: #5A7A9A; font-style: normal;">Estrutura</em> É Opinião</div>
+        <div class="vs-hl-sub">O gap entre o deck bonito e o resultado real é um problema de arquitetura.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #9A7048;">
+        <div class="vs-hl-product" style="color: #9A7048;">Execution Codex</div>
+        <div class="vs-hl-title">Plano Sem <em style="color: #9A7048; font-style: normal;">Execução</em> É Ficção</div>
+        <div class="vs-hl-sub">A distância entre estratégia e resultado não é talento — é infraestrutura operacional.</div>
+      </div>
+    </div>
+
+    <!-- ── ASCII FRAGMENTS ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">ASCII Fragments por Produto</h3>
+    <div class="vs-ascii-grid">
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #A85A30;">MSCS</div>
+        <pre>░▒▓█▓▒░    ╔══╗ ║▪▪║ ╚══╝    ▸ SYS.RENDER ▸▸▸</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #8A6A18;">Oracle</div>
+        <pre>※──※──※──※  ┌※┐ │ ※│ └※┘  ※ ORACLE.SYS ※</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #8A7A62;">Fronteiristas</div>
+        <pre>◇──◇──◇──◇  ╔◇╗ ║◇◇║ ╚◇╝  ◇ ARCHIVE.SYS ◇</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #5A9AAA;">Neuro</div>
+        <pre>◎──◎──◎──◎  ┌──┐ │◎◎│ └──┘  ◎ PERCEPT.LAYER ◎</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #9A6068;">Style</div>
+        <pre>❋──❋──❋──❋  ╭──╮ │❋❋│ ╰──╯  ❋ STYLE.ENGINE ❋</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #5A7A9A;">Design</div>
+        <pre>⊞──⊞──⊞──⊞  ┌──┐ │⊞⊞│ └──┘  ⊞ STRUCT.ENGINE ⊞</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #9A7048;">Execution</div>
+        <pre>▶──▶──▶──▶  ╔──╗ ║▶▶║ ╚══╝  ▶ EXEC.ENGINE ▶</pre>
+      </div>
+    </div>
+
+    <!-- ── ITERATION LOG ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Histórico de Iterações — Study 01</h3>
+    <table class="ds-table">
+      <thead><tr><th>Versão</th><th>Mudança</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>v1</td><td>3 variantes (MSCS, Neuro, Style) com cores high-contrast</td><td style="color: #9A6068;">Rejeitado</td></tr>
+        <tr><td>v2</td><td>Chumbo Quente aplicado, Neuro em verde</td><td style="color: #9A7048;">Parcial</td></tr>
+        <tr><td>v3</td><td>Neuro → índigo/lilás+cyan, headline darkened 15%</td><td style="color: #9A7048;">Parcial</td></tr>
+        <tr><td>v4</td><td>Polígonos 320px accent color @ 0.28–0.30, MS sig no bottom strip</td><td style="color: #5A9AAA;">Aprovado</td></tr>
+        <tr><td>v5</td><td>7 produtos com Slide Factory, geometrias Möbius + Losango</td><td style="color: #5A9AAA;">Aprovado</td></tr>
+        <tr><td>v6 (final)</td><td>MSCS → chumbo puro + electric orange #A85A30, separação Oracle</td><td style="color: var(--accent-gold);">Final ✓</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <!-- ═══════ DO'S AND DON'TS ═══════ -->
   <section id="rules">
     <div class="section-header">
@@ -1977,6 +2514,11 @@ section {
           <td>17.04.2026</td>
           <td>§3.5 expandida para 3D Geometries: MSCREATIVE.SYSTEMS (Icosaedro) + Creative Oracle (Möbius Strip) acima dos 4 Codexes. 6 formas wireframe no total.</td>
         </tr>
+        <tr>
+          <td><code>v2.5</code></td>
+          <td>18.04.2026</td>
+          <td>§5 Visual Studies — Carousel Capa (Study 01): 7 paletas Chumbo Quente por produto, 7 polígonos 3D (+ Fronteiristas Losango), headlines, ASCII fragments, layout specs. Override Chumbo Quente para carrosséis aprovado.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -1988,7 +2530,7 @@ section {
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.4</span></span>
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.5</span></span>
     <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
   </footer>
 
