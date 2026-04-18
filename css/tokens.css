@@ -3,6 +3,8 @@
    Single source of truth for all visual properties.
    ═══════════════════════════════════════════════════════════ */
 
+@import url('./story-tokens.css');
+
 :root {
 
   /* === GLOBAL STRUCTURAL ===

@@ -1,0 +1,113 @@
+/* ═══════════════════════════════════════════════════════════
+   STORY TOKENS — MSCREATIVE.SYSTEMS™
+   Format: 1080 × 1920px (Instagram Story 9:16)
+   Stack: Inter + Instrument Serif + Space Mono
+   Palette: Chumbo Puro + Electric Orange
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Dimensions ── */
+  --ds-story-width:              1080px;
+  --ds-story-height:             1920px;
+  --ds-story-safe-top:           120px;
+  --ds-story-safe-bottom:        160px;
+  --ds-story-content-padding:    72px;
+  --ds-story-strip-height:       54px;
+  --ds-story-strip-padding:      40px;
+
+  /* ── Grid ── */
+  --ds-story-grid-size:          54px;
+  --ds-story-grid-color:         rgba(255, 255, 255, 0.025);
+
+  /* ── Scan lines ── */
+  --ds-story-scan-color:         rgba(140, 130, 115, 0.005);
+
+  /* ── Product marker ── */
+  --ds-story-marker-width:       3px;
+
+  /* ── Ghost layers ── */
+  --ds-story-ghost-1-inset:      -8px;
+  --ds-story-ghost-1-color:      rgba(168, 90, 48, 0.06);
+  --ds-story-ghost-2-inset:      -16px;
+  --ds-story-ghost-2-color:      rgba(168, 90, 48, 0.04);
+  --ds-story-ghost-3-inset:      -24px;
+  --ds-story-ghost-3-color:      rgba(168, 90, 48, 0.025);
+
+  /* ── Glitch lines ── */
+  --ds-story-glitch-color:       rgba(168, 90, 48, 0.07);
+
+  /* ── ASCII fragments ── */
+  --ds-story-ascii-color:        rgba(168, 90, 48, 0.035);
+  --ds-story-ascii-size:         10px;
+
+  /* ── Icosaedro ── */
+  --ds-story-poly-opacity:       0.2;
+  --ds-story-poly-size-min:      240px;
+  --ds-story-poly-size-default:  280px;
+  --ds-story-poly-size-max:      320px;
+  --ds-story-poly-color-1:       #A85A30;
+  --ds-story-poly-color-2:       #6A3818;
+
+  /* ── Info strips ── */
+  --ds-story-strip-font-size:    10px;
+  --ds-story-strip-tracking:     0.18em;
+  --ds-story-strip-color:        rgba(130, 130, 130, 0.18);
+  --ds-story-strip-border:       rgba(168, 90, 48, 0.06);
+  --ds-story-strip-bg-top:       linear-gradient(180deg, rgba(168,90,48,0.015) 0%, rgba(168,90,48,0.005) 100%);
+  --ds-story-strip-bg-bottom:    linear-gradient(0deg, rgba(168,90,48,0.01) 0%, rgba(168,90,48,0.005) 100%);
+
+  /* ── Tags ── */
+  --ds-story-tag-font-size:      10px;
+  --ds-story-tag-tracking:       0.18em;
+  --ds-story-tag-padding:        6px 14px;
+  --ds-story-tag-radius:         2px;
+  --ds-story-tag-accent-color:   #A85A30;
+  --ds-story-tag-accent-border:  rgba(168, 90, 48, 0.25);
+  --ds-story-tag-accent-bg:      rgba(168, 90, 48, 0.04);
+  --ds-story-tag-ghost-color:    rgba(140, 140, 140, 0.5);
+  --ds-story-tag-ghost-border:   rgba(255, 255, 255, 0.04);
+  --ds-story-tag-ghost-bg:       rgba(140, 140, 140, 0.06);
+
+  /* ── Headline ── */
+  --ds-story-headline-font:      'Inter', sans-serif;
+  --ds-story-headline-size:      54px;
+  --ds-story-headline-weight:    300;
+  --ds-story-headline-lh:        1.12;
+  --ds-story-headline-tracking:  -0.02em;
+  --ds-story-headline-color:     #6A6A6A;
+  --ds-story-headline-em-font:   'Instrument Serif', serif;
+  --ds-story-headline-em-size:   62px;
+  --ds-story-headline-em-weight: 400;
+  --ds-story-headline-em-color:  #A85A30;
+
+  /* ── Rule ── */
+  --ds-story-rule-height:        1px;
+  --ds-story-rule-gradient:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+
+  /* ── Subtitle ── */
+  --ds-story-subtitle-font:      'Inter', sans-serif;
+  --ds-story-subtitle-size:      19px;
+  --ds-story-subtitle-weight:    300;
+  --ds-story-subtitle-lh:        1.65;
+  --ds-story-subtitle-color:     rgba(130, 130, 130, 0.4);
+
+  /* ── Speaker card ── */
+  --ds-story-speaker-gap:        28px;
+  --ds-story-speaker-border:     rgba(168, 90, 48, 0.06);
+  --ds-story-speaker-init-size:  64px;
+  --ds-story-speaker-init-font:  'Instrument Serif', serif;
+  --ds-story-speaker-init-fsize: 28px;
+  --ds-story-speaker-init-color: #A85A30;
+  --ds-story-speaker-init-border: rgba(168, 90, 48, 0.15);
+  --ds-story-speaker-name-font:  'Inter', sans-serif;
+  --ds-story-speaker-name-size:  17px;
+  --ds-story-speaker-name-color: rgba(130, 130, 130, 0.4);
+  --ds-story-speaker-role-font:  'Space Mono', monospace;
+  --ds-story-speaker-role-size:  9px;
+  --ds-story-speaker-role-color: rgba(168, 90, 48, 0.2);
+
+  /* ── MS Signature ── */
+  --ds-story-sig-width:          32px;
+  --ds-story-sig-opacity:        0.18;
+}
