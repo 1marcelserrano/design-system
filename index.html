@@ -1,4009 +1,755 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MSCREATIVE.SYSTEMS — Design System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* ─── RESET ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ─── ROOT TOKENS ─── */
-:root {
-  --bg-primary: #0A0C10;
-  --bg-secondary: #12141A;
-  --bg-surface: #1A1D26;
-  --bg-surface-hover: #22262F;
-  --text-primary: #B2A898;
-  --text-body: rgba(178, 168, 152, 0.85);
-  --text-muted: rgba(178, 168, 152, 0.5);
-  --grid-color: rgba(255, 255, 255, 0.025);
-  --grid-size: 54px;
-  --accent-gold: #D4AF37;
-  --accent-gold-dark: #8B6914;
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --sidebar-width: 280px;
-  --font-display: 'Anton', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-label: 'Space Mono', monospace;
-}
-
-/* ─── BODY ─── */
-body {
-  font-family: var(--font-body);
-  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  color: var(--text-body);
-  line-height: 1.6;
-  min-height: 100vh;
-  font-size: 16px;
-  font-weight: 400;
-  background-attachment: fixed;
-}
-
-/* ─── GRID OVERLAY ─── */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ─── SIDEBAR ─── */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--sidebar-width);
-  height: 100vh;
-  background: rgba(10, 12, 16, 0.95);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid var(--border-subtle);
-  padding: 32px 0;
-  overflow-y: auto;
-  z-index: 100;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-logo {
-  padding: 0 24px 32px;
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 24px;
-}
-
-.sidebar-logo h1 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  text-transform: uppercase;
-  color: var(--accent-gold);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.sidebar-logo .version {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  margin-top: 8px;
-}
-
-.sidebar nav { padding: 0 16px; }
-
-.sidebar nav a {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.sidebar nav a:hover, .sidebar nav a.active {
-  color: var(--text-primary);
-  background: var(--bg-surface);
-}
-
-.sidebar nav a.active {
-  color: var(--accent-gold);
-  background: rgba(212, 175, 55, 0.08);
-}
-
-.sidebar nav .nav-section {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--accent-gold);
-  padding: 20px 12px 8px;
-}
-
-/* ─── MOBILE TOGGLE ─── */
-.sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 16px; left: 16px;
-  z-index: 200;
-  width: 44px; height: 44px;
-  background: rgba(10, 12, 16, 0.9);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  color: var(--accent-gold);
-  font-size: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ─── MAIN CONTENT ─── */
-.main {
-  margin-left: var(--sidebar-width);
-  padding: 48px 64px 120px;
-  max-width: 1100px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ─── HERO ─── */
-.hero {
-  padding: 80px 0 64px;
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 64px;
-}
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 72px);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
-  color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
-.hero h1 span {
-  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero .subtitle {
-  font-size: 18px;
-  color: var(--text-muted);
-  max-width: 600px;
-  line-height: 1.7;
-}
-
-.hero .rule {
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
-  border-radius: 2px;
-  margin: 24px 0;
-}
-
-/* ─── SECTIONS ─── */
-section {
-  margin-bottom: 80px;
-  scroll-margin-top: 32px;
-}
-
-.section-header {
-  margin-bottom: 40px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.section-label {
-  font-family: var(--font-label);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--accent-gold);
-  margin-bottom: 8px;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 48px);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.section-desc {
-  margin-top: 12px;
-  font-size: 16px;
-  color: var(--text-muted);
-  max-width: 640px;
-}
-
-/* ─── TYPOGRAPHY SPECIMENS ─── */
-.type-specimens {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.type-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.type-card-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.type-card-header .name {
-  font-family: var(--font-label);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--accent-gold);
-}
-
-.type-card-header .role {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.type-card-specimen {
-  padding: 40px 24px;
-}
-
-.type-card-specimen.display-font {
-  font-family: var(--font-display);
-  font-size: 56px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.type-card-specimen.body-font {
-  font-family: var(--font-body);
-  font-size: 20px;
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.type-card-specimen.label-font {
-  font-family: var(--font-label);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--accent-gold);
-}
-
-.type-card-meta {
-  padding: 16px 24px;
-  background: rgba(0,0,0,0.2);
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.type-card-meta .meta-item {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-}
-
-.type-card-meta .meta-item span {
-  color: var(--text-body);
-  display: block;
-  margin-top: 2px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-/* ─── COLOR SYSTEM ─── */
-.base-colors {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: 48px;
-}
-
-.color-chip {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.color-chip:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.12);
-}
-
-.color-chip .swatch {
-  height: 80px;
-  position: relative;
-}
-
-.color-chip .swatch::after {
-  content: attr(data-value);
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.6);
-  background: rgba(0,0,0,0.4);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.color-chip .chip-info {
-  padding: 12px 16px;
-}
-
-.color-chip .chip-token {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent-gold);
-  margin-bottom: 4px;
-}
-
-.color-chip .chip-desc {
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-/* ─── PRODUCT CARDS ─── */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-}
-
-.product-card {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  position: relative;
-  transition: transform 0.2s, border-color 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255,255,255,0.1);
-}
-
-.product-card-bg {
-  padding: 32px 24px 24px;
-  position: relative;
-}
-
-.product-card-bg::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 27px 27px;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.product-icon {
-  font-size: 32px;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.product-name {
-  font-family: var(--font-display);
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  position: relative;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.product-tier {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.product-colors {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  position: relative;
-}
-
-.product-color-swatch {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 2px solid rgba(255,255,255,0.1);
-  position: relative;
-  cursor: pointer;
-}
-
-.product-color-swatch::after {
-  content: attr(data-hex);
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-label);
-  font-size: 9px;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.product-color-swatch:hover::after {
-  opacity: 1;
-}
-
-.product-reason {
-  padding: 16px 24px;
-  font-size: 13px;
-  color: var(--text-muted);
-  font-style: italic;
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(0,0,0,0.15);
-  position: relative;
-}
-
-/* ─── CAROUSEL SECTION ─── */
-.carousel-rhythm {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 8px;
-  margin-bottom: 40px;
-}
-
-.carousel-slide {
-  border-radius: 8px;
-  padding: 12px 8px;
-  text-align: center;
-  border: 1px solid var(--border-subtle);
-  transition: transform 0.2s;
-  cursor: default;
-  position: relative;
-}
-
-.carousel-slide:hover {
-  transform: translateY(-2px);
-}
-
-.carousel-slide.dark {
-  background: linear-gradient(145deg, #0A0C10, #12141A);
-}
-
-.carousel-slide.light {
-  background: linear-gradient(145deg, #F5F7FA, #E8EAEF);
-}
-
-.carousel-slide .slide-num {
-  font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.carousel-slide.dark .slide-num { color: var(--accent-gold); }
-.carousel-slide.light .slide-num { color: #0A0C10; }
-
-.carousel-slide .slide-label {
-  font-family: var(--font-label);
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  line-height: 1.3;
-}
-
-.carousel-slide.dark .slide-label { color: var(--text-muted); }
-.carousel-slide.light .slide-label { color: rgba(10, 12, 16, 0.5); }
-
-.carousel-slide .slide-type {
-  font-family: var(--font-label);
-  font-size: 7px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.carousel-slide.dark .slide-type { color: rgba(255,255,255,0.3); }
-.carousel-slide.light .slide-type { color: rgba(10, 12, 16, 0.3); border-top-color: rgba(0,0,0,0.08); }
-
-/* Carousel specs */
-.carousel-specs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.spec-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.spec-card .spec-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent-gold);
-  margin-bottom: 8px;
-}
-
-.spec-card .spec-value {
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* ─── VISUAL STUDIES ─── */
-.vs-override-banner {
-  background: linear-gradient(135deg, rgba(168,90,48,0.08), rgba(168,90,48,0.02));
-  border: 1px solid rgba(168,90,48,0.15);
-  border-left: 3px solid #A85A30;
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin-bottom: 40px;
-}
-
-.vs-override-banner .vs-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #A85A30;
-  margin-bottom: 8px;
-}
-
-.vs-override-banner p {
-  font-size: 14px;
-  color: var(--text-body);
-  line-height: 1.6;
-}
-
-.vs-palette-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.vs-palette-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-.vs-palette-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-subtle);
-  position: relative;
-}
-
-.vs-palette-header::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-}
-
-.vs-palette-header .vs-product-name {
-  font-family: var(--font-display);
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
-.vs-palette-header .vs-product-identity {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-}
-
-.vs-palette-tokens {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  padding: 16px 20px;
-}
-
-.vs-token {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.vs-token-swatch {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.08);
-  flex-shrink: 0;
-}
-
-.vs-token-info {
-  min-width: 0;
-}
-
-.vs-token-name {
-  font-family: var(--font-label);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-}
-
-.vs-token-value {
-  font-family: var(--font-label);
-  font-size: 11px;
-  color: var(--text-primary);
-}
-
-.vs-geo-table {
-  margin: 40px 0;
-}
-
-.vs-headline-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.vs-headline-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.vs-headline-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-}
-
-.vs-headline-card .vs-hl-product {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 10px;
-}
-
-.vs-headline-card .vs-hl-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-  line-height: 1.1;
-}
-
-.vs-headline-card .vs-hl-title em {
-  font-style: normal;
-}
-
-.vs-headline-card .vs-hl-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.vs-layout-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.vs-layout-item {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.vs-layout-item .vs-li-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent-gold);
-  margin-bottom: 8px;
-}
-
-.vs-layout-item .vs-li-desc {
-  font-size: 13px;
-  color: var(--text-body);
-  line-height: 1.5;
-}
-
-.vs-layout-item code {
-  font-family: var(--font-label);
-  font-size: 11px;
-  background: rgba(255,255,255,0.05);
-  padding: 1px 5px;
-  border-radius: 3px;
-  color: var(--accent-gold);
-}
-
-.vs-ascii-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.vs-ascii-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.vs-ascii-card .vs-ascii-product {
-  font-family: var(--font-label);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.vs-ascii-card pre {
-  font-family: var(--font-label);
-  font-size: 10px;
-  color: rgba(255,255,255,0.12);
-  line-height: 1.4;
-  white-space: pre;
-}
-
-@media (max-width: 768px) {
-  .vs-headline-grid { grid-template-columns: 1fr; }
-  .vs-palette-tokens { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* ─── OFFF STORY FACTORY ─── */
-.offf-story-mockup {
-  width: 200px;
-  height: 356px;
-  background: linear-gradient(145deg, #0A0A0E, #111114);
-  border-radius: 12px;
-  border: 1px solid rgba(168,90,48,0.15);
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.offf-story-mockup::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-}
-
-.offf-story-mockup .osm-strip {
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8px;
-  font-family: var(--font-label);
-  font-size: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.offf-story-mockup .osm-strip-top {
-  color: rgba(130,130,130,0.18);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-
-.offf-story-mockup .osm-strip-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  color: rgba(130,130,130,0.18);
-  border-top: 1px solid rgba(255,255,255,0.03);
-}
-
-.offf-story-mockup .osm-content {
-  padding: 16px 12px;
-}
-
-.offf-story-mockup .osm-tags {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 12px;
-}
-
-.offf-story-mockup .osm-tag {
-  font-family: var(--font-label);
-  font-size: 4.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 2px 5px;
-  border-radius: 2px;
-}
-
-.offf-story-mockup .osm-tag-accent {
-  color: #A85A30;
-  border: 1px solid rgba(168,90,48,0.25);
-}
-
-.offf-story-mockup .osm-tag-ghost {
-  color: rgba(140,140,140,0.5);
-  border: 1px solid rgba(255,255,255,0.04);
-}
-
-.offf-story-mockup .osm-headline {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  color: #6A6A6A;
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-
-.offf-story-mockup .osm-headline em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: #A85A30;
-  font-size: 18px;
-  font-weight: 400;
-}
-
-.offf-story-mockup .osm-rule {
-  height: 1px;
-  background: linear-gradient(90deg, #A85A30, #6A3818, transparent);
-  margin-bottom: 10px;
-}
-
-.offf-story-mockup .osm-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 6px;
-  color: rgba(130,130,130,0.4);
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
-.offf-story-mockup .osm-speaker {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  background: rgba(10,10,14,0.8);
-  border: 1px solid rgba(168,90,48,0.15);
-  border-radius: 6px;
-}
-
-.offf-story-mockup .osm-speaker-initials {
-  width: 24px;
-  height: 24px;
-  border: 1px solid rgba(168,90,48,0.25);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: 10px;
-  color: #A85A30;
-}
-
-.offf-story-mockup .osm-speaker-name {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 6px;
-  color: var(--text-primary);
-}
-
-.offf-story-mockup .osm-speaker-role {
-  font-family: var(--font-label);
-  font-size: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-}
-
-.offf-story-mockup .osm-marker {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(168,90,48,0.12), transparent);
-}
-
-.offf-preview-row {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  margin-bottom: 40px;
-}
-
-.offf-preview-info {
-  flex: 1;
-}
-
-.offf-layer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.offf-layer-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.offf-layer-card .olc-num {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: rgba(168,90,48,0.3);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.offf-layer-card .olc-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #A85A30;
-  margin-bottom: 6px;
-}
-
-.offf-layer-card .olc-desc {
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.offf-layer-card code {
-  font-family: var(--font-label);
-  font-size: 10px;
-  background: rgba(255,255,255,0.05);
-  padding: 1px 4px;
-  border-radius: 3px;
-  color: var(--accent-gold);
-}
-
-.offf-variation-table td:first-child {
-  font-family: var(--font-label);
-  font-size: 11px;
-  color: #A85A30;
-}
-
-.offf-font-sample {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.offf-font-sample:last-child { border-bottom: none; }
-
-.offf-font-sample .ofs-preview {
-  min-width: 200px;
-  line-height: 1.2;
-}
-
-.offf-font-sample .ofs-meta {
-  font-family: var(--font-label);
-  font-size: 10px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-@media (max-width: 768px) {
-  .offf-preview-row { flex-direction: column; }
-  .offf-story-mockup { width: 160px; height: 285px; }
-}
-
-/* ─── CORMORANT STUDY ─── */
-.cormorant-demo {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  margin-bottom: 40px;
-}
-
-.cormorant-mockup {
-  width: 180px;
-  height: 320px;
-  background: linear-gradient(145deg, #0A0A0E, #111114);
-  border-radius: 10px;
-  border: 1px solid rgba(168,90,48,0.12);
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-  padding: 20px 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.cormorant-mockup::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 18px 18px;
-  pointer-events: none;
-}
-
-.cormorant-mockup .cm-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.08;
-  color: #6A6A6A;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.cormorant-mockup .cm-headline em {
-  font-style: italic;
-  font-weight: 600;
-  color: #A85A30;
-}
-
-.cormorant-mockup .cm-rule {
-  height: 1px;
-  background: rgba(168,90,48,0.12);
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.cormorant-mockup .cm-drop {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-  position: relative;
-}
-
-.cormorant-mockup .cm-drop-cap {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 0.8;
-  color: rgba(168,90,48,0.12);
-}
-
-.cormorant-mockup .cm-drop-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 7px;
-  color: rgba(130,130,130,0.25);
-  line-height: 1.4;
-  padding-top: 4px;
-}
-
-.cormorant-info { flex: 1; }
-
-/* ─── EDITORIAL DUAL STACK ─── */
-.eds-comparison {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 24px 0 40px;
-}
-
-.eds-col {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 28px 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.eds-col::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-}
-
-.eds-col.product::before { background: linear-gradient(180deg, rgba(154,122,40,0.4), transparent); }
-.eds-col.editorial::before { background: linear-gradient(180deg, rgba(168,90,48,0.4), transparent); }
-
-.eds-col .eds-badge {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 16px;
-}
-
-.eds-col.product .eds-badge { color: #9A7A28; }
-.eds-col.editorial .eds-badge { color: #A85A30; }
-
-.eds-col .eds-headline {
-  font-size: 22px;
-  line-height: 1.15;
-  margin-bottom: 14px;
-}
-
-.eds-col.product .eds-headline {
-  font-family: 'Anton', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: #6B6358;
-}
-
-.eds-col.product .eds-headline span { color: #9A7A28; }
-
-.eds-col.editorial .eds-headline {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  color: #6A6A6A;
-}
-
-.eds-col.editorial .eds-headline em {
-  font-family: 'Libre Caslon Text', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 25px;
-  color: #A85A30;
-}
-
-.eds-col .eds-rule {
-  height: 1px;
-  border: none;
-  margin-bottom: 12px;
-}
-
-.eds-col.product .eds-rule { background: linear-gradient(90deg, #9A7A28, #6A5418 60%, transparent); height: 2px; }
-.eds-col.editorial .eds-rule { background: linear-gradient(90deg, #A85A30, #6A3818 50%, transparent); }
-
-.eds-col .eds-body {
-  font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-.eds-col.product .eds-body { font-family: 'DM Sans', sans-serif; color: rgba(140,130,115,0.85); }
-.eds-col.editorial .eds-body { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; color: rgba(130,130,130,0.4); }
-
-.eds-col .eds-stack {
-  font-family: var(--font-label);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  padding-top: 12px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.eds-routing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.eds-route-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.eds-route-card .eds-rc-arrow {
-  font-family: var(--font-label);
-  font-size: 14px;
-  color: #A85A30;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.eds-route-card .eds-rc-context {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.eds-route-card .eds-rc-stack {
-  font-size: 13px;
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.eds-route-card .eds-rc-fonts {
-  font-family: var(--font-label);
-  font-size: 9px;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-@media (max-width: 768px) {
-  .eds-comparison { grid-template-columns: 1fr; }
-  .cormorant-demo { flex-direction: column; }
-}
-
-/* ─── CONTRAST PREVIEW ─── */
-.contrast-preview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.contrast-box {
-  border-radius: 12px;
-  padding: 32px 24px;
-  border: 1px solid var(--border-subtle);
-  position: relative;
-  overflow: hidden;
-}
-
-.contrast-box::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 27px 27px;
-  pointer-events: none;
-}
-
-.contrast-box.dark-mode {
-  background: linear-gradient(145deg, #0A0C10, #12141A);
-}
-
-.contrast-box.light-mode {
-  background: linear-gradient(145deg, #F5F7FA, #E8EAEF);
-}
-
-.contrast-box .box-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.contrast-box.dark-mode .box-label { color: var(--accent-gold); }
-.contrast-box.light-mode .box-label { color: rgba(10, 12, 16, 0.4); }
-
-.contrast-box .box-headline {
-  font-family: var(--font-display);
-  font-size: 32px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  position: relative;
-}
-
-.contrast-box.dark-mode .box-headline { color: var(--accent-gold); }
-.contrast-box.light-mode .box-headline { color: #0A0C10; }
-
-.contrast-box .box-body {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.6;
-  position: relative;
-}
-
-.contrast-box.dark-mode .box-body { color: var(--text-body); }
-.contrast-box.light-mode .box-body { color: rgba(10, 12, 16, 0.75); }
-
-.contrast-box .box-quote {
-  font-family: var(--font-body);
-  font-size: 24px;
-  line-height: 1.4;
-  position: relative;
-  padding-left: 16px;
-  border-left: 3px solid;
-}
-
-.contrast-box.light-mode .box-quote {
-  color: #0A0C10;
-  border-color: var(--accent-gold);
-}
-
-/* ─── DO'S AND DON'TS ─── */
-.rules-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.rule-card {
-  background: var(--bg-surface);
-  border-radius: 12px;
-  padding: 24px;
-  border: 1px solid var(--border-subtle);
-}
-
-.rule-card.do { border-left: 3px solid #22C55E; }
-.rule-card.dont { border-left: 3px solid #EF4444; }
-
-.rule-badge {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 10px;
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-
-.rule-card.do .rule-badge { color: #22C55E; background: rgba(34, 197, 94, 0.1); }
-.rule-card.dont .rule-badge { color: #EF4444; background: rgba(239, 68, 68, 0.1); }
-
-.rule-text {
-  font-size: 14px;
-  color: var(--text-body);
-  line-height: 1.5;
-  margin-bottom: 8px;
-}
-
-.rule-reason {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* ─── TABLES ─── */
-.ds-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 24px 0;
-}
-
-.ds-table th {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent-gold);
-  text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.ds-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  font-size: 14px;
-  color: var(--text-body);
-  vertical-align: top;
-}
-
-.ds-table code {
-  font-family: var(--font-label);
-  font-size: 12px;
-  background: rgba(212, 175, 55, 0.08);
-  color: var(--accent-gold);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* ─── VERSION BADGE ─── */
-.version-table {
-  margin-top: 32px;
-}
-
-/* ─── FOOTER ─── */
-.footer {
-  margin-top: 80px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-text {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-}
-
-.footer-accent {
-  color: var(--accent-gold);
-}
-
-/* ─── COPY TO CLIPBOARD TOAST ─── */
-.toast {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  background: var(--bg-surface);
-  border: 1px solid var(--accent-gold);
-  color: var(--text-primary);
-  font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 12px 20px;
-  border-radius: 8px;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.toast.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* ─── CHUMBO QUENTE PREVIEW ─── */
-.chumbo-preview {
-  background: linear-gradient(145deg, #0A0C10 0%, #111318 100%);
-  border-radius: 16px;
-  border: 1px solid var(--border-subtle);
-  padding: 48px 40px;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 32px;
-}
-
-.chumbo-preview::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 54px 54px;
-  pointer-events: none;
-}
-
-.chumbo-preview .cp-tag {
-  font-family: var(--font-label);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  padding: 6px 14px;
-  border-radius: 4px;
-  color: #9A7A28;
-  border: 1px solid rgba(154, 122, 40, 0.25);
-  background: rgba(154, 122, 40, 0.05);
-  display: inline-block;
-  margin-bottom: 24px;
-  position: relative;
-}
-
-.chumbo-preview .cp-title {
-  font-family: var(--font-display);
-  font-size: 42px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: #6B6358;
-  position: relative;
-  margin-bottom: 8px;
-}
-
-.chumbo-preview .cp-title em {
-  font-style: normal;
-  color: #9A7A28;
-}
-
-.chumbo-preview .cp-rule {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #9A7A28 0%, #6A5418 60%, transparent 100%);
-  margin: 20px 0 24px;
-  border-radius: 1px;
-  position: relative;
-}
-
-.chumbo-preview .cp-body {
-  font-family: var(--font-body);
-  font-size: 17px;
-  color: rgba(140, 130, 115, 0.4);
-  line-height: 1.5;
-  position: relative;
-  max-width: 560px;
-}
-
-.chumbo-preview .cp-num {
-  font-family: var(--font-display);
-  font-size: 26px;
-  color: #8A6C20;
-  position: relative;
-}
-
-.chumbo-preview .cp-attribution {
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(140, 130, 115, 0.55);
-  font-style: italic;
-  margin-top: 32px;
-  position: relative;
-}
-
-.chumbo-preview .cp-meta {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: rgba(140, 130, 115, 0.18);
-  margin-top: 6px;
-  position: relative;
-}
-
-.chumbo-preview .cp-brand {
-  color: rgba(154, 122, 40, 0.06);
-  position: absolute;
-  bottom: 32px;
-  right: 32px;
-}
-
-.chumbo-preview .cp-brand svg {
-  width: 48px;
-  height: auto;
-}
-
-.chumbo-tokens {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.chumbo-token-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.chumbo-token-swatch {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.08);
-  flex-shrink: 0;
-}
-
-.chumbo-token-info .ct-name {
-  font-family: var(--font-label);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #9A7A28;
-  margin-bottom: 2px;
-}
-
-.chumbo-token-info .ct-value {
-  font-family: var(--font-label);
-  font-size: 10px;
-  color: var(--text-muted);
-}
-
-/* ─── STORY FORMAT ─── */
-.story-preview {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.story-mockup {
-  width: 216px;
-  height: 384px;
-  background: linear-gradient(145deg, #0A0C10 0%, #111318 100%);
-  border-radius: 16px;
-  border: 1px solid var(--border-subtle);
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.story-mockup::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 11px 11px;
-  pointer-events: none;
-}
-
-.story-mockup-content {
-  position: relative;
-  padding: 24px 14px 32px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.story-mockup .sm-tag {
-  font-family: var(--font-label);
-  font-size: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #9A7A28;
-  border: 1px solid rgba(154, 122, 40, 0.25);
-  padding: 2px 5px;
-  border-radius: 2px;
-  display: inline-block;
-  margin-bottom: 8px;
-}
-
-.story-mockup .sm-title {
-  font-family: var(--font-display);
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #6B6358;
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-
-.story-mockup .sm-title em {
-  font-style: normal;
-  color: #9A7A28;
-}
-
-.story-mockup .sm-rule {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, #9A7A28, #6A5418 60%, transparent);
-  margin-bottom: 8px;
-}
-
-.story-mockup .sm-lines {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  justify-content: center;
-}
-
-.story-mockup .sm-line {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-}
-
-.story-mockup .sm-line-num {
-  font-family: var(--font-display);
-  font-size: 7px;
-  color: #8A6C20;
-}
-
-.story-mockup .sm-line-text {
-  height: 2px;
-  background: rgba(140, 130, 115, 0.15);
-  border-radius: 1px;
-  flex: 1;
-  margin-top: 3px;
-}
-
-.story-mockup .sm-attr {
-  font-family: var(--font-body);
-  font-size: 5px;
-  color: rgba(140, 130, 115, 0.4);
-  font-style: italic;
-  margin-top: auto;
-}
-
-.story-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.story-spec-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.story-spec-item .ssi-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #9A7A28;
-  min-width: 120px;
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-
-.story-spec-item .ssi-value {
-  font-size: 14px;
-  color: var(--text-body);
-  line-height: 1.5;
-}
-
-.story-spec-item .ssi-value code {
-  font-family: var(--font-label);
-  font-size: 12px;
-  background: rgba(154, 122, 40, 0.08);
-  color: #9A7A28;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-@media (max-width: 768px) {
-  .story-preview { grid-template-columns: 1fr; }
-  .story-mockup { margin: 0 auto; }
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
-  .main { padding: 48px 32px 120px; }
-  .carousel-rhythm { grid-template-columns: repeat(5, 1fr); }
-  .product-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar-toggle { display: flex; }
-  .main { margin-left: 0; padding: 80px 20px 120px; }
-  .carousel-rhythm { grid-template-columns: repeat(3, 1fr); }
-  .contrast-preview { grid-template-columns: 1fr; }
-  .rules-grid { grid-template-columns: 1fr; }
-  .base-colors { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ─── CODEX GEOMETRIES ─── */
-.codex-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 40px;
-}
-.codex-card {
-  background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-secondary) 100%);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 28px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: border-color 0.3s ease;
-}
-.codex-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.codex-card canvas {
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-.codex-label {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 4px;
-}
-.codex-name {
-  font-family: var(--font-display);
-  font-size: 22px;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-.codex-shape {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-.codex-meta {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-align: center;
-  line-height: 1.5;
-}
-.codex-label--design { color: #2563EB; }
-.codex-label--style  { color: #FF4D8C; }
-.codex-label--neuro  { color: #00C9C8; }
-.codex-label--exec   { color: #FF8C00; }
-.codex-label--oracle { color: #D4AF37; }
-.codex-label--mscs   { color: #B2A898; }
-
-.eco-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-top: 40px;
-  margin-bottom: 48px;
-}
-.eco-card {
-  background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-secondary) 100%);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 32px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: border-color 0.3s ease;
-}
-.eco-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.eco-card canvas {
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-.eco-divider {
-  font-family: var(--font-label);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--text-muted);
-  text-align: center;
-  margin-bottom: 8px;
-  padding: 12px 0;
-  border-top: 1px solid var(--border-subtle);
-}
-
-@media (max-width: 1200px) {
-  .codex-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  .codex-grid { grid-template-columns: 1fr; }
-  .eco-grid { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSCREATIVE.SYSTEMS — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/ds-shell.css">
+  <link rel="stylesheet" href="css/ds-sections.css">
 </head>
 <body>
 
-<!-- SIDEBAR TOGGLE (MOBILE) -->
-<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+  <!-- MOBILE TOGGLE -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
 
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
-    <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.8</div>
-  </div>
-  <nav>
-    <div class="nav-section">Fundamentos</div>
-    <a href="#overview" class="active">Overview</a>
-    <a href="#typography">Tipografia</a>
-    <a href="#base-colors">Base Cromática</a>
-    <a href="#chumbo-quente">Chumbo Quente</a>
-    <div class="nav-section">Produtos</div>
-    <a href="#color-system">Sistema Cromático</a>
-    <a href="#codex-geometries">3D Geometries</a>
-    <div class="nav-section">Formatos</div>
-    <a href="#story-format">Story (9:16)</a>
-    <a href="#carousel">Carousel Pipeline</a>
-    <a href="#contrast">Hierarquia de Contraste</a>
-    <div class="nav-section">Visual Studies</div>
-    <a href="#visual-studies">Carousel Capa (Study 01)</a>
-    <a href="#offf-story-factory">OFFF Story Factory (Study 02)</a>
-    <a href="#typo-cormorant">Cormorant Garamond (Study 03)</a>
-    <div class="nav-section">Editorial Typography</div>
-    <a href="#editorial-system">Dual-Stack System</a>
-    <a href="#editorial-formats">Formatos Editoriais</a>
-    <div class="nav-section">Governança</div>
-    <a href="#rules">Do's & Don'ts</a>
-    <a href="#versioning">Versionamento</a>
-  </nav>
-</aside>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>MSCREATIVE<br>SYSTEMS</h1>
+      <div class="version">DESIGN SYSTEM V3.0</div>
+    </div>
+    <nav>
+      <div class="nav-section">Foundation</div>
+      <a href="index.html#overview" class="active">Overview</a>
+      <a href="index.html#tokens">Design Tokens</a>
+      <a href="index.html#typography">Tipografia</a>
+      <a href="index.html#base-colors">Base Crom&aacute;tica</a>
+      <a href="index.html#chumbo-quente">Chumbo Quente</a>
 
-<!-- MAIN CONTENT -->
-<main class="main">
+      <div class="nav-section">Produtos</div>
+      <a href="products.html#color-system">Sistema Crom&aacute;tico</a>
+      <a href="products.html#codex-geometries">3D Geometries</a>
+      <a href="products.html#identity-assets">Assets de Identidade</a>
 
-  <!-- HERO -->
-  <header class="hero" id="overview">
-    <div class="rule"></div>
-    <h1><span>Design</span><br>System</h1>
-    <p class="subtitle">
-      Regras visuais, arquitetura tipográfica e sistema cromático hierárquico
-      do ecossistema MSCREATIVE.SYSTEMS. Agentes e pipelines leem este arquivo
-      para garantir consistência estrutural. Design não é decoração — é protocolo.
-    </p>
-  </header>
+      <div class="nav-section">Formatos &amp; Templates</div>
+      <a href="formats.html#story-format">Story (9:16)</a>
+      <a href="formats.html#carousel">Carousel Pipeline</a>
+      <a href="formats.html#editorial-formats">Formatos Editoriais</a>
+      <a href="formats.html#contrast">Hierarquia de Contraste</a>
 
-  <!-- ═══════ TIPOGRAFIA ═══════ -->
-  <section id="typography">
-    <div class="section-header">
-      <div class="section-label">Seção 2.1</div>
-      <h2 class="section-title">Tipografia</h2>
-      <p class="section-desc">
-        Três pilares funcionais. Cada fonte tem jurisdição estrita.
-        A escolha não é estética — é operação.
+      <div class="nav-section">Visual Studies</div>
+      <a href="studies.html#visual-studies">Carousel Capa (Study 01)</a>
+      <a href="studies.html#offf-story-factory">OFFF Story Factory (Study 02)</a>
+      <a href="studies.html#typo-cormorant">Cormorant Garamond (Study 03)</a>
+
+      <div class="nav-section">Editorial Typography</div>
+      <a href="studies.html#editorial-system">Dual-Stack System</a>
+      <a href="studies.html#editorial-formats-spec">Formatos Editoriais</a>
+
+      <div class="nav-section">Governan&ccedil;a</div>
+      <a href="governance.html#rules">Do's &amp; Don'ts</a>
+      <a href="governance.html#versioning">Versionamento</a>
+      <a href="governance.html#llm-guide">LLM Guide</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ═══════ §0 HERO ═══════ -->
+    <header class="hero" id="overview">
+      <div class="rule"></div>
+      <h1><span>Design</span><br>System</h1>
+      <p class="subtitle">
+        Regras visuais, arquitetura tipogr&aacute;fica e sistema crom&aacute;tico hier&aacute;rquico
+        do ecossistema MSCREATIVE.SYSTEMS. Agentes e pipelines leem este arquivo
+        para garantir consist&ecirc;ncia estrutural. Design n&atilde;o &eacute; decora&ccedil;&atilde;o &mdash; &eacute; protocolo.
       </p>
-    </div>
+    </header>
 
-    <div class="type-specimens">
-      <!-- ANTON -->
-      <div class="type-card">
-        <div class="type-card-header">
-          <span class="name">Anton — Display</span>
-          <span class="role">Headlines & Nomes de Produto</span>
-        </div>
-        <div class="type-card-specimen display-font">
-          Infraestrutura do Improviso
-        </div>
-        <div class="type-card-meta">
-          <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
-          <div class="meta-item">Kerning<span>letter-spacing: -0.02em</span></div>
-          <div class="meta-item">Uso<span>Forma arquitetural, não texto</span></div>
+    <!-- ═══════ §1 DESIGN TOKENS ═══════ -->
+    <section id="tokens">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 1</div>
+        <h2 class="section-title">Design Tokens</h2>
+        <p class="section-desc">Single source of truth. Tokens unificados com namespace --ds-*. Produto, editorial e accent stack num &uacute;nico arquivo.</p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('tokens','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('tokens','code')">Code Bank</button>
         </div>
       </div>
 
-      <!-- DM SANS -->
-      <div class="type-card">
-        <div class="type-card-header">
-          <span class="name">DM Sans — Body</span>
-          <span class="role">Leitura Contínua & Descrições</span>
-        </div>
-        <div class="type-card-specimen body-font">
-          Existe uma diferença entre improvisar e ter infraestrutura de improviso.
-          Uma é aposta. A outra é arquitetura. A Moment Factory construiu a segunda
-          para um show que ninguém sabia quanto tempo ia durar.
-        </div>
-        <div class="type-card-meta">
-          <div class="meta-item">Pesos<span>400 (Regular) / 700 (Bold)</span></div>
-          <div class="meta-item">Opacidade<span>0.85 no modo Dark</span></div>
-          <div class="meta-item">Contraste<span>Limpo com Anton</span></div>
-        </div>
-      </div>
-
-      <!-- SPACE MONO -->
-      <div class="type-card">
-        <div class="type-card-header">
-          <span class="name">Space Mono — Labels</span>
-          <span class="role">Tiers, Datas & Metadados</span>
-        </div>
-        <div class="type-card-specimen label-font">
-          EXPERIENCE ARCHITECTURE &nbsp;·&nbsp; PRESENCE STACK &nbsp;·&nbsp; TIER S &nbsp;·&nbsp; PRIORIDADE A
-        </div>
-        <div class="type-card-meta">
-          <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
-          <div class="meta-item">Tracking<span>letter-spacing: 0.2em</span></div>
-          <div class="meta-item">Cor<span>Accent 1 do produto</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ BASE CROMÁTICA ═══════ -->
-  <section id="base-colors">
-    <div class="section-header">
-      <div class="section-label">Seção 2.2</div>
-      <h2 class="section-title">Base Cromática</h2>
-      <p class="section-desc">
-        F7 Dark Heavy. Tokens globais imutáveis — apenas Accent 1/2 muda por produto.
-      </p>
-    </div>
-
-    <div class="base-colors">
-      <div class="color-chip" onclick="copyColor('#0A0C10')">
-        <div class="swatch" style="background: linear-gradient(145deg, #0A0C10, #12141A);" data-value="#0A0C10 → #12141A"></div>
-        <div class="chip-info">
-          <div class="chip-token">color-background</div>
-          <div class="chip-desc">Varia por produto. Nunca branco puro.</div>
-        </div>
-      </div>
-
-      <div class="color-chip" onclick="copyColor('#B2A898')">
-        <div class="swatch" style="background: #B2A898;" data-value="#B2A898"></div>
-        <div class="chip-info">
-          <div class="chip-token">color-text-primary</div>
-          <div class="chip-desc">Areia Oxidado. Warm gray sem brilho.</div>
-        </div>
-      </div>
-
-      <div class="color-chip" onclick="copyColor('rgba(178, 168, 152, 0.85)')">
-        <div class="swatch" style="background: rgba(178, 168, 152, 0.85); border: 1px solid rgba(0,0,0,0.1);" data-value="rgba(B2A898, 0.85)"></div>
-        <div class="chip-info">
-          <div class="chip-token">color-text-body</div>
-          <div class="chip-desc">Opacidade fixa. Legível sem competir.</div>
-        </div>
-      </div>
-
-      <div class="color-chip" onclick="copyColor('rgba(255, 255, 255, 0.025)')">
-        <div class="swatch" style="background: #0A0C10; position: relative;">
-          <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 27px 27px;"></div>
-          <span style="position: absolute; bottom: 8px; right: 12px; font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px;">54×54 GRID</span>
-        </div>
-        <div class="chip-info">
-          <div class="chip-token">color-grid / grid-size</div>
-          <div class="chip-desc">Textura de sistema, 54×54px fixo.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ CHUMBO QUENTE ═══════ -->
-  <section id="chumbo-quente">
-    <div class="section-header">
-      <div class="section-label">Seção 2.3</div>
-      <h2 class="section-title">Modo Chumbo Quente</h2>
-      <p class="section-desc">
-        Paleta alternativa para peças de inteligência e conteúdo editorial standalone.
-        Zero branco puro. Opera no limiar da legibilidade — a informação emerge do escuro como relevo.
-      </p>
-    </div>
-
-    <!-- LIVE PREVIEW -->
-    <div class="chumbo-preview">
-      <span class="cp-tag">Inteligência</span>
-      <div class="cp-title">6 Princípios de Criação<br>Experiencial de <em>Catherine Turf</em></div>
-      <div class="cp-rule"></div>
-      <div style="display: flex; gap: 16px; align-items: flex-start; position: relative;">
-        <span class="cp-num">1.</span>
-        <div>
-          <div style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: #6B6358; line-height: 1.3; margin-bottom: 4px; position: relative;">O lugar precisa existir antes da tecnologia.</div>
-          <div class="cp-body">Tecnologia aplicada a um espaço ruim produz experiência ruim em alta resolução.</div>
-        </div>
-      </div>
-      <div class="cp-attribution">Catherine Turf, Moment Factory</div>
-      <div class="cp-meta">HEAD OF CREATIVE · 25+ ANOS · 40+ PAÍSES</div>
-      <div class="cp-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.19667 51.75458"><path fill="currentColor" d="M8.15479,17.66986c-.10727,4.76875.03115,9.5285.41527,14.27922.25365,3.1651,1.03955,6.29608,1.74645,9.47888C12.17932,49.84272-.28837,51.03399.0051,42.2846c.35921-10.7694,2.02753-21.07894,5.00492-30.92856.43105-1.41773,1.65413-3.47677,3.2464-2.21435.53746.42306.92911.9969,1.17496,1.72154l5.78538,16.91602c.23584.68769.41046.67353.52387-.04254,1.02383-6.35386,2.74577-12.56867,5.16579-18.64433,2.42341-6.08573,7.57839-4.14271,9.40284.91599,2.77922,7.71993,3.71882,15.26481,4.54493,24.0988.01976.18583.11541.20673.28695.06271,5.16382-4.20649,10.48613-8.20113,15.96693-11.98388.2477-.17071.22158-.25977-.07835-.26709-3.61598-.09368-7.23981-.18066-10.87148-.26095-7.39821-.16475-4.36055-6.1619-1.09576-9.14847,3.1263-2.86316,6.25148-5.72857,9.37556-8.59623,1.40786-1.29146,2.61261-3.41267,5.0914-3.82386,5.89972-.9766,7.89921,6.29685,3.23346,9.68677-3.83797,2.79228-7.80539,5.39743-11.90226,7.81541-.15464.09367-.14189.15021.03827.16962,3.88277.43335,7.73249.3423,11.54916-.27318,2.22015-.35804,3.71273-2.03541,5.76647-2.29809,3.64903-.46082,6.04224,3.15361,4.51287,6.37544-.40245.85424-1.13742,1.76487-2.20492,2.73191-9.11467,8.26941-20.20634,14.6041-28.33323,22.56665-1.08504,1.06379-2.30373,3.42673-3.57933,4.09058-4.6234,2.39615-8.52986-.9142-8.76183-5.62878-.18359-3.7576-1.48526-26.94142-1.86815-26.88513-.09989.01549-.20829.14727-.27434.33352-1.46726,4.3048-2.51335,8.71175-3.13827,13.2209-.12499.90632-.43616,1.72773-.9335,2.46426-1.56103,2.29841-3.54903-.8048-4.06681-2.08179-2.07112-5.11908-3.79413-9.98508-5.16903-14.59797-.02544-.08589-.07445-.14821-.12558-.15976l-.05874-.0085c-.02576-.00602-.05156.01476-.05761.04636-.00077.00405-.00119.00814-.00126.01226l-.00003-.00003Z"/></svg>
-      </div>
-    </div>
-
-    <!-- TOKENS GRID -->
-    <div class="chumbo-tokens">
-      <div class="chumbo-token-card" onclick="copyColor('#6B6358')">
-        <div class="chumbo-token-swatch" style="background: #6B6358;"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Headline</div>
-          <div class="ct-value">#6B6358</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('#9A7A28')">
-        <div class="chumbo-token-swatch" style="background: #9A7A28;"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Emphasis</div>
-          <div class="ct-value">#9A7A28</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('#8A6C20')">
-        <div class="chumbo-token-swatch" style="background: #8A6C20;"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Accent Num</div>
-          <div class="ct-value">#8A6C20</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('#6A5418')">
-        <div class="chumbo-token-swatch" style="background: #6A5418;"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Rule End</div>
-          <div class="ct-value">#6A5418</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.4)')">
-        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.4);"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Body</div>
-          <div class="ct-value">rgba(140,130,115, 0.4)</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.55)')">
-        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.55);"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Attribution</div>
-          <div class="ct-value">rgba(140,130,115, 0.55)</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.18)')">
-        <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.18);"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Meta</div>
-          <div class="ct-value">rgba(140,130,115, 0.18)</div>
-        </div>
-      </div>
-      <div class="chumbo-token-card" onclick="copyColor('rgba(154, 122, 40, 0.06)')">
-        <div class="chumbo-token-swatch" style="background: rgba(154, 122, 40, 0.06); border: 1px dashed rgba(154,122,40,0.2);"></div>
-        <div class="chumbo-token-info">
-          <div class="ct-name">Brand Mark</div>
-          <div class="ct-value">rgba(154,122,40, 0.06)</div>
-        </div>
-      </div>
-    </div>
-
-    <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted); font-style: italic;">
-      Se o leitor percebe as cores antes de perceber o conteúdo, o Chumbo Quente falhou.
-    </p>
-  </section>
-
-  <!-- ═══════ SISTEMA CROMÁTICO ═══════ -->
-  <section id="color-system">
-    <div class="section-header">
-      <div class="section-label">Seção 3</div>
-      <h2 class="section-title">Sistema Cromático</h2>
-      <p class="section-desc">
-        Código cromático derivado da essência funcional de cada produto.
-        Diálogo de temperatura e profundidade.
-      </p>
-    </div>
-
-    <div class="product-grid">
-
-      <!-- MSCREATIVE.SYSTEMS -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1419 0%, #1a1f2e 100%);">
-          <div class="product-icon">MS</div>
-          <div class="product-name" style="color: #D4AF37;">MSCREATIVE.SYSTEMS</div>
-          <div class="product-tier" style="color: #D4AF37;">SISTEMA-MÃE</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #D4AF37;" data-hex="#D4AF37" onclick="copyColor('#D4AF37')"></div>
-            <div class="product-color-swatch" style="background: #8B6914;" data-hex="#8B6914" onclick="copyColor('#8B6914')"></div>
+      <div class="view-showcase">
+        <!-- Global Structural -->
+        <h3 class="token-group-title">Global Structural</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">--ds-grid-size</div>
+            <div class="spec-value">54px</div>
+            <div class="spec-desc">Textura de sistema, grid fixo.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-grid-color</div>
+            <div class="spec-value">rgba(255,255,255, 0.025)</div>
+            <div class="spec-desc">Linha de grid quase invis&iacute;vel.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-border-subtle</div>
+            <div class="spec-value">rgba(255,255,255, 0.06)</div>
+            <div class="spec-desc">Bordas e divis&oacute;rias leves.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-sidebar-width</div>
+            <div class="spec-value">280px</div>
+            <div class="spec-desc">Largura fixa do sidebar.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-radius-sm / md</div>
+            <div class="spec-value">2px / 4px</div>
+            <div class="spec-desc">Border radius m&iacute;nimos.</div>
           </div>
         </div>
-        <div class="product-reason">Único metal que não enferruja. Permanência como posicionamento.</div>
-      </div>
 
-      <!-- FRONTEIRISTAS -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #141210 0%, #1E1C18 100%);">
-          <div class="product-icon">◇</div>
-          <div class="product-name" style="color: #C4B89A;">FRONTEIRISTAS</div>
-          <div class="product-tier" style="color: #C4B89A;">CANAL EDITORIAL</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #C4B89A;" data-hex="#C4B89A" onclick="copyColor('#C4B89A')"></div>
-            <div class="product-color-swatch" style="background: #8A7A62;" data-hex="#8A7A62" onclick="copyColor('#8A7A62')"></div>
+        <!-- Product Typography (Typo A) -->
+        <h3 class="token-group-title">Product Typography (Typo A)</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">--ds-font-display</div>
+            <div class="spec-value">'Anton', sans-serif</div>
+            <div class="spec-desc">Headlines &amp; nomes de produto.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-font-body</div>
+            <div class="spec-value">'DM Sans', sans-serif</div>
+            <div class="spec-desc">Leitura cont&iacute;nua &amp; descri&ccedil;&otilde;es.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-font-label</div>
+            <div class="spec-value">'Space Mono', monospace</div>
+            <div class="spec-desc">Tiers, datas &amp; metadados.</div>
           </div>
         </div>
-        <div class="product-reason">Cor de arquivo, de leitura, de consciência. Sem urgência, sem ruído.</div>
-      </div>
 
-      <!-- CREATIVE ORACLE -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1008 0%, #1E1A08 100%);">
-          <div class="product-icon">※</div>
-          <div class="product-name" style="color: #C8860A;">CREATIVE ORACLE V20</div>
-          <div class="product-tier" style="color: #C8860A;">PRODUTO CORE</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #C8860A;" data-hex="#C8860A" onclick="copyColor('#C8860A')"></div>
-            <div class="product-color-swatch" style="background: #7A4F00;" data-hex="#7A4F00" onclick="copyColor('#7A4F00')"></div>
+        <!-- Editorial Typography (Typo B) -->
+        <h3 class="token-group-title">Editorial Typography (Typo B)</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">--ds-ed-font-headline</div>
+            <div class="spec-value">'IBM Plex Sans'</div>
+            <div class="spec-desc">Headlines editoriais, peso 300.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ed-font-emphasis</div>
+            <div class="spec-value">'Libre Caslon Text'</div>
+            <div class="spec-desc">&Ecirc;nfase serif, it&aacute;lico nativo.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ed-h1-size</div>
+            <div class="spec-value">clamp(36px, 4.5vw, 54px)</div>
+            <div class="spec-desc">Headline principal fluida.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ed-body-size</div>
+            <div class="spec-value">clamp(15px, 1.6vw, 17px)</div>
+            <div class="spec-desc">Body editorial fluido.</div>
           </div>
         </div>
-        <div class="product-reason">Luz filtrada, julgamento com calor. O árbitro que vê tudo mas não é frio.</div>
-      </div>
 
-      <!-- NEURO CODEX -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #080618 0%, #110E2E 100%);">
-          <div class="product-icon">◎</div>
-          <div class="product-name" style="color: #00C9C8;">NEURO CODEX</div>
-          <div class="product-tier" style="color: #00C9C8;">CODEX — PERCEPÇÃO</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #00C9C8;" data-hex="#00C9C8" onclick="copyColor('#00C9C8')"></div>
-            <div class="product-color-swatch" style="background: #007A7A;" data-hex="#007A7A" onclick="copyColor('#007A7A')"></div>
+        <!-- Accent Stack (Typo C) -->
+        <h3 class="token-group-title">Accent Stack (Typo C)</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">--ds-tc-font</div>
+            <div class="spec-value">'Cormorant Garamond'</div>
+            <div class="spec-desc">High-fashion serif accent.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-tc-headline-size</div>
+            <div class="spec-value">18px</div>
+            <div class="spec-desc">Headline Cormorant.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-tc-dropcap-size</div>
+            <div class="spec-value">36px</div>
+            <div class="spec-desc">Drop cap decorativo.</div>
           </div>
         </div>
-        <div class="product-reason">O indigo representa o inconsciente; o turquesa é o sinal que emerge.</div>
-      </div>
 
-      <!-- STYLE CODEX -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #180A12 0%, #261018 100%);">
-          <div class="product-icon">❋</div>
-          <div class="product-name" style="color: #FF4D8C;">STYLE CODEX</div>
-          <div class="product-tier" style="color: #FF4D8C;">CODEX — IDENTIDADE</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #FF4D8C;" data-hex="#FF4D8C" onclick="copyColor('#FF4D8C')"></div>
-            <div class="product-color-swatch" style="background: #FF6B35;" data-hex="#FF6B35" onclick="copyColor('#FF6B35')"></div>
+        <!-- Base Palette -->
+        <h3 class="token-group-title">Base Palette</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #0A0C10;"></div>
+            <div class="spec-label">--ds-bg-primary</div>
+            <div class="spec-value">#0A0C10</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #12141A;"></div>
+            <div class="spec-label">--ds-bg-secondary</div>
+            <div class="spec-value">#12141A</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #B2A898;"></div>
+            <div class="spec-label">--ds-text-primary</div>
+            <div class="spec-value">#B2A898</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #D4AF37;"></div>
+            <div class="spec-label">--ds-accent-gold</div>
+            <div class="spec-value">#D4AF37</div>
           </div>
         </div>
-        <div class="product-reason">Gradiente dual cria tensão visual. Identidade que não para quieta.</div>
-      </div>
 
-      <!-- DESIGN CODEX -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #080C1A 0%, #0F1530 100%);">
-          <div class="product-icon">⊞</div>
-          <div class="product-name" style="color: #2563EB;">DESIGN CODEX</div>
-          <div class="product-tier" style="color: #2563EB;">CODEX — ESTRATÉGIA</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #2563EB;" data-hex="#2563EB" onclick="copyColor('#2563EB')"></div>
-            <div class="product-color-swatch" style="background: #1E3A8A;" data-hex="#1E3A8A" onclick="copyColor('#1E3A8A')"></div>
+        <!-- Semantic -->
+        <h3 class="token-group-title">Semantic</h3>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #2ECC71;"></div>
+            <div class="spec-label">--ds-success</div>
+            <div class="spec-value">#2ECC71</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #E74C3C;"></div>
+            <div class="spec-label">--ds-error</div>
+            <div class="spec-value">#E74C3C</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #F39C12;"></div>
+            <div class="spec-label">--ds-warning</div>
+            <div class="spec-value">#F39C12</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #3498DB;"></div>
+            <div class="spec-label">--ds-info</div>
+            <div class="spec-value">#3498DB</div>
           </div>
         </div>
-        <div class="product-reason">Confiança estrutural, clareza estratégica. O azul que governa, não decora.</div>
       </div>
 
-      <!-- EXECUTION CODEX -->
-      <div class="product-card">
-        <div class="product-card-bg" style="background: linear-gradient(145deg, #0E0A06 0%, #1A1006 100%);">
-          <div class="product-icon">▶</div>
-          <div class="product-name" style="color: #FF8C00;">EXECUTION CODEX</div>
-          <div class="product-tier" style="color: #FF8C00;">CODEX — EXECUÇÃO</div>
-          <div class="product-colors">
-            <div class="product-color-swatch" style="background: #FF8C00;" data-hex="#FF8C00" onclick="copyColor('#FF8C00')"></div>
-            <div class="product-color-swatch" style="background: #CC5500;" data-hex="#CC5500" onclick="copyColor('#CC5500')"></div>
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block" data-template-id="tokens-global-css">
+          <div class="ds-code-header">
+            <span class="ds-code-label">CSS Tokens &mdash; Global + Product</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
           </div>
+          <pre><code>/* ═══════════════════════════════════════════════════════════
+   MSCREATIVE.SYSTEMS&#x2122; &mdash; UNIFIED DESIGN TOKENS V3.0
+   Single source of truth for all visual properties.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* === GLOBAL STRUCTURAL ===
+     Grid, borders, spacing, layout
+     ────────────────────────────────────────────────────────── */
+  --ds-grid-color:          rgba(255, 255, 255, 0.025);
+  --ds-grid-size:           54px;
+  --ds-border-subtle:       rgba(255, 255, 255, 0.06);
+  --ds-sidebar-width:       280px;
+  --ds-radius-sm:           2px;
+  --ds-radius-md:           4px;
+
+  /* === PRODUCT STACK &mdash; TYPOGRAPHY (Typo A) ===
+     Anton + DM Sans + Space Mono
+     ────────────────────────────────────────────────────────── */
+  --ds-font-display:        'Anton', sans-serif;
+  --ds-font-body:           'DM Sans', sans-serif;
+  --ds-font-label:          'Space Mono', monospace;
+
+  /* === EDITORIAL STACK &mdash; TYPOGRAPHY (Typo B) ===
+     IBM Plex Sans + Libre Caslon Text + Space Mono
+     All clamp sizes from MD spec &sect;8
+     ────────────────────────────────────────────────────────── */
+
+  /* Families */
+  --ds-ed-font-headline:    'IBM Plex Sans', sans-serif;
+  --ds-ed-font-emphasis:    'Libre Caslon Text', serif;
+  --ds-ed-font-body:        'IBM Plex Sans', sans-serif;
+  --ds-ed-font-label:       'Space Mono', monospace;
+
+  /* Weights */
+  --ds-ed-w-light:          300;
+  --ds-ed-w-regular:        400;
+  --ds-ed-w-medium:         500;
+  --ds-ed-w-display:        700;   /* apenas drop cap */
+
+  /* Sizes (fluid clamps) */
+  --ds-ed-h1-size:          clamp(36px, 4.5vw, 54px);
+  --ds-ed-emphasis-size:    clamp(42px, 5.2vw, 62px);
+  --ds-ed-h2-size:          clamp(28px, 3.2vw, 38px);
+  --ds-ed-subtitle-size:    clamp(16px, 1.8vw, 19px);
+  --ds-ed-body-size:        clamp(15px, 1.6vw, 17px);
+  --ds-ed-quote-size:       clamp(22px, 2.6vw, 28px);
+  --ds-ed-label-size:       clamp(9px, 0.85vw, 11px);
+  --ds-ed-meta-size:        clamp(8px, 0.75vw, 10px);
+  --ds-ed-initials-size:    clamp(24px, 2.5vw, 28px);
+  --ds-ed-dropcap-size:     clamp(80px, 9vw, 120px);
+
+  /* Line heights */
+  --ds-ed-lh-tight:         1.12;
+  --ds-ed-lh-snug:          1.2;
+  --ds-ed-lh-normal:        1.5;
+  --ds-ed-lh-body:          1.65;
+
+  /* Tracking */
+  --ds-ed-track-headline:   -0.02em;
+  --ds-ed-track-label:       0.18em;
+  --ds-ed-track-kicker:      0.25em;
+  --ds-ed-track-vertical:    0.3em;
+
+  /* === ACCENT STACK &mdash; TYPO C ===
+     Cormorant Garamond &mdash; high-fashion serif
+     ────────────────────────────────────────────────────────── */
+  --ds-tc-font:             'Cormorant Garamond', serif;
+  --ds-tc-w-light:          300;
+  --ds-tc-w-regular:        400;
+  --ds-tc-w-semibold:       600;
+  --ds-tc-w-bold:           700;
+  --ds-tc-headline-size:    18px;
+  --ds-tc-headline-lh:      1.08;
+  --ds-tc-headline-tracking: -0.01em;
+  --ds-tc-dropcap-size:     36px;
+  --ds-tc-dropcap-lh:       0.8;
+  --ds-tc-body-italic-size: 7px;
+  --ds-tc-body-italic-lh:   1.4;
+  --ds-tc-rule-opacity:     0.12;
+
+  /* === BASE PALETTE ===
+     Core backgrounds, text, and surface colors
+     ────────────────────────────────────────────────────────── */
+  --ds-bg-primary:          #0A0C10;
+  --ds-bg-secondary:        #12141A;
+  --ds-bg-surface:          #1A1D26;
+  --ds-bg-surface-hover:    #22262F;
+  --ds-text-primary:        #B2A898;
+  --ds-text-body:           rgba(178, 168, 152, 0.85);
+  --ds-text-muted:          rgba(178, 168, 152, 0.5);
+
+  /* === PRODUCT ACCENT PALETTE (Chumbo Quente) ===
+     Gold system for product-level accents
+     ────────────────────────────────────────────────────────── */
+  --ds-accent-gold:         #D4AF37;
+  --ds-accent-gold-dark:    #8B6914;
+
+  /* === EDITORIAL PALETTE (Chumbo Puro + Electric Orange) === */
+  --ds-ed-bg:               linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
+  --ds-ed-text-headline:    #6A6A6A;
+  --ds-ed-text-emphasis:    #A85A30;
+  --ds-ed-text-body:        rgba(130, 130, 130, 0.4);
+  --ds-ed-text-label:       rgba(130, 130, 130, 0.18);
+  --ds-ed-text-label-accent: rgba(168, 90, 48, 0.2);
+  --ds-ed-accent-primary:   #A85A30;
+  --ds-ed-accent-secondary: #6A3818;
+  --ds-ed-accent-rule:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+  --ds-ed-grid-line:        rgba(255, 255, 255, 0.025);
+  --ds-ed-ghost-1:          rgba(168, 90, 48, 0.06);
+  --ds-ed-ghost-2:          rgba(168, 90, 48, 0.04);
+  --ds-ed-ghost-3:          rgba(168, 90, 48, 0.025);
+  --ds-ed-glitch:           rgba(168, 90, 48, 0.07);
+  --ds-ed-ascii:            rgba(168, 90, 48, 0.035);
+
+  /* === SEMANTIC === */
+  --ds-success:             #2ECC71;
+  --ds-error:               #E74C3C;
+  --ds-warning:             #F39C12;
+  --ds-info:                #3498DB;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRODUCT-SCOPED PALETTES
+   Activated via [data-product=&quot;name&quot;] attribute selectors.
+   ═══════════════════════════════════════════════════════════ */
+
+[data-product=&quot;mscs&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
+  --p-headline:      #6A6A6A;
+  --p-emphasis:      #A85A30;
+  --p-subtitle:      rgba(130, 130, 130, 0.4);
+  --p-rule-start:    #A85A30;
+  --p-rule-end:      #6A3818;
+  --p-wireframe-1:   rgba(106, 106, 106, 0.08);
+  --p-wireframe-2:   rgba(168, 90, 48, 0.06);
+  --p-identity:      #A85A30;
+}
+
+[data-product=&quot;oracle&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #12100A 100%);
+  --p-headline:      #5E5545;
+  --p-emphasis:      #8A6A18;
+  --p-subtitle:      rgba(94, 85, 69, 0.4);
+  --p-rule-start:    #8A6A18;
+  --p-rule-end:      #5A4010;
+  --p-wireframe-1:   rgba(94, 85, 69, 0.08);
+  --p-wireframe-2:   rgba(138, 106, 24, 0.06);
+  --p-identity:      #8A6A18;
+}
+
+[data-product=&quot;fronteiristas&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #111010 100%);
+  --p-headline:      #5A5550;
+  --p-emphasis:      #8A7A62;
+  --p-subtitle:      rgba(90, 85, 80, 0.4);
+  --p-rule-start:    #8A7A62;
+  --p-rule-end:      #5A5040;
+  --p-wireframe-1:   rgba(90, 85, 80, 0.08);
+  --p-wireframe-2:   rgba(138, 122, 98, 0.06);
+  --p-identity:      #8A7A62;
+}
+
+[data-product=&quot;neuro&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #0E0E18 100%);
+  --p-headline:      #4A4460;
+  --p-emphasis:      #5A9AAA;
+  --p-subtitle:      rgba(74, 68, 96, 0.4);
+  --p-rule-start:    #5A9AAA;
+  --p-rule-end:      #3A5A6A;
+  --p-wireframe-1:   rgba(74, 68, 96, 0.08);
+  --p-wireframe-2:   rgba(90, 154, 170, 0.06);
+  --p-identity:      #5A9AAA;
+}
+
+[data-product=&quot;style&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #131114 100%);
+  --p-headline:      #5B4C50;
+  --p-emphasis:      #9A6068;
+  --p-subtitle:      rgba(91, 76, 80, 0.4);
+  --p-rule-start:    #9A6068;
+  --p-rule-end:      #6A3A42;
+  --p-wireframe-1:   rgba(91, 76, 80, 0.08);
+  --p-wireframe-2:   rgba(154, 96, 104, 0.06);
+  --p-identity:      #9A6068;
+}
+
+[data-product=&quot;design&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #0E1018 100%);
+  --p-headline:      #4A5060;
+  --p-emphasis:      #5A7A9A;
+  --p-subtitle:      rgba(74, 80, 96, 0.4);
+  --p-rule-start:    #5A7A9A;
+  --p-rule-end:      #3A4A6A;
+  --p-wireframe-1:   rgba(74, 80, 96, 0.08);
+  --p-wireframe-2:   rgba(90, 122, 154, 0.06);
+  --p-identity:      #5A7A9A;
+}
+
+[data-product=&quot;execution&quot;] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #131008 100%);
+  --p-headline:      #5A5040;
+  --p-emphasis:      #9A7048;
+  --p-subtitle:      rgba(90, 80, 64, 0.4);
+  --p-rule-start:    #9A7048;
+  --p-rule-end:      #6A4828;
+  --p-wireframe-1:   rgba(90, 80, 64, 0.08);
+  --p-wireframe-2:   rgba(154, 112, 72, 0.06);
+  --p-identity:      #9A7048;
+}</code></pre>
         </div>
-        <div class="product-reason">Ação, urgência controlada. O botão que importa quando a estratégia está definida.</div>
+      </div>
+    </section>
+
+    <!-- ═══════ §2 TIPOGRAFIA ═══════ -->
+    <section id="typography">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 2</div>
+        <h2 class="section-title">Tipografia</h2>
+        <p class="section-desc">
+          Tr&ecirc;s pilares funcionais. Cada fonte tem jurisdi&ccedil;&atilde;o estrita.
+          A escolha n&atilde;o &eacute; est&eacute;tica &mdash; &eacute; opera&ccedil;&atilde;o.
+        </p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('typography','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('typography','code')">Code Bank</button>
+        </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ═══════ 3D GEOMETRIES ═══════ -->
-  <section id="codex-geometries">
-    <div class="section-header">
-      <div class="section-label">Seção 3.5</div>
-      <h2 class="section-title">3D Geometries</h2>
-      <p class="section-desc">
-        Cada entidade do ecossistema possui uma forma geométrica 3D wireframe com rotação contínua.
-        Canvas 2D com projeção perspectiva e matrizes de rotação nos 3 eixos.
-      </p>
-    </div>
-
-    <!-- ECOSYSTEM LEVEL: MSCS + Oracle -->
-    <div class="eco-grid">
-      <div class="eco-card" style="border-color: rgba(178, 168, 152, 0.08);">
-        <span class="codex-label codex-label--mscs">MSCREATIVE.SYSTEMS™</span>
-        <span class="codex-name">Icosaedro</span>
-        <span class="codex-shape">20 faces · sólido platônico máximo</span>
-        <canvas id="cx-mscs" width="240" height="240"></canvas>
-        <p class="codex-meta">Completude do ecossistema. Cada face é um produto, cada aresta uma conexão.</p>
-      </div>
-      <div class="eco-card" style="border-color: rgba(212, 175, 55, 0.1);">
-        <span class="codex-label codex-label--oracle">Creative Oracle™</span>
-        <span class="codex-name">Möbius</span>
-        <span class="codex-shape">Fita torcida · loop infinito</span>
-        <canvas id="cx-oracle" width="240" height="240"></canvas>
-        <p class="codex-meta">Síntese recursiva. Sem início, sem fim. Input vira output vira input.</p>
-      </div>
-    </div>
-
-    <div class="eco-divider">4 Codexes</div>
-
-    <div class="codex-grid">
-      <!-- DESIGN CODEX -->
-      <div class="codex-card">
-        <span class="codex-label codex-label--design">Design Codex</span>
-        <span class="codex-name">Tensegrity</span>
-        <span class="codex-shape">Barras + cabos de tensão</span>
-        <canvas id="cx-design" width="200" height="200"></canvas>
-        <p class="codex-meta">Equilíbrio de forças. Estrutura que desafia a percepção.</p>
-      </div>
-
-      <!-- STYLE CODEX -->
-      <div class="codex-card">
-        <span class="codex-label codex-label--style">Style Codex</span>
-        <span class="codex-name">Turbine</span>
-        <span class="codex-shape">Eixo + pás helicoidais</span>
-        <canvas id="cx-style" width="200" height="200"></canvas>
-        <p class="codex-meta">Energia cinética. Gramática visual em movimento perpétuo.</p>
-      </div>
-
-      <!-- NEURO CODEX -->
-      <div class="codex-card">
-        <span class="codex-label codex-label--neuro">Neuro Codex</span>
-        <span class="codex-name">Dendrítico</span>
-        <span class="codex-shape">Núcleo + ramificações sinápticas</span>
-        <canvas id="cx-neuro" width="200" height="200"></canvas>
-        <p class="codex-meta">Padrões neurais. Percepção ramificada e conexão transversal.</p>
-      </div>
-
-      <!-- EXECUTION CODEX -->
-      <div class="codex-card">
-        <span class="codex-label codex-label--exec">Execution Codex</span>
-        <span class="codex-name">Gyroscope</span>
-        <span class="codex-shape">3 anéis orbitais + núcleo</span>
-        <canvas id="cx-exec" width="200" height="200"></canvas>
-        <p class="codex-meta">Movimento perpétuo. Precisão mecânica em 3 eixos.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ STORY FORMAT ═══════ -->
-  <section id="story-format">
-    <div class="section-header">
-      <div class="section-label">Seção 4.0</div>
-      <h2 class="section-title">Story Format</h2>
-      <p class="section-desc">
-        Formato vertical 9:16 para conteúdo de inteligência standalone.
-        Não depende de sequência nem de CTA — a peça se basta.
-        Paleta padrão: Modo Chumbo Quente.
-      </p>
-    </div>
-
-    <div class="story-preview">
-      <!-- MINIATURA -->
-      <div class="story-mockup">
-        <div class="story-mockup-content">
-          <span class="sm-tag">Princípios</span>
-          <div class="sm-title">6 Princípios de<br><em>Catherine Turf</em></div>
-          <div class="sm-rule"></div>
-          <div class="sm-lines">
-            <div class="sm-line"><span class="sm-line-num">1.</span><div class="sm-line-text" style="width: 85%;"></div></div>
-            <div class="sm-line"><span class="sm-line-num">2.</span><div class="sm-line-text" style="width: 70%;"></div></div>
-            <div class="sm-line"><span class="sm-line-num">3.</span><div class="sm-line-text" style="width: 90%;"></div></div>
-            <div class="sm-line"><span class="sm-line-num">4.</span><div class="sm-line-text" style="width: 75%;"></div></div>
-            <div class="sm-line"><span class="sm-line-num">5.</span><div class="sm-line-text" style="width: 80%;"></div></div>
-            <div class="sm-line"><span class="sm-line-num">6.</span><div class="sm-line-text" style="width: 65%;"></div></div>
+      <div class="view-showcase">
+        <div class="type-specimens">
+          <!-- ANTON -->
+          <div class="type-card">
+            <div class="type-card-header">
+              <span class="name">Anton &mdash; Display</span>
+              <span class="role">Headlines &amp; Nomes de Produto</span>
+            </div>
+            <div class="type-card-specimen display-font">
+              Infraestrutura do Improviso
+            </div>
+            <div class="type-card-meta">
+              <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
+              <div class="meta-item">Kerning<span>letter-spacing: -0.02em</span></div>
+              <div class="meta-item">Uso<span>Forma arquitetural, n&atilde;o texto</span></div>
+            </div>
           </div>
-          <div class="sm-attr">Catherine Turf, Moment Factory</div>
-        </div>
-      </div>
 
-      <!-- SPECS -->
-      <div class="story-specs-list">
-        <div class="story-spec-item">
-          <span class="ssi-label">Resolução</span>
-          <span class="ssi-value"><code>1080 × 1920px</code> (Instagram Story / 9:16)</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Safe Zone Topo</span>
-          <span class="ssi-value"><code>120px</code> mínimo (barra de nome do IG)</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Safe Zone Base</span>
-          <span class="ssi-value"><code>160px</code> mínimo (swipe bar + reply)</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Paleta</span>
-          <span class="ssi-value">Modo Chumbo Quente (§2.3) — accent Âmbar Elétrico</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Background</span>
-          <span class="ssi-value"><code>#0A0C10</code> → <code>#111318</code> (gradient 145deg)</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Grid</span>
-          <span class="ssi-value"><code>54×54px</code>, opacity 0.025</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Tecnologia</span>
-          <span class="ssi-value">HTML/CSS → Playwright → PNG</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Ícone MS</span>
-          <span class="ssi-value">SVG inline, <code>fill="currentColor"</code>. Source line (20px, 15%) + brand mark (48px, 6%)</span>
-        </div>
-        <div class="story-spec-item">
-          <span class="ssi-label">Estrutura</span>
-          <span class="ssi-value">Tag strip → Título Anton → Rule gradient → Lista numerada → Atribuição → Source line + brand mark</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ CAROUSEL PIPELINE ═══════ -->
-  <section id="carousel">
-    <div class="section-header">
-      <div class="section-label">Seção 4</div>
-      <h2 class="section-title">Carousel Pipeline</h2>
-      <p class="section-desc">
-        Estrutura rígida de 9 slides. Dark = densidade. Light = respiro.
-        O ciclo de tensão e alívio mantém o usuário no carrossel.
-      </p>
-    </div>
-
-    <!-- VISUAL RHYTHM -->
-    <div class="carousel-rhythm">
-      <div class="carousel-slide dark">
-        <div class="slide-num">1</div>
-        <div class="slide-label">Capa</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">2</div>
-        <div class="slide-label">Problema</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">3</div>
-        <div class="slide-label">Dados</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">4</div>
-        <div class="slide-label">Paradoxo</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide light">
-        <div class="slide-num">5</div>
-        <div class="slide-label">Pullquote</div>
-        <div class="slide-type">Light</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">6</div>
-        <div class="slide-label">Solução</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">7</div>
-        <div class="slide-label">Prova</div>
-        <div class="slide-type">Dark</div>
-      </div>
-      <div class="carousel-slide light">
-        <div class="slide-num">8</div>
-        <div class="slide-label">Reflexão</div>
-        <div class="slide-type">Light</div>
-      </div>
-      <div class="carousel-slide dark">
-        <div class="slide-num">9</div>
-        <div class="slide-label">CTA</div>
-        <div class="slide-type">Dark</div>
-      </div>
-    </div>
-
-    <!-- SLIDE DETAIL TABLE -->
-    <table class="ds-table">
-      <thead>
-        <tr>
-          <th>Slide</th>
-          <th>Modo</th>
-          <th>Conteúdo</th>
-          <th>Tipografia</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>Capa (Dark)</td><td>Headline + Subtitle + Rule Gradient</td><td><code>Anton 72px</code> + <code>DM Sans 20px</code></td></tr>
-        <tr><td>2</td><td>Dark</td><td>O Problema — Categoria label + Body</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
-        <tr><td>3</td><td>Dark</td><td>Os Dados — Dado numérico em destaque</td><td><code>Anton 48px</code> + <code>DM Sans 18px</code></td></tr>
-        <tr><td>4</td><td>Dark</td><td>O Paradoxo — Frase de impacto</td><td><code>Anton 56px</code> + <code>DM Sans 16px</code></td></tr>
-        <tr><td>5</td><td>Light</td><td>Pullquote — Borda Accent 1</td><td><code>DM Sans 32px</code></td></tr>
-        <tr><td>6</td><td>Dark</td><td>A Solução — Lista ou 3 pontos</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
-        <tr><td>7</td><td>Dark</td><td>Prova Social / Validação</td><td><code>Space Mono 11px</code> + <code>DM Sans 18px</code></td></tr>
-        <tr><td>8</td><td>Light</td><td>Reflexão Final — Espaço em branco</td><td><code>DM Sans 32px</code></td></tr>
-        <tr><td>9</td><td>CTA (Dark)</td><td>Chamada para ação + Ícone MS</td><td><code>Anton 56px</code> + <code>DM Sans 16px</code></td></tr>
-      </tbody>
-    </table>
-
-    <!-- RENDER SPECS -->
-    <div class="carousel-specs">
-      <div class="spec-card">
-        <div class="spec-label">Resolução</div>
-        <div class="spec-value">1080 × 1350px</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-label">Formato</div>
-        <div class="spec-value">Instagram Portrait</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-label">Tecnologia</div>
-        <div class="spec-value">HTML/CSS → Playwright → PNG</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-label">Grid</div>
-        <div class="spec-value">54×54px, opacity 0.025</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-label">BG Dark</div>
-        <div class="spec-value">#0A0C10 → #12141A</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-label">BG Light</div>
-        <div class="spec-value">#F5F7FA → #E8EAEF</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ HIERARQUIA DE CONTRASTE ═══════ -->
-  <section id="contrast">
-    <div class="section-header">
-      <div class="section-label">Seção 4.3</div>
-      <h2 class="section-title">Hierarquia de Contraste</h2>
-      <p class="section-desc">Preview ao vivo dos dois modos de slide.</p>
-    </div>
-
-    <div class="contrast-preview">
-      <div class="contrast-box dark-mode">
-        <div class="box-label">DARK SLIDE</div>
-        <div class="box-headline">Camadas de Presença</div>
-        <div class="box-body">
-          O lugar precisa existir antes da tecnologia. Tecnologia aplicada a um espaço ruim
-          produz experiência ruim em alta resolução. O ambiente físico tem que justificar
-          a presença do visitante por si só.
-        </div>
-      </div>
-
-      <div class="contrast-box light-mode">
-        <div class="box-label">LIGHT SLIDE</div>
-        <div class="box-quote">
-          Se o visitante sabe como foi feito, não funcionou.
-          Quando a tecnologia aparece, a mágica desaparece.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ VISUAL STUDIES — CAROUSEL CAPA (STUDY 01) ═══════ -->
-  <section id="visual-studies">
-    <div class="section-header">
-      <div class="section-label">Seção 5</div>
-      <h2 class="section-title">Visual Studies — Carousel Capa</h2>
-      <p class="section-desc">
-        Study 01: Capa de carrossel para 7 produtos MSCREATIVE.SYSTEMS. Formato 1080×1350px (Instagram Portrait 4:5).
-        Aprovado em 18 Abr 2026 — versão final V1.
-      </p>
-    </div>
-
-    <!-- OVERRIDE BANNER -->
-    <div class="vs-override-banner">
-      <div class="vs-label">⚠ Chumbo Quente Override</div>
-      <p>
-        O §2.3 recomenda Chumbo Quente apenas para stories/editorial, NÃO para carrosséis.
-        <strong style="color: var(--text-primary);">Override aprovado por Marcel:</strong> todos os slides de carousel
-        usam Chumbo Quente como base, com paletas por produto derivadas do filtro de baixo contraste/saturação.
-        Cada produto mantém identidade cromática própria, processada pelo filtro Chumbo Quente.
-      </p>
-    </div>
-
-    <!-- ── 7 PRODUCT PALETTES ── -->
-    <h3 class="subsection-title" style="margin-bottom: 20px;">Paletas Chumbo Quente por Produto</h3>
-
-    <div class="vs-palette-grid">
-      <!-- MSCS -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #A85A30;">MSCREATIVE.SYSTEMS</div>
-            <div class="vs-product-identity">Chumbo Puro + Electric Orange</div>
+          <!-- DM SANS -->
+          <div class="type-card">
+            <div class="type-card-header">
+              <span class="name">DM Sans &mdash; Body</span>
+              <span class="role">Leitura Cont&iacute;nua &amp; Descri&ccedil;&otilde;es</span>
+            </div>
+            <div class="type-card-specimen body-font">
+              Existe uma diferen&ccedil;a entre improvisar e ter infraestrutura de improviso.
+              Uma &eacute; aposta. A outra &eacute; arquitetura. A Moment Factory construiu a segunda
+              para um show que ningu&eacute;m sabia quanto tempo ia durar.
+            </div>
+            <div class="type-card-meta">
+              <div class="meta-item">Pesos<span>400 (Regular) / 700 (Bold)</span></div>
+              <div class="meta-item">Opacidade<span>0.85 no modo Dark</span></div>
+              <div class="meta-item">Contraste<span>Limpo com Anton</span></div>
+            </div>
           </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0A0E, #111114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0A0E → #111114</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#A85A30</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #A85A30, #6A3818);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#A85A30 → #6A3818</div></div></div>
-        </div>
-      </div>
 
-      <!-- ORACLE -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #8A6A18;">Creative Oracle</div>
-            <div class="vs-product-identity">Âmbar Profundo</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #12100A);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #12100A</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5E5545;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5E5545</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A6A18;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A6A18</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #8A6A18, #5A4010);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A6A18 → #5A4010</div></div></div>
-        </div>
-      </div>
-
-      <!-- FRONTEIRISTAS -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #8A7A62;">Fronteiristas</div>
-            <div class="vs-product-identity">Pergaminho Oxidado</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #111010);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #111010</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5550;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5550</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A7A62;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A7A62</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #8A7A62, #5A5040);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A7A62 → #5A5040</div></div></div>
-        </div>
-      </div>
-
-      <!-- NEURO CODEX -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #5A9AAA;">Neuro Codex</div>
-            <div class="vs-product-identity">Índigo-Lilás + Cyan</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #0E0E18);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #0E0E18</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A4460;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A4460</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A9AAA;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A9AAA</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #5A9AAA, #3A5A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A9AAA → #3A5A6A</div></div></div>
-        </div>
-      </div>
-
-      <!-- STYLE CODEX -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #9A6068;">Style Codex</div>
-            <div class="vs-product-identity">Rosewood Empoeirado</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #131114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #131114</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5B4C50;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5B4C50</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A6068;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A6068</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #9A6068, #6A3A42);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A6068 → #6A3A42</div></div></div>
-        </div>
-      </div>
-
-      <!-- DESIGN CODEX -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #5A7A9A;">Design Codex</div>
-            <div class="vs-product-identity">Aço Azul Oxidado</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #0E1018);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #0E1018</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A5060;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A5060</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A7A9A;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A7A9A</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #5A7A9A, #3A4A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A7A9A → #3A4A6A</div></div></div>
-        </div>
-      </div>
-
-      <!-- EXECUTION CODEX -->
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #9A7048;">Execution Codex</div>
-            <div class="vs-product-identity">Terracota Queimado</div>
-          </div>
-        </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0C10, #131008);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0C10 → #131008</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5040;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5040</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A7048;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A7048</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #9A7048, #6A4828);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A7048 → #6A4828</div></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 3D GEOMETRIES TABLE ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Polígonos 3D Assinatura</h3>
-    <table class="ds-table">
-      <thead>
-        <tr><th>Produto</th><th>Geometria</th><th>Rotation [X, Y, Z]</th><th>FOV</th></tr>
-      </thead>
-      <tbody>
-        <tr><td style="color:#A85A30;">MSCS</td><td>Icosaedro</td><td><code>[0.08, 0.12, 0.05]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#8A6A18;">Oracle</td><td>Möbius Strip (24 seg, twisted loop)</td><td><code>[0.06, 0.10, 0.04]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#8A7A62;">Fronteiristas</td><td>Losango/Diamond (dual-pyramid, 14v)</td><td><code>[0.05, 0.08, 0.03]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#5A9AAA;">Neuro</td><td>Dendrítico (20v, 5 ramos)</td><td><code>[0.14, 0.22, 0.10]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#9A6068;">Style</td><td>Romboédrico (18v, cristalino)</td><td><code>[0.18, 0.12, 0.14]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#5A7A9A;">Design</td><td>Tensegrity (13v, tensão estrutural)</td><td><code>[0.13, 0.16, 0.09]</code></td><td>3.5</td></tr>
-        <tr><td style="color:#9A7048;">Execution</td><td>Gyroscope (3 anéis × 16 seg + hub)</td><td><code>[0.12, 0.18, 0.08]</code></td><td>3.5</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
-      <strong style="color: var(--text-primary);">Engine:</strong> vanilla JS, rotação rotX/rotY/rotZ, projeção perspectiva, gradient stroke com alpha por depth, vertex dots 2px. Canvas 320×320px, opacity ~0.3, posição bottom-right do slide.
-    </p>
-
-    <!-- ── LAYOUT ELEMENTS ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Elementos de Layout</h3>
-    <div class="vs-layout-grid">
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Info Strips (W+K ref)</div>
-        <div class="vs-li-desc">Barras de <code>54px</code> (= 1 grid unit) no topo e base. <strong>Top:</strong> ✕ ✕ ✕ | Frase editorial | Produto. <strong>Bottom:</strong> slide N/9 | Série + data | MS sig. Space Mono 10px, uppercase, 0.15em.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Ghost Layers</div>
-        <div class="vs-li-desc">3 divs border-only atrás do slide, offset <code>-8px</code> incremental. Opacidade: <code>0.06 → 0.04 → 0.025</code>. Cor = accent do produto.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Glitch Lines</div>
-        <div class="vs-li-desc">2 linhas horizontais (top 287px, 943px), 1px. CSS gradient com fragmentos accent <code>0.05–0.08</code> opacity.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Product Marker</div>
-        <div class="vs-li-desc">Barra vertical <code>3px</code> left, gradient accent <code>12% → transparent</code>.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Grid Overlay</div>
-        <div class="vs-li-desc"><code>54×54px</code>, <code>rgba(255,255,255,0.025)</code> — ::before do .slide</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Scan Lines</div>
-        <div class="vs-li-desc">repeating-linear-gradient 3px/1px, <code>rgba(140,130,115,0.005)</code> — ::after do .slide</div>
-      </div>
-    </div>
-
-    <!-- ── TYPOGRAPHY ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Tipografia do Carousel</h3>
-    <table class="ds-table">
-      <thead>
-        <tr><th>Elemento</th><th>Font</th><th>Size</th><th>Weight</th><th>Transform</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Headline</td><td><code>Anton</code></td><td>72px</td><td>400</td><td>uppercase, -0.02em</td></tr>
-        <tr><td>Subtitle</td><td><code>DM Sans</code></td><td>21px</td><td>400</td><td>none, lh 1.55</td></tr>
-        <tr><td>Tags</td><td><code>Space Mono</code></td><td>11px</td><td>400</td><td>uppercase, 0.18em</td></tr>
-        <tr><td>Info strip</td><td><code>Space Mono</code></td><td>10px</td><td>400</td><td>uppercase, 0.15em</td></tr>
-        <tr><td>Slide number</td><td><code>Space Mono</code></td><td>11px</td><td>400</td><td>uppercase, 0.20em</td></tr>
-      </tbody>
-    </table>
-
-    <!-- ── HEADLINES PER PRODUCT ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Headlines por Produto</h3>
-    <div class="vs-headline-grid">
-      <div class="vs-headline-card" style="border-left: 3px solid #A85A30;">
-        <div class="vs-hl-product" style="color: #A85A30;">MSCREATIVE.SYSTEMS</div>
-        <div class="vs-hl-title">A Morte do Gosto <em style="color: #A85A30; font-style: normal;">Pessoal</em></div>
-        <div class="vs-hl-sub">Por que empresas criativas sem governança perdem identidade — e chamam isso de evolução.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #8A6A18;">
-        <div class="vs-hl-product" style="color: #8A6A18;">Creative Oracle</div>
-        <div class="vs-hl-title">Árbitro Não <em style="color: #8A6A18; font-style: normal;">Opina</em> — Governa</div>
-        <div class="vs-hl-sub">Toda empresa criativa tem um sistema de julgamento. A maioria só não sabe qual é.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #8A7A62;">
-        <div class="vs-hl-product" style="color: #8A7A62;">Fronteiristas</div>
-        <div class="vs-hl-title">Curadoria É o Último Ato <em style="color: #8A7A62; font-style: normal;">Criativo</em></div>
-        <div class="vs-hl-sub">Quem escolhe o que entra define o que existe. A edição é o gesto que transforma arquivo em argumento.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #5A9AAA;">
-        <div class="vs-hl-product" style="color: #5A9AAA;">Neuro Codex</div>
-        <div class="vs-hl-title">Seu Cliente Não <em style="color: #5A9AAA; font-style: normal;">Decide</em> — Reage</div>
-        <div class="vs-hl-sub">O cérebro resolve em 0,3s o que a sua marca tenta explicar em 30 slides.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #9A6068;">
-        <div class="vs-hl-product" style="color: #9A6068;">Style Codex</div>
-        <div class="vs-hl-title">Tendência É <em style="color: #9A6068; font-style: normal;">Preguiça</em> de Identidade</div>
-        <div class="vs-hl-sub">Marcas que seguem tendência estão terceirizando a única coisa que não deveriam delegar: o próprio rosto.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #5A7A9A;">
-        <div class="vs-hl-product" style="color: #5A7A9A;">Design Codex</div>
-        <div class="vs-hl-title">Estratégia Sem <em style="color: #5A7A9A; font-style: normal;">Estrutura</em> É Opinião</div>
-        <div class="vs-hl-sub">O gap entre o deck bonito e o resultado real é um problema de arquitetura.</div>
-      </div>
-      <div class="vs-headline-card" style="border-left: 3px solid #9A7048;">
-        <div class="vs-hl-product" style="color: #9A7048;">Execution Codex</div>
-        <div class="vs-hl-title">Plano Sem <em style="color: #9A7048; font-style: normal;">Execução</em> É Ficção</div>
-        <div class="vs-hl-sub">A distância entre estratégia e resultado não é talento — é infraestrutura operacional.</div>
-      </div>
-    </div>
-
-    <!-- ── ASCII FRAGMENTS ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">ASCII Fragments por Produto</h3>
-    <div class="vs-ascii-grid">
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #A85A30;">MSCS</div>
-        <pre>░▒▓█▓▒░    ╔══╗ ║▪▪║ ╚══╝    ▸ SYS.RENDER ▸▸▸</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #8A6A18;">Oracle</div>
-        <pre>※──※──※──※  ┌※┐ │ ※│ └※┘  ※ ORACLE.SYS ※</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #8A7A62;">Fronteiristas</div>
-        <pre>◇──◇──◇──◇  ╔◇╗ ║◇◇║ ╚◇╝  ◇ ARCHIVE.SYS ◇</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #5A9AAA;">Neuro</div>
-        <pre>◎──◎──◎──◎  ┌──┐ │◎◎│ └──┘  ◎ PERCEPT.LAYER ◎</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #9A6068;">Style</div>
-        <pre>❋──❋──❋──❋  ╭──╮ │❋❋│ ╰──╯  ❋ STYLE.ENGINE ❋</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #5A7A9A;">Design</div>
-        <pre>⊞──⊞──⊞──⊞  ┌──┐ │⊞⊞│ └──┘  ⊞ STRUCT.ENGINE ⊞</pre>
-      </div>
-      <div class="vs-ascii-card">
-        <div class="vs-ascii-product" style="color: #9A7048;">Execution</div>
-        <pre>▶──▶──▶──▶  ╔──╗ ║▶▶║ ╚══╝  ▶ EXEC.ENGINE ▶</pre>
-      </div>
-    </div>
-
-    <!-- ── ITERATION LOG ── -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Histórico de Iterações — Study 01</h3>
-    <table class="ds-table">
-      <thead><tr><th>Versão</th><th>Mudança</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>v1</td><td>3 variantes (MSCS, Neuro, Style) com cores high-contrast</td><td style="color: #9A6068;">Rejeitado</td></tr>
-        <tr><td>v2</td><td>Chumbo Quente aplicado, Neuro em verde</td><td style="color: #9A7048;">Parcial</td></tr>
-        <tr><td>v3</td><td>Neuro → índigo/lilás+cyan, headline darkened 15%</td><td style="color: #9A7048;">Parcial</td></tr>
-        <tr><td>v4</td><td>Polígonos 320px accent color @ 0.28–0.30, MS sig no bottom strip</td><td style="color: #5A9AAA;">Aprovado</td></tr>
-        <tr><td>v5</td><td>7 produtos com Slide Factory, geometrias Möbius + Losango</td><td style="color: #5A9AAA;">Aprovado</td></tr>
-        <tr><td>v6 (final)</td><td>MSCS → chumbo puro + electric orange #A85A30, separação Oracle</td><td style="color: var(--accent-gold);">Final ✓</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- ═══════ VISUAL STUDIES — OFFF STORY FACTORY (STUDY 02) ═══════ -->
-  <section id="offf-story-factory">
-    <div class="section-header">
-      <div class="section-label">Seção 5.2</div>
-      <h2 class="section-title">OFFF Story Factory — Study 02</h2>
-      <p class="section-desc">
-        Instagram Stories (1080×1920px, 9:16) para insights de palestras OFFF Barcelona 2026.
-        Tipografia: Instrument Serif + Inter + Space Mono. Paleta: MSCS Chumbo Puro + Electric Orange.
-        Aprovado em 18 Abr 2026.
-      </p>
-    </div>
-
-    <!-- PREVIEW + SPECS -->
-    <div class="offf-preview-row">
-      <div class="offf-story-mockup">
-        <div class="osm-marker"></div>
-        <div class="osm-strip osm-strip-top">
-          <span>✕ ✕ ✕</span>
-          <span>frase editorial</span>
-          <span>MSCREATIVE.SYSTEMS™</span>
-        </div>
-        <div class="osm-content">
-          <div class="osm-tags">
-            <span class="osm-tag osm-tag-accent">OFFF BCN 2026</span>
-            <span class="osm-tag osm-tag-ghost">Speaker</span>
-            <span class="osm-tag osm-tag-ghost">Key Insights</span>
-          </div>
-          <div class="osm-headline">Soberania Criativa Não Se <em>Negocia</em></div>
-          <div class="osm-rule"></div>
-          <div class="osm-subtitle">O controle do processo não é luxo — é a única coisa que separa autor de executor.</div>
-          <div class="osm-speaker">
-            <div class="osm-speaker-initials">AB</div>
-            <div>
-              <div class="osm-speaker-name">Speaker Name</div>
-              <div class="osm-speaker-role">Creative Dir · Studio</div>
+          <!-- SPACE MONO -->
+          <div class="type-card">
+            <div class="type-card-header">
+              <span class="name">Space Mono &mdash; Labels</span>
+              <span class="role">Tiers, Datas &amp; Metadados</span>
+            </div>
+            <div class="type-card-specimen label-font">
+              EXPERIENCE ARCHITECTURE &nbsp;&middot;&nbsp; PRESENCE STACK &nbsp;&middot;&nbsp; TIER S &nbsp;&middot;&nbsp; PRIORIDADE A
+            </div>
+            <div class="type-card-meta">
+              <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
+              <div class="meta-item">Tracking<span>letter-spacing: 0.2em</span></div>
+              <div class="meta-item">Cor<span>Accent 1 do produto</span></div>
             </div>
           </div>
         </div>
-        <div class="osm-strip osm-strip-bottom">
-          <span>OFFF BCN 2026</span>
-          <span>Speaker · Studio</span>
-          <span>@mscreative.systems</span>
+      </div>
+
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block">
+          <div class="ds-code-header">
+            <span class="ds-code-label">CSS &mdash; Type Specimens</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>/* Product Stack (Typo A) */
+--ds-font-display:  'Anton', sans-serif;         /* Headlines, ALL CAPS, -0.02em */
+--ds-font-body:     'DM Sans', sans-serif;        /* Body, 400/700, opacity 0.85 */
+--ds-font-label:    'Space Mono', monospace;       /* Labels, ALL CAPS, 0.2em */
+
+/* Editorial Stack (Typo B) */
+--ds-ed-font-headline:  'IBM Plex Sans', sans-serif;
+--ds-ed-font-emphasis:  'Libre Caslon Text', serif;
+--ds-ed-font-body:      'IBM Plex Sans', sans-serif;
+--ds-ed-font-label:     'Space Mono', monospace;
+
+/* Accent Stack (Typo C) */
+--ds-tc-font: 'Cormorant Garamond', serif;
+/* Weights: 300 / 400 / 600 / 700 */</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ §3a BASE CROMATICA ═══════ -->
+    <section id="base-colors">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 3</div>
+        <h2 class="section-title">Base Crom&aacute;tica</h2>
+        <p class="section-desc">
+          F7 Dark Heavy. Tokens globais imut&aacute;veis &mdash; apenas Accent 1/2 muda por produto.
+        </p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('base-colors','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('base-colors','code')">Code Bank</button>
         </div>
       </div>
 
-      <div class="offf-preview-info">
-        <h3 class="subsection-title" style="margin-bottom: 16px;">Formato & Safe Zones</h3>
-        <div class="carousel-specs" style="margin-top: 0;">
-          <div class="spec-card">
-            <div class="spec-label">Resolução</div>
-            <div class="spec-value">1080 × 1920px</div>
+      <div class="view-showcase">
+        <div class="base-colors">
+          <div class="color-chip" onclick="copyColor('#0A0C10')">
+            <div class="swatch" style="background: linear-gradient(145deg, #0A0C10, #12141A);" data-value="#0A0C10 &rarr; #12141A"></div>
+            <div class="chip-info">
+              <div class="chip-token">--ds-bg-primary / --ds-bg-secondary</div>
+              <div class="chip-desc">Varia por produto. Nunca branco puro.</div>
+            </div>
           </div>
-          <div class="spec-card">
-            <div class="spec-label">Formato</div>
-            <div class="spec-value">Instagram Story 9:16</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-label">Safe Zone Topo</div>
-            <div class="spec-value">120px</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-label">Safe Zone Base</div>
-            <div class="spec-value">160px</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-label">Paleta</div>
-            <div class="spec-value">MSCS Chumbo Puro</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-label">Wireframe</div>
-            <div class="spec-value">Icosaedro 3D</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- TYPOGRAPHY -->
-    <h3 class="subsection-title" style="margin-bottom: 20px;">Tipografia — Instrument Serif + Inter + Space Mono</h3>
-    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-      Nova stack tipográfica exclusiva para Stories OFFF. Inter Light para headlines (vs Anton nos carrosséis), com <em style="font-family: 'Instrument Serif', serif; font-style: italic; color: #A85A30;">Instrument Serif italic</em> para emphasis.
-    </p>
+          <div class="color-chip" onclick="copyColor('#B2A898')">
+            <div class="swatch" style="background: #B2A898;" data-value="#B2A898"></div>
+            <div class="chip-info">
+              <div class="chip-token">--ds-text-primary</div>
+              <div class="chip-desc">Areia Oxidado. Warm gray sem brilho.</div>
+            </div>
+          </div>
 
-    <table class="ds-table">
-      <thead>
-        <tr><th>Elemento</th><th>Font</th><th>Peso</th><th>Tamanho</th><th>Exemplo</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Headline base</td>
-          <td><code>Inter</code></td>
-          <td>300 (Light)</td>
-          <td>54px</td>
-          <td style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16px; color: #6A6A6A;">Soberania Criativa</td>
-        </tr>
-        <tr>
-          <td>Headline emphasis</td>
-          <td><code>Instrument Serif</code></td>
-          <td>italic 400</td>
-          <td>62px</td>
-          <td style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; color: #A85A30;">Negocia</td>
-        </tr>
-        <tr>
-          <td>Subtitle</td>
-          <td><code>Inter</code></td>
-          <td>300</td>
-          <td>19px</td>
-          <td style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 13px; color: rgba(130,130,130,0.6);">Controle do processo não é luxo</td>
-        </tr>
-        <tr>
-          <td>Tags / Labels</td>
-          <td><code>Space Mono</code></td>
-          <td>400</td>
-          <td>9–11px</td>
-          <td style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">OFFF BCN 2026</td>
-        </tr>
-        <tr>
-          <td>Speaker initials</td>
-          <td><code>Instrument Serif</code></td>
-          <td>italic</td>
-          <td>28px</td>
-          <td style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: #A85A30;">AB</td>
-        </tr>
-        <tr>
-          <td>Speaker name</td>
-          <td><code>Inter</code></td>
-          <td>400</td>
-          <td>17px</td>
-          <td style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-primary);">Paula Scher</td>
-        </tr>
-        <tr>
-          <td>Speaker role</td>
-          <td><code>Space Mono</code></td>
-          <td>400</td>
-          <td>9px</td>
-          <td style="font-family: 'Space Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">CREATIVE DIR · PENTAGRAM</td>
-        </tr>
-      </tbody>
-    </table>
+          <div class="color-chip" onclick="copyColor('rgba(178, 168, 152, 0.85)')">
+            <div class="swatch" style="background: rgba(178, 168, 152, 0.85); border: 1px solid rgba(0,0,0,0.1);" data-value="rgba(B2A898, 0.85)"></div>
+            <div class="chip-info">
+              <div class="chip-token">--ds-text-body</div>
+              <div class="chip-desc">Opacidade fixa. Leg&iacute;vel sem competir.</div>
+            </div>
+          </div>
 
-    <!-- PALETTE -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Paleta — MSCS Chumbo Puro + Electric Orange</h3>
-    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-      Mesma paleta do §5.1 (Carousel MSCS). Tokens adicionais para speaker card e info strips.
-    </p>
-
-    <div class="vs-palette-grid">
-      <div class="vs-palette-card">
-        <div class="vs-palette-header">
-          <div>
-            <div class="vs-product-name" style="color: #A85A30;">OFFF Story Tokens</div>
-            <div class="vs-product-identity">Chumbo Puro + Electric Orange (Story-specific)</div>
+          <div class="color-chip" onclick="copyColor('rgba(255, 255, 255, 0.025)')">
+            <div class="swatch" style="background: #0A0C10; position: relative;">
+              <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 27px 27px;"></div>
+              <span style="position: absolute; bottom: 8px; right: 12px; font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px;">54&times;54 GRID</span>
+            </div>
+            <div class="chip-info">
+              <div class="chip-token">--ds-grid-color / --ds-grid-size</div>
+              <div class="chip-desc">Textura de sistema, 54&times;54px fixo.</div>
+            </div>
           </div>
         </div>
-        <div class="vs-palette-tokens">
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0A0E, #111114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0A0E → #111114</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis / Accent</div><div class="vs-token-value">#A85A30</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(130,130,130,0.4);"></div><div class="vs-token-info"><div class="vs-token-name">Subtitle</div><div class="vs-token-value">rgba(130,130,130,0.4)</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #A85A30, #6A3818);"></div><div class="vs-token-info"><div class="vs-token-name">Rule gradient</div><div class="vs-token-value">#A85A30 → #6A3818</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(130,130,130,0.18); border: 1px solid rgba(255,255,255,0.06);"></div><div class="vs-token-info"><div class="vs-token-name">Info strip text</div><div class="vs-token-value">rgba(130,130,130,0.18)</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(168,90,48,0.035);"></div><div class="vs-token-info"><div class="vs-token-name">ASCII fragment</div><div class="vs-token-value">accent @ 0.035</div></div></div>
-          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(168,90,48,0.15); border: 1px solid rgba(168,90,48,0.25);"></div><div class="vs-token-info"><div class="vs-token-name">Speaker card</div><div class="vs-token-value">accent @ 0.15 border</div></div></div>
+      </div>
+
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block">
+          <div class="ds-code-header">
+            <span class="ds-code-label">CSS &mdash; Base Palette Tokens</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>--ds-bg-primary:      #0A0C10;
+--ds-bg-secondary:    #12141A;
+--ds-bg-surface:      #1A1D26;
+--ds-bg-surface-hover:#22262F;
+--ds-text-primary:    #B2A898;
+--ds-text-body:       rgba(178, 168, 152, 0.85);
+--ds-text-muted:      rgba(178, 168, 152, 0.5);
+--ds-grid-color:      rgba(255, 255, 255, 0.025);
+--ds-grid-size:       54px;
+--ds-border-subtle:   rgba(255, 255, 255, 0.06);</code></pre>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 7 MANDATORY LAYERS -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">7 Camadas Obrigatórias</h3>
-    <div class="offf-layer-grid">
-      <div class="offf-layer-card">
-        <div class="olc-num">01</div>
-        <div class="olc-label">Grid Overlay</div>
-        <div class="olc-desc"><code>54×54px</code>, <code>rgba(255,255,255,0.025)</code></div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">02</div>
-        <div class="olc-label">Scan Lines</div>
-        <div class="olc-desc">repeating-linear-gradient, 3px transparent + 1px <code>rgba(140,130,115,0.005)</code></div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">03</div>
-        <div class="olc-label">Product Marker</div>
-        <div class="olc-desc"><code>3px</code> left, gradient accent → transparent</div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">04</div>
-        <div class="olc-label">Ghost Layers</div>
-        <div class="olc-desc">3 divs, inset <code>-8/-16/-24px</code>, borders accent <code>0.06/0.04/0.025</code></div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">05</div>
-        <div class="olc-label">Glitch Lines</div>
-        <div class="olc-desc">2 linhas horizontais 1px, posições Y variáveis por story, accent <code>0.06–0.08</code></div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">06</div>
-        <div class="olc-label">ASCII Fragments</div>
-        <div class="olc-desc">3 por story, Space Mono 10px, accent @ <code>0.035</code>. Keyword contextual ao insight</div>
-      </div>
-      <div class="offf-layer-card">
-        <div class="olc-num">07</div>
-        <div class="olc-label">Icosaedro 3D</div>
-        <div class="olc-desc">Canvas wireframe, opacity <code>0.2</code>, posição variável. Rotation <code>[0.05–0.12]</code> por eixo</div>
-      </div>
-    </div>
-
-    <!-- VARIATION RULES -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Regras de Variação entre Stories</h3>
-    <table class="ds-table">
-      <thead>
-        <tr><th>Elemento</th><th>Regra de Variação</th></tr>
-      </thead>
-      <tbody class="offf-variation-table">
-        <tr><td>Icosaedro posição</td><td>Alternar: top-right → bottom-right → bottom-left → center-right</td></tr>
-        <tr><td>Glitch lines Y</td><td>Nunca repetir entre stories consecutivos</td></tr>
-        <tr><td>ASCII fragments</td><td>Variar conteúdo, posição e rotação</td></tr>
-        <tr><td>ASCII keyword</td><td>Contextual ao insight (ex: <code>▸ SOVEREIGNTY ▸▸▸</code>, <code>▸ LATENCY ▸▸▸</code>)</td></tr>
-        <tr><td>Rotation speed</td><td>Variar <code>[0.05–0.12]</code> por eixo entre stories</td></tr>
-      </tbody>
-    </table>
-
-    <!-- TAG SYSTEM -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Sistema de Tags</h3>
-    <div class="vs-layout-grid">
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Tag Accent (Laranja)</div>
-        <div class="vs-li-desc">Sempre <code>OFFF BCN 2026</code>. Border <code>rgba(168,90,48,0.25)</code></div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Tag Ghost 1</div>
-        <div class="vs-li-desc">Nome do speaker. <code>rgba(140,140,140,0.5)</code> com border <code>rgba(255,255,255,0.04)</code></div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Tag Ghost 2</div>
-        <div class="vs-li-desc"><code>Key Insights</code>. Teses proprietárias MSCS sem speaker: ghost 1 = <code>MSCREATIVE.SYSTEMS™</code></div>
-      </div>
-    </div>
-
-    <!-- SPEAKER CARD -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Speaker Card</h3>
-    <div class="vs-layout-grid">
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Iniciais</div>
-        <div class="vs-li-desc">Instrument Serif italic, caixa <code>64×64px</code> com border accent. <code>28px</code></div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Nome</div>
-        <div class="vs-li-desc">Inter 400, <code>17px</code></div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Role</div>
-        <div class="vs-li-desc">Space Mono 400, <code>9px</code> uppercase</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Exceção</div>
-        <div class="vs-li-desc">Teses proprietárias MSCS: omitir speaker card inteiramente</div>
-      </div>
-    </div>
-
-    <!-- HEADLINE RULES -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Tom MSCREATIVE — Regras de Headline</h3>
-    <div class="vs-override-banner" style="border-left-color: #A85A30;">
-      <div class="vs-label">Protocolo de Voz</div>
-      <p>
-        <strong style="color: var(--text-primary);">Frases-veredicto.</strong> Curtas. Provocativas. Declaram — não explicam.
-        O insight é do Marcel (MSCREATIVE). O speaker é a fonte. A interpretação é MSCS.
-        Palavras em <code style="font-family: 'Instrument Serif', serif; font-style: italic; color: #A85A30;">&lt;em&gt;</code> carregam a tensão — nunca decorativas.
-      </p>
-      <p style="margin-top: 12px; font-size: 13px;">
-        <strong style="color: var(--text-primary);">Léxico proibido:</strong> game-changer, magic, empower, leverage, disruptivo, inovação (sem contexto), "ferramenta" (para descrever Oracle).
-      </p>
-    </div>
-
-    <!-- INGEST PROTOCOL -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Protocolo de Ingestão</h3>
-    <div class="vs-layout-grid">
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Fase 1 — Extração</div>
-        <div class="vs-li-desc">
-          Identificar speaker, talk, tema. Extrair 3–5 insights pela lente MSCREATIVE:
-          governança criativa, engenharia de percepção, identidade como infraestrutura,
-          execução como sistema, curadoria como ato criativo. <strong>Esperar aprovação.</strong>
-        </div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Fase 2 — Produção</div>
-        <div class="vs-li-desc">
-          1 Story HTML por insight aprovado. Todas as 7 camadas. Variação obrigatória entre consecutivos.
-          Salvar em <code>studies/offf_2026/offf_story_[SOBRENOME]_[N].html</code>
-        </div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Template canônico</div>
-        <div class="vs-li-desc">
-          <code>studies/offf_2026/OFFF_2026_STORY_TEMPLATE_CANONICAL.html</code>
-          — fonte de verdade do layout. Ler antes de produzir qualquer Story.
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ═══════ CORMORANT GARAMOND (STUDY 03) ═══════ -->
-  <section id="typo-cormorant">
-    <div class="section-header">
-      <div class="section-label">Seção 5.3</div>
-      <h2 class="section-title">Cormorant Garamond — Study 03</h2>
-      <p class="section-desc">
-        Variante tipográfica "High-Fashion Serif" para peças editoriais de alta respiração.
-        Referência: Vogue, The Gentlewoman, Cereal Magazine. Headline em Cormorant 300 com emphasis italic 600.
-      </p>
-    </div>
-
-    <div class="cormorant-demo">
-      <div class="cormorant-mockup">
-        <div class="cm-headline">Tudo que a IA <em>consegue imitar</em> já era genérico</div>
-        <div class="cm-rule"></div>
-        <div class="cm-drop">
-          <span class="cm-drop-cap">O</span>
-          <span class="cm-drop-text">espelho não criou o reflexo. Ele só mostrou o que já estava ali.</span>
+    <!-- ═══════ §3b CHUMBO QUENTE ═══════ -->
+    <section id="chumbo-quente">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 3.1</div>
+        <h2 class="section-title">Modo Chumbo Quente</h2>
+        <p class="section-desc">
+          Paleta alternativa para pe&ccedil;as de intelig&ecirc;ncia e conte&uacute;do editorial standalone.
+          Zero branco puro. Opera no limiar da legibilidade &mdash; a informa&ccedil;&atilde;o emerge do escuro como relevo.
+        </p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('chumbo-quente','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('chumbo-quente','code')">Code Bank</button>
         </div>
       </div>
 
-      <div class="cormorant-info">
-        <h3 class="subsection-title" style="margin-bottom: 16px;">Type Stack</h3>
-        <table class="ds-table">
-          <thead>
-            <tr><th>Elemento</th><th>Font</th><th>Peso</th><th>Tamanho</th><th>Exemplo</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Headline base</td>
-              <td><code>Cormorant Garamond</code></td>
-              <td>300</td>
-              <td>72px</td>
-              <td style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 18px; color: #6A6A6A;">Tudo que a IA</td>
-            </tr>
-            <tr>
-              <td>Headline emphasis</td>
-              <td><code>Cormorant Garamond</code></td>
-              <td>italic 600</td>
-              <td>72px</td>
-              <td style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic; font-size: 18px; color: #A85A30;">consegue imitar</td>
-            </tr>
-            <tr>
-              <td>Subtitle</td>
-              <td><code>DM Sans</code></td>
-              <td>300</td>
-              <td>18px</td>
-              <td style="font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 13px; color: rgba(130,130,130,0.5);">A IA não degradou nada</td>
-            </tr>
-            <tr>
-              <td>Drop cap</td>
-              <td><code>Cormorant Garamond</code></td>
-              <td>700</td>
-              <td>120px</td>
-              <td style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 36px; color: rgba(168,90,48,0.12);">O</td>
-            </tr>
-            <tr>
-              <td>Drop text</td>
-              <td><code>Cormorant Garamond</code></td>
-              <td>italic 400</td>
-              <td>24px</td>
-              <td style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: rgba(130,130,130,0.25);">espelho não criou</td>
-            </tr>
-            <tr>
-              <td>Attribution</td>
-              <td><code>Space Mono</code></td>
-              <td>400</td>
-              <td>9px</td>
-              <td style="font-family: 'Space Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(168,90,48,0.18);">— MSCREATIVE.SYSTEMS™</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 class="subsection-title" style="margin-top: 32px; margin-bottom: 16px;">Elementos Exclusivos</h3>
-        <div class="vs-layout-grid">
-          <div class="vs-layout-item">
-            <div class="vs-li-label">Rule Thin</div>
-            <div class="vs-li-desc">1px, <code>rgba(168,90,48,0.12)</code> — mais sutil que o rule gradient padrão. Fashion editorial.</div>
+      <div class="view-showcase">
+        <!-- LIVE PREVIEW -->
+        <div class="chumbo-preview">
+          <span class="cp-tag">Intelig&ecirc;ncia</span>
+          <div class="cp-title">6 Princ&iacute;pios de Cria&ccedil;&atilde;o<br>Experiencial de <em>Catherine Turf</em></div>
+          <div class="cp-rule"></div>
+          <div style="display: flex; gap: 16px; align-items: flex-start; position: relative;">
+            <span class="cp-num">1.</span>
+            <div>
+              <div style="font-family: var(--ds-font-body); font-size: 20px; font-weight: 700; color: #6B6358; line-height: 1.3; margin-bottom: 4px; position: relative;">O lugar precisa existir antes da tecnologia.</div>
+              <div class="cp-body">Tecnologia aplicada a um espa&ccedil;o ruim produz experi&ecirc;ncia ruim em alta resolu&ccedil;&atilde;o.</div>
+            </div>
           </div>
-          <div class="vs-layout-item">
-            <div class="vs-li-label">Drop Cap</div>
-            <div class="vs-li-desc">Cormorant 700 @ <code>120px</code>, cor accent @ <code>0.12</code>. Float left. Uso raro — apenas Ghost Concepts.</div>
-          </div>
-          <div class="vs-layout-item">
-            <div class="vs-li-label">Vertical Text</div>
-            <div class="vs-li-desc">Space Mono 9px, tracking <code>0.3em</code>, accent @ <code>0.06</code>. Textura estrutural, não informação.</div>
-          </div>
-          <div class="vs-layout-item">
-            <div class="vs-li-label">Icosaedro Centrado</div>
-            <div class="vs-li-desc"><code>400×400px</code>, opacity <code>0.12</code>, posição center (atrás do texto). Diferente dos demais studies.</div>
+          <div class="cp-attribution">Catherine Turf, Moment Factory</div>
+          <div class="cp-meta">HEAD OF CREATIVE &middot; 25+ ANOS &middot; 40+ PA&Iacute;SES</div>
+          <div class="cp-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.19667 51.75458"><path fill="currentColor" d="M8.15479,17.66986c-.10727,4.76875.03115,9.5285.41527,14.27922.25365,3.1651,1.03955,6.29608,1.74645,9.47888C12.17932,49.84272-.28837,51.03399.0051,42.2846c.35921-10.7694,2.02753-21.07894,5.00492-30.92856.43105-1.41773,1.65413-3.47677,3.2464-2.21435.53746.42306.92911.9969,1.17496,1.72154l5.78538,16.91602c.23584.68769.41046.67353.52387-.04254,1.02383-6.35386,2.74577-12.56867,5.16579-18.64433,2.42341-6.08573,7.57839-4.14271,9.40284.91599,2.77922,7.71993,3.71882,15.26481,4.54493,24.0988.01976.18583.11541.20673.28695.06271,5.16382-4.20649,10.48613-8.20113,15.96693-11.98388.2477-.17071.22158-.25977-.07835-.26709-3.61598-.09368-7.23981-.18066-10.87148-.26095-7.39821-.16475-4.36055-6.1619-1.09576-9.14847,3.1263-2.86316,6.25148-5.72857,9.37556-8.59623,1.40786-1.29146,2.61261-3.41267,5.0914-3.82386,5.89972-.9766,7.89921,6.29685,3.23346,9.68677-3.83797,2.79228-7.80539,5.39743-11.90226,7.81541-.15464.09367-.14189.15021.03827.16962,3.88277.43335,7.73249.3423,11.54916-.27318,2.22015-.35804,3.71273-2.03541,5.76647-2.29809,3.64903-.46082,6.04224,3.15361,4.51287,6.37544-.40245.85424-1.13742,1.76487-2.20492,2.73191-9.11467,8.26941-20.20634,14.6041-28.33323,22.56665-1.08504,1.06379-2.30373,3.42673-3.57933,4.09058-4.6234,2.39615-8.52986-.9142-8.76183-5.62878-.18359-3.7576-1.48526-26.94142-1.86815-26.88513-.09989.01549-.20829.14727-.27434.33352-1.46726,4.3048-2.51335,8.71175-3.13827,13.2209-.12499.90632-.43616,1.72773-.9335,2.46426-1.56103,2.29841-3.54903-.8048-4.06681-2.08179-2.07112-5.11908-3.79413-9.98508-5.16903-14.59797-.02544-.08589-.07445-.14821-.12558-.15976l-.05874-.0085c-.02576-.00602-.05156.01476-.05761.04636-.00077.00405-.00119.00814-.00126.01226l-.00003-.00003Z"/></svg>
           </div>
         </div>
 
-        <div class="vs-override-banner" style="border-left-color: #A85A30; margin-top: 24px;">
-          <div class="vs-label">Quando usar Typo C</div>
-          <p>
-            Reservado para <strong style="color: var(--text-primary);">Teses Proprietárias e Ghost Concepts</strong> — peças onde
-            MSCREATIVE.SYSTEMS™ fala sem atribuição a speaker externo. A respiração extrema do Cormorant
-            sinaliza autoria original vs. curadoria. Arquivo canônico:
-            <code>studies/offf_2026/offf_typo_C_cormorant.html</code>
-          </p>
+        <!-- TOKENS GRID -->
+        <div class="chumbo-tokens">
+          <div class="chumbo-token-card" onclick="copyColor('#6B6358')">
+            <div class="chumbo-token-swatch" style="background: #6B6358;"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Headline</div>
+              <div class="ct-value">#6B6358</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('#9A7A28')">
+            <div class="chumbo-token-swatch" style="background: #9A7A28;"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Emphasis</div>
+              <div class="ct-value">#9A7A28</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('#8A6C20')">
+            <div class="chumbo-token-swatch" style="background: #8A6C20;"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Accent Num</div>
+              <div class="ct-value">#8A6C20</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('#6A5418')">
+            <div class="chumbo-token-swatch" style="background: #6A5418;"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Rule End</div>
+              <div class="ct-value">#6A5418</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.4)')">
+            <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.4);"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Body</div>
+              <div class="ct-value">rgba(140,130,115, 0.4)</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.55)')">
+            <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.55);"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Attribution</div>
+              <div class="ct-value">rgba(140,130,115, 0.55)</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('rgba(140, 130, 115, 0.18)')">
+            <div class="chumbo-token-swatch" style="background: rgba(140, 130, 115, 0.18);"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Meta</div>
+              <div class="ct-value">rgba(140,130,115, 0.18)</div>
+            </div>
+          </div>
+          <div class="chumbo-token-card" onclick="copyColor('rgba(154, 122, 40, 0.06)')">
+            <div class="chumbo-token-swatch" style="background: rgba(154, 122, 40, 0.06); border: 1px dashed rgba(154,122,40,0.2);"></div>
+            <div class="chumbo-token-info">
+              <div class="ct-name">Brand Mark</div>
+              <div class="ct-value">rgba(154,122,40, 0.06)</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 24px; font-size: 13px; color: var(--ds-text-muted); font-style: italic;">
+          Se o leitor percebe as cores antes de perceber o conte&uacute;do, o Chumbo Quente falhou.
+        </p>
+      </div>
+
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block">
+          <div class="ds-code-header">
+            <span class="ds-code-label">CSS &mdash; Chumbo Quente Tokens</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>/* Chumbo Quente &mdash; Product Accent (Gold) */
+--ds-accent-gold:      #D4AF37;
+--ds-accent-gold-dark: #8B6914;
+
+/* Headline */     #6B6358
+/* Emphasis */     #9A7A28
+/* Accent Num */   #8A6C20
+/* Rule End */     #6A5418
+/* Body */         rgba(140, 130, 115, 0.4)
+/* Attribution */  rgba(140, 130, 115, 0.55)
+/* Meta */         rgba(140, 130, 115, 0.18)
+/* Brand Mark */   rgba(154, 122, 40, 0.06)</code></pre>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════ EDITORIAL TYPOGRAPHY SYSTEM ═══════ -->
-  <section id="editorial-system">
-    <div class="section-header">
-      <div class="section-label">Seção 6</div>
-      <h2 class="section-title">Editorial Typography — Dual-Stack System</h2>
-      <p class="section-desc">
-        Subsistema tipográfico editorial V1. Coexiste com o stack de produto — não substitui.
-        Produto reconhece em 2 segundos. Editorial convida à leitura.
-        O conector entre os dois: Space Mono.
-      </p>
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V3.0</span></span>
+      <span class="footer-text">Design n&atilde;o &eacute; prefer&ecirc;ncia. &Eacute; <span class="footer-accent">protocolo</span>.</span>
+    </footer>
 
-    <!-- SIDE-BY-SIDE COMPARISON -->
-    <h3 class="subsection-title" style="margin-bottom: 8px;">Comparação lado a lado</h3>
-    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Mesma headline, mesma paleta-base, mesma hierarquia. A diferença é o stack tipográfico — e o contexto.</p>
+  </main>
 
-    <div class="eds-comparison">
-      <div class="eds-col product">
-        <div class="eds-badge">Stack Produto · Chumbo Quente</div>
-        <div class="eds-headline">O CRIATIVO MAIS <span>SÊNIOR</span> É O MAIS <span>IMPOTENTE</span></div>
-        <hr class="eds-rule">
-        <div class="eds-body">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia.</div>
-        <div class="eds-stack">Anton · DM Sans · Space Mono</div>
-      </div>
-      <div class="eds-col editorial">
-        <div class="eds-badge">Stack Editorial · Chumbo Puro</div>
-        <div class="eds-headline">O criativo mais <em>sênior</em> é o mais <em>impotente</em></div>
-        <hr class="eds-rule">
-        <div class="eds-body">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia.</div>
-        <div class="eds-stack">IBM Plex Sans · Libre Caslon Text · Space Mono</div>
-      </div>
-    </div>
+  <!-- TOAST -->
+  <div class="toast" id="toast">Copiado!</div>
 
-    <!-- TYPE STACKS TABLE -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Famílias Tipográficas</h3>
-    <table class="ds-table">
-      <thead>
-        <tr><th>Stack</th><th>Display / Headline</th><th>Emphasis</th><th>Body</th><th>Labels</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="color: #9A7A28; font-family: var(--font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Produto</td>
-          <td><code>Anton</code> ALL CAPS</td>
-          <td>Accent color (sem font swap)</td>
-          <td><code>DM Sans</code> 400/500</td>
-          <td><code>Space Mono</code></td>
-        </tr>
-        <tr>
-          <td style="color: #A85A30; font-family: var(--font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Editorial</td>
-          <td><code>IBM Plex Sans</code> 300</td>
-          <td><code>Libre Caslon Text</code> italic (+10-15%)</td>
-          <td><code>IBM Plex Sans</code> 300/400</td>
-          <td><code>Space Mono</code></td>
-        </tr>
-        <tr>
-          <td style="color: #6A6A6A; font-family: var(--font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Typo C</td>
-          <td><code>Cormorant Garamond</code> 300</td>
-          <td><code>Cormorant Garamond</code> italic 600</td>
-          <td><code>DM Sans</code> 300</td>
-          <td><code>Space Mono</code></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- LIVE TYPE SAMPLES -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Amostras Tipográficas ao Vivo</h3>
-    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 28px 24px;">
-      <div class="offf-font-sample">
-        <div class="ofs-preview" style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 24px; color: #6A6A6A; letter-spacing: -0.02em;">
-          O criativo mais <span style="font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 28px; color: #A85A30;">sênior</span> da sala
-        </div>
-        <div class="ofs-meta">IBM Plex Sans 300 + Libre Caslon Text italic</div>
-      </div>
-      <div class="offf-font-sample">
-        <div class="ofs-preview" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 26px; color: #6A6A6A; letter-spacing: -0.01em;">
-          Tudo que a IA <span style="font-weight: 600; font-style: italic; color: #A85A30;">consegue imitar</span>
-        </div>
-        <div class="ofs-meta">Cormorant Garamond 300 + italic 600</div>
-      </div>
-      <div class="offf-font-sample">
-        <div class="ofs-preview" style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 22px; color: #6A6A6A;">
-          Soberania Criativa Não Se <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 25px; color: #A85A30;">Negocia</span>
-        </div>
-        <div class="ofs-meta">Inter 300 + Instrument Serif italic (Study 02)</div>
-      </div>
-    </div>
-
-    <!-- ROUTING MATRIX -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Routing — Quando usar cada stack</h3>
-    <div class="eds-routing-grid">
-      <div class="eds-route-card">
-        <div class="eds-rc-arrow">→</div>
-        <div>
-          <div class="eds-rc-context">Site, UI, codex cards, navegação</div>
-          <div class="eds-rc-stack" style="color: #9A7A28;">Stack Produto</div>
-          <div class="eds-rc-fonts">Anton + DM Sans + Space Mono</div>
-        </div>
-      </div>
-      <div class="eds-route-card">
-        <div class="eds-rc-arrow">→</div>
-        <div>
-          <div class="eds-rc-context">Stories editoriais, carousels de curadoria</div>
-          <div class="eds-rc-stack" style="color: #A85A30;">Stack Editorial</div>
-          <div class="eds-rc-fonts">IBM Plex Sans + Libre Caslon Text + Space Mono</div>
-        </div>
-      </div>
-      <div class="eds-route-card">
-        <div class="eds-rc-arrow">→</div>
-        <div>
-          <div class="eds-rc-context">Artigos Substack, LinkedIn, newsletter</div>
-          <div class="eds-rc-stack" style="color: #A85A30;">Stack Editorial</div>
-          <div class="eds-rc-fonts">IBM Plex Sans + Libre Caslon Text + Space Mono</div>
-        </div>
-      </div>
-      <div class="eds-route-card">
-        <div class="eds-rc-arrow">→</div>
-        <div>
-          <div class="eds-rc-context">CTA de produto em peça editorial</div>
-          <div class="eds-rc-stack" style="color: #9A7A28;">Produto (overlay)</div>
-          <div class="eds-rc-fonts">Anton (só CTA) + Space Mono</div>
-        </div>
-      </div>
-      <div class="eds-route-card">
-        <div class="eds-rc-arrow">→</div>
-        <div>
-          <div class="eds-rc-context">Teses proprietárias, Ghost Concepts</div>
-          <div class="eds-rc-stack" style="color: #6A6A6A;">Typo C (high-fashion)</div>
-          <div class="eds-rc-fonts">Cormorant Garamond + DM Sans + Space Mono</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CSS TOKENS -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">CSS Tokens Editoriais</h3>
-    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 20px 24px; overflow-x: auto;">
-      <pre style="font-family: var(--font-label); font-size: 11px; color: var(--text-body); line-height: 1.6; margin: 0;"><code style="color: var(--text-body);">:root {
-  <span style="color: var(--text-muted);">/* Families */</span>
-  --ed-font-headline:  <span style="color: #A85A30;">'IBM Plex Sans'</span>, sans-serif;
-  --ed-font-emphasis:  <span style="color: #A85A30;">'Libre Caslon Text'</span>, serif;
-  --ed-font-body:      <span style="color: #A85A30;">'IBM Plex Sans'</span>, sans-serif;
-  --ed-font-label:     <span style="color: #A85A30;">'Space Mono'</span>, monospace;
-
-  <span style="color: var(--text-muted);">/* Sizes (clamps) */</span>
-  --ed-h1-size:       clamp(36px, 4.5vw, <span style="color: #A85A30;">54px</span>);
-  --ed-emphasis-size: clamp(42px, 5.2vw, <span style="color: #A85A30;">62px</span>);
-  --ed-subtitle-size: clamp(16px, 1.8vw, <span style="color: #A85A30;">19px</span>);
-  --ed-body-size:     clamp(15px, 1.6vw, <span style="color: #A85A30;">17px</span>);
-  --ed-quote-size:    clamp(22px, 2.6vw, <span style="color: #A85A30;">28px</span>);
-  --ed-label-size:    clamp(9px, 0.85vw, <span style="color: #A85A30;">11px</span>);
-
-  <span style="color: var(--text-muted);">/* Palette (Chumbo Puro + Electric Orange) */</span>
-  --ed-text-headline: <span style="color: #6A6A6A;">#6A6A6A</span>;
-  --ed-text-emphasis: <span style="color: #A85A30;">#A85A30</span>;
-  --ed-text-body:     rgba(130,130,130, 0.4);
-  --ed-accent-primary:   <span style="color: #A85A30;">#A85A30</span>;
-  --ed-accent-secondary: <span style="color: #6A3818;">#6A3818</span>;
-}</code></pre>
-    </div>
-
-    <!-- DON'TS -->
-    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Nunca — Regras de Coexistência</h3>
-    <div class="rules-grid">
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Misturar Anton e Libre Caslon Text no mesmo bloco visual</div>
-      </div>
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Misturar DM Sans e IBM Plex Sans no mesmo bloco visual</div>
-      </div>
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Usar IBM Plex Sans Bold (700+) em headlines editoriais — o peso é Light (300)</div>
-      </div>
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Usar Libre Caslon Text sem itálico (exceção: drop cap em peso 700)</div>
-      </div>
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Usar Anton em peças editoriais — pertence exclusivamente ao stack de produto</div>
-      </div>
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Usar stack editorial em cards de codex — viola reconhecimento de produto</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ EDITORIAL FORMATS ═══════ -->
-  <section id="editorial-formats">
-    <div class="section-header">
-      <div class="section-label">Seção 6.1</div>
-      <h2 class="section-title">Formatos Editoriais — Specs por Canal</h2>
-      <p class="section-desc">
-        7 formatos editoriais com specs tipográficas e safe zones calibradas.
-        Arquivo de estudos: <a href="studies/editorial_typography/" style="color: #A85A30; text-decoration: none; border-bottom: 1px solid rgba(168,90,48,0.3);">studies/editorial_typography/</a>
-      </p>
-    </div>
-
-    <table class="ds-table">
-      <thead>
-        <tr><th>Formato</th><th>Dim</th><th>Headline</th><th>Emphasis</th><th>Subtitle</th><th>Label</th></tr>
-      </thead>
-      <tbody>
-        <tr><td style="color: #A85A30;">Story</td><td>1080×1920</td><td>54px / 1.12</td><td>62px / 1.12</td><td>19px / 1.65</td><td>10px / 0.18em</td></tr>
-        <tr><td style="color: #A85A30;">Carousel Cover</td><td>1080×1350</td><td>48px / 1.14</td><td>54px / 1.14</td><td>17px / 1.6</td><td>10px / 0.18em</td></tr>
-        <tr><td style="color: #A85A30;">Carousel Content</td><td>1080×1350</td><td>38px / 1.2</td><td>44px / 1.2</td><td>16px / 1.6</td><td>10px / 0.18em</td></tr>
-        <tr><td style="color: #A85A30;">Substack Header</td><td>1100×400</td><td>42px / 1.15</td><td>48px / 1.15</td><td>18px / 1.55</td><td>11px / 0.2em</td></tr>
-        <tr><td style="color: #A85A30;">LinkedIn Post</td><td>1200×628</td><td>40px / 1.15</td><td>46px / 1.15</td><td>16px / 1.55</td><td>9px / 0.18em</td></tr>
-        <tr><td style="color: #A85A30;">Newsletter Header</td><td>1200×500</td><td>36px / 1.2</td><td>42px / 1.2</td><td>16px / 1.55</td><td>10px / 0.18em</td></tr>
-        <tr><td style="color: #A85A30;">Open Graph</td><td>1200×630</td><td>38px / 1.15</td><td>44px / 1.15</td><td>16px / 1.5</td><td>9px / 0.18em</td></tr>
-      </tbody>
-    </table>
-
-    <h3 class="subsection-title" style="margin-top: 40px; margin-bottom: 20px;">Safe Zones</h3>
-    <table class="ds-table">
-      <thead>
-        <tr><th>Formato</th><th>Pad Superior</th><th>Pad Inferior</th><th>Pad Lateral</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Story</td><td>174px</td><td>214px</td><td>72px</td></tr>
-        <tr><td>Carousel</td><td>120px</td><td>140px</td><td>64px</td></tr>
-        <tr><td>Substack</td><td>72px</td><td>48px</td><td>80px</td></tr>
-        <tr><td>LinkedIn</td><td>72px</td><td>72px</td><td>80px</td></tr>
-        <tr><td>Newsletter</td><td>64px</td><td>56px</td><td>72px</td></tr>
-        <tr><td>Open Graph</td><td>56px</td><td>48px</td><td>64px</td></tr>
-      </tbody>
-    </table>
-
-    <!-- SPECIAL ELEMENTS -->
-    <h3 class="subsection-title" style="margin-top: 40px; margin-bottom: 20px;">Elementos Tipográficos Especiais</h3>
-    <div class="vs-layout-grid">
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Speaker Card</div>
-        <div class="vs-li-desc">Caixa <code>64×64px</code> border accent. Initials: Libre Caslon italic <code>28px</code>. Nome: IBM Plex Sans 400 <code>17px</code>. Role: Space Mono <code>9px</code> upper.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Pull Quote</div>
-        <div class="vs-li-desc">Libre Caslon Text italic <code>24–28px</code>. Border-left: <code>3px</code> accent @ <code>0.2</code>. Padding-left: <code>28px</code>. Max-width: <code>640px</code>.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Section Kicker</div>
-        <div class="vs-li-desc">Space Mono <code>11px</code> upper, tracking <code>0.25em</code>. Cor: accent @ <code>0.6</code>. Margin-bottom: <code>24px</code> antes da headline.</div>
-      </div>
-      <div class="vs-layout-item">
-        <div class="vs-li-label">Issue Badge</div>
-        <div class="vs-li-desc">Space Mono <code>9px</code> upper. Padding <code>6px 14px</code>. Border <code>1px</code> accent @ <code>0.25</code>. Border-radius: <code>2px</code> (quase reto).</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ DO'S AND DON'TS ═══════ -->
-  <section id="rules">
-    <div class="section-header">
-      <div class="section-label">Seção 7</div>
-      <h2 class="section-title">Do's & Don'ts</h2>
-    </div>
-
-    <div class="rules-grid">
-      <div class="rule-card do">
-        <div class="rule-badge">DO</div>
-        <div class="rule-text">Use Anton apenas para títulos curtos e nomes de produtos.</div>
-        <div class="rule-reason">Ela deve funcionar como bloco arquitetural, não como texto de leitura.</div>
-      </div>
-
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Não use o símbolo TM nos layouts visuais.</div>
-        <div class="rule-reason">Ele existe apenas em texto corrido (copy), nunca nas artes renderizadas.</div>
-      </div>
-
-      <div class="rule-card do">
-        <div class="rule-badge">DO</div>
-        <div class="rule-text">Respeite o grid background (opacity: 0.025).</div>
-        <div class="rule-reason">Serve para dar textura de sistema/engenharia, sem poluir.</div>
-      </div>
-
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Não inverta as cores dos Codexes.</div>
-        <div class="rule-reason">A cor é a principal âncora de memorização para diferenciar produtos.</div>
-      </div>
-
-      <div class="rule-card do">
-        <div class="rule-badge">DO</div>
-        <div class="rule-text">Mantenha opacidade do Body Text em 0.85 no modo Dark.</div>
-        <div class="rule-reason">Garante que o texto não compita com títulos e ícones.</div>
-      </div>
-
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Não use Anton em parágrafos.</div>
-        <div class="rule-reason">A condensação extrema destrói legibilidade em blocos de texto.</div>
-      </div>
-
-      <div class="rule-card do">
-        <div class="rule-badge">DO</div>
-        <div class="rule-text">Use os ícones exatos definidos na Seção 3.</div>
-        <div class="rule-reason">Eles carregam carga semântica essencial.</div>
-      </div>
-
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Não adicione "Accent Slides" (fundo 100% colorido).</div>
-        <div class="rule-reason">O sistema F7 Dark Heavy depende do escuro para manter a gravidade.</div>
-      </div>
-
-      <div class="rule-card do">
-        <div class="rule-badge">DO</div>
-        <div class="rule-text">Aplique o rule gradient na capa (Accent 1 → Accent 2).</div>
-        <div class="rule-reason">Marca visual que identifica o produto e cria hierarquia imediata.</div>
-      </div>
-
-      <div class="rule-card dont">
-        <div class="rule-badge">DON'T</div>
-        <div class="rule-text">Não altere o tamanho do grid (54×54px).</div>
-        <div class="rule-reason">Proporcional à resolução Instagram e ao ritmo visual do design.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ VERSIONAMENTO ═══════ -->
-  <section id="versioning">
-    <div class="section-header">
-      <div class="section-label">Seção 8</div>
-      <h2 class="section-title">Versionamento</h2>
-      <p class="section-desc">Este documento é vivo. Qualquer mudança deve ser registrada aqui.</p>
-    </div>
-
-    <table class="ds-table version-table">
-      <thead>
-        <tr>
-          <th>Versão</th>
-          <th>Data</th>
-          <th>Mudanças</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>v1.0</code></td>
-          <td>17.04.2026</td>
-          <td>Tipografia: Playfair Display → Anton. Refinamento de contraste e espaçamento. Aprovação final de paletas e ícones.</td>
-        </tr>
-        <tr>
-          <td><code>v2.1</code></td>
-          <td>17.04.2026</td>
-          <td>Modo Chumbo Quente aprovado (§2.3). Formato Story 1080×1920 adicionado (§4.0). Ícone MS SVG inline como padrão de assinatura.</td>
-        </tr>
-        <tr>
-          <td><code>v2.2</code></td>
-          <td>17.04.2026</td>
-          <td>Accent Chumbo Quente: Ouro Oxidado (#8B7A4A) → Âmbar Elétrico (#9A7A28/#8A6C20/#6A5418). Mais vibração, mesma disciplina low-contrast.</td>
-        </tr>
-        <tr>
-          <td><code>v2.3</code></td>
-          <td>17.04.2026</td>
-          <td>Codex Geometries (§3.5): 4 formas 3D wireframe — Design (Tensegrity), Style (Turbine), Neuro (Dendrítico), Execution (Gyroscope). Canvas 2D com projeção perspectiva e rotação contínua.</td>
-        </tr>
-        <tr>
-          <td><code>v2.4</code></td>
-          <td>17.04.2026</td>
-          <td>§3.5 expandida para 3D Geometries: MSCREATIVE.SYSTEMS (Icosaedro) + Creative Oracle (Möbius Strip) acima dos 4 Codexes. 6 formas wireframe no total.</td>
-        </tr>
-        <tr>
-          <td><code>v2.5</code></td>
-          <td>18.04.2026</td>
-          <td>§5 Visual Studies — Carousel Capa (Study 01): 7 paletas Chumbo Quente por produto, 7 polígonos 3D (+ Fronteiristas Losango), headlines, ASCII fragments, layout specs. Override Chumbo Quente para carrosséis aprovado.</td>
-        </tr>
-        <tr>
-          <td><code>v2.6</code></td>
-          <td>18.04.2026</td>
-          <td>§5.2 OFFF Story Factory (Study 02): formato Story 9:16 para OFFF Barcelona 2026. Stack tipográfica Instrument Serif + Inter + Space Mono. 7 camadas obrigatórias, regras de variação, protocolo de ingestão speaker→insights→Stories. Paleta MSCS Chumbo Puro + Electric Orange com tokens para speaker card.</td>
-        </tr>
-        <tr>
-          <td><code>v2.7</code></td>
-          <td>18.04.2026</td>
-          <td>§5.3 Cormorant Garamond (Study 03): variante high-fashion serif com drop cap, rule thin, icosaedro centrado. §6 Editorial Typography Dual-Stack System: IBM Plex Sans + Libre Caslon Text como stack editorial, routing matrix Produto vs Editorial, CSS tokens, 7 formatos editoriais com specs (Story→OG). Integração do design bundle Claude Design.</td>
-        </tr>
-        <tr>
-          <td><code>v2.8</code></td>
-          <td>18.04.2026</td>
-          <td>Text-primary: #F5F7FA (off-white frio, ~97% lum) → #B2A898 (Areia Oxidado, warm gray ~66% lum). Aprovado após 2 rounds de comparação visual (5 neutros + 5 warm). Body e muted atualizados para rgba warm correspondente. Wireframe MSCS Icosaedro atualizado para warm.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p style="margin-top: 32px; font-size: 14px; color: var(--text-muted);">
-      <strong style="color: var(--text-primary);">Próximas iterações:</strong>
-      Expansão para os demais 6 produtos (Fronteiristas, Creative Oracle, 4 Codexes) com suas paletas e ícones específicos.
-    </p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.8</span></span>
-    <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
-  </footer>
-
-</main>
-
-<!-- TOAST -->
-<div class="toast" id="toast">Copiado!</div>
-
-<script>
-// Sidebar toggle (mobile)
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-
-// Active nav tracking
-const sections = document.querySelectorAll('section, .hero');
-const navLinks = document.querySelectorAll('.sidebar nav a');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.remove('active'));
-      const id = entry.target.id;
-      const activeLink = document.querySelector(`.sidebar nav a[href="#${id}"]`);
-      if (activeLink) activeLink.classList.add('active');
-    }
-  });
-}, { rootMargin: '-20% 0px -70% 0px' });
-
-sections.forEach(section => observer.observe(section));
-
-// Copy color to clipboard
-function copyColor(value) {
-  navigator.clipboard.writeText(value).then(() => {
-    const toast = document.getElementById('toast');
-    toast.textContent = `Copiado: ${value}`;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2000);
-  });
-}
-
-// Close sidebar on link click (mobile)
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      document.getElementById('sidebar').classList.remove('open');
-    }
-  });
-});
-
-// ═══════════════════════════════════════════════════════════
-// CODEX WIREFRAME ENGINE
-// ═══════════════════════════════════════════════════════════
-
-(function() {
-  function rotateX(v, a) {
-    const c = Math.cos(a), s = Math.sin(a);
-    return [v[0], v[1]*c - v[2]*s, v[1]*s + v[2]*c];
-  }
-  function rotateY(v, a) {
-    const c = Math.cos(a), s = Math.sin(a);
-    return [v[0]*c + v[2]*s, v[1], -v[0]*s + v[2]*c];
-  }
-  function rotateZ(v, a) {
-    const c = Math.cos(a), s = Math.sin(a);
-    return [v[0]*c - v[1]*s, v[0]*s + v[1]*c, v[2]];
-  }
-
-  function project(v, fov, size) {
-    const z = v[2] + fov;
-    const scale = fov / z;
-    return [v[0] * scale * size/2 + size/2, v[1] * scale * size/2 + size/2];
-  }
-
-  function renderWireframe(canvasId, geometry, color1, color2, speeds, fov) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const size = canvas.width;
-    fov = fov || 3.5;
-    let start = null;
-
-    function draw(timestamp) {
-      if (!start) start = timestamp;
-      const elapsed = (timestamp - start) / 1000;
-      ctx.clearRect(0, 0, size, size);
-
-      const ax = elapsed * speeds[0];
-      const ay = elapsed * speeds[1];
-      const az = elapsed * speeds[2];
-
-      const projected = geometry.vertices.map(v => {
-        let r = rotateX(v, ax);
-        r = rotateY(r, ay);
-        r = rotateZ(r, az);
-        return project(r, fov, size);
-      });
-
-      const depths = geometry.vertices.map(v => {
-        let r = rotateX(v, ax);
-        r = rotateY(r, ay);
-        r = rotateZ(r, az);
-        return r[2];
-      });
-
-      geometry.edges.forEach(([a, b]) => {
-        const [x1, y1] = projected[a];
-        const [x2, y2] = projected[b];
-        const avgDepth = (depths[a] + depths[b]) / 2;
-        const alpha = Math.min(1, Math.max(0.15, 0.3 + 0.7 * ((avgDepth + 2) / 4) * 0.85));
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        const grad = ctx.createLinearGradient(x1, y1, x2, y2);
-        grad.addColorStop(0, color1);
-        grad.addColorStop(1, color2);
-        ctx.strokeStyle = grad;
-        ctx.globalAlpha = alpha;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-      });
-
-      projected.forEach((p, i) => {
-        const alpha = Math.min(1, Math.max(0.2, 0.3 + 0.7 * ((depths[i] + 2) / 4)));
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], 1.8, 0, Math.PI * 2);
-        ctx.fillStyle = color1;
-        ctx.globalAlpha = alpha * 0.6;
-        ctx.fill();
-      });
-
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-  }
-
-  // ── DESIGN CODEX: Tensegrity ──
-  const designGeo = {
-    vertices: [
-      [0.9,0.5,0.3],[-0.9,-0.5,-0.3],[-0.3,0.9,-0.5],[0.3,-0.9,0.5],
-      [-0.5,-0.3,0.9],[0.5,0.3,-0.9],[0,0,0],
-      [1.2,0.8,0.5],[-1.2,-0.8,-0.5],[-0.5,1.2,-0.8],
-      [0.5,-1.2,0.8],[-0.8,-0.5,1.2],[0.8,0.5,-1.2]
-    ],
-    edges: [
-      [0,1],[2,3],[4,5],
-      [0,2],[0,4],[0,5],[0,3],[1,2],[1,4],[1,3],[1,5],[2,4],[3,5],
-      [0,7],[1,8],[2,9],[3,10],[4,11],[5,12],
-      [6,0],[6,1],[6,2],[6,3],[6,4],[6,5]
-    ]
-  };
-
-  // ── STYLE CODEX: Turbine ──
-  const styleGeo = (function() {
-    const verts = [];
-    const edges = [];
-    const blades = 5;
-    // Central axis
-    verts.push([0, 1.2, 0]);   // 0 top
-    verts.push([0, 0.4, 0]);   // 1 upper mid
-    verts.push([0, -0.4, 0]);  // 2 lower mid
-    verts.push([0, -1.2, 0]);  // 3 bottom
-    // 5 blades: hub + tip + trail
-    for (let i = 0; i < blades; i++) {
-      const angle = (i / blades) * Math.PI * 2;
-      const twist = i * 0.3;
-      const ca = Math.cos(angle), sa = Math.sin(angle);
-      const hy = 0.3 - i * 0.15;
-      verts.push([ca * 0.15, hy, sa * 0.15]);          // hub: 4+i*3
-      const tipA = angle + twist;
-      verts.push([Math.cos(tipA) * 1.1, hy - 0.2, Math.sin(tipA) * 1.1]); // tip: 4+i*3+1
-      const trA = angle - 0.4 + twist;
-      verts.push([Math.cos(trA) * 0.85, hy + 0.15, Math.sin(trA) * 0.85]); // trail: 4+i*3+2
-    }
-    // Outer ring nodes
-    for (let i = 0; i < blades; i++) {
-      const angle = (i / blades) * Math.PI * 2 + i * 0.3;
-      verts.push([Math.cos(angle) * 1.25, -0.5 + Math.sin(angle * 0.5) * 0.3, Math.sin(angle) * 1.25]);
-    }
-    // Edges: axis
-    edges.push([0, 1], [1, 2], [2, 3]);
-    for (let i = 0; i < blades; i++) {
-      const hub = 4 + i * 3, tip = hub + 1, trail = hub + 2;
-      edges.push([hub, tip], [hub, trail], [tip, trail]);
-      edges.push([1, hub], [2, hub]);
-      edges.push([tip, 19 + i]);
-      const nextHub = 4 + ((i + 1) % blades) * 3;
-      edges.push([trail, nextHub]);
-    }
-    for (let i = 0; i < blades; i++) {
-      edges.push([19 + i, 19 + (i + 1) % blades]);
-    }
-    edges.push([0, 4], [3, 4 + (blades - 1) * 3]);
-    return { vertices: verts, edges: edges };
-  })();
-
-  // ── NEURO CODEX: Dendrítico ──
-  const neuroGeo = {
-    vertices: [
-      [0,0,0],
-      [0.1,0.7,0.1],[0.3,1.1,-0.2],[-0.2,1.3,0.1],[0.1,1,0.5],
-      [0.8,0.2,0.1],[1.2,0.5,-0.1],[1.1,0.1,0.5],[0.9,-0.3,0.2],
-      [-0.7,0.3,0.2],[-1.1,0,-0.2],[-0.9,0.5,-0.4],[-0.8,-0.2,0.4],
-      [0.2,0.1,0.9],[-0.1,0.4,1.2],[0.4,-0.2,1.1],
-      [0.1,-0.8,0.1],[0.4,-1.1,-0.2],[-0.2,-1.2,0.1],[0.1,-0.9,0.5]
-    ],
-    edges: [
-      [0,1],[0,5],[0,9],[0,13],[0,16],
-      [1,2],[1,3],[1,4],[2,3],[3,4],
-      [5,6],[5,7],[5,8],[6,7],[7,8],
-      [9,10],[9,11],[9,12],[10,11],[11,12],
-      [13,14],[13,15],[14,15],
-      [16,17],[16,18],[16,19],[17,18],[18,19],
-      [1,5],[5,13],[13,9],[9,1],[2,6],[10,14],[17,8]
-    ]
-  };
-
-  // ── EXECUTION CODEX: Gyroscope ──
-  const execGeo = (function() {
-    const verts = [];
-    const edges = [];
-    const segs = 16;
-    const r = 1.1;
-    // Ring 1: XY plane (0..15)
-    for (let i = 0; i < segs; i++) {
-      const a = (i / segs) * Math.PI * 2;
-      verts.push([Math.cos(a) * r, Math.sin(a) * r, 0]);
-    }
-    // Ring 2: XZ plane (16..31)
-    for (let i = 0; i < segs; i++) {
-      const a = (i / segs) * Math.PI * 2;
-      verts.push([Math.cos(a) * r, 0, Math.sin(a) * r]);
-    }
-    // Ring 3: YZ plane (32..47)
-    for (let i = 0; i < segs; i++) {
-      const a = (i / segs) * Math.PI * 2;
-      verts.push([0, Math.cos(a) * r, Math.sin(a) * r]);
-    }
-    // Nucleus (48) + axis tips (49-54)
-    verts.push([0,0,0]);
-    verts.push([0.3,0,0],[-0.3,0,0],[0,0.3,0],[0,-0.3,0],[0,0,0.3],[0,0,-0.3]);
-
-    for (let i = 0; i < segs; i++) edges.push([i, (i+1) % segs]);
-    for (let i = 0; i < segs; i++) edges.push([16+i, 16+(i+1) % segs]);
-    for (let i = 0; i < segs; i++) edges.push([32+i, 32+(i+1) % segs]);
-    edges.push([48,49],[48,50],[48,51],[48,52],[48,53],[48,54]);
-
-    return { vertices: verts, edges: edges };
-  })();
-
-  // ── MSCREATIVE.SYSTEMS: Icosaedro ──
-  const mscsGeo = (function() {
-    const verts = [];
-    const edges = [];
-    const phi = (1 + Math.sqrt(5)) / 2;
-    const s = 0.85;
-    const raw = [
-      [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
-      [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
-      [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1]
-    ];
-    raw.forEach(v => {
-      const len = Math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
-      verts.push([v[0]/len * s, v[1]/len * s, v[2]/len * s]);
-    });
-    [[0,1],[0,5],[0,7],[0,10],[0,11],
-     [1,5],[1,7],[1,8],[1,9],
-     [2,3],[2,4],[2,6],[2,10],[2,11],
-     [3,4],[3,6],[3,8],[3,9],
-     [4,5],[4,9],[4,11],
-     [5,9],[5,11],
-     [6,7],[6,8],[6,10],
-     [7,8],[7,10],
-     [8,9],[10,11]].forEach(e => edges.push(e));
-    return { vertices: verts, edges: edges };
-  })();
-
-  // ── CREATIVE ORACLE: Möbius Strip ──
-  const oracleGeo = (function() {
-    const verts = [];
-    const edges = [];
-    const segs = 40;
-    const R = 1.0, w = 0.35;
-    for (let i = 0; i < segs; i++) {
-      const t = (i / segs) * Math.PI * 2;
-      const halfT = t / 2;
-      const cx = Math.cos(t) * R, cy = Math.sin(t) * R;
-      const dx = Math.cos(halfT) * w, dz = Math.sin(halfT) * w;
-      verts.push([cx - Math.cos(t)*dx, cy - Math.sin(t)*dx, -dz]);
-      verts.push([cx + Math.cos(t)*dx, cy + Math.sin(t)*dx, dz]);
-    }
-    for (let i = 0; i < segs; i++) {
-      const next = (i + 1) % segs;
-      edges.push([i*2, next*2]);
-      edges.push([i*2+1, next*2+1]);
-      if (i % 2 === 0) edges.push([i*2, i*2+1]);
-    }
-    return { vertices: verts, edges: edges };
-  })();
-
-  // ── RENDER ──
-  // Ecosystem level
-  renderWireframe('cx-mscs',   mscsGeo,   '#B2A898', '#8A8478', [0.12, 0.16, 0.06]);
-  renderWireframe('cx-oracle', oracleGeo, '#D4AF37', '#8B6914', [0.12, 0.18, 0.04]);
-  // Codexes
-  renderWireframe('cx-design', designGeo, '#2563EB', '#1E3A8A', [0.13, 0.16, 0.09]);
-  renderWireframe('cx-style',  styleGeo,  '#FF4D8C', '#FF6B35', [0.10, 0.25, 0.06]);
-  renderWireframe('cx-neuro',  neuroGeo,  '#00C9C8', '#007A7A', [0.14, 0.22, 0.10]);
-  renderWireframe('cx-exec',   execGeo,   '#FF8C00', '#CC5500', [0.12, 0.18, 0.08]);
-})();
-</script>
+  <script src="js/ds-nav.js"></script>
 </body>
 </html>

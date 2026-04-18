@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos — MSCREATIVE.SYSTEMS Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/ds-shell.css">
+<link rel="stylesheet" href="css/ds-sections.css">
+</head>
+<body>
+
+<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h1>MSCREATIVE<br>SYSTEMS</h1>
+    <div class="version">DESIGN SYSTEM V3.0</div>
+  </div>
+  <nav>
+    <div class="nav-section">Fundamentos</div>
+    <a href="index.html#overview">Overview</a>
+    <a href="index.html#typography">Tipografia</a>
+    <a href="index.html#base-colors">Base Cromática</a>
+    <a href="index.html#chumbo-quente">Chumbo Quente</a>
+    <div class="nav-section">Produtos</div>
+    <a href="#color-system" class="active">Sistema Cromático</a>
+    <a href="#codex-geometries">3D Geometries</a>
+    <a href="#identity-assets">Assets de Identidade</a>
+    <div class="nav-section">Formatos</div>
+    <a href="index.html#story-format">Story (9:16)</a>
+    <a href="index.html#carousel">Carousel Pipeline</a>
+    <a href="index.html#contrast">Hierarquia de Contraste</a>
+    <div class="nav-section">Visual Studies</div>
+    <a href="index.html#visual-studies">Carousel Capa (Study 01)</a>
+    <a href="index.html#offf-story-factory">OFFF Story Factory (Study 02)</a>
+    <a href="index.html#typo-cormorant">Cormorant Garamond (Study 03)</a>
+    <div class="nav-section">Editorial Typography</div>
+    <a href="index.html#editorial-system">Dual-Stack System</a>
+    <a href="index.html#editorial-formats">Formatos Editoriais</a>
+    <div class="nav-section">Governança</div>
+    <a href="index.html#rules">Do's & Don'ts</a>
+    <a href="index.html#versioning">Versionamento</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero" id="overview">
+    <div class="rule"></div>
+    <h1><span>Produtos</span></h1>
+    <p class="subtitle">
+      Sistema cromático hierárquico, geometrias 3D wireframe e assets de identidade
+      para cada produto do ecossistema MSCREATIVE.SYSTEMS. Cada entidade tem paleta,
+      forma e linguagem visual próprias — derivadas de função, não de gosto.
+    </p>
+  </header>
+
+  <!-- ═══════ §4 SISTEMA CROMÁTICO ═══════ -->
+  <section id="color-system">
+    <div class="section-header">
+      <div class="section-label">Seção 4</div>
+      <h2 class="section-title">Sistema Cromático</h2>
+      <p class="section-desc">
+        Código cromático derivado da essência funcional de cada produto.
+        Diálogo de temperatura e profundidade.
+      </p>
+      <div class="section-view-toggle">
+        <button class="view-btn active" data-view="showcase" onclick="toggleView('color-system','showcase')">Showcase</button>
+        <button class="view-btn" data-view="code" onclick="toggleView('color-system','code')">Code</button>
+      </div>
+    </div>
+
+    <!-- SHOWCASE VIEW -->
+    <div class="view-showcase">
+      <div class="product-grid">
+
+        <!-- MSCREATIVE.SYSTEMS -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1419 0%, #1a1f2e 100%);">
+            <div class="product-icon">MS</div>
+            <div class="product-name" style="color: #D4AF37;">MSCREATIVE.SYSTEMS</div>
+            <div class="product-tier" style="color: #D4AF37;">SISTEMA-MÃE</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #D4AF37;" data-hex="#D4AF37" onclick="copyColor('#D4AF37')"></div>
+              <div class="product-color-swatch" style="background: #8B6914;" data-hex="#8B6914" onclick="copyColor('#8B6914')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Único metal que não enferruja. Permanência como posicionamento.</div>
+        </div>
+
+        <!-- FRONTEIRISTAS -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #141210 0%, #1E1C18 100%);">
+            <div class="product-icon">◇</div>
+            <div class="product-name" style="color: #C4B89A;">FRONTEIRISTAS</div>
+            <div class="product-tier" style="color: #C4B89A;">CANAL EDITORIAL</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #C4B89A;" data-hex="#C4B89A" onclick="copyColor('#C4B89A')"></div>
+              <div class="product-color-swatch" style="background: #8A7A62;" data-hex="#8A7A62" onclick="copyColor('#8A7A62')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Cor de arquivo, de leitura, de consciência. Sem urgência, sem ruído.</div>
+        </div>
+
+        <!-- CREATIVE ORACLE -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #0F1008 0%, #1E1A08 100%);">
+            <div class="product-icon">※</div>
+            <div class="product-name" style="color: #C8860A;">CREATIVE ORACLE V20</div>
+            <div class="product-tier" style="color: #C8860A;">PRODUTO CORE</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #C8860A;" data-hex="#C8860A" onclick="copyColor('#C8860A')"></div>
+              <div class="product-color-swatch" style="background: #7A4F00;" data-hex="#7A4F00" onclick="copyColor('#7A4F00')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Luz filtrada, julgamento com calor. O árbitro que vê tudo mas não é frio.</div>
+        </div>
+
+        <!-- NEURO CODEX -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #080618 0%, #110E2E 100%);">
+            <div class="product-icon">◎</div>
+            <div class="product-name" style="color: #00C9C8;">NEURO CODEX</div>
+            <div class="product-tier" style="color: #00C9C8;">CODEX — PERCEPÇÃO</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #00C9C8;" data-hex="#00C9C8" onclick="copyColor('#00C9C8')"></div>
+              <div class="product-color-swatch" style="background: #007A7A;" data-hex="#007A7A" onclick="copyColor('#007A7A')"></div>
+            </div>
+          </div>
+          <div class="product-reason">O indigo representa o inconsciente; o turquesa é o sinal que emerge.</div>
+        </div>
+
+        <!-- STYLE CODEX -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #180A12 0%, #261018 100%);">
+            <div class="product-icon">❋</div>
+            <div class="product-name" style="color: #FF4D8C;">STYLE CODEX</div>
+            <div class="product-tier" style="color: #FF4D8C;">CODEX — IDENTIDADE</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #FF4D8C;" data-hex="#FF4D8C" onclick="copyColor('#FF4D8C')"></div>
+              <div class="product-color-swatch" style="background: #FF6B35;" data-hex="#FF6B35" onclick="copyColor('#FF6B35')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Gradiente dual cria tensão visual. Identidade que não para quieta.</div>
+        </div>
+
+        <!-- DESIGN CODEX -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #080C1A 0%, #0F1530 100%);">
+            <div class="product-icon">⊞</div>
+            <div class="product-name" style="color: #2563EB;">DESIGN CODEX</div>
+            <div class="product-tier" style="color: #2563EB;">CODEX — ESTRATÉGIA</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #2563EB;" data-hex="#2563EB" onclick="copyColor('#2563EB')"></div>
+              <div class="product-color-swatch" style="background: #1E3A8A;" data-hex="#1E3A8A" onclick="copyColor('#1E3A8A')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Confiança estrutural, clareza estratégica. O azul que governa, não decora.</div>
+        </div>
+
+        <!-- EXECUTION CODEX -->
+        <div class="product-card">
+          <div class="product-card-bg" style="background: linear-gradient(145deg, #0E0A06 0%, #1A1006 100%);">
+            <div class="product-icon">▶</div>
+            <div class="product-name" style="color: #FF8C00;">EXECUTION CODEX</div>
+            <div class="product-tier" style="color: #FF8C00;">CODEX — EXECUÇÃO</div>
+            <div class="product-colors">
+              <div class="product-color-swatch" style="background: #FF8C00;" data-hex="#FF8C00" onclick="copyColor('#FF8C00')"></div>
+              <div class="product-color-swatch" style="background: #CC5500;" data-hex="#CC5500" onclick="copyColor('#CC5500')"></div>
+            </div>
+          </div>
+          <div class="product-reason">Ação, urgência controlada. O botão que importa quando a estratégia está definida.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CODE VIEW -->
+    <div class="view-code" hidden>
+      <div class="ds-code-block">
+        <div class="ds-code-header">
+          <span class="ds-code-label">CSS — Product Accent Tokens</span>
+          <button class="ds-code-copy" onclick="copyBlock(this)">Copiar</button>
+        </div>
+        <pre><code>/* Product accent palettes — per-product selectors */
+
+[data-product="mscs"]        { --ds-product-accent: #D4AF37; --ds-product-accent-dark: #8B6914; }
+[data-product="fronteiristas"] { --ds-product-accent: #C4B89A; --ds-product-accent-dark: #8A7A62; }
+[data-product="oracle"]      { --ds-product-accent: #C8860A; --ds-product-accent-dark: #7A4F00; }
+[data-product="neuro"]       { --ds-product-accent: #00C9C8; --ds-product-accent-dark: #007A7A; }
+[data-product="style"]       { --ds-product-accent: #FF4D8C; --ds-product-accent-dark: #FF6B35; }
+[data-product="design"]      { --ds-product-accent: #2563EB; --ds-product-accent-dark: #1E3A8A; }
+[data-product="execution"]   { --ds-product-accent: #FF8C00; --ds-product-accent-dark: #CC5500; }
+
+/* Chumbo Quente per-product overrides (carousel capas) */
+
+[data-product="mscs"]        { --ds-cq-bg: #0A0A0E; --ds-cq-headline: #6A6A6A; --ds-cq-emphasis: #A85A30; --ds-cq-rule-end: #6A3818; }
+[data-product="oracle"]      { --ds-cq-bg: #0A0C10; --ds-cq-headline: #5E5545; --ds-cq-emphasis: #8A6A18; --ds-cq-rule-end: #5A4010; }
+[data-product="fronteiristas"] { --ds-cq-bg: #0A0C10; --ds-cq-headline: #5A5550; --ds-cq-emphasis: #8A7A62; --ds-cq-rule-end: #5A5040; }
+[data-product="neuro"]       { --ds-cq-bg: #0A0C10; --ds-cq-headline: #4A4460; --ds-cq-emphasis: #5A9AAA; --ds-cq-rule-end: #3A5A6A; }
+[data-product="style"]       { --ds-cq-bg: #0A0C10; --ds-cq-headline: #5B4C50; --ds-cq-emphasis: #9A6068; --ds-cq-rule-end: #6A3A42; }
+[data-product="design"]      { --ds-cq-bg: #0A0C10; --ds-cq-headline: #4A5060; --ds-cq-emphasis: #5A7A9A; --ds-cq-rule-end: #3A4A6A; }
+[data-product="execution"]   { --ds-cq-bg: #0A0C10; --ds-cq-headline: #5A5040; --ds-cq-emphasis: #9A7048; --ds-cq-rule-end: #6A4828; }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ §5 3D GEOMETRIES ═══════ -->
+  <section id="codex-geometries">
+    <div class="section-header">
+      <div class="section-label">Seção 5</div>
+      <h2 class="section-title">3D Geometries</h2>
+      <p class="section-desc">
+        Cada entidade do ecossistema possui uma forma geométrica 3D wireframe com rotação contínua.
+        Canvas 2D com projeção perspectiva e matrizes de rotação nos 3 eixos.
+      </p>
+      <div class="section-view-toggle">
+        <button class="view-btn active" data-view="showcase" onclick="toggleView('codex-geometries','showcase')">Showcase</button>
+        <button class="view-btn" data-view="code" onclick="toggleView('codex-geometries','code')">Code</button>
+      </div>
+    </div>
+
+    <!-- SHOWCASE VIEW -->
+    <div class="view-showcase">
+
+      <!-- ECOSYSTEM LEVEL: MSCS + Oracle -->
+      <div class="eco-grid">
+        <div class="eco-card" style="border-color: rgba(178, 168, 152, 0.08);">
+          <span class="codex-label codex-label--mscs">MSCREATIVE.SYSTEMS™</span>
+          <span class="codex-name">Icosaedro</span>
+          <span class="codex-shape">20 faces · sólido platônico máximo</span>
+          <canvas data-geometry="icosaedro" data-color1="#B2A898" data-color2="#8A8478" data-speed-x="0.12" data-speed-y="0.16" data-speed-z="0.06" data-fov="3.5" width="240" height="240"></canvas>
+          <p class="codex-meta">Completude do ecossistema. Cada face é um produto, cada aresta uma conexão.</p>
+        </div>
+        <div class="eco-card" style="border-color: rgba(212, 175, 55, 0.1);">
+          <span class="codex-label codex-label--oracle">Creative Oracle™</span>
+          <span class="codex-name">Möbius</span>
+          <span class="codex-shape">Fita torcida · loop infinito</span>
+          <canvas data-geometry="mobius" data-color1="#D4AF37" data-color2="#8B6914" data-speed-x="0.12" data-speed-y="0.18" data-speed-z="0.04" data-fov="3.5" width="240" height="240"></canvas>
+          <p class="codex-meta">Síntese recursiva. Sem início, sem fim. Input vira output vira input.</p>
+        </div>
+      </div>
+
+      <div class="eco-divider">4 Codexes</div>
+
+      <div class="codex-grid">
+        <!-- DESIGN CODEX -->
+        <div class="codex-card">
+          <span class="codex-label codex-label--design">Design Codex</span>
+          <span class="codex-name">Tensegrity</span>
+          <span class="codex-shape">Barras + cabos de tensão</span>
+          <canvas data-geometry="tensegrity" data-color1="#2563EB" data-color2="#1E3A8A" data-speed-x="0.13" data-speed-y="0.16" data-speed-z="0.09" data-fov="3.5" width="200" height="200"></canvas>
+          <p class="codex-meta">Equilíbrio de forças. Estrutura que desafia a percepção.</p>
+        </div>
+
+        <!-- STYLE CODEX -->
+        <div class="codex-card">
+          <span class="codex-label codex-label--style">Style Codex</span>
+          <span class="codex-name">Turbine</span>
+          <span class="codex-shape">Eixo + pás helicoidais</span>
+          <canvas data-geometry="turbine" data-color1="#FF4D8C" data-color2="#FF6B35" data-speed-x="0.10" data-speed-y="0.25" data-speed-z="0.06" data-fov="3.5" width="200" height="200"></canvas>
+          <p class="codex-meta">Energia cinética. Gramática visual em movimento perpétuo.</p>
+        </div>
+
+        <!-- NEURO CODEX -->
+        <div class="codex-card">
+          <span class="codex-label codex-label--neuro">Neuro Codex</span>
+          <span class="codex-name">Dendrítico</span>
+          <span class="codex-shape">Núcleo + ramificações sinápticas</span>
+          <canvas data-geometry="dendritico" data-color1="#00C9C8" data-color2="#007A7A" data-speed-x="0.14" data-speed-y="0.22" data-speed-z="0.10" data-fov="3.5" width="200" height="200"></canvas>
+          <p class="codex-meta">Padrões neurais. Percepção ramificada e conexão transversal.</p>
+        </div>
+
+        <!-- EXECUTION CODEX -->
+        <div class="codex-card">
+          <span class="codex-label codex-label--exec">Execution Codex</span>
+          <span class="codex-name">Gyroscope</span>
+          <span class="codex-shape">3 anéis orbitais + núcleo</span>
+          <canvas data-geometry="gyroscope" data-color1="#FF8C00" data-color2="#CC5500" data-speed-x="0.12" data-speed-y="0.18" data-speed-z="0.08" data-fov="3.5" width="200" height="200"></canvas>
+          <p class="codex-meta">Movimento perpétuo. Precisão mecânica em 3 eixos.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CODE VIEW -->
+    <div class="view-code" hidden>
+      <div class="ds-code-block">
+        <div class="ds-code-header">
+          <span class="ds-code-label">HTML — Wireframe Engine Usage</span>
+          <button class="ds-code-copy" onclick="copyBlock(this)">Copiar</button>
+        </div>
+        <pre><code>&lt;!-- Include the engine --&gt;
+&lt;script src="js/wireframe-engine.js"&gt;&lt;/script&gt;
+
+&lt;!-- Declarative: data attributes auto-init --&gt;
+&lt;canvas data-geometry="icosaedro"
+        data-color1="#B2A898" data-color2="#8A8478"
+        data-speed-x="0.12" data-speed-y="0.16" data-speed-z="0.06"
+        data-fov="3.5"
+        width="240" height="240"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;MSCS_Wireframe.initAllGeometries();&lt;/script&gt;
+
+&lt;!-- Available geometries:
+     icosaedro   — MSCS (20 faces, platonic solid)
+     mobius      — Creative Oracle (twisted loop)
+     tensegrity  — Design Codex (bars + tension cables)
+     turbine     — Style Codex (helicoidal blades)
+     dendritico  — Neuro Codex (synaptic branches)
+     gyroscope   — Execution Codex (3 orbital rings)
+--&gt;
+
+&lt;!-- Manual init (alternative) --&gt;
+&lt;canvas id="my-canvas" width="200" height="200"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  MSCS_Wireframe.initGeometry(
+    'my-canvas', 'tensegrity',
+    '#2563EB', '#1E3A8A',
+    [0.13, 0.16, 0.09], 3.5
+  );
+&lt;/script&gt;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ §6 ASSETS DE IDENTIDADE ═══════ -->
+  <section id="identity-assets">
+    <div class="section-header">
+      <div class="section-label">Seção 6</div>
+      <h2 class="section-title">Assets de Identidade</h2>
+      <p class="section-desc">
+        Compilação dos elementos de identidade visual por produto: headlines editoriais,
+        fragmentos ASCII e assinatura MS. Cada produto carrega sua linguagem — visual e verbal.
+      </p>
+    </div>
+
+    <!-- ── HEADLINES PER PRODUCT ── -->
+    <h3 class="subsection-title" style="margin-bottom: 20px;">Headlines por Produto</h3>
+    <div class="vs-headline-grid">
+      <div class="vs-headline-card" style="border-left: 3px solid #A85A30;">
+        <div class="vs-hl-product" style="color: #A85A30;">MSCREATIVE.SYSTEMS</div>
+        <div class="vs-hl-title">A Morte do Gosto <em style="color: #A85A30; font-style: normal;">Pessoal</em></div>
+        <div class="vs-hl-sub">Por que empresas criativas sem governança perdem identidade — e chamam isso de evolução.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #8A6A18;">
+        <div class="vs-hl-product" style="color: #8A6A18;">Creative Oracle</div>
+        <div class="vs-hl-title">Árbitro Não <em style="color: #8A6A18; font-style: normal;">Opina</em> — Governa</div>
+        <div class="vs-hl-sub">Toda empresa criativa tem um sistema de julgamento. A maioria só não sabe qual é.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #8A7A62;">
+        <div class="vs-hl-product" style="color: #8A7A62;">Fronteiristas</div>
+        <div class="vs-hl-title">Curadoria É o Último Ato <em style="color: #8A7A62; font-style: normal;">Criativo</em></div>
+        <div class="vs-hl-sub">Quem escolhe o que entra define o que existe. A edição é o gesto que transforma arquivo em argumento.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #5A9AAA;">
+        <div class="vs-hl-product" style="color: #5A9AAA;">Neuro Codex</div>
+        <div class="vs-hl-title">Seu Cliente Não <em style="color: #5A9AAA; font-style: normal;">Decide</em> — Reage</div>
+        <div class="vs-hl-sub">O cérebro resolve em 0,3s o que a sua marca tenta explicar em 30 slides.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #9A6068;">
+        <div class="vs-hl-product" style="color: #9A6068;">Style Codex</div>
+        <div class="vs-hl-title">Tendência É <em style="color: #9A6068; font-style: normal;">Preguiça</em> de Identidade</div>
+        <div class="vs-hl-sub">Marcas que seguem tendência estão terceirizando a única coisa que não deveriam delegar: o próprio rosto.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #5A7A9A;">
+        <div class="vs-hl-product" style="color: #5A7A9A;">Design Codex</div>
+        <div class="vs-hl-title">Estratégia Sem <em style="color: #5A7A9A; font-style: normal;">Estrutura</em> É Opinião</div>
+        <div class="vs-hl-sub">O gap entre o deck bonito e o resultado real é um problema de arquitetura.</div>
+      </div>
+      <div class="vs-headline-card" style="border-left: 3px solid #9A7048;">
+        <div class="vs-hl-product" style="color: #9A7048;">Execution Codex</div>
+        <div class="vs-hl-title">Plano Sem <em style="color: #9A7048; font-style: normal;">Execução</em> É Ficção</div>
+        <div class="vs-hl-sub">A distância entre estratégia e resultado não é talento — é infraestrutura operacional.</div>
+      </div>
+    </div>
+
+    <!-- CODE: Headlines -->
+    <div class="ds-code-block" style="margin-top: 24px;">
+      <div class="ds-code-header">
+        <span class="ds-code-label">Data — Headline Map</span>
+        <button class="ds-code-copy" onclick="copyBlock(this)">Copiar</button>
+      </div>
+      <pre><code>const PRODUCT_HEADLINES = {
+  mscs:          { title: 'A Morte do Gosto Pessoal',                    em: 'Pessoal',    color: '#A85A30' },
+  oracle:        { title: 'Árbitro Não Opina — Governa',                 em: 'Opina',      color: '#8A6A18' },
+  fronteiristas: { title: 'Curadoria É o Último Ato Criativo',           em: 'Criativo',   color: '#8A7A62' },
+  neuro:         { title: 'Seu Cliente Não Decide — Reage',              em: 'Decide',     color: '#5A9AAA' },
+  style:         { title: 'Tendência É Preguiça de Identidade',          em: 'Preguiça',   color: '#9A6068' },
+  design:        { title: 'Estratégia Sem Estrutura É Opinião',          em: 'Estrutura',  color: '#5A7A9A' },
+  execution:     { title: 'Plano Sem Execução É Ficção',                 em: 'Execução',   color: '#9A7048' },
+};</code></pre>
+    </div>
+
+    <!-- ── ASCII FRAGMENTS ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">ASCII Fragments por Produto</h3>
+    <div class="vs-ascii-grid">
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #A85A30;">MSCS</div>
+        <pre>░▒▓█▓▒░    ╔══╗ ║▪▪║ ╚══╝    ▸ SYS.RENDER ▸▸▸</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #8A6A18;">Oracle</div>
+        <pre>※──※──※──※  ┌※┐ │ ※│ └※┘  ※ ORACLE.SYS ※</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #8A7A62;">Fronteiristas</div>
+        <pre>◇──◇──◇──◇  ╔◇╗ ║◇◇║ ╚◇╝  ◇ ARCHIVE.SYS ◇</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #5A9AAA;">Neuro</div>
+        <pre>◎──◎──◎──◎  ┌──┐ │◎◎│ └──┘  ◎ PERCEPT.LAYER ◎</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #9A6068;">Style</div>
+        <pre>❋──❋──❋──❋  ╭──╮ │❋❋│ ╰──╯  ❋ STYLE.ENGINE ❋</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #5A7A9A;">Design</div>
+        <pre>⊞──⊞──⊞──⊞  ┌──┐ │⊞⊞│ └──┘  ⊞ STRUCT.ENGINE ⊞</pre>
+      </div>
+      <div class="vs-ascii-card">
+        <div class="vs-ascii-product" style="color: #9A7048;">Execution</div>
+        <pre>▶──▶──▶──▶  ╔──╗ ║▶▶║ ╚══╝  ▶ EXEC.ENGINE ▶</pre>
+      </div>
+    </div>
+
+    <!-- CODE: ASCII Fragments -->
+    <div class="ds-code-block" style="margin-top: 24px;">
+      <div class="ds-code-header">
+        <span class="ds-code-label">Data — ASCII Fragment Map</span>
+        <button class="ds-code-copy" onclick="copyBlock(this)">Copiar</button>
+      </div>
+      <pre><code>const ASCII_FRAGMENTS = {
+  mscs:          '░▒▓█▓▒░    ╔══╗ ║▪▪║ ╚══╝    ▸ SYS.RENDER ▸▸▸',
+  oracle:        '※──※──※──※  ┌※┐ │ ※│ └※┘  ※ ORACLE.SYS ※',
+  fronteiristas: '◇──◇──◇──◇  ╔◇╗ ║◇◇║ ╚◇╝  ◇ ARCHIVE.SYS ◇',
+  neuro:         '◎──◎──◎──◎  ┌──┐ │◎◎│ └──┘  ◎ PERCEPT.LAYER ◎',
+  style:         '❋──❋──❋──❋  ╭──╮ │❋❋│ ╰──╯  ❋ STYLE.ENGINE ❋',
+  design:        '⊞──⊞──⊞──⊞  ┌──┐ │⊞⊞│ └──┘  ⊞ STRUCT.ENGINE ⊞',
+  execution:     '▶──▶──▶──▶  ╔──╗ ║▶▶║ ╚══╝  ▶ EXEC.ENGINE ▶',
+};</code></pre>
+    </div>
+
+    <!-- ── MS SIGNATURE MARK ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">MS Signature Mark</h3>
+
+    <div style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
+      <div style="width: 120px; height: 100px; display: flex; align-items: center; justify-content: center; background: var(--ds-bg-surface); border: 1px solid var(--ds-border-subtle); border-radius: 8px; padding: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.2 51.75" style="width: 80px; color: var(--ds-text-primary);"><path fill="currentColor" d="M8.15,17.67c-.11,4.77.03,9.53.42,14.28.25,3.17,1.04,6.3,1.75,9.48C12.18,49.84-.29,51.03.01,42.28.37,31.52,2.03,21.21,5.01,11.36c.43-1.42,1.65-3.48,3.25-2.21.54.42.93,1,1.17,1.72l5.79,16.92c.24.69.41.67.52-.04C16.76,21.39,18.48,15.18,20.9,9.1c2.42-6.09,7.58-4.14,9.4.92,2.78,7.72,3.72,15.26,4.54,24.1.02.19.12.21.29.06,5.16-4.21,10.49-8.2,15.97-11.98.25-.17.22-.26-.08-.27-3.62-.09-7.24-.18-10.87-.26-7.4-.16-4.36-6.16-1.1-9.15C42.34,9.67,45.46,6.8,48.59,3.94c1.41-1.29,2.61-3.41,5.09-3.82,5.9-.98,7.9,6.3,3.23,9.69-3.84,2.79-7.81,5.4-11.9,7.82-.15.09-.14.15.04.17,3.88.43,7.73.34,11.55-.27,2.22-.36,3.71-2.04,5.77-2.3,3.65-.46,6.04,3.15,4.51,6.38-.4.85-1.14,1.76-2.2,2.73-9.11,8.27-20.2,14.6-28.33,22.57-1.09,1.06-2.3,3.43-3.58,4.09-4.62,2.4-8.53-.91-8.76-5.63-.18-3.76-1.49-26.94-1.87-26.89-.1.02-.21.15-.27.33-1.47,4.3-2.51,8.71-3.14,13.22-.12.91-.44,1.73-.93,2.46-1.56,2.3-3.55-.8-4.07-2.08C9.65,26.08,7.93,21.22,6.55,16.6c-.03-.09-.07-.15-.13-.16l-.06-.01c-.03-.01-.05.01-.06.05v.01s0,0,0,0Z"/></svg>
+      </div>
+      <div style="font-size: 14px; color: var(--ds-text-muted); max-width: 400px;">
+        <p style="margin-bottom: 8px; color: var(--ds-text-primary); font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;">Especificações</p>
+        <p>SVG inline, <code style="color: var(--ds-accent-gold);">fill="currentColor"</code>. Viewbox: <code style="color: var(--ds-accent-gold);">0 0 67.2 51.75</code>.</p>
+        <p style="margin-top: 4px;">Carousel: source line (20px, 15%) + brand mark (48px, 6%).</p>
+        <p style="margin-top: 4px;">Disponível via <code style="color: var(--ds-accent-gold);">MSCS_Wireframe.MS_SIG_SVG</code>.</p>
+      </div>
+    </div>
+
+    <!-- CODE: MS Signature -->
+    <div class="ds-code-block" style="margin-top: 24px;">
+      <div class="ds-code-header">
+        <span class="ds-code-label">JS — MS Signature Access</span>
+        <button class="ds-code-copy" onclick="copyBlock(this)">Copiar</button>
+      </div>
+      <pre><code>// Access the inline SVG string from the wireframe engine
+const svgMarkup = MSCS_Wireframe.MS_SIG_SVG;
+
+// Insert into DOM
+document.querySelector('.brand-mark').innerHTML = svgMarkup;
+
+// Usage in carousel bottom strip (Space Mono 10px, opacity 6%)
+&lt;div class="slide-brand" style="opacity: 0.06; width: 48px;"&gt;
+  &lt;!-- MS_SIG_SVG injected here --&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V3.0</span></span>
+    <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
+  </footer>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Copiado!</div>
+
+<script src="js/wireframe-engine.js"></script>
+<script src="js/ds-nav.js"></script>
+<script>MSCS_Wireframe.initAllGeometries();</script>
+</body>
+</html>
