@@ -17,9 +17,9 @@
   --bg-secondary: #12141A;
   --bg-surface: #1A1D26;
   --bg-surface-hover: #22262F;
-  --text-primary: #F5F7FA;
-  --text-body: rgba(245, 247, 250, 0.85);
-  --text-muted: rgba(245, 247, 250, 0.5);
+  --text-primary: #B2A898;
+  --text-body: rgba(178, 168, 152, 0.85);
+  --text-muted: rgba(178, 168, 152, 0.5);
   --grid-color: rgba(255, 255, 255, 0.025);
   --grid-size: 54px;
   --accent-gold: #D4AF37;
@@ -1895,7 +1895,7 @@ section {
 .codex-label--neuro  { color: #00C9C8; }
 .codex-label--exec   { color: #FF8C00; }
 .codex-label--oracle { color: #D4AF37; }
-.codex-label--mscs   { color: #F5F7FA; }
+.codex-label--mscs   { color: #B2A898; }
 
 .eco-grid {
   display: grid;
@@ -1951,7 +1951,7 @@ section {
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.7</div>
+    <div class="version">DESIGN SYSTEM V2.8</div>
   </div>
   <nav>
     <div class="nav-section">Fundamentos</div>
@@ -2076,16 +2076,16 @@ section {
         </div>
       </div>
 
-      <div class="color-chip" onclick="copyColor('#F5F7FA')">
-        <div class="swatch" style="background: #F5F7FA;" data-value="#F5F7FA"></div>
+      <div class="color-chip" onclick="copyColor('#B2A898')">
+        <div class="swatch" style="background: #B2A898;" data-value="#B2A898"></div>
         <div class="chip-info">
           <div class="chip-token">color-text-primary</div>
-          <div class="chip-desc">Off-white. Reduz fadiga visual.</div>
+          <div class="chip-desc">Areia Oxidado. Warm gray sem brilho.</div>
         </div>
       </div>
 
-      <div class="color-chip" onclick="copyColor('rgba(245, 247, 250, 0.85)')">
-        <div class="swatch" style="background: rgba(245, 247, 250, 0.85); border: 1px solid rgba(0,0,0,0.1);" data-value="rgba(F5F7FA, 0.85)"></div>
+      <div class="color-chip" onclick="copyColor('rgba(178, 168, 152, 0.85)')">
+        <div class="swatch" style="background: rgba(178, 168, 152, 0.85); border: 1px solid rgba(0,0,0,0.1);" data-value="rgba(B2A898, 0.85)"></div>
         <div class="chip-info">
           <div class="chip-token">color-text-body</div>
           <div class="chip-desc">Opacidade fixa. Legível sem competir.</div>
@@ -2327,7 +2327,7 @@ section {
 
     <!-- ECOSYSTEM LEVEL: MSCS + Oracle -->
     <div class="eco-grid">
-      <div class="eco-card" style="border-color: rgba(245, 247, 250, 0.08);">
+      <div class="eco-card" style="border-color: rgba(178, 168, 152, 0.08);">
         <span class="codex-label codex-label--mscs">MSCREATIVE.SYSTEMS™</span>
         <span class="codex-name">Icosaedro</span>
         <span class="codex-shape">20 faces · sólido platônico máximo</span>
@@ -3676,6 +3676,11 @@ section {
           <td>18.04.2026</td>
           <td>§5.3 Cormorant Garamond (Study 03): variante high-fashion serif com drop cap, rule thin, icosaedro centrado. §6 Editorial Typography Dual-Stack System: IBM Plex Sans + Libre Caslon Text como stack editorial, routing matrix Produto vs Editorial, CSS tokens, 7 formatos editoriais com specs (Story→OG). Integração do design bundle Claude Design.</td>
         </tr>
+        <tr>
+          <td><code>v2.8</code></td>
+          <td>18.04.2026</td>
+          <td>Text-primary: #F5F7FA (off-white frio, ~97% lum) → #B2A898 (Areia Oxidado, warm gray ~66% lum). Aprovado após 2 rounds de comparação visual (5 neutros + 5 warm). Body e muted atualizados para rgba warm correspondente. Wireframe MSCS Icosaedro atualizado para warm.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -3687,7 +3692,7 @@ section {
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.7</span></span>
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.8</span></span>
     <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
   </footer>
 
@@ -3991,7 +3996,7 @@ navLinks.forEach(link => {
 
   // ── RENDER ──
   // Ecosystem level
-  renderWireframe('cx-mscs',   mscsGeo,   '#F5F7FA', '#8A8D93', [0.12, 0.16, 0.06]);
+  renderWireframe('cx-mscs',   mscsGeo,   '#B2A898', '#8A8478', [0.12, 0.16, 0.06]);
   renderWireframe('cx-oracle', oracleGeo, '#D4AF37', '#8B6914', [0.12, 0.18, 0.04]);
   // Codexes
   renderWireframe('cx-design', designGeo, '#2563EB', '#1E3A8A', [0.13, 0.16, 0.09]);
