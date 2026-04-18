@@ -6,7 +6,7 @@
 <title>MSCREATIVE.SYSTEMS — Design System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ─── RESET ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -825,6 +825,255 @@ section {
   .vs-palette-tokens { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* ─── OFFF STORY FACTORY ─── */
+.offf-story-mockup {
+  width: 200px;
+  height: 356px;
+  background: linear-gradient(145deg, #0A0A0E, #111114);
+  border-radius: 12px;
+  border: 1px solid rgba(168,90,48,0.15);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.offf-story-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.offf-story-mockup .osm-strip {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-family: var(--font-label);
+  font-size: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.offf-story-mockup .osm-strip-top {
+  color: rgba(130,130,130,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.offf-story-mockup .osm-strip-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: rgba(130,130,130,0.18);
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.offf-story-mockup .osm-content {
+  padding: 16px 12px;
+}
+
+.offf-story-mockup .osm-tags {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.offf-story-mockup .osm-tag {
+  font-family: var(--font-label);
+  font-size: 4.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+.offf-story-mockup .osm-tag-accent {
+  color: #A85A30;
+  border: 1px solid rgba(168,90,48,0.25);
+}
+
+.offf-story-mockup .osm-tag-ghost {
+  color: rgba(140,140,140,0.5);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.offf-story-mockup .osm-headline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #6A6A6A;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.offf-story-mockup .osm-headline em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: #A85A30;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.offf-story-mockup .osm-rule {
+  height: 1px;
+  background: linear-gradient(90deg, #A85A30, #6A3818, transparent);
+  margin-bottom: 10px;
+}
+
+.offf-story-mockup .osm-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 6px;
+  color: rgba(130,130,130,0.4);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.offf-story-mockup .osm-speaker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: rgba(10,10,14,0.8);
+  border: 1px solid rgba(168,90,48,0.15);
+  border-radius: 6px;
+}
+
+.offf-story-mockup .osm-speaker-initials {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(168,90,48,0.25);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 10px;
+  color: #A85A30;
+}
+
+.offf-story-mockup .osm-speaker-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 6px;
+  color: var(--text-primary);
+}
+
+.offf-story-mockup .osm-speaker-role {
+  font-family: var(--font-label);
+  font-size: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.offf-story-mockup .osm-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(168,90,48,0.12), transparent);
+}
+
+.offf-preview-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.offf-preview-info {
+  flex: 1;
+}
+
+.offf-layer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.offf-layer-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.offf-layer-card .olc-num {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: rgba(168,90,48,0.3);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.offf-layer-card .olc-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #A85A30;
+  margin-bottom: 6px;
+}
+
+.offf-layer-card .olc-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.offf-layer-card code {
+  font-family: var(--font-label);
+  font-size: 10px;
+  background: rgba(255,255,255,0.05);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: var(--accent-gold);
+}
+
+.offf-variation-table td:first-child {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: #A85A30;
+}
+
+.offf-font-sample {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.offf-font-sample:last-child { border-bottom: none; }
+
+.offf-font-sample .ofs-preview {
+  min-width: 200px;
+  line-height: 1.2;
+}
+
+.offf-font-sample .ofs-meta {
+  font-family: var(--font-label);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .offf-preview-row { flex-direction: column; }
+  .offf-story-mockup { width: 160px; height: 285px; }
+}
+
 /* ─── CONTRAST PREVIEW ─── */
 .contrast-preview {
   display: grid;
@@ -1469,7 +1718,7 @@ section {
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <h1>MSCREATIVE<br>SYSTEMS</h1>
-    <div class="version">DESIGN SYSTEM V2.5</div>
+    <div class="version">DESIGN SYSTEM V2.6</div>
   </div>
   <nav>
     <div class="nav-section">Fundamentos</div>
@@ -1486,6 +1735,7 @@ section {
     <a href="#contrast">Hierarquia de Contraste</a>
     <div class="nav-section">Visual Studies</div>
     <a href="#visual-studies">Carousel Capa (Study 01)</a>
+    <a href="#offf-story-factory">OFFF Story Factory (Study 02)</a>
     <div class="nav-section">Governança</div>
     <a href="#rules">Do's & Don'ts</a>
     <a href="#versioning">Versionamento</a>
@@ -2402,10 +2652,312 @@ section {
     </table>
   </section>
 
+  <!-- ═══════ VISUAL STUDIES — OFFF STORY FACTORY (STUDY 02) ═══════ -->
+  <section id="offf-story-factory">
+    <div class="section-header">
+      <div class="section-label">Seção 5.2</div>
+      <h2 class="section-title">OFFF Story Factory — Study 02</h2>
+      <p class="section-desc">
+        Instagram Stories (1080×1920px, 9:16) para insights de palestras OFFF Barcelona 2026.
+        Tipografia: Instrument Serif + Inter + Space Mono. Paleta: MSCS Chumbo Puro + Electric Orange.
+        Aprovado em 18 Abr 2026.
+      </p>
+    </div>
+
+    <!-- PREVIEW + SPECS -->
+    <div class="offf-preview-row">
+      <div class="offf-story-mockup">
+        <div class="osm-marker"></div>
+        <div class="osm-strip osm-strip-top">
+          <span>✕ ✕ ✕</span>
+          <span>frase editorial</span>
+          <span>MSCREATIVE.SYSTEMS™</span>
+        </div>
+        <div class="osm-content">
+          <div class="osm-tags">
+            <span class="osm-tag osm-tag-accent">OFFF BCN 2026</span>
+            <span class="osm-tag osm-tag-ghost">Speaker</span>
+            <span class="osm-tag osm-tag-ghost">Key Insights</span>
+          </div>
+          <div class="osm-headline">Soberania Criativa Não Se <em>Negocia</em></div>
+          <div class="osm-rule"></div>
+          <div class="osm-subtitle">O controle do processo não é luxo — é a única coisa que separa autor de executor.</div>
+          <div class="osm-speaker">
+            <div class="osm-speaker-initials">AB</div>
+            <div>
+              <div class="osm-speaker-name">Speaker Name</div>
+              <div class="osm-speaker-role">Creative Dir · Studio</div>
+            </div>
+          </div>
+        </div>
+        <div class="osm-strip osm-strip-bottom">
+          <span>OFFF BCN 2026</span>
+          <span>Speaker · Studio</span>
+          <span>@mscreative.systems</span>
+        </div>
+      </div>
+
+      <div class="offf-preview-info">
+        <h3 class="subsection-title" style="margin-bottom: 16px;">Formato & Safe Zones</h3>
+        <div class="carousel-specs" style="margin-top: 0;">
+          <div class="spec-card">
+            <div class="spec-label">Resolução</div>
+            <div class="spec-value">1080 × 1920px</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Formato</div>
+            <div class="spec-value">Instagram Story 9:16</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Safe Zone Topo</div>
+            <div class="spec-value">120px</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Safe Zone Base</div>
+            <div class="spec-value">160px</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Paleta</div>
+            <div class="spec-value">MSCS Chumbo Puro</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Wireframe</div>
+            <div class="spec-value">Icosaedro 3D</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <h3 class="subsection-title" style="margin-bottom: 20px;">Tipografia — Instrument Serif + Inter + Space Mono</h3>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+      Nova stack tipográfica exclusiva para Stories OFFF. Inter Light para headlines (vs Anton nos carrosséis), com <em style="font-family: 'Instrument Serif', serif; font-style: italic; color: #A85A30;">Instrument Serif italic</em> para emphasis.
+    </p>
+
+    <table class="ds-table">
+      <thead>
+        <tr><th>Elemento</th><th>Font</th><th>Peso</th><th>Tamanho</th><th>Exemplo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Headline base</td>
+          <td><code>Inter</code></td>
+          <td>300 (Light)</td>
+          <td>54px</td>
+          <td style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16px; color: #6A6A6A;">Soberania Criativa</td>
+        </tr>
+        <tr>
+          <td>Headline emphasis</td>
+          <td><code>Instrument Serif</code></td>
+          <td>italic 400</td>
+          <td>62px</td>
+          <td style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; color: #A85A30;">Negocia</td>
+        </tr>
+        <tr>
+          <td>Subtitle</td>
+          <td><code>Inter</code></td>
+          <td>300</td>
+          <td>19px</td>
+          <td style="font-family: 'Inter', sans-serif; font-weight: 300; font-size: 13px; color: rgba(130,130,130,0.6);">Controle do processo não é luxo</td>
+        </tr>
+        <tr>
+          <td>Tags / Labels</td>
+          <td><code>Space Mono</code></td>
+          <td>400</td>
+          <td>9–11px</td>
+          <td style="font-family: 'Space Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">OFFF BCN 2026</td>
+        </tr>
+        <tr>
+          <td>Speaker initials</td>
+          <td><code>Instrument Serif</code></td>
+          <td>italic</td>
+          <td>28px</td>
+          <td style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: #A85A30;">AB</td>
+        </tr>
+        <tr>
+          <td>Speaker name</td>
+          <td><code>Inter</code></td>
+          <td>400</td>
+          <td>17px</td>
+          <td style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-primary);">Paula Scher</td>
+        </tr>
+        <tr>
+          <td>Speaker role</td>
+          <td><code>Space Mono</code></td>
+          <td>400</td>
+          <td>9px</td>
+          <td style="font-family: 'Space Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">CREATIVE DIR · PENTAGRAM</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PALETTE -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Paleta — MSCS Chumbo Puro + Electric Orange</h3>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+      Mesma paleta do §5.1 (Carousel MSCS). Tokens adicionais para speaker card e info strips.
+    </p>
+
+    <div class="vs-palette-grid">
+      <div class="vs-palette-card">
+        <div class="vs-palette-header">
+          <div>
+            <div class="vs-product-name" style="color: #A85A30;">OFFF Story Tokens</div>
+            <div class="vs-product-identity">Chumbo Puro + Electric Orange (Story-specific)</div>
+          </div>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #0A0A0E, #111114);"></div><div class="vs-token-info"><div class="vs-token-name">Background</div><div class="vs-token-value">#0A0A0E → #111114</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis / Accent</div><div class="vs-token-value">#A85A30</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(130,130,130,0.4);"></div><div class="vs-token-info"><div class="vs-token-name">Subtitle</div><div class="vs-token-value">rgba(130,130,130,0.4)</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(135deg, #A85A30, #6A3818);"></div><div class="vs-token-info"><div class="vs-token-name">Rule gradient</div><div class="vs-token-value">#A85A30 → #6A3818</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(130,130,130,0.18); border: 1px solid rgba(255,255,255,0.06);"></div><div class="vs-token-info"><div class="vs-token-name">Info strip text</div><div class="vs-token-value">rgba(130,130,130,0.18)</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(168,90,48,0.035);"></div><div class="vs-token-info"><div class="vs-token-name">ASCII fragment</div><div class="vs-token-value">accent @ 0.035</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: rgba(168,90,48,0.15); border: 1px solid rgba(168,90,48,0.25);"></div><div class="vs-token-info"><div class="vs-token-name">Speaker card</div><div class="vs-token-value">accent @ 0.15 border</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 MANDATORY LAYERS -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">7 Camadas Obrigatórias</h3>
+    <div class="offf-layer-grid">
+      <div class="offf-layer-card">
+        <div class="olc-num">01</div>
+        <div class="olc-label">Grid Overlay</div>
+        <div class="olc-desc"><code>54×54px</code>, <code>rgba(255,255,255,0.025)</code></div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">02</div>
+        <div class="olc-label">Scan Lines</div>
+        <div class="olc-desc">repeating-linear-gradient, 3px transparent + 1px <code>rgba(140,130,115,0.005)</code></div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">03</div>
+        <div class="olc-label">Product Marker</div>
+        <div class="olc-desc"><code>3px</code> left, gradient accent → transparent</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">04</div>
+        <div class="olc-label">Ghost Layers</div>
+        <div class="olc-desc">3 divs, inset <code>-8/-16/-24px</code>, borders accent <code>0.06/0.04/0.025</code></div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">05</div>
+        <div class="olc-label">Glitch Lines</div>
+        <div class="olc-desc">2 linhas horizontais 1px, posições Y variáveis por story, accent <code>0.06–0.08</code></div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">06</div>
+        <div class="olc-label">ASCII Fragments</div>
+        <div class="olc-desc">3 por story, Space Mono 10px, accent @ <code>0.035</code>. Keyword contextual ao insight</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">07</div>
+        <div class="olc-label">Icosaedro 3D</div>
+        <div class="olc-desc">Canvas wireframe, opacity <code>0.2</code>, posição variável. Rotation <code>[0.05–0.12]</code> por eixo</div>
+      </div>
+    </div>
+
+    <!-- VARIATION RULES -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Regras de Variação entre Stories</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Elemento</th><th>Regra de Variação</th></tr>
+      </thead>
+      <tbody class="offf-variation-table">
+        <tr><td>Icosaedro posição</td><td>Alternar: top-right → bottom-right → bottom-left → center-right</td></tr>
+        <tr><td>Glitch lines Y</td><td>Nunca repetir entre stories consecutivos</td></tr>
+        <tr><td>ASCII fragments</td><td>Variar conteúdo, posição e rotação</td></tr>
+        <tr><td>ASCII keyword</td><td>Contextual ao insight (ex: <code>▸ SOVEREIGNTY ▸▸▸</code>, <code>▸ LATENCY ▸▸▸</code>)</td></tr>
+        <tr><td>Rotation speed</td><td>Variar <code>[0.05–0.12]</code> por eixo entre stories</td></tr>
+      </tbody>
+    </table>
+
+    <!-- TAG SYSTEM -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Sistema de Tags</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Tag Accent (Laranja)</div>
+        <div class="vs-li-desc">Sempre <code>OFFF BCN 2026</code>. Border <code>rgba(168,90,48,0.25)</code></div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Tag Ghost 1</div>
+        <div class="vs-li-desc">Nome do speaker. <code>rgba(140,140,140,0.5)</code> com border <code>rgba(255,255,255,0.04)</code></div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Tag Ghost 2</div>
+        <div class="vs-li-desc"><code>Key Insights</code>. Teses proprietárias MSCS sem speaker: ghost 1 = <code>MSCREATIVE.SYSTEMS™</code></div>
+      </div>
+    </div>
+
+    <!-- SPEAKER CARD -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Speaker Card</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Iniciais</div>
+        <div class="vs-li-desc">Instrument Serif italic, caixa <code>64×64px</code> com border accent. <code>28px</code></div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Nome</div>
+        <div class="vs-li-desc">Inter 400, <code>17px</code></div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Role</div>
+        <div class="vs-li-desc">Space Mono 400, <code>9px</code> uppercase</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Exceção</div>
+        <div class="vs-li-desc">Teses proprietárias MSCS: omitir speaker card inteiramente</div>
+      </div>
+    </div>
+
+    <!-- HEADLINE RULES -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Tom MSCREATIVE — Regras de Headline</h3>
+    <div class="vs-override-banner" style="border-left-color: #A85A30;">
+      <div class="vs-label">Protocolo de Voz</div>
+      <p>
+        <strong style="color: var(--text-primary);">Frases-veredicto.</strong> Curtas. Provocativas. Declaram — não explicam.
+        O insight é do Marcel (MSCREATIVE). O speaker é a fonte. A interpretação é MSCS.
+        Palavras em <code style="font-family: 'Instrument Serif', serif; font-style: italic; color: #A85A30;">&lt;em&gt;</code> carregam a tensão — nunca decorativas.
+      </p>
+      <p style="margin-top: 12px; font-size: 13px;">
+        <strong style="color: var(--text-primary);">Léxico proibido:</strong> game-changer, magic, empower, leverage, disruptivo, inovação (sem contexto), "ferramenta" (para descrever Oracle).
+      </p>
+    </div>
+
+    <!-- INGEST PROTOCOL -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Protocolo de Ingestão</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Fase 1 — Extração</div>
+        <div class="vs-li-desc">
+          Identificar speaker, talk, tema. Extrair 3–5 insights pela lente MSCREATIVE:
+          governança criativa, engenharia de percepção, identidade como infraestrutura,
+          execução como sistema, curadoria como ato criativo. <strong>Esperar aprovação.</strong>
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Fase 2 — Produção</div>
+        <div class="vs-li-desc">
+          1 Story HTML por insight aprovado. Todas as 7 camadas. Variação obrigatória entre consecutivos.
+          Salvar em <code>studies/offf_2026/offf_story_[SOBRENOME]_[N].html</code>
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Template canônico</div>
+        <div class="vs-li-desc">
+          <code>studies/offf_2026/OFFF_2026_STORY_TEMPLATE_CANONICAL.html</code>
+          — fonte de verdade do layout. Ler antes de produzir qualquer Story.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
   <!-- ═══════ DO'S AND DON'TS ═══════ -->
   <section id="rules">
     <div class="section-header">
-      <div class="section-label">Seção 5</div>
+      <div class="section-label">Seção 6</div>
       <h2 class="section-title">Do's & Don'ts</h2>
     </div>
 
@@ -2519,6 +3071,11 @@ section {
           <td>18.04.2026</td>
           <td>§5 Visual Studies — Carousel Capa (Study 01): 7 paletas Chumbo Quente por produto, 7 polígonos 3D (+ Fronteiristas Losango), headlines, ASCII fragments, layout specs. Override Chumbo Quente para carrosséis aprovado.</td>
         </tr>
+        <tr>
+          <td><code>v2.6</code></td>
+          <td>18.04.2026</td>
+          <td>§5.2 OFFF Story Factory (Study 02): formato Story 9:16 para OFFF Barcelona 2026. Stack tipográfica Instrument Serif + Inter + Space Mono. 7 camadas obrigatórias, regras de variação, protocolo de ingestão speaker→insights→Stories. Paleta MSCS Chumbo Puro + Electric Orange com tokens para speaker card.</td>
+        </tr>
       </tbody>
     </table>
 
@@ -2530,7 +3087,7 @@ section {
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.5</span></span>
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V2.6</span></span>
     <span class="footer-text">Design não é preferência. É <span class="footer-accent">protocolo</span>.</span>
   </footer>
 
