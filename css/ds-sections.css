@@ -1362,7 +1362,7 @@ section {
 }
 
 .offf-story-mockup .osm-headline {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 300;
   font-size: 16px;
   color: #6A6A6A;
@@ -1371,7 +1371,7 @@ section {
 }
 
 .offf-story-mockup .osm-headline em {
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Libre Caslon Text', serif;
   font-style: italic;
   color: #A85A30;
   font-size: 18px;
@@ -1385,7 +1385,7 @@ section {
 }
 
 .offf-story-mockup .osm-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 300;
   font-size: 6px;
   color: rgba(130,130,130,0.4);
@@ -1411,14 +1411,14 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Libre Caslon Text', serif;
   font-style: italic;
   font-size: 10px;
   color: #A85A30;
 }
 
 .offf-story-mockup .osm-speaker-name {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-size: 6px;
   color: var(--ds-text-primary);
