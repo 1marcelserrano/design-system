@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1080, initial-scale=1">
 <title>OFFF 2026 — Story Template Canônico · MSCREATIVE.SYSTEMS™</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -72,7 +72,7 @@
      ════════════════════════════════════════ */
   .ascii-frag {
     position: absolute; z-index: 3; pointer-events: none;
-    font-family: 'Space Mono', monospace; font-size: 10px;
+    font-family: 'Space Mono', monospace; font-size: 16px;
     color: rgba(168,90,48,0.035); letter-spacing: 0.15em; white-space: nowrap;
   }
   .ascii-frag--1 { top: 260px; right: 50px; transform: rotate(-90deg); transform-origin: right center; }
@@ -86,8 +86,8 @@
     position: absolute; left: 0; width: 100%; height: 54px; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px;
-    font-family: 'Space Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.18em;
+    font-family: 'Space Mono', monospace; font-size: 18px;
+    text-transform: uppercase; letter-spacing: 1.5px;
     color: rgba(130,130,130,0.18);
   }
   .info-strip--top {
@@ -121,9 +121,9 @@
      ════════════════════════════════════════ */
   .tag-strip { display: flex; gap: 12px; margin-bottom: 56px; flex-wrap: wrap; }
   .tag {
-    font-family: 'Space Mono', monospace; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.18em;
-    padding: 6px 14px; border-radius: 2px;
+    font-family: 'Space Mono', monospace; font-size: 22px;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 10px 20px; border-radius: 3px;
   }
   .tag--accent {
     color: #A85A30;
@@ -137,19 +137,19 @@
   }
 
   /* ════════════════════════════════════════
-     TYPOGRAPHY — INSTRUMENT SERIF + INTER
-     Headline: Inter Light 300 (base) + Instrument Serif italic (emphasis)
+     TYPOGRAPHY — TYPO B: IBM Plex Sans + Libre Caslon Text
+     Mobile-first scale (canvas ÷3 on phones)
      ════════════════════════════════════════ */
   .headline {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300; font-size: 54px; line-height: 1.12;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300; font-size: 80px; line-height: 1.12;
     letter-spacing: -0.02em; color: #6A6A6A;
     margin-bottom: 44px; max-width: 900px;
   }
   .headline em {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Libre Caslon Text', serif;
     font-style: italic; font-weight: 400;
-    color: #A85A30; font-size: 62px;
+    color: #A85A30; font-size: 92px;
   }
 
   /* ════════════════════════════════════════
@@ -165,8 +165,8 @@
      SUBTITLE — Inter Light
      ════════════════════════════════════════ */
   .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 19px; line-height: 1.65; font-weight: 300;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 36px; line-height: 1.5; font-weight: 300;
     color: rgba(130,130,130,0.4); max-width: 780px;
   }
 
@@ -181,24 +181,24 @@
     display: flex; align-items: center; gap: 28px;
   }
   .speaker-card__initials {
-    width: 64px; height: 64px;
+    width: 80px; height: 80px;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Instrument Serif', serif;
-    font-size: 28px; font-style: italic;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 44px; font-style: italic;
     color: #A85A30;
     border: 1px solid rgba(168,90,48,0.15);
     flex-shrink: 0;
   }
   .speaker-card__info { display: flex; flex-direction: column; gap: 4px; }
   .speaker-card__name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400; font-size: 17px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400; font-size: 22px;
     color: rgba(130,130,130,0.4);
     letter-spacing: 0.01em;
   }
   .speaker-card__role {
     font-family: 'Space Mono', monospace;
-    font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
+    font-size: 26px; text-transform: uppercase; letter-spacing: 1.5px;
     color: rgba(168,90,48,0.2);
   }
 

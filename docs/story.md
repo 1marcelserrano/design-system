@@ -11,19 +11,24 @@
 
 ## Tipografia
 
+**Stack:** IBM Plex Sans + Libre Caslon Text + Space Mono (Typo B editorial)
+**Escala:** Mobile-first (canvas 1080px ÷3 on phones → ~360px CSS). Min absolute: 16px.
+
 | Papel | Font | Peso | Tamanho | Token |
 |---|---|---|---|---|
-| Headline base | Inter | 300 (Light) | 54px | `--ds-story-headline-size` |
-| Headline emphasis `<em>` | Instrument Serif | italic 400 | 62px | `--ds-story-headline-em-size` |
-| Subtitle | Inter | 300 | 19px | `--ds-story-subtitle-size` |
-| Tags / labels / strips | Space Mono | 400 | 9–11px uppercase | `--ds-story-tag-font-size` |
-| Speaker initials | Instrument Serif | italic | 28px | `--ds-story-speaker-init-fsize` |
-| Speaker name | Inter | 400 | 17px | `--ds-story-speaker-name-size` |
-| Speaker role | Space Mono | 400 | 9px uppercase | `--ds-story-speaker-role-size` |
+| Headline base | IBM Plex Sans | 300 (Light) | **80px** | `--ds-story-headline-size` |
+| Headline emphasis `<em>` | Libre Caslon Text | italic 400 | **92px** | `--ds-story-headline-em-size` |
+| Subtitle | IBM Plex Sans | 300 | **36px** | `--ds-story-subtitle-size` |
+| Tags / labels / strips | Space Mono | 400 | **22px** uppercase | `--ds-story-tag-font-size` |
+| Info strips | Space Mono | 400 | **18px** | `--ds-story-strip-font-size` |
+| ASCII fragments | Space Mono | 400 | **16px** | `--ds-story-ascii-size` |
+| Speaker initials | Libre Caslon Text | italic | **44px** (box 80×80) | `--ds-story-speaker-init-fsize` |
+| Speaker name | IBM Plex Sans | 400 | **22px** | `--ds-story-speaker-name-size` |
+| Speaker role | Space Mono | 400 | **26px** uppercase | `--ds-story-speaker-role-size` |
 
 Google Fonts (copiar exatamente):
 ```
-https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap
+https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap
 ```
 
 ---

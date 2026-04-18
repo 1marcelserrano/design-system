@@ -1,8 +1,11 @@
 /* ═══════════════════════════════════════════════════════════
    STORY TOKENS — MSCREATIVE.SYSTEMS™
    Format: 1080 × 1920px (Instagram Story 9:16)
-   Stack: Inter + Instrument Serif + Space Mono
+   Stack: IBM Plex Sans + Libre Caslon Text + Space Mono (Typo B editorial)
    Palette: Chumbo Puro + Electric Orange
+   Scale: Mobile-first (canvas ÷3 on phones → ~360px CSS)
+   Min absolute: 16px (decorative), 18px (readable text)
+   Validated across 13 production stories.
    ═══════════════════════════════════════════════════════════ */
 
 :root {
@@ -39,7 +42,7 @@
 
   /* ── ASCII fragments ── */
   --ds-story-ascii-color:        rgba(168, 90, 48, 0.035);
-  --ds-story-ascii-size:         10px;
+  --ds-story-ascii-size:         16px;   /* was 10px */
 
   /* ── Icosaedro ── */
   --ds-story-poly-opacity:       0.2;
@@ -51,18 +54,18 @@
   --ds-story-poly-color-2:       #A85A30;  /* c2 = c1 — monocromático */
 
   /* ── Info strips ── */
-  --ds-story-strip-font-size:    10px;
-  --ds-story-strip-tracking:     0.18em;
+  --ds-story-strip-font-size:    18px;   /* was 10px — mobile-first */
+  --ds-story-strip-tracking:     1.5px;  /* was 0.18em — fixed px for mobile */
   --ds-story-strip-color:        rgba(130, 130, 130, 0.18);
   --ds-story-strip-border:       rgba(168, 90, 48, 0.06);
   --ds-story-strip-bg-top:       linear-gradient(180deg, rgba(168,90,48,0.015) 0%, rgba(168,90,48,0.005) 100%);
   --ds-story-strip-bg-bottom:    linear-gradient(0deg, rgba(168,90,48,0.01) 0%, rgba(168,90,48,0.005) 100%);
 
   /* ── Tags ── */
-  --ds-story-tag-font-size:      10px;
-  --ds-story-tag-tracking:       0.18em;
-  --ds-story-tag-padding:        6px 14px;
-  --ds-story-tag-radius:         2px;
+  --ds-story-tag-font-size:      22px;   /* was 10px */
+  --ds-story-tag-tracking:       1.5px;  /* was 0.18em */
+  --ds-story-tag-padding:        10px 20px; /* was 6px 14px */
+  --ds-story-tag-radius:         3px;    /* was 2px */
   --ds-story-tag-accent-color:   #A85A30;
   --ds-story-tag-accent-border:  rgba(168, 90, 48, 0.25);
   --ds-story-tag-accent-bg:      rgba(168, 90, 48, 0.04);
@@ -71,14 +74,14 @@
   --ds-story-tag-ghost-bg:       rgba(140, 140, 140, 0.06);
 
   /* ── Headline ── */
-  --ds-story-headline-font:      'Inter', sans-serif;
-  --ds-story-headline-size:      54px;
+  --ds-story-headline-font:      'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-headline-size:      80px;   /* was 54px */
   --ds-story-headline-weight:    300;
   --ds-story-headline-lh:        1.12;
   --ds-story-headline-tracking:  -0.02em;
   --ds-story-headline-color:     #6A6A6A;
-  --ds-story-headline-em-font:   'Instrument Serif', serif;
-  --ds-story-headline-em-size:   62px;
+  --ds-story-headline-em-font:   'Libre Caslon Text', serif;  /* Typo B */
+  --ds-story-headline-em-size:   92px;   /* was 62px */
   --ds-story-headline-em-weight: 400;
   --ds-story-headline-em-color:  #A85A30;
 
@@ -87,28 +90,64 @@
   --ds-story-rule-gradient:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
 
   /* ── Subtitle ── */
-  --ds-story-subtitle-font:      'Inter', sans-serif;
-  --ds-story-subtitle-size:      19px;
+  --ds-story-subtitle-font:      'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-subtitle-size:      36px;   /* was 19px */
   --ds-story-subtitle-weight:    300;
-  --ds-story-subtitle-lh:        1.65;
+  --ds-story-subtitle-lh:        1.5;    /* was 1.65 */
   --ds-story-subtitle-color:     rgba(130, 130, 130, 0.4);
 
   /* ── Speaker card ── */
   --ds-story-speaker-gap:        28px;
   --ds-story-speaker-border:     rgba(168, 90, 48, 0.06);
-  --ds-story-speaker-init-size:  64px;
-  --ds-story-speaker-init-font:  'Instrument Serif', serif;
-  --ds-story-speaker-init-fsize: 28px;
+  --ds-story-speaker-init-size:  80px;   /* was 64px */
+  --ds-story-speaker-init-font:  'Libre Caslon Text', serif;  /* Typo B */
+  --ds-story-speaker-init-fsize: 44px;   /* was 28px */
   --ds-story-speaker-init-color: #A85A30;
   --ds-story-speaker-init-border: rgba(168, 90, 48, 0.15);
-  --ds-story-speaker-name-font:  'Inter', sans-serif;
-  --ds-story-speaker-name-size:  17px;
+  --ds-story-speaker-name-font:  'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-speaker-name-size:  22px;   /* was 17px */
   --ds-story-speaker-name-color: rgba(130, 130, 130, 0.4);
   --ds-story-speaker-role-font:  'Space Mono', monospace;
-  --ds-story-speaker-role-size:  9px;
+  --ds-story-speaker-role-size:  26px;   /* was 9px */
   --ds-story-speaker-role-color: rgba(168, 90, 48, 0.2);
 
   /* ── MS Signature ── */
   --ds-story-sig-width:          32px;
   --ds-story-sig-opacity:        0.18;
+
+  /* ── CITAÇÃO type ── */
+  --ds-story-quote-size:         80px;   /* was 56px */
+  --ds-story-quote-lh:           1.2;    /* was 1.25 */
+  --ds-story-quote-orig-size:    36px;   /* was 22px */
+  --ds-story-quote-orig-lh:      1.35;
+  --ds-story-quote-mark-size:    160px;  /* was 120px */
+  --ds-story-quote-attrib-size:  22px;   /* was 9px */
+  --ds-story-quote-gloss-size:   34px;   /* was 19px */
+
+  /* ── LISTA type ── */
+  --ds-story-list-num-size:      36px;   /* was 22px */
+  --ds-story-list-num-min-w:     40px;   /* was 28px */
+  --ds-story-list-text-size:     38px;   /* was 22px */
+  --ds-story-list-text-lh:       1.4;    /* was 1.5 */
+  --ds-story-list-em-size:       42px;   /* was 24px */
+
+  /* ── FRAMEWORK type ── */
+  --ds-story-fw-num-size:        36px;   /* was 22px */
+  --ds-story-fw-label-size:      24px;   /* was 10px */
+  --ds-story-fw-label-tracking:  1.5px;  /* was 2px */
+  --ds-story-fw-desc-size:       34px;   /* was 19px */
+  --ds-story-fw-desc-lh:         1.4;    /* was 1.55 */
+  --ds-story-fw-desc-em-size:    34px;   /* was 19px */
+  --ds-story-fw-padding:         24px 28px; /* was 28px 32px */
+
+  /* ── INFOGRÁFICO type ── */
+  --ds-story-info-num-size:      200px;  /* was 160px */
+  --ds-story-info-label-size:    24px;   /* was 11px */
+  --ds-story-info-label-tracking: 1.5px; /* was 2px */
+
+  /* ── SPECTRUM type ── */
+  --ds-story-spectrum-label-size: 22px;  /* was 9px */
+
+  /* ── Fail dot ── */
+  --ds-story-fail-dot-size:      16px;   /* was 14px */
 }
