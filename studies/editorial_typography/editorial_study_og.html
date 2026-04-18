@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Open Graph</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1200px; height: 630px; }
+@media (max-width: 1260px){ .stage{ transform: scale(calc(90vw / 1200)); transform-origin: center top; } }
+.content { position: absolute; z-index: 8; top: 56px; left: 64px; right: 64px; bottom: 48px; display: flex; flex-direction: column; }
+.tag-strip { margin-bottom: 28px; }
+.tag { font-size: 9px; letter-spacing: 0.2em; padding: 5px 12px; }
+.headline { font-size: 38px; line-height: 1.15; margin-bottom: 24px; max-width: 920px; }
+.headline em { font-size: 44px; }
+.rule { width: 200px; margin-bottom: 20px; }
+.subtitle { font-size: 16px; line-height: 1.5; max-width: 820px; }
+.footer-line { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid rgba(168,90,48,0.06); font-family: var(--ed-font-label); font-size: 9px; letter-spacing: 0.2em; color: rgba(130,130,130,0.32); text-transform: uppercase; }
+.footer-line .sig { width: 22px; opacity: 0.35; }
+.footer-line .right { display: flex; align-items: center; gap: 14px; }
+.layer-ghost--1 { inset: -6px; border: 1px solid rgba(168,90,48,0.06); }
+.layer-ghost--2 { inset: -12px; border: 1px solid rgba(168,90,48,0.04); }
+.grid-overlay { background-size: 42px 42px; }
+.glitch-line--1 { top: 210px; background: linear-gradient(90deg, transparent 0%, transparent 10%, rgba(168,90,48,0.07) 10% 28%, transparent 28% 62%, rgba(168,90,48,0.05) 62% 78%, transparent 78%); }
+.ascii-frag { font-size: 9px; }
+.a1 { top: 70px; right: 28px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 60px; left: 28px; transform: rotate(1deg); }
+.poly-wrap { top: 50px; right: 28px; width: 140px; height: 140px; opacity: 0.16; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--2"></div>
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="ascii-frag a1">▸ OPEN GRAPH ▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░  MSCS.OG</div>
+
+  <div class="content">
+    <div class="tag-strip">
+      <span class="tag tag--accent">FRONTEIRISTAS</span>
+      <span class="tag tag--ghost">OFFF BCN 2026</span>
+      <span class="tag tag--ghost">Ed. 07</span>
+    </div>
+    <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+    <hr class="rule">
+    <p class="subtitle">Senioridade, autonomia e a erosão silenciosa da agência criativa — uma leitura a partir do OFFF Barcelona 2026.</p>
+    <div class="footer-line">
+      <span>MSCREATIVE.SYSTEMS™ · FRONTEIRISTAS</span>
+      <div class="right"><span>mscreative.systems</span><span class="sig" id="sig"></span></div>
+    </div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="280" height="280"></canvas></div>
+</div>
+<script src="ico.js"></script>
+<script>document.getElementById('sig').innerHTML = MS_SIG_SVG; initPoly('poly');</script>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial vs Product — Comparison</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;700&display=swap');
+
+body { min-height: 100vh; background: #05060a; padding: 32px 20px 80px; font-family: 'IBM Plex Sans', sans-serif; color: #6A6A6A; }
+.hd { text-align: center; margin-bottom: 40px; }
+.hd .k { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; color: rgba(168,90,48,0.6); text-transform: uppercase; }
+.hd h1 { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 42px; color: #A85A30; margin-top: 10px; font-weight: 400; }
+.hd p { margin-top: 12px; font-size: 14px; color: rgba(130,130,130, 0.5); max-width: 620px; margin-left: auto; margin-right: auto; font-weight: 300; line-height: 1.6; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1800px; margin: 0 auto; }
+.col { position: relative; width: 100%; height: 900px; overflow: hidden; }
+.col::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px; }
+.col.product { background: linear-gradient(145deg, #0A0C10 0%, #12141A 100%); }
+.col.editorial { background: linear-gradient(145deg, #0A0A0E 0%, #111114 100%); }
+
+.col .topbar { position: absolute; top: 22px; left: 32px; right: 32px; z-index: 5; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-family: 'Space Mono', monospace; text-transform: uppercase; }
+.col .lbl { font-size: 10px; letter-spacing: 0.25em; flex-shrink: 0; }
+.col .lbl.p { color: rgba(154, 122, 40, 0.7); }
+.col .lbl.e { color: rgba(168,90,48, 0.7); }
+.col .meta { font-size: 9px; letter-spacing: 0.2em; color: rgba(130,130,130,0.25); text-align: right; white-space: nowrap; }
+
+.inner { position: relative; z-index: 3; padding: 84px 48px 48px; height: 100%; display: flex; flex-direction: column; }
+
+/* ── PRODUCT STACK ── */
+.p-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; padding: 6px 14px; border: 1px solid rgba(154,122,40,0.25); background: rgba(154,122,40,0.05); color: #9A7A28; border-radius: 2px; display: inline-block; text-transform: uppercase; align-self: flex-start; margin-bottom: 40px; }
+.p-head { font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; font-size: 62px; line-height: 1.05; color: #6B6358; margin-bottom: 28px; }
+.p-head span { color: #9A7A28; }
+.p-rule { width: 100%; height: 2px; background: linear-gradient(90deg, #9A7A28, #6A5418 60%, transparent); margin-bottom: 24px; border: none; }
+.p-body { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 1.65; color: rgba(140,130,115, 0.85); max-width: 560px; }
+.p-byline { margin-top: auto; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(140,130,115, 0.35); text-transform: uppercase; padding-top: 20px; border-top: 1px solid rgba(154,122,40, 0.08); }
+
+/* ── EDITORIAL STACK ── */
+.e-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.18em; padding: 6px 14px; border: 1px solid rgba(168,90,48,0.25); background: rgba(168,90,48,0.04); color: #A85A30; border-radius: 2px; display: inline-block; text-transform: uppercase; align-self: flex-start; margin-bottom: 40px; }
+.e-head { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 48px; line-height: 1.14; letter-spacing: -0.02em; color: #6A6A6A; margin-bottom: 28px; }
+.e-head em { font-family: 'Libre Caslon Text', serif; font-style: italic; font-weight: 400; font-size: 54px; color: #A85A30; }
+.e-rule { width: 100%; height: 1px; background: linear-gradient(90deg, #A85A30, #6A3818 50%, transparent); margin-bottom: 24px; border: none; }
+.e-body { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.65; color: rgba(130,130,130, 0.4); max-width: 560px; }
+.e-byline { margin-top: auto; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(130,130,130, 0.3); text-transform: uppercase; padding-top: 20px; border-top: 1px solid rgba(168,90,48, 0.08); }
+
+/* shared markers */
+.mk { position: absolute; top: 0; left: 0; width: 3px; height: 100%; z-index: 4; }
+.mk.p { background: linear-gradient(180deg, rgba(154,122,40,0.25) 0%, transparent 45%); }
+.mk.e { background: linear-gradient(180deg, rgba(168,90,48,0.25) 0%, transparent 45%); }
+
+.legend { max-width: 1800px; margin: 42px auto 0; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(130,130,130, 0.4); text-transform: uppercase; display: flex; justify-content: space-between; padding: 20px 8px; border-top: 1px solid rgba(168,90,48, 0.08); }
+.legend em { font-family: 'Libre Caslon Text', serif; font-style: italic; color: rgba(168,90,48, 0.55); letter-spacing: 0; text-transform: none; font-size: 14px; }
+</style></head>
+<body>
+<header class="hd">
+  <div class="k">STACK COMPARISON · V1</div>
+  <h1>complementares, não concorrentes</h1>
+  <p>Mesma headline, mesma paleta-base, mesma hierarquia. A diferença é o stack tipográfico — e o contexto onde cada um serve. Produto reconhece; editorial convida à leitura.</p>
+</header>
+
+<div class="grid">
+  <section class="col product">
+    <span class="mk p"></span>
+    <div class="topbar"><span class="lbl p">STACK PRODUTO · CHUMBO QUENTE</span><span class="meta">ANTON · DM SANS · SPACE MONO</span></div>
+    <div class="inner">
+      <span class="p-tag">OFFF BCN 2026</span>
+      <h1 class="p-head">O CRIATIVO MAIS <span>SÊNIOR</span> DA SALA É QUASE SEMPRE O MAIS <span>IMPOTENTE</span></h1>
+      <hr class="p-rule">
+      <p class="p-body">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="p-byline">NILS LEONARD · UNCOMMON CREATIVE STUDIO · KEY INSIGHT</div>
+    </div>
+  </section>
+
+  <section class="col editorial">
+    <span class="mk e"></span>
+    <div class="topbar"><span class="lbl e">STACK EDITORIAL · CHUMBO PURO</span><span class="meta">INTER · INSTRUMENT SERIF · SPACE MONO</span></div>
+    <div class="inner">
+      <span class="e-tag">OFFF BCN 2026</span>
+      <h1 class="e-head">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="e-rule">
+      <p class="e-body">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="e-byline">NILS LEONARD · UNCOMMON CREATIVE STUDIO · KEY INSIGHT</div>
+    </div>
+  </section>
+</div>
+
+<div class="legend">
+  <span>PRODUTO: bloco arquitetural · impacto por massa · reconhecimento em 2s</span>
+  <em>o conector é Space Mono</em>
+  <span>EDITORIAL: contraste por estilo · impacto por pausa · leitura com atribuição</span>
+</div>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Carousel Cover</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1080px; height: 1350px; }
+@media (max-width: 1140px){ .stage{ transform: scale(calc(90vw / 1080)); transform-origin: center top; } }
+.content { position: absolute; z-index: 8; top: 140px; left: 64px; right: 64px; bottom: 180px; display: flex; flex-direction: column; }
+.tag-strip { margin-bottom: 48px; }
+.tag { font-size: 10px; letter-spacing: 0.18em; padding: 6px 14px; }
+.issue { margin-bottom: 36px; font-family: var(--ed-font-label); font-size: 10px; letter-spacing: 0.25em; color: rgba(168,90,48,0.6); text-transform: uppercase; }
+.headline { font-size: 48px; line-height: 1.14; margin-bottom: 40px; max-width: 880px; }
+.headline em { font-size: 54px; }
+.rule { width: 100%; margin-bottom: 32px; }
+.subtitle { font-size: 17px; line-height: 1.6; max-width: 720px; }
+.speaker-card { margin-top: auto; padding: 26px 0; gap: 24px; }
+.sc-initials { width: 58px; height: 58px; font-size: 26px; }
+.sc-name { font-size: 16px; }
+.sc-role { font-size: 9px; }
+.info-strip { height: 48px; padding: 0 36px; font-size: 10px; letter-spacing: 0.18em; }
+.info-strip__sig { width: 28px; }
+.layer-ghost--1 { inset: -8px; border: 1px solid rgba(168,90,48,0.06); }
+.layer-ghost--2 { inset: -16px; border: 1px solid rgba(168,90,48,0.04); }
+.grid-overlay { background-size: 54px 54px; }
+.glitch-line--1 { top: 420px; background: linear-gradient(90deg, transparent 0%, transparent 12%, rgba(168,90,48,0.08) 12% 30%, transparent 30% 58%, rgba(168,90,48,0.06) 58% 75%, transparent 75%); }
+.glitch-line--2 { top: 960px; background: linear-gradient(90deg, transparent 0%, transparent 20%, rgba(168,90,48,0.07) 20% 40%, transparent 40% 62%, rgba(168,90,48,0.06) 62% 82%, transparent 82%); }
+.ascii-frag { font-size: 9px; }
+.a1 { top: 240px; right: 40px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 320px; left: 40px; transform: rotate(1deg); }
+.poly-wrap { top: 130px; right: -30px; width: 220px; height: 220px; }
+.slide-idx { position: absolute; bottom: 60px; right: 48px; z-index: 9; font-family: var(--ed-font-label); font-size: 9px; letter-spacing: 0.22em; color: rgba(168,90,48,0.35); text-transform: uppercase; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--2"></div>
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="glitch-line glitch-line--2"></div>
+  <div class="ascii-frag a1">▸ CAROUSEL ▸▸▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░</div>
+
+  <div class="info-strip info-strip--top">
+    <span>✕ ✕ ✕</span><span>EDIÇÃO · CURADORIA</span><span>MSCREATIVE.SYSTEMS™</span>
+  </div>
+
+  <div class="content">
+    <div class="issue">OFFF BCN 2026 · Ed. 01 · Abr 2026</div>
+    <div class="tag-strip">
+      <span class="tag tag--accent">CAPA</span>
+      <span class="tag tag--ghost">Insight 01 de 06</span>
+    </div>
+    <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+    <hr class="rule">
+    <p class="subtitle">Um insight de Nils Leonard sobre senioridade, autonomia e a erosão silenciosa da agência criativa.</p>
+    <div class="speaker-card">
+      <div class="sc-initials">NL</div>
+      <div class="sc-info"><span class="sc-name">Nils Leonard</span><span class="sc-role">Co-Founder · Uncommon Creative Studio</span></div>
+    </div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="440" height="440"></canvas></div>
+  <div class="slide-idx">01 / 09</div>
+
+  <div class="info-strip info-strip--bot">
+    <span>@mscreative.systems</span><span>Nils Leonard · Uncommon</span>
+    <div class="info-strip__right"><span>DESLIZE →</span><span class="info-strip__sig" id="sig"></span></div>
+  </div>
+</div>
+<script src="ico.js"></script>
+<script>document.getElementById('sig').innerHTML = MS_SIG_SVG; initPoly('poly');</script>
+</body></html>

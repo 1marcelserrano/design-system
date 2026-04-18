@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Carousel Content</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1080px; height: 1350px; }
+@media (max-width: 1140px){ .stage{ transform: scale(calc(90vw / 1080)); transform-origin: center top; } }
+.content { position: absolute; z-index: 8; top: 130px; left: 64px; right: 64px; bottom: 170px; display: flex; flex-direction: column; }
+.kicker { font-family: var(--ed-font-label); font-size: 11px; letter-spacing: 0.25em; color: rgba(168,90,48,0.6); text-transform: uppercase; margin-bottom: 28px; }
+.headline { font-size: 38px; line-height: 1.2; margin-bottom: 36px; max-width: 880px; }
+.headline em { font-size: 44px; }
+.rule { width: 240px; margin-bottom: 28px; }
+.quote { font-family: var(--ed-font-emphasis); font-style: italic; font-size: 26px; line-height: 1.35; color: rgba(130,130,130, 0.42); border-left: 3px solid rgba(168,90,48,0.2); padding-left: 28px; max-width: 720px; margin-top: 12px; margin-bottom: 36px; }
+.body { font-size: 16px; line-height: 1.65; max-width: 760px; font-weight: 300; color: var(--ed-text-body); }
+.body + .body { margin-top: 20px; }
+.body em { font-family: var(--ed-font-emphasis); font-style: italic; color: rgba(168,90,48, 0.7); font-size: 18px; }
+.footer-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 24px; border-top: 1px solid rgba(168,90,48,0.06); font-family: var(--ed-font-label); font-size: 9px; letter-spacing: 0.2em; color: rgba(130,130,130,0.3); text-transform: uppercase; }
+.info-strip { height: 48px; padding: 0 36px; font-size: 10px; letter-spacing: 0.18em; }
+.info-strip__sig { width: 28px; }
+.layer-ghost--1 { inset: -8px; border: 1px solid rgba(168,90,48,0.06); }
+.layer-ghost--2 { inset: -16px; border: 1px solid rgba(168,90,48,0.04); }
+.grid-overlay { background-size: 54px 54px; }
+.glitch-line--1 { top: 360px; background: linear-gradient(90deg, transparent 0%, transparent 10%, rgba(168,90,48,0.07) 10% 26%, transparent 26% 62%, rgba(168,90,48,0.05) 62% 78%, transparent 78%); }
+.glitch-line--2 { top: 980px; background: linear-gradient(90deg, transparent 0%, transparent 22%, rgba(168,90,48,0.06) 22% 38%, transparent 38%); }
+.ascii-frag { font-size: 9px; }
+.a1 { top: 260px; right: 42px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 280px; left: 40px; transform: rotate(1deg); }
+.poly-wrap { bottom: 180px; right: -20px; width: 160px; height: 160px; opacity: 0.14; }
+.slide-idx { position: absolute; bottom: 56px; right: 44px; z-index: 9; font-family: var(--ed-font-label); font-size: 9px; letter-spacing: 0.22em; color: rgba(168,90,48,0.35); text-transform: uppercase; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--2"></div>
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="glitch-line glitch-line--2"></div>
+  <div class="ascii-frag a1">▸ INSIGHT 02 ▸▸▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░</div>
+
+  <div class="info-strip info-strip--top">
+    <span>OFFF BCN 2026</span><span>Ed. 01 · Abr 2026</span><span>MSCREATIVE.SYSTEMS™</span>
+  </div>
+
+  <div class="content">
+    <div class="kicker">Desdobramento · 02</div>
+    <h1 class="headline">Senioridade não é <em>liberdade</em> — é acúmulo de <em>dependências</em></h1>
+    <hr class="rule">
+    <blockquote class="quote">"Ele delegou a execução. E com ela, a autonomia sobre a própria ideia."</blockquote>
+    <p class="body">A estrutura corporativa confunde <em>escopo</em> com <em>soberania</em>. Quanto mais alto o cargo, mais intermediários entre a ideia e sua forma final. O criativo sênior escreve o brief, o diretor traduz, o time executa, o cliente corta. O resultado chega decomposto — reconhecível mas sem assinatura.</p>
+    <p class="body">O paradoxo: quem tem mais autoridade formal tem menos controle tangível. A ideia sobrevive, mas como eco.</p>
+    <div class="footer-meta"><span>NILS LEONARD · UNCOMMON</span><span>02 / 06</span></div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="320" height="320"></canvas></div>
+  <div class="slide-idx">02 / 09</div>
+
+  <div class="info-strip info-strip--bot">
+    <span>@mscreative.systems</span><span>Insight Nils Leonard</span>
+    <div class="info-strip__right"><span>DESLIZE →</span><span class="info-strip__sig" id="sig"></span></div>
+  </div>
+</div>
+<script src="ico.js"></script>
+<script>document.getElementById('sig').innerHTML = MS_SIG_SVG; initPoly('poly');</script>
+</body></html>

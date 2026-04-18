@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Story</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1080px; height: 1920px; transform-origin: center; }
+@media (max-width: 1140px){ .stage{ transform: scale(calc(90vw / 1080)); } }
+.content { position: absolute; z-index: 8; top: 174px; left: 72px; right: 72px; bottom: 214px; display: flex; flex-direction: column; }
+.tag-strip { margin-bottom: 56px; }
+.tag { font-size: 10px; letter-spacing: 0.18em; padding: 6px 14px; }
+.headline { font-size: 54px; line-height: 1.12; margin-bottom: 44px; max-width: 900px; }
+.headline em { font-size: 62px; }
+.rule { width: 100%; margin-bottom: 36px; }
+.subtitle { font-size: 19px; line-height: 1.65; max-width: 780px; }
+.speaker-card { margin-top: 56px; padding: 28px 0; gap: 28px; }
+.sc-initials { width: 64px; height: 64px; font-size: 28px; }
+.sc-name { font-size: 17px; }
+.sc-role { font-size: 9px; }
+.info-strip { height: 54px; padding: 0 40px; font-size: 10px; letter-spacing: 0.18em; }
+.info-strip__sig { width: 32px; }
+.layer-ghost--1 { inset: -8px; border: 1px solid rgba(168,90,48,0.06); }
+.layer-ghost--2 { inset: -16px; border: 1px solid rgba(168,90,48,0.04); }
+.layer-ghost--3 { inset: -24px; border: 1px solid rgba(168,90,48,0.025); }
+.grid-overlay { background-size: 54px 54px; }
+.glitch-line--1 { top: 500px; background: linear-gradient(90deg, transparent 0%, transparent 10%, rgba(168,90,48,0.08) 10% 28%, transparent 28% 55%, rgba(168,90,48,0.06) 55% 72%, transparent 72%); }
+.glitch-line--2 { top: 1350px; background: linear-gradient(90deg, transparent 0%, transparent 18%, rgba(168,90,48,0.07) 18% 38%, transparent 38% 60%, rgba(168,90,48,0.06) 60% 82%, transparent 82%); }
+.ascii-frag { font-size: 10px; }
+.a1 { top: 260px; right: 50px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 440px; left: 45px; transform: rotate(1deg); }
+.a3 { top: 1150px; right: 75px; }
+.poly-wrap { top: 160px; right: -40px; width: 280px; height: 280px; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--3"></div>
+  <div class="layer-ghost layer-ghost--2"></div>
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="glitch-line glitch-line--2"></div>
+  <div class="ascii-frag a1">▸ SOVEREIGNTY ▸▸▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░</div>
+  <div class="ascii-frag a3">╔══╗ ║◈◈║ ╚══╝</div>
+
+  <div class="info-strip info-strip--top">
+    <span>✕ ✕ ✕</span><span>CRIATIVIDADE É ESTRUTURA, NÃO INSPIRAÇÃO</span><span>MSCREATIVE.SYSTEMS™</span>
+  </div>
+
+  <div class="content">
+    <div class="tag-strip">
+      <span class="tag tag--accent">OFFF BCN 2026</span>
+      <span class="tag tag--ghost">Nils Leonard</span>
+      <span class="tag tag--ghost">Key Insight</span>
+    </div>
+    <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+    <hr class="rule">
+    <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+    <div class="speaker-card">
+      <div class="sc-initials">NL</div>
+      <div class="sc-info"><span class="sc-name">Nils Leonard</span><span class="sc-role">Co-Founder · Uncommon Creative Studio</span></div>
+    </div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="560" height="560"></canvas></div>
+
+  <div class="info-strip info-strip--bot">
+    <span>OFFF BCN 2026</span><span>Nils Leonard · Uncommon Creative Studio</span>
+    <div class="info-strip__right"><span>@mscreative.systems</span><span class="info-strip__sig" id="sig"></span></div>
+  </div>
+</div>
+<script src="ico.js"></script>
+<script>document.getElementById('sig').innerHTML = MS_SIG_SVG; initPoly('poly');</script>
+</body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Substack Header</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1100px; height: 400px; }
+@media (max-width: 1160px){ .stage{ transform: scale(calc(90vw / 1100)); transform-origin: center top; } }
+.content { position: absolute; z-index: 8; top: 72px; left: 80px; right: 80px; bottom: 48px; display: flex; flex-direction: column; }
+.issue { font-family: var(--ed-font-label); font-size: 11px; letter-spacing: 0.25em; color: rgba(168,90,48,0.6); text-transform: uppercase; margin-bottom: 20px; }
+.headline { font-size: 42px; line-height: 1.15; margin-bottom: 22px; max-width: 820px; }
+.headline em { font-size: 48px; }
+.rule { width: 220px; margin-bottom: 20px; }
+.subtitle { font-size: 18px; line-height: 1.55; max-width: 760px; }
+.byline { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--ed-font-label); font-size: 10px; letter-spacing: 0.22em; color: rgba(130,130,130,0.32); text-transform: uppercase; padding-top: 14px; border-top: 1px solid rgba(168,90,48,0.06); }
+.byline b { color: var(--ed-text-body); font-family: var(--ed-font-headline); font-weight: 400; letter-spacing: 0; text-transform: none; font-size: 13px; }
+.layer-ghost--1 { inset: -6px; border: 1px solid rgba(168,90,48,0.06); }
+.grid-overlay { background-size: 44px 44px; }
+.glitch-line--1 { top: 140px; background: linear-gradient(90deg, transparent 0%, transparent 12%, rgba(168,90,48,0.07) 12% 30%, transparent 30% 68%, rgba(168,90,48,0.05) 68% 82%, transparent 82%); }
+.ascii-frag { font-size: 9px; }
+.a1 { top: 40px; right: 30px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 20px; left: 30px; transform: rotate(1deg); }
+.poly-wrap { top: 40px; right: 20px; width: 120px; height: 120px; opacity: 0.15; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="ascii-frag a1">▸ FRONTEIRISTAS ▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░  MSCS.EDITORIAL</div>
+
+  <div class="content">
+    <div class="issue">FRONTEIRISTAS · Ed. 07 · 18 Abr 2026</div>
+    <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+    <hr class="rule">
+    <p class="subtitle">Senioridade, autonomia e a erosão silenciosa da agência criativa — uma leitura a partir do OFFF Barcelona 2026.</p>
+    <div class="byline">
+      <span>POR <b>MARCEL SERRANO</b></span>
+      <span>7 MIN · MSCREATIVE.SYSTEMS™</span>
+    </div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="240" height="240"></canvas></div>
+</div>
+<script src="ico.js"></script>
+<script>initPoly('poly');</script>
+</body></html>

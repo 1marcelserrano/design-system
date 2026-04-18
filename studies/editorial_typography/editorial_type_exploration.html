@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Type Pairings · Exploration</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Manrope:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Work+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Space+Grotesk:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
+  --headline: #6A6A6A;
+  --emphasis: #A85A30;
+  --body: rgba(130,130,130, 0.4);
+  --label: rgba(130,130,130, 0.18);
+  --label-accent: rgba(168,90,48, 0.2);
+  --accent: #A85A30;
+  --accent-2: #6A3818;
+  --rule: linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+  --grid-line: rgba(255,255,255, 0.025);
+  --ghost: rgba(168,90,48, 0.06);
+}
+body { background: var(--bg); min-height: 100vh; font-family: 'Inter', sans-serif; color: var(--headline); padding: 72px 32px 96px; }
+body::before { content:''; position: fixed; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 54px 54px; pointer-events: none; z-index: 0; }
+
+header { max-width: 1280px; margin: 0 auto 72px; position: relative; z-index: 1; }
+.k { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.3em; color: rgba(168,90,48,0.6); text-transform: uppercase; }
+header h1 { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 48px; line-height: 1.12; letter-spacing: -0.02em; margin-top: 14px; max-width: 880px; color: var(--headline); }
+header h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 54px; color: var(--emphasis); }
+.top-rule { width: 100%; height: 1px; border: none; background: var(--rule); margin: 28px 0 20px; }
+header p { font-size: 16px; font-weight: 300; color: rgba(130,130,130, 0.5); max-width: 720px; line-height: 1.65; }
+header p + p { margin-top: 12px; }
+
+.protocol { max-width: 1280px; margin: 32px auto 72px; position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(168,90,48, 0.08); border: 1px solid rgba(168,90,48, 0.08); }
+.protocol .cell { background: rgba(10,10,14, 0.95); padding: 22px 22px; }
+.protocol .cell .lb { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.22em; color: rgba(168,90,48, 0.55); text-transform: uppercase; margin-bottom: 10px; }
+.protocol .cell .vl { font-size: 14px; color: rgba(130,130,130, 0.6); font-weight: 300; line-height: 1.5; }
+
+/* ── Pairing cards ── */
+.grid { max-width: 1280px; margin: 0 auto; display: grid; gap: 28px; position: relative; z-index: 1; }
+
+.pair { position: relative; background: rgba(10,10,14, 0.98); border: 1px solid rgba(168,90,48, 0.08); overflow: hidden; }
+.pair::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 48px 48px; z-index: 0; }
+.pair::after { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; z-index: 4; background: linear-gradient(180deg, rgba(168,90,48,0.2) 0%, transparent 50%); }
+
+.pair-head { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: baseline; padding: 22px 32px 18px; border-bottom: 1px solid rgba(168,90,48, 0.08); gap: 16px; font-family: 'Space Mono', monospace; text-transform: uppercase; }
+.pair-head .idx { font-size: 10px; letter-spacing: 0.25em; color: rgba(168,90,48, 0.7); flex-shrink: 0; }
+.pair-head .name { font-size: 10px; letter-spacing: 0.22em; color: var(--headline); flex-shrink: 0; }
+.pair-head .ref { font-size: 9px; letter-spacing: 0.18em; color: rgba(130,130,130, 0.3); font-style: italic; text-align: right; }
+
+.pair-body { position: relative; z-index: 2; padding: 44px 56px 52px; display: flex; flex-direction: column; min-height: 420px; }
+.pair-body .tag-strip { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.pair-body .tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.18em; padding: 5px 12px; border-radius: 2px; text-transform: uppercase; color: var(--emphasis); border: 1px solid rgba(168,90,48,0.25); background: rgba(168,90,48,0.04); }
+
+.pair-body .headline { max-width: 780px; margin-bottom: 22px; color: var(--headline); }
+.pair-body .rule { height: 1px; border: none; background: var(--rule); width: 100%; margin-bottom: 20px; }
+.pair-body .subtitle { max-width: 680px; color: var(--body); }
+
+.pair-footer { margin-top: auto; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.pair-footer .speaker { display: flex; align-items: center; gap: 18px; }
+.pair-footer .ini { width: 50px; height: 50px; border: 1px solid rgba(168,90,48,0.15); display: flex; align-items: center; justify-content: center; color: var(--emphasis); flex-shrink: 0; }
+.pair-footer .nm { font-size: 14px; color: var(--body); }
+.pair-footer .rl { font-family: 'Space Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label-accent); margin-top: 4px; }
+.pair-footer .verdict { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(130,130,130, 0.35); text-align: right; max-width: 260px; line-height: 1.5; }
+
+/* ═══════ PAIRING 01 — BASELINE (approved) ═══════ */
+.p01 .headline { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 44px; line-height: 1.14; letter-spacing: -0.02em; }
+.p01 .headline em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); }
+.p01 .subtitle { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.65; }
+.p01 .ini { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 24px; }
+.p01 .nm { font-family: 'Inter', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 02 — FRAUNCES (sharp) + INTER ═══════ */
+.p02 .headline { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 44px; line-height: 1.14; letter-spacing: -0.02em; }
+.p02 .headline em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); font-variation-settings: 'opsz' 144, 'SOFT' 0; }
+.p02 .subtitle { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.65; }
+.p02 .ini { font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; font-variation-settings: 'opsz' 144; }
+.p02 .nm { font-family: 'Inter', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 03 — PLAYFAIR + WORK SANS ═══════ */
+.p03 .headline { font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 42px; line-height: 1.18; letter-spacing: -0.015em; }
+.p03 .headline em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); }
+.p03 .subtitle { font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.7; }
+.p03 .ini { font-family: 'Playfair Display', serif; font-style: italic; font-size: 26px; }
+.p03 .nm { font-family: 'Work Sans', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 04 — CORMORANT (serif-led) + INTER ═══════ */
+/* Serif-led: headline in serif italic, body in sans */
+.p04 .headline { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 52px; line-height: 1.12; letter-spacing: -0.01em; color: var(--headline); }
+.p04 .headline em { font-style: italic; font-weight: 400; font-size: 56px; color: var(--emphasis); }
+.p04 .subtitle { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.65; }
+.p04 .ini { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 28px; }
+.p04 .nm { font-family: 'Inter', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 05 — EB GARAMOND + SPACE GROTESK ═══════ */
+.p05 .headline { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 42px; line-height: 1.16; letter-spacing: -0.02em; }
+.p05 .headline em { font-family: 'EB Garamond', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); }
+.p05 .subtitle { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.65; }
+.p05 .ini { font-family: 'EB Garamond', serif; font-style: italic; font-size: 26px; }
+.p05 .nm { font-family: 'Space Grotesk', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 06 — NEWSREADER + MANROPE ═══════ */
+.p06 .headline { font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 42px; line-height: 1.16; letter-spacing: -0.02em; }
+.p06 .headline em { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); font-variation-settings: 'opsz' 72; }
+.p06 .subtitle { font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.65; }
+.p06 .ini { font-family: 'Newsreader', serif; font-style: italic; font-size: 26px; font-variation-settings: 'opsz' 72; }
+.p06 .nm { font-family: 'Manrope', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 07 — LIBRE CASLON + IBM PLEX SANS ═══════ */
+.p07 .headline { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 42px; line-height: 1.18; letter-spacing: -0.015em; }
+.p07 .headline em { font-family: 'Libre Caslon Text', serif; font-style: italic; font-weight: 400; font-size: 48px; color: var(--emphasis); }
+.p07 .subtitle { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.65; }
+.p07 .ini { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 24px; }
+.p07 .nm { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; }
+
+/* ═══════ PAIRING 08 — BRICOLAGE + NEWSREADER (reverse) ═══════ */
+.p08 .headline { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 44px; line-height: 1.12; letter-spacing: -0.025em; font-variation-settings: 'opsz' 96, 'wdth' 100; }
+.p08 .headline em { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 50px; color: var(--emphasis); letter-spacing: -0.01em; font-variation-settings: 'opsz' 72; }
+.p08 .subtitle { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300; font-size: 16.5px; line-height: 1.65; font-variation-settings: 'opsz' 24, 'wdth' 100; }
+.p08 .ini { font-family: 'Newsreader', serif; font-style: italic; font-size: 26px; font-variation-settings: 'opsz' 72; }
+.p08 .nm { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; font-variation-settings: 'opsz' 24; }
+
+.footer-page { max-width: 1280px; margin: 72px auto 0; padding-top: 28px; border-top: 1px solid rgba(168,90,48,0.08); font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: rgba(130,130,130, 0.35); text-transform: uppercase; display: flex; justify-content: space-between; gap: 20px; position: relative; z-index: 1; }
+.footer-page em { font-family: 'Instrument Serif', serif; font-style: italic; letter-spacing: 0; text-transform: none; color: rgba(168,90,48, 0.55); font-size: 14px; }
+</style></head>
+<body>
+
+<header>
+  <div class="k">EDITORIAL TYPE · EXPLORATION V1 · 8 PAIRINGS</div>
+  <h1>Oito sistemas tipográficos <em>igualmente sofisticados</em>, mesmo <em>protocolo</em> visual.</h1>
+  <hr class="top-rule">
+  <p>Mesma headline Nils Leonard. Mesma paleta Chumbo Puro. Mesmo grid. Mesma arquitetura de speaker card. A única variável é o par sans + serif. O objetivo não é escolher a "melhor" — é calibrar qual <em style="font-family: 'Instrument Serif', serif; font-style: italic; color: var(--emphasis);">temperamento editorial</em> pertence à marca.</p>
+  <p style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(168,90,48, 0.5); margin-top: 20px;">07 · APROVADO V1  ·  01 · BASELINE ANTERIOR  ·  02–06, 08 · ALTERNATIVAS</p>
+</header>
+
+<div class="protocol">
+  <div class="cell"><div class="lb">PROTOCOLO · CONSTANTE</div><div class="vl">Paleta Chumbo Puro + Electric Orange</div></div>
+  <div class="cell"><div class="lb">PROTOCOLO · CONSTANTE</div><div class="vl">Contraste por estilo · não por escala</div></div>
+  <div class="cell"><div class="lb">PROTOCOLO · CONSTANTE</div><div class="vl">Emphasis = italic · +10-15% size</div></div>
+  <div class="cell"><div class="lb">PROTOCOLO · CONSTANTE</div><div class="vl">Space Mono em todo label/meta</div></div>
+</div>
+
+<div class="grid">
+
+  <!-- 01 · BASELINE -->
+  <section class="pair p01">
+    <div class="pair-head">
+      <span class="idx">01 · BASELINE ANTERIOR</span>
+      <span class="name">INTER 300 + INSTRUMENT SERIF ITALIC</span>
+      <span class="ref">ref — OFFF 2026 canonical, MSCS V1</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Editorial contemporâneo · neutro · escalável</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · FRAUNCES -->
+  <section class="pair p02">
+    <div class="pair-head">
+      <span class="idx">02 · ALTERNATIVA</span>
+      <span class="name">INTER 300 + FRAUNCES ITALIC (sharp)</span>
+      <span class="ref">ref — Cereal, Dezeen headlines</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Serifa com bite · mais opinativo · arestas mais afiadas que Instrument</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · PLAYFAIR + WORK SANS -->
+  <section class="pair p03">
+    <div class="pair-head">
+      <span class="idx">03 · ALTERNATIVA</span>
+      <span class="name">WORK SANS 300 + PLAYFAIR DISPLAY ITALIC</span>
+      <span class="ref">ref — Harper's, Vogue editorial</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">High-contrast glamour · Didone italic · mais fashion, menos tech</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · CORMORANT SERIF-LED -->
+  <section class="pair p04">
+    <div class="pair-head">
+      <span class="idx">04 · ALTERNATIVA · SERIF-LED</span>
+      <span class="name">CORMORANT GARAMOND + INTER</span>
+      <span class="ref">ref — Kinfolk, Cereal, Apartamento</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Inverte o modelo · serifa domina · voz mais contemplativa, menos tecnológica</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · EB GARAMOND + SPACE GROTESK -->
+  <section class="pair p05">
+    <div class="pair-head">
+      <span class="idx">05 · ALTERNATIVA</span>
+      <span class="name">SPACE GROTESK 300 + EB GARAMOND ITALIC</span>
+      <span class="ref">ref — It's Nice That, Real Review</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Par quase-Monocle · geometric sans + old-style serif · identidade criativo-tech</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · NEWSREADER + MANROPE -->
+  <section class="pair p06">
+    <div class="pair-head">
+      <span class="idx">06 · ALTERNATIVA</span>
+      <span class="name">MANROPE 300 + NEWSREADER ITALIC</span>
+      <span class="ref">ref — FT Weekend, Bloomberg long-form</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">News-editorial · serif mais "reported" · autoridade jornalística</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · LIBRE CASLON + PLEX SANS -->
+  <section class="pair p07">
+    <div class="pair-head">
+      <span class="idx">07 · APROVADO V1</span>
+      <span class="name">IBM PLEX SANS 300 + LIBRE CASLON ITALIC</span>
+      <span class="ref">ref — IBM Design, Monocle hybrid</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Caslon de texto · menos ornamental · equilíbrio técnico-humanista</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · BRICOLAGE + NEWSREADER -->
+  <section class="pair p08">
+    <div class="pair-head">
+      <span class="idx">08 · ALTERNATIVA</span>
+      <span class="name">BRICOLAGE GROTESQUE 300 + NEWSREADER ITALIC</span>
+      <span class="ref">ref — Are.na, Field Guide, contemporary</span>
+    </div>
+    <div class="pair-body">
+      <div class="tag-strip"><span class="tag">OFFF BCN 2026</span></div>
+      <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+      <hr class="rule">
+      <p class="subtitle">Ele delegou a execução. E com ela, a autonomia sobre a própria ideia. Senioridade não é liberdade criativa — é acúmulo de dependências.</p>
+      <div class="pair-footer">
+        <div class="speaker"><div class="ini">NL</div><div><div class="nm">Nils Leonard</div><div class="rl">Uncommon Creative Studio</div></div></div>
+        <div class="verdict">Grotesque variável · desenho mais escultural · tom contemporâneo 2026</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer-page">
+  <span>MSCREATIVE.SYSTEMS™ · EDITORIAL TYPE EXPLORATION V1</span>
+  <em>o par define o temperamento, não o conteúdo.</em>
+  <span>8 ALTERNATIVAS · MESMO PROTOCOLO</span>
+</div>
+</body></html>

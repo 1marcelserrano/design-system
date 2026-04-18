@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Editorial Study · Newsletter Header</title>
+<link rel="stylesheet" href="editorial.css">
+<style>
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #05060a; padding: 20px; }
+.stage { width: 1200px; height: 500px; }
+@media (max-width: 1260px){ .stage{ transform: scale(calc(90vw / 1200)); transform-origin: center top; } }
+.content { position: absolute; z-index: 8; top: 64px; left: 72px; right: 72px; bottom: 56px; display: flex; flex-direction: column; }
+.masthead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid rgba(168,90,48,0.08); }
+.masthead .t { font-family: var(--ed-font-label); font-size: 11px; letter-spacing: 0.3em; color: rgba(168,90,48,0.55); text-transform: uppercase; }
+.masthead .d { font-family: var(--ed-font-label); font-size: 10px; letter-spacing: 0.22em; color: rgba(130,130,130,0.3); text-transform: uppercase; }
+.headline { font-size: 36px; line-height: 1.2; margin-bottom: 22px; max-width: 1000px; }
+.headline em { font-size: 42px; }
+.rule { width: 200px; margin-bottom: 18px; }
+.subtitle { font-size: 16px; line-height: 1.55; max-width: 880px; font-weight: 400; }
+.editor-line { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-family: var(--ed-font-label); font-size: 10px; letter-spacing: 0.2em; color: rgba(130,130,130,0.32); text-transform: uppercase; }
+.editor-line em { font-family: var(--ed-font-emphasis); font-style: italic; font-size: 14px; color: rgba(168,90,48,0.5); letter-spacing: 0; text-transform: none; }
+.layer-ghost--1 { inset: -6px; border: 1px solid rgba(168,90,48,0.06); }
+.grid-overlay { background-size: 44px 44px; }
+.glitch-line--1 { top: 180px; background: linear-gradient(90deg, transparent 0%, transparent 14%, rgba(168,90,48,0.06) 14% 30%, transparent 30% 64%, rgba(168,90,48,0.05) 64% 80%, transparent 80%); }
+.ascii-frag { font-size: 9px; }
+.a1 { top: 60px; right: 30px; transform: rotate(-90deg); transform-origin: right center; }
+.a2 { bottom: 30px; left: 30px; transform: rotate(1deg); }
+.poly-wrap { top: 50px; right: 30px; width: 120px; height: 120px; opacity: 0.14; }
+</style></head>
+<body>
+<div class="stage">
+  <div class="layer-ghost layer-ghost--1"></div>
+  <div class="grid-overlay"></div>
+  <div class="scan-lines"></div>
+  <div class="product-marker"></div>
+  <div class="glitch-line glitch-line--1"></div>
+  <div class="ascii-frag a1">▸ NEWSLETTER ▸</div>
+  <div class="ascii-frag a2">░▒▓█▓▒░  MSCS.ED07</div>
+
+  <div class="content">
+    <div class="masthead">
+      <span class="t">FRONTEIRISTAS · EDIÇÃO 07</span>
+      <span class="d">18 Abril 2026 · Semanal</span>
+    </div>
+    <h1 class="headline">O criativo mais <em>sênior</em> da sala é quase sempre o mais <em>impotente</em></h1>
+    <hr class="rule">
+    <p class="subtitle">Esta semana: uma leitura do OFFF BCN 2026 pela lente de Nils Leonard — senioridade como acúmulo de dependências, não como liberdade criativa.</p>
+    <div class="editor-line"><span>DO EDITOR — <em>Marcel Serrano</em></span><span>7 MIN · MSCREATIVE.SYSTEMS™</span></div>
+  </div>
+
+  <div class="poly-wrap"><canvas id="poly" width="240" height="240"></canvas></div>
+</div>
+<script src="ico.js"></script>
+<script>initPoly('poly');</script>
+</body></html>
