@@ -6,7 +6,7 @@
  *   <script src="js/wireframe-engine.js"></script>
  *   <canvas id="my-canvas" width="300" height="300"
  *           data-geometry="icosaedro"
- *           data-color1="#B2A898" data-color2="#8A8478"
+ *           data-color1="#A85A30" data-color2="#A85A30"
  *           data-speed-x="0.12" data-speed-y="0.16" data-speed-z="0.06"
  *           data-fov="3.5"></canvas>
  *   <script>
@@ -14,10 +14,10 @@
  *     MSCS_Wireframe.initAllGeometries();
  *
  *     // Option B — manual init:
- *     MSCS_Wireframe.initGeometry('my-canvas', 'icosaedro', '#B2A898', '#8A8478', [0.12, 0.16, 0.06], 3.5);
+ *     MSCS_Wireframe.initGeometry('my-canvas', 'icosaedro', '#A85A30', '#A85A30', [0.12, 0.16, 0.06], 3.5);
  *
  *     // Option C — low-level (bring your own loop):
- *     MSCS_Wireframe.renderWireframe('my-canvas', MSCS_Wireframe.GEOMETRIES.icosaedro, '#B2A898', '#8A8478', [0.12, 0.16, 0.06], 3.5);
+ *     MSCS_Wireframe.renderWireframe('my-canvas', MSCS_Wireframe.GEOMETRIES.icosaedro, '#A85A30', '#A85A30', [0.12, 0.16, 0.06], 3.5);
  *   </script>
  *
  * Exposed on window.MSCS_Wireframe:
@@ -340,13 +340,15 @@
   // DEFAULT CONFIG PER GEOMETRY (matches Design System v2.8)
   // ═══════════════════════════════════════════════════════════
 
+  // Study E — Accent Puro Monocromático (aprovado 2026-04-18)
+  // c2 = c1 em todos os produtos — presença uniforme em todas as arestas
   var DEFAULTS = {
-    icosaedro:  { color1: '#B2A898', color2: '#8A8478', speeds: [0.12, 0.16, 0.06], fov: 3.5 },
-    mobius:     { color1: '#D4AF37', color2: '#8B6914', speeds: [0.12, 0.18, 0.04], fov: 3.5 },
-    tensegrity: { color1: '#2563EB', color2: '#1E3A8A', speeds: [0.13, 0.16, 0.09], fov: 3.5 },
-    turbine:   { color1: '#FF4D8C', color2: '#FF6B35', speeds: [0.10, 0.25, 0.06], fov: 3.5 },
-    dendritico: { color1: '#00C9C8', color2: '#007A7A', speeds: [0.14, 0.22, 0.10], fov: 3.5 },
-    gyroscope: { color1: '#FF8C00', color2: '#CC5500', speeds: [0.12, 0.18, 0.08], fov: 3.5 }
+    icosaedro:  { color1: '#A85A30', color2: '#A85A30', speeds: [0.12, 0.16, 0.06], fov: 3.5 },
+    mobius:     { color1: '#D4AF37', color2: '#D4AF37', speeds: [0.12, 0.18, 0.04], fov: 3.5 },
+    tensegrity: { color1: '#2563EB', color2: '#2563EB', speeds: [0.13, 0.16, 0.09], fov: 3.5 },
+    turbine:   { color1: '#FF4D8C', color2: '#FF4D8C', speeds: [0.10, 0.25, 0.06], fov: 3.5 },
+    dendritico: { color1: '#00C9C8', color2: '#00C9C8', speeds: [0.14, 0.22, 0.10], fov: 3.5 },
+    gyroscope: { color1: '#FF8C00', color2: '#FF8C00', speeds: [0.12, 0.18, 0.08], fov: 3.5 }
   };
 
   // ═══════════════════════════════════════════════════════════
@@ -389,8 +391,8 @@
     return renderWireframe(
       canvasId,
       geo,
-      color1  || def.color1  || '#B2A898',
-      color2  || def.color2  || '#8A8478',
+      color1  || def.color1  || '#A85A30',
+      color2  || def.color2  || '#A85A30',
       speeds  || def.speeds  || [0.12, 0.16, 0.06],
       fov     || def.fov     || 3.5
     );
