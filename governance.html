@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSCREATIVE.SYSTEMS — Governance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/ds-shell.css">
+  <link rel="stylesheet" href="css/ds-sections.css">
+  <style>
+    .rules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 24px; }
+    .rule-card { background: var(--ds-bg-secondary); border: 1px solid var(--ds-border-subtle); border-radius: var(--ds-radius-md); padding: 24px; position: relative; overflow: hidden; }
+    .rule-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .rule-card--do::before { background: var(--ds-success); }
+    .rule-card--dont::before { background: var(--ds-error); }
+    .rule-card--editorial::before { background: #A85A30; }
+    .rule-badge { font-family: var(--ds-font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 12px; }
+    .rule-badge--do { color: var(--ds-success); border: 1px solid rgba(46, 204, 113, 0.25); background: rgba(46, 204, 113, 0.06); }
+    .rule-badge--dont { color: var(--ds-error); border: 1px solid rgba(231, 76, 60, 0.25); background: rgba(231, 76, 60, 0.06); }
+    .rule-badge--editorial { color: #A85A30; border: 1px solid rgba(168, 90, 48, 0.25); background: rgba(168, 90, 48, 0.06); }
+    .rule-text { font-family: var(--ds-font-body); font-size: 14px; line-height: 1.55; color: var(--ds-text-body); }
+    .rule-number { font-family: var(--ds-font-label); font-size: 11px; color: var(--ds-text-muted); position: absolute; top: 16px; right: 16px; }
+    .decision-tree { display: flex; flex-direction: column; gap: 0; margin-top: 24px; max-width: 640px; }
+    .dt-node { background: var(--ds-bg-secondary); border: 1px solid var(--ds-border-subtle); border-radius: var(--ds-radius-md); padding: 20px 24px; }
+    .dt-question { font-family: var(--ds-font-body); font-size: 15px; color: var(--ds-text-primary); line-height: 1.5; }
+    .dt-answer { font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-top: 10px; padding: 6px 12px; border-radius: 2px; display: inline-block; }
+    .dt-answer--produto { color: var(--ds-accent-gold); background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); }
+    .dt-answer--editorial { color: #A85A30; background: rgba(168, 90, 48, 0.08); border: 1px solid rgba(168, 90, 48, 0.2); }
+    .dt-answer--ambos { color: var(--ds-text-primary); background: rgba(178, 168, 152, 0.08); border: 1px solid rgba(178, 168, 152, 0.15); }
+    .dt-arrow { width: 1px; height: 28px; background: var(--ds-border-subtle); margin: 0 auto; position: relative; }
+    .dt-arrow::after { content: ''; position: absolute; bottom: 0; left: -4px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid rgba(255,255,255,0.06); }
+    .version-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-family: var(--ds-font-body); font-size: 14px; }
+    .version-table th { font-family: var(--ds-font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ds-text-muted); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--ds-border-subtle); }
+    .version-table td { padding: 12px 16px; border-bottom: 1px solid var(--ds-border-subtle); color: var(--ds-text-body); vertical-align: top; }
+    .version-table tr:last-child td { border-bottom: none; }
+    .version-table .v-current td { color: var(--ds-accent-gold); }
+    .version-table .v-version { font-family: var(--ds-font-label); font-size: 12px; color: var(--ds-text-primary); white-space: nowrap; }
+    .version-table .v-current .v-version { color: var(--ds-accent-gold); }
+    .llm-steps { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+    .llm-step { background: var(--ds-bg-secondary); border: 1px solid var(--ds-border-subtle); border-radius: var(--ds-radius-md); padding: 20px 24px; display: flex; gap: 20px; align-items: flex-start; }
+    .llm-step-num { font-family: var(--ds-font-label); font-size: 14px; color: var(--ds-accent-gold); flex-shrink: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 2px; background: rgba(212, 175, 55, 0.06); }
+    .llm-step-title { font-family: var(--ds-font-body); font-size: 15px; font-weight: 500; color: var(--ds-text-primary); margin-bottom: 6px; }
+    .llm-step-desc { font-family: var(--ds-font-body); font-size: 13px; line-height: 1.6; color: var(--ds-text-body); }
+    .llm-code { font-family: var(--ds-font-label); font-size: 12px; color: var(--ds-accent-gold); background: rgba(212, 175, 55, 0.06); padding: 2px 8px; border-radius: 2px; }
+    .llm-note { margin-top: 24px; padding: 16px 20px; border-left: 3px solid var(--ds-accent-gold); background: rgba(212, 175, 55, 0.04); border-radius: 0 4px 4px 0; font-family: var(--ds-font-body); font-size: 13px; line-height: 1.6; color: var(--ds-text-body); }
+    .llm-note strong { color: var(--ds-accent-gold); }
+    .next-note { margin-top: 20px; font-size: 13px; color: var(--ds-text-muted); font-style: italic; }
+    .section-group-label { font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; margin-top: 32px; }
+  </style>
+</head>
+<body>
+
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>MSCREATIVE<br>SYSTEMS</h1>
+      <div class="version">DESIGN SYSTEM V3.0</div>
+    </div>
+    <nav>
+      <div class="nav-section">Foundation</div>
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#tokens">Design Tokens</a>
+      <a href="index.html#typography">Tipografia</a>
+      <a href="index.html#base-colors">Base Crom&aacute;tica</a>
+      <a href="index.html#chumbo-quente">Chumbo Quente</a>
+      <div class="nav-section">Produtos</div>
+      <a href="products.html#color-system">Sistema Crom&aacute;tico</a>
+      <a href="products.html#codex-geometries">3D Geometries</a>
+      <a href="products.html#identity-assets">Assets de Identidade</a>
+      <div class="nav-section">Formatos &amp; Templates</div>
+      <a href="formats.html#story-format">Story (9:16)</a>
+      <a href="formats.html#carousel">Carousel Pipeline</a>
+      <a href="formats.html#editorial-formats">Formatos Editoriais</a>
+      <a href="formats.html#contrast">Hierarquia de Contraste</a>
+      <div class="nav-section">Visual Studies</div>
+      <a href="studies.html#visual-studies">Carousel Capa (Study 01)</a>
+      <a href="studies.html#offf-story-factory">OFFF Story Factory (Study 02)</a>
+      <a href="studies.html#typo-cormorant">Cormorant Garamond (Study 03)</a>
+      <div class="nav-section">Editorial Typography</div>
+      <a href="studies.html#editorial-system">Dual-Stack System</a>
+      <a href="studies.html#editorial-formats-spec">Formatos Editoriais</a>
+      <div class="nav-section">Governan&ccedil;a</div>
+      <a href="#rules" class="active">Do's &amp; Don'ts</a>
+      <a href="#editorial-donts">Editorial Don'ts</a>
+      <a href="#stack-routing">Stack Routing</a>
+      <a href="#versioning">Versionamento</a>
+      <a href="#llm-guide">LLM Guide</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero" id="governance-hero">
+      <div class="rule"></div>
+      <h1><span>Gover</span><br>nan&ccedil;a</h1>
+      <p class="subtitle">
+        Regras de uso, restri&ccedil;&otilde;es operacionais e hist&oacute;rico de vers&otilde;es do Design System.
+        Tudo que n&atilde;o &eacute; permitido explicitamente &eacute; proibido.
+        A consist&ecirc;ncia n&atilde;o &eacute; sugest&atilde;o &mdash; &eacute; protocolo.
+      </p>
+    </header>
+
+    <!-- ═══════ §15 DO'S & DON'TS ═══════ -->
+    <section id="rules">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 15</div>
+        <h2 class="section-title">Do's &amp; Don'ts &mdash; Product Stack</h2>
+        <p class="section-desc">Regras absolutas para o stack de produto (Anton + DM Sans + Space Mono). Viola&ccedil;&atilde;o invalida a pe&ccedil;a.</p>
+      </div>
+      <h3 class="section-group-label" style="color: var(--ds-success);">DO</h3>
+      <div class="rules-grid">
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Usar Anton ALL CAPS para headlines e nomes de produto. letter-spacing: -0.02em.</div></div>
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Usar DM Sans 400/700 para body text. Opacidade 0.85 no modo dark.</div></div>
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Usar Space Mono ALL CAPS com tracking 0.2em para labels, tiers e metadados.</div></div>
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Aplicar grid 54&times;54px a 0.025 opacity em todas as superf&iacute;cies escuras.</div></div>
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Usar data-product attribute para ativar paleta (mscs, oracle, fronteiristas, neuro, style, design, execution).</div></div>
+        <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
+          <div class="rule-text">Manter gradient de background por produto. Nunca flat color &mdash; sempre linear-gradient(145deg).</div></div>
+      </div>
+      <h3 class="section-group-label" style="color: var(--ds-error);">DON'T</h3>
+      <div class="rules-grid">
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca usar branco puro (#FFFFFF). O texto mais claro &eacute; --ds-text-primary (#B2A898).</div></div>
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca usar preto puro (#000000). Background m&iacute;nimo &eacute; --ds-bg-primary (#0A0C10).</div></div>
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca usar emoji, fotografia ou ilustra&ccedil;&atilde;o. O sistema &eacute; tipogr&aacute;fico + geom&eacute;trico.</div></div>
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca usar border-radius maior que 4px. M&aacute;ximo &eacute; --ds-radius-md (4px).</div></div>
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca omitir a textura de grid em superf&iacute;cies escuras. &Eacute; assinatura de sistema.</div></div>
+        <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
+          <div class="rule-text">Nunca usar Anton em lowercase. Anton &eacute; exclusivamente ALL CAPS.</div></div>
+      </div>
+    </section>
+
+    <!-- ═══════ §16 EDITORIAL DON'TS ═══════ -->
+    <section id="editorial-donts">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 16</div>
+        <h2 class="section-title">Editorial Don'ts</h2>
+        <p class="section-desc">Restri&ccedil;&otilde;es do stack editorial (IBM Plex Sans + Libre Caslon Text + Space Mono). Fonte: EDITORIAL_TYPOGRAPHY_SYSTEM_V1 &sect;9.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-card rule-card--editorial"><span class="rule-number">01</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar Libre Caslon Text em par&aacute;grafos de leitura. S&oacute; emphasis, initials e pull quote.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">02</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar Anton em pe&ccedil;as editoriais. Anton pertence ao stack de produto.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">03</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar IBM Plex Sans Bold (700+) em headlines editoriais. O peso &eacute; Light (300).</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">04</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar DM Sans em pe&ccedil;as editoriais. DM Sans pertence ao stack de produto.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">05</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca misturar os dois stacks no mesmo bloco visual. Exce&ccedil;&otilde;es em &sect;7.1 da spec editorial.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">06</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar Libre Caslon Text sem it&aacute;lico. Exce&ccedil;&atilde;o &uacute;nica: drop cap (&sect;6.4).</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">07</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca compensar fraqueza de copy com escala. O impacto vem do contraste peso/estilo, n&atilde;o tamanho.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">08</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca alterar o letter-spacing de headline. -0.02em &eacute; can&ocirc;nico e imut&aacute;vel.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">09</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca usar Space Mono em texto corrido. Space Mono &eacute; apenas label, meta e info strip.</div></div>
+        <div class="rule-card rule-card--editorial"><span class="rule-number">10</span><span class="rule-badge rule-badge--editorial">EDITORIAL</span>
+          <div class="rule-text">Nunca criar nova paleta editorial. Chumbo Puro + Electric Orange &eacute; o &uacute;nico subsistema aprovado.</div></div>
+      </div>
+    </section>
+
+    <!-- ═══════ §17 STACK ROUTING ═══════ -->
+    <section id="stack-routing">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 17</div>
+        <h2 class="section-title">Stack Routing &mdash; Decision Tree</h2>
+        <p class="section-desc">Fluxo de decis&atilde;o para escolher entre Stack Produto e Stack Editorial. Tr&ecirc;s perguntas, zero ambiguidade.</p>
+      </div>
+      <div class="decision-tree">
+        <div class="dt-node">
+          <div class="dt-question">A pe&ccedil;a reconhece produto? (codex card, site UI, navega&ccedil;&atilde;o, CTA)</div>
+          <div style="margin-top: 12px;"><span class="dt-answer dt-answer--produto">SIM &rarr; Stack Produto (Anton + DM Sans + Space Mono)</span></div>
+        </div>
+        <div class="dt-arrow"></div>
+        <div class="dt-node">
+          <div class="dt-question">A pe&ccedil;a carrega insight para leitura? (editorial, curadoria, atribui&ccedil;&atilde;o, artigo)</div>
+          <div style="margin-top: 12px;"><span class="dt-answer dt-answer--editorial">SIM &rarr; Stack Editorial (IBM Plex Sans + Libre Caslon Text + Space Mono)</span></div>
+        </div>
+        <div class="dt-arrow"></div>
+        <div class="dt-node">
+          <div class="dt-question">Ambos? (CTA de produto dentro de pe&ccedil;a editorial, cita&ccedil;&atilde;o editorial no site)</div>
+          <div style="margin-top: 12px;"><span class="dt-answer dt-answer--ambos">Editorial envelopa &middot; Produto marca o CTA</span></div>
+        </div>
+      </div>
+      <div class="llm-note" style="margin-top: 32px; border-left-color: rgba(178,168,152,0.3);">
+        <strong style="color: var(--ds-text-primary);">Space Mono &eacute; o conector.</strong>
+        Presente nos dois stacks, serve de ponte visual. Quando um carousel editorial termina com CTA de produto (Anton), a Space Mono do info strip segura a continuidade.
+      </div>
+    </section>
+
+    <!-- ═══════ §18 VERSIONAMENTO ═══════ -->
+    <section id="versioning">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 18</div>
+        <h2 class="section-title">Versionamento</h2>
+        <p class="section-desc">Hist&oacute;rico completo de evolu&ccedil;&atilde;o do Design System. Cada vers&atilde;o &eacute; imut&aacute;vel ap&oacute;s publica&ccedil;&atilde;o.</p>
+      </div>
+      <table class="version-table">
+        <thead><tr><th>Vers&atilde;o</th><th>Descri&ccedil;&atilde;o</th></tr></thead>
+        <tbody>
+          <tr><td class="v-version">v1.0</td><td>Funda&ccedil;&atilde;o: Anton + DM Sans + Space Mono. Paleta base. Grid 54&times;54.</td></tr>
+          <tr><td class="v-version">v1.1</td><td>Adi&ccedil;&atilde;o de Chumbo Quente (gold accent system). Tokens de opacidade.</td></tr>
+          <tr><td class="v-version">v1.2</td><td>Sistema crom&aacute;tico por produto. data-product attributes.</td></tr>
+          <tr><td class="v-version">v1.3</td><td>Tipografia de labels refinada. Space Mono tracking padronizado (0.2em).</td></tr>
+          <tr><td class="v-version">v2.0</td><td>Pipeline de carousel. Story format 9:16. Hierarquia de contraste documentada.</td></tr>
+          <tr><td class="v-version">v2.1</td><td>Visual Studies (carousel capa, OFFF Story Factory). Cormorant Garamond accent stack.</td></tr>
+          <tr><td class="v-version">v2.2</td><td>Editorial Typography System V1 (IBM Plex Sans + Libre Caslon Text). Dual-stack.</td></tr>
+          <tr><td class="v-version">v2.3</td><td>Formatos editoriais (Story, Carousel, Substack, LinkedIn, Newsletter, OG).</td></tr>
+          <tr><td class="v-version">v2.4</td><td>Chumbo Puro + Electric Orange (paleta editorial). Ghost elements + ASCII frags.</td></tr>
+          <tr><td class="v-version">v2.5</td><td>3D Geometries (codex wireframes). Identity assets padronizados.</td></tr>
+          <tr><td class="v-version">v2.6</td><td>Speaker card, pull quote, drop cap, vertical text &mdash; elementos editoriais especiais.</td></tr>
+          <tr><td class="v-version">v2.7</td><td>Safe zones e margens can&ocirc;nicas por formato. Clamp scale responsiva.</td></tr>
+          <tr><td class="v-version">v2.8</td><td>Stack routing formalizado. Decision tree produto vs editorial. Conector Space Mono.</td></tr>
+          <tr class="v-current"><td class="v-version">v3.0</td><td>Reestrutura&ccedil;&atilde;o completa: multi-page, design tokens unificados, code bank, dual-view, LLM guide.</td></tr>
+        </tbody>
+      </table>
+      <p class="next-note">Pr&oacute;ximas itera&ccedil;&otilde;es: motion tokens, dark/light mode editorial, component library exportada, Figma sync autom&aacute;tico.</p>
+    </section>
+
+    <!-- ═══════ §19 LLM USAGE GUIDE ═══════ -->
+    <section id="llm-guide">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 19</div>
+        <h2 class="section-title">LLM Usage Guide</h2>
+        <p class="section-desc">Instru&ccedil;&otilde;es para agentes de IA consumirem este Design System. Leia nesta ordem. Siga sem desvio.</p>
+      </div>
+      <div class="llm-steps">
+        <div class="llm-step">
+          <div class="llm-step-num">1</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Leia os tokens primeiro</div>
+            <div class="llm-step-desc">Abra <span class="llm-code">css/tokens.css</span> e carregue todos os design tokens. Esse arquivo &eacute; o single source of truth &mdash; todas as cores, fontes, espa&ccedil;amentos e escalas est&atilde;o l&aacute;. N&atilde;o invente valores.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">2</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Para gerar um carousel</div>
+            <div class="llm-step-desc">Copie o template de <span class="llm-code">formats.html</span> (Code Bank view). Altere o atributo <span class="llm-code">data-product</span> para o produto desejado. Edite apenas o conte&uacute;do entre os marcadores <span class="llm-code">&lt;!-- EDITABLE CONTENT --&gt;</span>. N&atilde;o altere estrutura ou classes.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">3</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Para trocar paleta de produto</div>
+            <div class="llm-step-desc">Altere <span class="llm-code">data-product="mscs"</span> para qualquer um dos 7 produtos: <span class="llm-code">mscs</span>, <span class="llm-code">oracle</span>, <span class="llm-code">fronteiristas</span>, <span class="llm-code">neuro</span>, <span class="llm-code">style</span>, <span class="llm-code">design</span>, <span class="llm-code">execution</span>. As vari&aacute;veis --p-* se ajustam automaticamente.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">4</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Routing tipogr&aacute;fico</div>
+            <div class="llm-step-desc">Reconhecimento de produto &rarr; stack Produto (<span class="llm-code">Anton</span> + <span class="llm-code">DM Sans</span> + <span class="llm-code">Space Mono</span>). Leitura editorial &rarr; stack Editorial (<span class="llm-code">IBM Plex Sans</span> + <span class="llm-code">Libre Caslon Text</span> + <span class="llm-code">Space Mono</span>). Nunca misture os dois stacks no mesmo bloco visual.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">5</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Templates s&atilde;o self-contained</div>
+            <div class="llm-step-desc">Cada template &eacute; HTML completo &mdash; sem depend&ecirc;ncias al&eacute;m de Google Fonts. Copie, edite conte&uacute;do e abra no navegador. Sem build, bundler ou framework.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">6</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Grid obrigat&oacute;rio</div>
+            <div class="llm-step-desc">Grid <span class="llm-code">54&times;54px</span> a <span class="llm-code">rgba(255,255,255, 0.025)</span> &eacute; obrigat&oacute;rio em TODAS as superf&iacute;cies escuras. Omiti-lo quebra a assinatura visual.</div>
+          </div>
+        </div>
+        <div class="llm-step">
+          <div class="llm-step-num">7</div>
+          <div class="llm-step-content">
+            <div class="llm-step-title">Restri&ccedil;&otilde;es absolutas</div>
+            <div class="llm-step-desc">Nunca usar emoji. Nunca usar fotografia. Nunca usar ilustra&ccedil;&atilde;o. Nunca usar branco puro (#FFFFFF) ou preto puro (#000000). Nunca inventar cores fora dos tokens. Nunca alterar letter-spacing can&ocirc;nico. O sistema &eacute; tipogr&aacute;fico + geom&eacute;trico.</div>
+          </div>
+        </div>
+      </div>
+      <div class="llm-note">
+        <strong>Regra zero:</strong> se um token existe em <span class="llm-code">css/tokens.css</span>, use-o. Se n&atilde;o existe, n&atilde;o invente &mdash; consulte o Design System. A consist&ecirc;ncia &eacute; mais importante que a criatividade. Design n&atilde;o &eacute; prefer&ecirc;ncia &mdash; &eacute; protocolo.
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V3.0</span></span>
+      <span class="footer-text">Design n&atilde;o &eacute; prefer&ecirc;ncia. &Eacute; <span class="footer-accent">protocolo</span>.</span>
+    </footer>
+
+  </main>
+
+  <div class="toast" id="toast">Copiado!</div>
+  <script src="js/ds-nav.js"></script>
+</body>
+</html>

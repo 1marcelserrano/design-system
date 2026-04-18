@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formatos &amp; Templates &mdash; MSCREATIVE.SYSTEMS Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/ds-shell.css">
+  <link rel="stylesheet" href="css/ds-sections.css">
+  <style>
+    /* ── Page-specific styles ── */
+    .story-mockup {
+      width: 240px; height: 426px;
+      background: linear-gradient(145deg, var(--ds-bg-primary), var(--ds-bg-secondary));
+      border: 1px solid var(--ds-border-subtle);
+      border-radius: var(--ds-radius-md);
+      padding: 24px 18px;
+      display: flex; flex-direction: column;
+      font-family: var(--ds-font-label);
+      position: relative; overflow: hidden;
+    }
+    .story-mockup::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                         linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+    .story-mockup > * { position: relative; z-index: 1; }
+    .sm-tag { font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ds-ed-accent-primary); border: 1px solid rgba(168,90,48,0.25); padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 12px; }
+    .sm-title { font-family: var(--ds-ed-font-headline); font-size: 13px; font-weight: 300; color: var(--ds-ed-text-headline); line-height: 1.2; margin-bottom: 10px; }
+    .sm-title em { color: var(--ds-ed-text-emphasis); font-style: italic; font-family: var(--ds-ed-font-emphasis); }
+    .sm-rule { height: 1px; background: linear-gradient(90deg, var(--ds-ed-accent-primary), var(--ds-ed-accent-secondary), transparent); margin-bottom: 10px; }
+    .sm-list { font-size: 7px; color: var(--ds-ed-text-body); line-height: 1.8; flex: 1; }
+    .sm-list span { color: var(--ds-ed-accent-primary); }
+    .sm-attr { font-size: 6px; letter-spacing: 0.15em; color: var(--ds-text-muted); text-transform: uppercase; margin-top: auto; }
+
+    .story-preview-row { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+    .story-specs { flex: 1; min-width: 280px; }
+
+    /* Carousel grid */
+    .carousel-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    .carousel-grid .cg-slide {
+      aspect-ratio: 4/5;
+      border-radius: var(--ds-radius-sm);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 8px 4px;
+      text-align: center;
+      font-family: var(--ds-font-label);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--ds-border-subtle);
+      transition: transform 0.2s;
+    }
+    .cg-slide:hover { transform: translateY(-4px); }
+    .cg-dark { background: linear-gradient(145deg, #0A0A0E, #111114); color: var(--ds-ed-text-headline); }
+    .cg-light { background: linear-gradient(145deg, #F5F7FA, #E8EBF0); color: #3A3A3A; }
+    .cg-num { font-size: 18px; font-family: var(--ds-font-display); margin-bottom: 6px; color: var(--ds-ed-accent-primary); }
+    .cg-type { font-size: 7px; margin-top: 4px; opacity: 0.5; }
+
+    /* Slide detail table */
+    .slide-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; }
+    .slide-table th { text-align: left; font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ds-accent-gold); padding: 8px 12px; border-bottom: 1px solid var(--ds-border-subtle); }
+    .slide-table td { padding: 8px 12px; color: var(--ds-text-body); border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .slide-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .slide-table .mode-dark { color: var(--ds-ed-text-headline); }
+    .slide-table .mode-light { color: #8A7A62; }
+
+    /* Contrast hierarchy */
+    .contrast-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .contrast-row { grid-template-columns: 1fr; } .carousel-grid { grid-template-columns: repeat(3, 1fr); } }
+    .contrast-box {
+      border-radius: var(--ds-radius-md);
+      padding: 40px 32px;
+      border: 1px solid var(--ds-border-subtle);
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contrast-box--dark { background: linear-gradient(145deg, #0A0C10, #12141A); }
+    .contrast-box--light { background: linear-gradient(145deg, #F5F7FA, #E8EBF0); }
+    .cb-label { font-family: var(--ds-font-label); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+    .contrast-box--dark .cb-label { color: var(--ds-accent-gold); }
+    .contrast-box--light .cb-label { color: #8A6A18; }
+    .cb-headline { font-family: var(--ds-font-display); font-size: 28px; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.1; }
+    .contrast-box--dark .cb-headline { color: var(--ds-text-primary); }
+    .contrast-box--light .cb-headline { color: #1A1D26; }
+    .cb-rule { height: 2px; width: 80px; }
+    .contrast-box--dark .cb-rule { background: linear-gradient(90deg, var(--ds-accent-gold), var(--ds-accent-gold-dark), transparent); }
+    .contrast-box--light .cb-rule { background: linear-gradient(90deg, #8A6A18, #D4AF37, transparent); }
+    .cb-body { font-family: var(--ds-font-body); font-size: 14px; line-height: 1.65; max-width: 400px; }
+    .contrast-box--dark .cb-body { color: var(--ds-text-body); }
+    .contrast-box--light .cb-body { color: rgba(26, 29, 38, 0.7); }
+    .cb-specimen { font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 12px; border-radius: var(--ds-radius-sm); display: inline-block; }
+    .contrast-box--dark .cb-specimen { color: var(--ds-ed-accent-primary); border: 1px solid rgba(168,90,48,0.2); background: rgba(168,90,48,0.04); }
+    .contrast-box--light .cb-specimen { color: #6A3818; border: 1px solid rgba(106,56,24,0.2); background: rgba(106,56,24,0.04); }
+  </style>
+</head>
+<body>
+  <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <h1>MSCREATIVE<br>SYSTEMS</h1>
+      <div class="version">DESIGN SYSTEM V3.0</div>
+    </div>
+    <nav>
+      <div class="nav-section">Foundation</div>
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#tokens">Design Tokens</a>
+      <a href="index.html#typography">Tipografia</a>
+      <a href="index.html#base-colors">Base Crom&aacute;tica</a>
+      <a href="index.html#chumbo-quente">Chumbo Quente</a>
+      <div class="nav-section">Produtos</div>
+      <a href="products.html#color-system">Sistema Crom&aacute;tico</a>
+      <a href="products.html#codex-geometries">3D Geometries</a>
+      <a href="products.html#identity-assets">Assets de Identidade</a>
+      <div class="nav-section">Formatos &amp; Templates</div>
+      <a href="formats.html#story-format">Story (9:16)</a>
+      <a href="formats.html#carousel">Carousel Pipeline</a>
+      <a href="formats.html#editorial-formats">Formatos Editoriais</a>
+      <a href="formats.html#contrast">Hierarquia de Contraste</a>
+      <div class="nav-section">Visual Studies</div>
+      <a href="studies.html#visual-studies">Carousel Capa (Study 01)</a>
+      <a href="studies.html#offf-story-factory">OFFF Story Factory (Study 02)</a>
+      <a href="studies.html#typo-cormorant">Cormorant Garamond (Study 03)</a>
+      <div class="nav-section">Editorial Typography</div>
+      <a href="studies.html#editorial-system">Dual-Stack System</a>
+      <a href="studies.html#editorial-formats-spec">Formatos Editoriais</a>
+      <div class="nav-section">Governan&ccedil;a</div>
+      <a href="governance.html#rules">Do's &amp; Don'ts</a>
+      <a href="governance.html#versioning">Versionamento</a>
+      <a href="governance.html#llm-guide">LLM Guide</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero" id="overview">
+      <div class="rule"></div>
+      <h1><span>Formatos</span><br>&amp; Templates</h1>
+      <p class="subtitle">
+        Formatos editoriais can&ocirc;nicos do ecossistema MSCREATIVE.SYSTEMS.
+        Cada template &eacute; autocontido &mdash; inclui wireframe engine, tokens inline
+        e marcadores edit&aacute;veis. LLMs copiam e renderizam sem depend&ecirc;ncias externas.
+      </p>
+    </header>
+
+    <!-- ═══════ &sect;7 STORY FORMAT ═══════ -->
+    <section id="story-format">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 7</div>
+        <h2 class="section-title">Story Format</h2>
+        <p class="section-desc">Formato 9:16 para Instagram Stories. 7 camadas visuais: grid, scan, marker, ghosts, glitch, ASCII, icosaedro.</p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('story-format','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('story-format','code')">Code Bank</button>
+        </div>
+      </div>
+
+      <div class="view-showcase">
+        <div class="story-preview-row">
+          <!-- Story mockup -->
+          <div class="story-mockup">
+            <div class="sm-tag">OFFF BCN 2026</div>
+            <div class="sm-title">O criativo mais <em>s&ecirc;nior</em> da sala &eacute; quase sempre o mais <em>impotente</em></div>
+            <div class="sm-rule"></div>
+            <div class="sm-list">
+              <span>1.</span> O lugar precisa existir antes da tecnologia.<br>
+              <span>2.</span> Sem conceito, escala &eacute; barulho.<br>
+              <span>3.</span> A melhor UX &eacute; a que desaparece.
+            </div>
+            <div class="sm-attr">Nils Leonard &middot; Uncommon Creative Studio</div>
+          </div>
+
+          <!-- Specs -->
+          <div class="story-specs">
+            <div class="token-grid">
+              <div class="spec-card">
+                <div class="spec-label">Dimens&otilde;es</div>
+                <div class="spec-value">1080 &times; 1920 px</div>
+                <div class="spec-desc">Aspect ratio 9:16, resolu&ccedil;&atilde;o nativa Instagram.</div>
+              </div>
+              <div class="spec-card">
+                <div class="spec-label">Safe Zone &mdash; Topo</div>
+                <div class="spec-value">120px</div>
+                <div class="spec-desc">UI do Instagram (avatar + nome). Nenhum conte&uacute;do cr&iacute;tico acima.</div>
+              </div>
+              <div class="spec-card">
+                <div class="spec-label">Safe Zone &mdash; Base</div>
+                <div class="spec-value">160px</div>
+                <div class="spec-desc">Barra de resposta e swipe-up. Info-strip permitido.</div>
+              </div>
+              <div class="spec-card">
+                <div class="spec-label">Grid</div>
+                <div class="spec-value">54 &times; 54 px</div>
+                <div class="spec-desc">--ds-grid-size. Textura de sistema, quase invis&iacute;vel.</div>
+              </div>
+              <div class="spec-card">
+                <div class="spec-label">Camadas</div>
+                <div class="spec-value">7 layers</div>
+                <div class="spec-desc">Grid, Scan, Marker, Ghosts (&times;3), Glitch (&times;2), ASCII, Icosaedro.</div>
+              </div>
+              <div class="spec-card">
+                <div class="spec-label">Render Pipeline</div>
+                <div class="spec-value">HTML/CSS &rarr; Playwright &rarr; PNG</div>
+                <div class="spec-desc">Template standalone, sem depend&ecirc;ncias externas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block">
+          <div class="ds-code-header">
+            <span class="ds-code-label">HTML &mdash; Story Template (1080&times;1920, standalone)</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;MSCS Story&lt;/title&gt;
+&lt;style&gt;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ed-font-hl:&#39;IBM Plex Sans&#39;,sans-serif;
+  --ed-font-em:&#39;Libre Caslon Text&#39;,serif;
+  --ed-font-label:&#39;Space Mono&#39;,monospace;
+  --ed-bg:linear-gradient(145deg,#0A0A0E,#111114);
+  --ed-hl:#6A6A6A;--ed-em:#A85A30;
+  --ed-body:rgba(130,130,130,0.4);
+  --ed-label:rgba(130,130,130,0.18);
+  --ed-accent:#A85A30;--ed-accent2:#6A3818;
+  --ed-grid:rgba(255,255,255,0.025);
+  --ed-ghost1:rgba(168,90,48,0.06);
+  --ed-ghost2:rgba(168,90,48,0.04);
+  --ed-ghost3:rgba(168,90,48,0.025);
+  --ed-glitch:rgba(168,90,48,0.07);
+  --ed-ascii:rgba(168,90,48,0.035);
+}
+@import url(&#39;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Space+Mono&amp;display=swap&#39;);
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#05060a;padding:20px}
+.stage{position:relative;overflow:hidden;width:1080px;height:1920px;background:var(--ed-bg);font-family:var(--ed-font-hl);color:var(--ed-hl)}
+/* Layer 1: Grid */
+.grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(var(--ed-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ed-grid) 1px,transparent 1px);background-size:54px 54px}
+/* Layer 2: Scan lines */
+.scan{position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(140,130,115,0.005) 3px,rgba(140,130,115,0.005) 4px)}
+/* Layer 3: Product marker */
+.marker{position:absolute;left:0;top:0;width:3px;height:100%;z-index:6;background:linear-gradient(180deg,rgba(168,90,48,0.12),transparent 40%)}
+/* Layer 4: Ghosts */
+.ghost{position:absolute;z-index:0;pointer-events:none;border-radius:2px}
+.g1{inset:-8px;border:1px solid var(--ed-ghost1)}
+.g2{inset:-16px;border:1px solid var(--ed-ghost2)}
+.g3{inset:-24px;border:1px solid var(--ed-ghost3)}
+/* Layer 5: Glitch */
+.glitch{position:absolute;left:0;width:100%;height:1px;z-index:5;pointer-events:none}
+.gl1{top:500px;background:linear-gradient(90deg,transparent 10%,var(--ed-glitch) 10% 28%,transparent 28% 55%,rgba(168,90,48,0.06) 55% 72%,transparent 72%)}
+.gl2{top:1350px;background:linear-gradient(90deg,transparent 18%,var(--ed-glitch) 18% 38%,transparent 38% 60%,rgba(168,90,48,0.06) 60% 82%,transparent 82%)}
+/* Layer 6: ASCII */
+.ascii{position:absolute;z-index:3;pointer-events:none;font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.15em;white-space:nowrap;color:var(--ed-ascii)}
+.a1{top:260px;right:50px;transform:rotate(-90deg);transform-origin:right center}
+.a2{bottom:440px;left:45px;transform:rotate(1deg)}
+/* Info strips */
+.istrip{position:absolute;left:0;width:100%;z-index:10;display:flex;align-items:center;justify-content:space-between;height:54px;padding:0 40px;font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ed-label)}
+.istrip-top{top:0;border-bottom:1px solid var(--ed-ghost1)}
+.istrip-bot{bottom:0;border-top:1px solid var(--ed-ghost1)}
+/* Content */
+.content{position:absolute;z-index:8;top:174px;left:72px;right:72px;bottom:214px;display:flex;flex-direction:column}
+.tag{font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 14px;border-radius:2px;color:var(--ed-accent);border:1px solid rgba(168,90,48,0.25);background:rgba(168,90,48,0.04);display:inline-block;margin-bottom:56px}
+h1{font-size:54px;line-height:1.12;font-weight:300;letter-spacing:-0.02em;margin-bottom:44px;max-width:900px}
+h1 em{font-family:var(--ed-font-em);font-style:italic;color:var(--ed-em);font-size:62px}
+hr{border:none;height:2px;background:linear-gradient(90deg,var(--ed-accent),var(--ed-accent2),transparent);margin-bottom:36px}
+.sub{font-size:19px;line-height:1.65;color:var(--ed-body);font-weight:300;max-width:780px}
+.card{margin-top:56px;padding:28px 0;border-top:1px solid var(--ed-ghost1);border-bottom:1px solid var(--ed-ghost1);display:flex;align-items:center;gap:28px}
+.initials{width:64px;height:64px;border-radius:50%;border:1px solid var(--ed-ghost1);display:flex;align-items:center;justify-content:center;font-family:var(--ed-font-label);font-size:28px;letter-spacing:0.08em;color:var(--ed-em)}
+.nm{font-size:17px;font-weight:400;color:var(--ed-hl)}
+.rl{font-family:var(--ed-font-label);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ed-label);margin-top:4px}
+&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;stage&quot;&gt;
+  &lt;div class=&quot;ghost g3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;ghost g2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;ghost g1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;scan&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;marker&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;glitch gl1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;glitch gl2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;ascii a1&quot;&gt;&#9654; SOVEREIGNTY &#9654;&#9654;&#9654;&lt;/div&gt;
+  &lt;div class=&quot;ascii a2&quot;&gt;&#9617;&#9618;&#9619;&#9608;&#9619;&#9618;&#9617;&lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-top&quot;&gt;
+    &lt;span&gt;&#10005; &#10005; &#10005;&lt;/span&gt;
+    &lt;span&gt;&lt;!-- EDIT: tagline --&gt;CRIATIVIDADE &Eacute; ESTRUTURA&lt;/span&gt;
+    &lt;span&gt;MSCREATIVE.SYSTEMS&trade;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;!-- EDIT: tag --&gt;OFFF BCN 2026&lt;/span&gt;
+    &lt;h1&gt;&lt;!-- EDIT: headline --&gt;O criativo mais &lt;em&gt;s&ecirc;nior&lt;/em&gt; da sala &eacute; quase sempre o mais &lt;em&gt;impotente&lt;/em&gt;&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;p class=&quot;sub&quot;&gt;&lt;!-- EDIT: subtitle --&gt;Senioridade n&atilde;o &eacute; liberdade criativa &mdash; &eacute; ac&uacute;mulo de depend&ecirc;ncias.&lt;/p&gt;
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;div class=&quot;initials&quot;&gt;&lt;!-- EDIT --&gt;NL&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;nm&quot;&gt;&lt;!-- EDIT --&gt;Nils Leonard&lt;/div&gt;
+      &lt;div class=&quot;rl&quot;&gt;&lt;!-- EDIT --&gt;Co-Founder &middot; Uncommon Creative Studio&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-bot&quot;&gt;
+    &lt;span&gt;OFFF BCN 2026&lt;/span&gt;
+    &lt;span&gt;@mscreative.systems&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ &sect;8 CAROUSEL PIPELINE ═══════ -->
+    <section id="carousel">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 8</div>
+        <h2 class="section-title">Carousel Pipeline</h2>
+        <p class="section-desc">Pipeline de 9 slides para Instagram carrossel. Ritmo narrativo com altern&acirc;ncia Dark/Light e arquitetura tipogr&aacute;fica editorial.</p>
+        <div class="section-view-toggle">
+          <button class="view-btn active" data-view="showcase" onclick="toggleView('carousel','showcase')">Showcase</button>
+          <button class="view-btn" data-view="code" onclick="toggleView('carousel','code')">Code Bank</button>
+        </div>
+      </div>
+
+      <div class="view-showcase">
+        <!-- 9-slide rhythm grid -->
+        <div class="carousel-grid">
+          <div class="cg-slide cg-dark"><div class="cg-num">01</div>Cover<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">02</div>Problem<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">03</div>Data<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">04</div>Paradox<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-light"><div class="cg-num">05</div>Pullquote<div class="cg-type">Light</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">06</div>Solution<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">07</div>Proof<div class="cg-type">Dark</div></div>
+          <div class="cg-slide cg-light"><div class="cg-num">08</div>Reflection<div class="cg-type">Light</div></div>
+          <div class="cg-slide cg-dark"><div class="cg-num">09</div>CTA<div class="cg-type">Dark</div></div>
+        </div>
+
+        <!-- Slide detail table -->
+        <div style="overflow-x: auto;">
+          <table class="slide-table">
+            <thead>
+              <tr><th>#</th><th>Modo</th><th>Conte&uacute;do</th><th>Tipografia</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>01</td><td class="mode-dark">Dark</td><td>Capa &mdash; headline + speaker + tags</td><td>IBM Plex 48px / Libre Caslon 54px em</td></tr>
+              <tr><td>02</td><td class="mode-dark">Dark</td><td>Problema &mdash; tens&atilde;o, pergunta central</td><td>IBM Plex 38px / quote 26px</td></tr>
+              <tr><td>03</td><td class="mode-dark">Dark</td><td>Dado &mdash; n&uacute;mero-&acirc;ncora, estat&iacute;stica</td><td>Anton 72px (n&uacute;mero) / Body 16px</td></tr>
+              <tr><td>04</td><td class="mode-dark">Dark</td><td>Paradoxo &mdash; invers&atilde;o, contradi&ccedil;&atilde;o</td><td>IBM Plex 38px + em 44px</td></tr>
+              <tr><td>05</td><td class="mode-light">Light</td><td>Pullquote &mdash; cita&ccedil;&atilde;o do speaker</td><td>Libre Caslon 28px italic</td></tr>
+              <tr><td>06</td><td class="mode-dark">Dark</td><td>Solu&ccedil;&atilde;o &mdash; reframe, veredicto</td><td>IBM Plex 38px + body 16px</td></tr>
+              <tr><td>07</td><td class="mode-dark">Dark</td><td>Prova &mdash; case, refer&ecirc;ncia real</td><td>Body 16px + label 10px</td></tr>
+              <tr><td>08</td><td class="mode-light">Light</td><td>Reflex&atilde;o &mdash; pergunta pro leitor</td><td>Libre Caslon 26px italic</td></tr>
+              <tr><td>09</td><td class="mode-dark">Dark</td><td>CTA &mdash; seguir / salvar / compartilhar</td><td>Anton 36px + label 11px</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Render specs -->
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">Resolu&ccedil;&atilde;o</div>
+            <div class="spec-value">1080 &times; 1350 px</div>
+            <div class="spec-desc">Instagram Portrait (4:5).</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Formato</div>
+            <div class="spec-value">Instagram Carousel</div>
+            <div class="spec-desc">At&eacute; 20 slides por post.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Pipeline</div>
+            <div class="spec-value">HTML/CSS &rarr; Playwright &rarr; PNG</div>
+            <div class="spec-desc">Template standalone por slide.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">Ritmo</div>
+            <div class="spec-value">7 Dark + 2 Light</div>
+            <div class="spec-desc">Slides 05 e 08 quebram o padr&atilde;o visual.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-code" style="display:none;">
+        <div class="ds-code-block">
+          <div class="ds-code-header">
+            <span class="ds-code-label">HTML &mdash; Carousel Cover Slide (1080&times;1350, standalone)</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;MSCS Carousel Cover&lt;/title&gt;
+&lt;style&gt;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ed-font-hl:&#39;IBM Plex Sans&#39;,sans-serif;
+  --ed-font-em:&#39;Libre Caslon Text&#39;,serif;
+  --ed-font-label:&#39;Space Mono&#39;,monospace;
+  --ed-bg:linear-gradient(145deg,#0A0A0E,#111114);
+  --ed-hl:#6A6A6A;--ed-em:#A85A30;
+  --ed-body:rgba(130,130,130,0.4);
+  --ed-label:rgba(130,130,130,0.18);
+  --ed-accent:#A85A30;--ed-accent2:#6A3818;
+  --ed-grid:rgba(255,255,255,0.025);
+  --ed-ghost:rgba(168,90,48,0.06);
+}
+@import url(&#39;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Space+Mono&amp;display=swap&#39;);
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#05060a;padding:20px}
+.stage{position:relative;overflow:hidden;width:1080px;height:1350px;background:var(--ed-bg);font-family:var(--ed-font-hl);color:var(--ed-hl)}
+.grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(var(--ed-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ed-grid) 1px,transparent 1px);background-size:54px 54px}
+.scan{position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(140,130,115,0.005) 3px,rgba(140,130,115,0.005) 4px)}
+.marker{position:absolute;left:0;top:0;width:3px;height:100%;z-index:6;background:linear-gradient(180deg,rgba(168,90,48,0.12),transparent 40%)}
+.ghost{position:absolute;z-index:0;pointer-events:none;border-radius:2px}
+.g1{inset:-8px;border:1px solid var(--ed-ghost)}.g2{inset:-16px;border:1px solid rgba(168,90,48,0.04)}
+.glitch{position:absolute;left:0;width:100%;height:1px;z-index:5;pointer-events:none}
+.gl1{top:420px;background:linear-gradient(90deg,transparent 12%,rgba(168,90,48,0.08) 12% 30%,transparent 30% 58%,rgba(168,90,48,0.06) 58% 75%,transparent 75%)}
+.istrip{position:absolute;left:0;width:100%;z-index:10;display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 36px;font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ed-label)}
+.istrip-top{top:0;border-bottom:1px solid var(--ed-ghost)}
+.istrip-bot{bottom:0;border-top:1px solid var(--ed-ghost)}
+.content{position:absolute;z-index:8;top:140px;left:64px;right:64px;bottom:180px;display:flex;flex-direction:column}
+.issue{margin-bottom:36px;font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.25em;color:rgba(168,90,48,0.6);text-transform:uppercase}
+.tag{font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 14px;border-radius:2px;color:var(--ed-accent);border:1px solid rgba(168,90,48,0.25);background:rgba(168,90,48,0.04);display:inline-block;margin-bottom:48px}
+h1{font-size:48px;line-height:1.14;font-weight:300;letter-spacing:-0.02em;margin-bottom:40px;max-width:880px}
+h1 em{font-family:var(--ed-font-em);font-style:italic;color:var(--ed-em);font-size:54px}
+hr{border:none;height:2px;background:linear-gradient(90deg,var(--ed-accent),var(--ed-accent2),transparent);margin-bottom:32px}
+.sub{font-size:17px;line-height:1.6;color:var(--ed-body);font-weight:300;max-width:720px}
+.card{margin-top:auto;padding:26px 0;border-top:1px solid var(--ed-ghost);display:flex;align-items:center;gap:24px}
+.initials{width:58px;height:58px;border-radius:50%;border:1px solid var(--ed-ghost);display:flex;align-items:center;justify-content:center;font-family:var(--ed-font-label);font-size:26px;color:var(--ed-em)}
+.nm{font-size:16px}.rl{font-family:var(--ed-font-label);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ed-label);margin-top:4px}
+.slide-idx{position:absolute;bottom:60px;right:48px;z-index:9;font-family:var(--ed-font-label);font-size:9px;letter-spacing:0.22em;color:rgba(168,90,48,0.35);text-transform:uppercase}
+&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;stage&quot;&gt;
+  &lt;div class=&quot;ghost g2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;ghost g1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid&quot;&gt;&lt;/div&gt;&lt;div class=&quot;scan&quot;&gt;&lt;/div&gt;&lt;div class=&quot;marker&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;glitch gl1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-top&quot;&gt;&lt;span&gt;&#10005; &#10005; &#10005;&lt;/span&gt;&lt;span&gt;EDI&Ccedil;&Atilde;O &middot; CURADORIA&lt;/span&gt;&lt;span&gt;MSCREATIVE.SYSTEMS&trade;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;div class=&quot;issue&quot;&gt;&lt;!-- EDIT --&gt;OFFF BCN 2026 &middot; Ed. 01&lt;/div&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;!-- EDIT --&gt;CAPA&lt;/span&gt;
+    &lt;h1&gt;&lt;!-- EDIT --&gt;O criativo mais &lt;em&gt;s&ecirc;nior&lt;/em&gt; da sala&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;p class=&quot;sub&quot;&gt;&lt;!-- EDIT --&gt;Um insight sobre senioridade e autonomia criativa.&lt;/p&gt;
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;div class=&quot;initials&quot;&gt;NL&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;nm&quot;&gt;Nils Leonard&lt;/div&gt;&lt;div class=&quot;rl&quot;&gt;Co-Founder &middot; Uncommon&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;slide-idx&quot;&gt;01 / 09&lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-bot&quot;&gt;&lt;span&gt;@mscreative.systems&lt;/span&gt;&lt;span&gt;DESLIZE &rarr;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+        </div>
+
+        <div class="ds-code-block" style="margin-top: 24px;">
+          <div class="ds-code-header">
+            <span class="ds-code-label">HTML &mdash; Carousel Content Slide (1080&times;1350, standalone)</span>
+            <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;pt-BR&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;MSCS Carousel Content&lt;/title&gt;
+&lt;style&gt;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ed-font-hl:&#39;IBM Plex Sans&#39;,sans-serif;
+  --ed-font-em:&#39;Libre Caslon Text&#39;,serif;
+  --ed-font-label:&#39;Space Mono&#39;,monospace;
+  --ed-bg:linear-gradient(145deg,#0A0A0E,#111114);
+  --ed-hl:#6A6A6A;--ed-em:#A85A30;
+  --ed-body:rgba(130,130,130,0.4);
+  --ed-label:rgba(130,130,130,0.18);
+  --ed-accent:#A85A30;--ed-accent2:#6A3818;
+  --ed-grid:rgba(255,255,255,0.025);
+  --ed-ghost:rgba(168,90,48,0.06);
+}
+@import url(&#39;https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Space+Mono&amp;display=swap&#39;);
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#05060a;padding:20px}
+.stage{position:relative;overflow:hidden;width:1080px;height:1350px;background:var(--ed-bg);font-family:var(--ed-font-hl);color:var(--ed-hl)}
+.grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(var(--ed-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ed-grid) 1px,transparent 1px);background-size:54px 54px}
+.scan{position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(140,130,115,0.005) 3px,rgba(140,130,115,0.005) 4px)}
+.marker{position:absolute;left:0;top:0;width:3px;height:100%;z-index:6;background:linear-gradient(180deg,rgba(168,90,48,0.12),transparent 40%)}
+.ghost{position:absolute;z-index:0;pointer-events:none;border-radius:2px}
+.g1{inset:-8px;border:1px solid var(--ed-ghost)}.g2{inset:-16px;border:1px solid rgba(168,90,48,0.04)}
+.istrip{position:absolute;left:0;width:100%;z-index:10;display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 36px;font-family:var(--ed-font-label);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ed-label)}
+.istrip-top{top:0;border-bottom:1px solid var(--ed-ghost)}
+.istrip-bot{bottom:0;border-top:1px solid var(--ed-ghost)}
+.content{position:absolute;z-index:8;top:130px;left:64px;right:64px;bottom:170px;display:flex;flex-direction:column}
+.kicker{font-family:var(--ed-font-label);font-size:11px;letter-spacing:0.25em;color:rgba(168,90,48,0.6);text-transform:uppercase;margin-bottom:28px}
+h1{font-size:38px;line-height:1.2;font-weight:300;letter-spacing:-0.02em;margin-bottom:36px;max-width:880px}
+h1 em{font-family:var(--ed-font-em);font-style:italic;color:var(--ed-em);font-size:44px}
+hr{border:none;height:2px;width:240px;background:linear-gradient(90deg,var(--ed-accent),var(--ed-accent2),transparent);margin-bottom:28px}
+.quote{font-family:var(--ed-font-em);font-style:italic;font-size:26px;line-height:1.35;color:rgba(130,130,130,0.42);border-left:3px solid rgba(168,90,48,0.2);padding-left:28px;max-width:720px;margin:12px 0 36px}
+.body{font-size:16px;line-height:1.65;max-width:760px;font-weight:300;color:var(--ed-body)}
+.body em{font-family:var(--ed-font-em);font-style:italic;color:rgba(168,90,48,0.7);font-size:18px}
+.fmeta{margin-top:auto;display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--ed-ghost);font-family:var(--ed-font-label);font-size:9px;letter-spacing:0.2em;color:rgba(130,130,130,0.3);text-transform:uppercase}
+.slide-idx{position:absolute;bottom:56px;right:44px;z-index:9;font-family:var(--ed-font-label);font-size:9px;letter-spacing:0.22em;color:rgba(168,90,48,0.35);text-transform:uppercase}
+&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;stage&quot;&gt;
+  &lt;div class=&quot;ghost g2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;ghost g1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid&quot;&gt;&lt;/div&gt;&lt;div class=&quot;scan&quot;&gt;&lt;/div&gt;&lt;div class=&quot;marker&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-top&quot;&gt;&lt;span&gt;OFFF BCN 2026&lt;/span&gt;&lt;span&gt;Ed. 01&lt;/span&gt;&lt;span&gt;MSCREATIVE.SYSTEMS&trade;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;div class=&quot;kicker&quot;&gt;&lt;!-- EDIT --&gt;Desdobramento &middot; 02&lt;/div&gt;
+    &lt;h1&gt;&lt;!-- EDIT --&gt;Senioridade n&atilde;o &eacute; &lt;em&gt;liberdade&lt;/em&gt; &mdash; &eacute; ac&uacute;mulo de &lt;em&gt;depend&ecirc;ncias&lt;/em&gt;&lt;/h1&gt;
+    &lt;hr&gt;
+    &lt;blockquote class=&quot;quote&quot;&gt;&lt;!-- EDIT --&gt;&ldquo;Ele delegou a execu&ccedil;&atilde;o. E com ela, a autonomia.&rdquo;&lt;/blockquote&gt;
+    &lt;p class=&quot;body&quot;&gt;&lt;!-- EDIT --&gt;A estrutura corporativa confunde &lt;em&gt;escopo&lt;/em&gt; com &lt;em&gt;soberania&lt;/em&gt;. O resultado chega decomposto.&lt;/p&gt;
+    &lt;div class=&quot;fmeta&quot;&gt;&lt;span&gt;NILS LEONARD &middot; UNCOMMON&lt;/span&gt;&lt;span&gt;02 / 06&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;slide-idx&quot;&gt;02 / 09&lt;/div&gt;
+  &lt;div class=&quot;istrip istrip-bot&quot;&gt;&lt;span&gt;@mscreative.systems&lt;/span&gt;&lt;span&gt;DESLIZE &rarr;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ &sect;9 FORMATOS EDITORIAIS ═══════ -->
+    <section id="editorial-formats">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 9</div>
+        <h2 class="section-title">Formatos Editoriais</h2>
+        <p class="section-desc">
+          Todos os formatos do pipeline editorial MSCREATIVE.SYSTEMS. Templates standalone em <code>studies/editorial_typography/</code>.
+        </p>
+      </div>
+
+      <div class="token-grid">
+        <div class="spec-card">
+          <div class="spec-label">Story (9:16)</div>
+          <div class="spec-value">1080 &times; 1920</div>
+          <div class="spec-desc">Instagram Story. 7 camadas, speaker card.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Carousel Cover</div>
+          <div class="spec-value">1080 &times; 1350</div>
+          <div class="spec-desc">Capa de carrossel, tags, slide index.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Carousel Content</div>
+          <div class="spec-value">1080 &times; 1350</div>
+          <div class="spec-desc">Slides internos, kicker, quote, body.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Newsletter Header</div>
+          <div class="spec-value">1200 &times; 630</div>
+          <div class="spec-desc">Substack hero image, Cormorant accent.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">LinkedIn Post</div>
+          <div class="spec-value">1200 &times; 627</div>
+          <div class="spec-desc">LinkedIn feed, headline + speaker.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Open Graph</div>
+          <div class="spec-value">1200 &times; 630</div>
+          <div class="spec-desc">OG image para links compartilhados.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ &sect;10 HIERARQUIA DE CONTRASTE ═══════ -->
+    <section id="contrast">
+      <div class="section-header">
+        <div class="section-label">Se&ccedil;&atilde;o 10</div>
+        <h2 class="section-title">Hierarquia de Contraste</h2>
+        <p class="section-desc">Dois regimes visuais. Dark como padr&atilde;o. Light como ruptura de ritmo. Nunca branco puro &mdash; nunca preto puro.</p>
+      </div>
+
+      <div class="contrast-row">
+        <!-- DARK -->
+        <div class="contrast-box contrast-box--dark">
+          <div class="cb-label">Dark Mode &mdash; Default</div>
+          <div class="cb-headline">Infraestrutura<br>do Improviso</div>
+          <div class="cb-rule"></div>
+          <div class="cb-body">
+            Existe uma diferen&ccedil;a entre improvisar e ter infraestrutura de improviso.
+            Uma &eacute; aposta. A outra &eacute; arquitetura.
+          </div>
+          <div class="cb-specimen">EXPERIENCE ARCHITECTURE &middot; TIER S</div>
+        </div>
+
+        <!-- LIGHT -->
+        <div class="contrast-box contrast-box--light">
+          <div class="cb-label">Light Mode &mdash; Ruptura</div>
+          <div class="cb-headline">Senioridade<br>&ne; Liberdade</div>
+          <div class="cb-rule"></div>
+          <div class="cb-body">
+            Quanto mais alto o cargo, mais intermedi&aacute;rios entre a ideia
+            e sua forma final. O resultado chega decomposto.
+          </div>
+          <div class="cb-specimen">PULLQUOTE &middot; SLIDE 05</div>
+        </div>
+      </div>
+
+      <div class="token-grid" style="margin-top: 32px;">
+        <div class="spec-card">
+          <div class="spec-swatch" style="background: linear-gradient(145deg, #0A0C10, #12141A);"></div>
+          <div class="spec-label">Dark BG</div>
+          <div class="spec-value">#0A0C10 &rarr; #12141A</div>
+          <div class="spec-desc">Gradient base. 7 de 9 slides.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-swatch" style="background: linear-gradient(145deg, #F5F7FA, #E8EBF0);"></div>
+          <div class="spec-label">Light BG</div>
+          <div class="spec-value">#F5F7FA &rarr; #E8EBF0</div>
+          <div class="spec-desc">Ruptura visual. Slides 05 e 08.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-swatch" style="background: #B2A898;"></div>
+          <div class="spec-label">Dark Text</div>
+          <div class="spec-value">#B2A898</div>
+          <div class="spec-desc">Headline no dark mode.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-swatch" style="background: #1A1D26;"></div>
+          <div class="spec-label">Light Text</div>
+          <div class="spec-value">#1A1D26</div>
+          <div class="spec-desc">Headline no light mode.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V3.0</span></span>
+      <span class="footer-text">Design n&atilde;o &eacute; prefer&ecirc;ncia. &Eacute; <span class="footer-accent">protocolo</span>.</span>
+    </footer>
+  </main>
+  <div class="toast" id="toast">Copiado!</div>
+  <script src="js/ds-nav.js"></script>
+</body>
+</html>

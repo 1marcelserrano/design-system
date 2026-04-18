@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Studies &amp; Editorial Typography — MSCREATIVE.SYSTEMS Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/ds-shell.css">
+<link rel="stylesheet" href="css/ds-sections.css">
+</head>
+<body>
+
+<button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h1>MSCREATIVE<br>SYSTEMS</h1>
+    <div class="version">DESIGN SYSTEM V3.0</div>
+  </div>
+  <nav>
+    <div class="nav-section">Foundation</div>
+    <a href="index.html#overview">Overview</a>
+    <a href="index.html#tokens">Design Tokens</a>
+    <a href="index.html#typography">Tipografia</a>
+    <a href="index.html#base-colors">Base Crom&aacute;tica</a>
+    <a href="index.html#chumbo-quente">Chumbo Quente</a>
+
+    <div class="nav-section">Produtos</div>
+    <a href="products.html#color-system">Sistema Crom&aacute;tico</a>
+    <a href="products.html#codex-geometries">3D Geometries</a>
+    <a href="products.html#identity-assets">Assets de Identidade</a>
+
+    <div class="nav-section">Formatos &amp; Templates</div>
+    <a href="formats.html#story-format">Story (9:16)</a>
+    <a href="formats.html#carousel">Carousel Pipeline</a>
+    <a href="formats.html#editorial-formats">Formatos Editoriais</a>
+    <a href="formats.html#contrast">Hierarquia de Contraste</a>
+
+    <div class="nav-section">Visual Studies</div>
+    <a href="#visual-studies">Carousel Capa (Study 01)</a>
+    <a href="#offf-story-factory">OFFF Story Factory (Study 02)</a>
+    <a href="#typo-cormorant">Cormorant Garamond (Study 03)</a>
+
+    <div class="nav-section">Editorial Typography</div>
+    <a href="#editorial-system">Dual-Stack System</a>
+    <a href="#editorial-formats-spec">Formatos Editoriais</a>
+
+    <div class="nav-section">Governan&ccedil;a</div>
+    <a href="governance.html#rules">Do's &amp; Don'ts</a>
+    <a href="governance.html#versioning">Versionamento</a>
+    <a href="governance.html#llm-guide">LLM Guide</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero" id="overview">
+    <div class="rule"></div>
+    <h1><span>Visual Studies</span><br>&amp; Editorial<br>Typography</h1>
+    <p class="subtitle">
+      Laborat&oacute;rio visual do ecossistema. Cada study documenta decis&otilde;es
+      tipogr&aacute;ficas, crom&aacute;ticas e compositivas para formatos espec&iacute;ficos.
+      O sistema editorial dual-stack governa a separa&ccedil;&atilde;o entre produto e conte&uacute;do.
+    </p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §11 STUDY 01 — CAROUSEL CAPA
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="visual-studies">
+    <div class="section-header">
+      <div class="section-label">Study 01</div>
+      <h2 class="section-title">Carousel Capa</h2>
+      <p class="section-desc">
+        Override visual para slides de capa em carousels. 7 paletas de produto,
+        geometria 3D, headlines com &ecirc;nfase, fragmentos ASCII e hist&oacute;rico de itera&ccedil;&atilde;o.
+      </p>
+    </div>
+
+    <!-- Override Banner -->
+    <div class="vs-override-banner">
+      <div class="vs-label">Chumbo Quente Override</div>
+      <p>
+        Slides de capa operam no modo <strong>Chumbo Quente</strong> &mdash; paleta
+        comprimida, zero branco puro, tipografia no limiar. Cada produto recebe
+        uma varia&ccedil;&atilde;o crom&aacute;tica derivada da sua identidade funcional.
+        O override afeta headline, emphasis, rule e wireframe simultaneamente.
+      </p>
+    </div>
+
+    <!-- 7 Product Palette Cards -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin-bottom: 16px;">Paletas por Produto</h3>
+    <div class="vs-palette-grid">
+
+      <div class="vs-palette-card" data-product="mscs">
+        <div class="vs-palette-header" style="border-left: 3px solid #A85A30;">
+          <span class="vs-product-name">MSCS</span>
+          <span class="vs-product-identity">Chumbo Puro</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0A0E, #111114);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0A0E</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#A85A30</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #A85A30, #6A3818);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#A85A30 &rarr; #6A3818</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="oracle">
+        <div class="vs-palette-header" style="border-left: 3px solid #8A6A18;">
+          <span class="vs-product-name">Creative Oracle</span>
+          <span class="vs-product-identity">Gold Profundo</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #12100A);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5E5545;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5E5545</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A6A18;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A6A18</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #8A6A18, #5A4010);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A6A18 &rarr; #5A4010</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="fronteiristas">
+        <div class="vs-palette-header" style="border-left: 3px solid #8A7A62;">
+          <span class="vs-product-name">Fronteiristas</span>
+          <span class="vs-product-identity">Terra Neutra</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #111010);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5550;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5550</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #8A7A62;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#8A7A62</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #8A7A62, #5A5040);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#8A7A62 &rarr; #5A5040</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="neuro">
+        <div class="vs-palette-header" style="border-left: 3px solid #5A9AAA;">
+          <span class="vs-product-name">Neuro Codex</span>
+          <span class="vs-product-identity">Frio Cognitivo</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #0E0E18);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A4460;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A4460</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A9AAA;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A9AAA</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #5A9AAA, #3A5A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A9AAA &rarr; #3A5A6A</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="style">
+        <div class="vs-palette-header" style="border-left: 3px solid #9A6068;">
+          <span class="vs-product-name">Style Codex</span>
+          <span class="vs-product-identity">Rosa Estrutural</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #131114);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5B4C50;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5B4C50</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A6068;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A6068</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #9A6068, #6A3A42);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A6068 &rarr; #6A3A42</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="design">
+        <div class="vs-palette-header" style="border-left: 3px solid #5A7A9A;">
+          <span class="vs-product-name">Design Codex</span>
+          <span class="vs-product-identity">Azul Arquitetural</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #0E1018);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #4A5060;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#4A5060</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A7A9A;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#5A7A9A</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #5A7A9A, #3A4A6A);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#5A7A9A &rarr; #3A4A6A</div></div></div>
+        </div>
+      </div>
+
+      <div class="vs-palette-card" data-product="execution">
+        <div class="vs-palette-header" style="border-left: 3px solid #9A7048;">
+          <span class="vs-product-name">Execution Codex</span>
+          <span class="vs-product-identity">Laranja Operacional</span>
+        </div>
+        <div class="vs-palette-tokens">
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(145deg, #0A0C10, #131008);"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0C10</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #5A5040;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#5A5040</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: #9A7048;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#9A7048</div></div></div>
+          <div class="vs-token"><div class="vs-token-swatch" style="background: linear-gradient(90deg, #9A7048, #6A4828);"></div><div class="vs-token-info"><div class="vs-token-name">Rule</div><div class="vs-token-value">#9A7048 &rarr; #6A4828</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polygons 3D Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Pol&iacute;gonos 3D por Produto</h3>
+    <div class="vs-geo-table">
+      <table class="ds-table">
+        <thead>
+          <tr><th>Produto</th><th>Geometria</th><th>Rota&ccedil;&atilde;o</th><th>FOV</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MSCS</td><td>Icosaedro</td><td>Y 0.003 / X 0.002</td><td>50&deg;</td></tr>
+          <tr><td>Oracle</td><td>Dodecaedro</td><td>Y 0.002 / X 0.001</td><td>45&deg;</td></tr>
+          <tr><td>Fronteiristas</td><td>Octaedro</td><td>Y 0.004 / X 0.002</td><td>50&deg;</td></tr>
+          <tr><td>Neuro</td><td>Tetraedro</td><td>Y 0.003 / X 0.003</td><td>55&deg;</td></tr>
+          <tr><td>Style</td><td>Cubo Chanfrado</td><td>Y 0.002 / X 0.002</td><td>50&deg;</td></tr>
+          <tr><td>Design</td><td>Icosaedro Truncado</td><td>Y 0.003 / X 0.001</td><td>48&deg;</td></tr>
+          <tr><td>Execution</td><td>Prisma Hexagonal</td><td>Y 0.004 / X 0.003</td><td>52&deg;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Layout Elements Grid -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Elementos de Layout</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Info Strips</div>
+        <div class="vs-li-desc">Barras superior e inferior com metadados. <code>height: 20px</code>, <code>font-size: 5px</code>, Space Mono uppercase.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Ghost Layers</div>
+        <div class="vs-li-desc">Camadas semi-transparentes de wireframe no fundo. Opacidade <code>0.06&ndash;0.08</code>, grid <code>20&times;20px</code>.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Glitch Lines</div>
+        <div class="vs-li-desc">Linhas horizontais de interfer&ecirc;ncia. <code>height: 1px</code>, opacidade <code>0.03&ndash;0.07</code>, posi&ccedil;&atilde;o aleat&oacute;ria.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Gradient Rule</div>
+        <div class="vs-li-desc">Separador horizontal: <code>linear-gradient(90deg, emphasis, rule-end 60%, transparent)</code>.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Edge Markers</div>
+        <div class="vs-li-desc">Marcadores verticais na borda esquerda. <code>width: 2px</code>, gradiente vertical da emphasis para transparente.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Brand Watermark</div>
+        <div class="vs-li-desc">Logo SVG posicionado <code>bottom: 32px; right: 32px</code>. Opacidade <code>0.06</code> da cor identity.</div>
+      </div>
+    </div>
+
+    <!-- Typography Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Tipografia Carousel Capa</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Tamanho</th><th>Peso</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Headline</td><td>Anton</td><td>72px</td><td>400</td><td>-0.02em</td></tr>
+        <tr><td>Subtitle</td><td>DM Sans</td><td>21px</td><td>400</td><td>normal</td></tr>
+        <tr><td>Tag / Kicker</td><td>Space Mono</td><td>11px</td><td>400</td><td>0.18em</td></tr>
+        <tr><td>Numera&ccedil;&atilde;o</td><td>Anton</td><td>26px</td><td>400</td><td>-0.02em</td></tr>
+        <tr><td>Info Strip</td><td>Space Mono</td><td>5px</td><td>400</td><td>0.1em</td></tr>
+        <tr><td>Attribution</td><td>DM Sans</td><td>18px</td><td>700 italic</td><td>normal</td></tr>
+        <tr><td>Meta</td><td>Space Mono</td><td>10px</td><td>400</td><td>0.15em</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Headlines per Product -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Headlines por Produto</h3>
+    <div class="vs-headline-grid">
+      <div class="vs-headline-card" style="--accent: #A85A30;"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#A85A30;"></div>
+        <div class="vs-hl-product" style="color: #A85A30;">MSCS</div>
+        <div class="vs-hl-title">Infraestrutura do <em style="color: #A85A30;">Improviso</em></div>
+        <div class="vs-hl-sub">Arquitetura de presen&ccedil;a criativa</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#8A6A18;"></div>
+        <div class="vs-hl-product" style="color: #8A6A18;">Oracle</div>
+        <div class="vs-hl-title">O Mapa N&atilde;o &Eacute; o <em style="color: #8A6A18;">Territ&oacute;rio</em></div>
+        <div class="vs-hl-sub">Navega&ccedil;&atilde;o por padr&otilde;es culturais</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#8A7A62;"></div>
+        <div class="vs-hl-product" style="color: #8A7A62;">Fronteiristas</div>
+        <div class="vs-hl-title">Quem Cruza <em style="color: #8A7A62;">Fronteiras</em></div>
+        <div class="vs-hl-sub">Conversas com quem opera nas margens</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#5A9AAA;"></div>
+        <div class="vs-hl-product" style="color: #5A9AAA;">Neuro</div>
+        <div class="vs-hl-title">Percep&ccedil;&atilde;o &Eacute; <em style="color: #5A9AAA;">Infraestrutura</em></div>
+        <div class="vs-hl-sub">Engenharia de como o c&eacute;rebro decide</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#9A6068;"></div>
+        <div class="vs-hl-product" style="color: #9A6068;">Style</div>
+        <div class="vs-hl-title">Estilo N&atilde;o &Eacute; <em style="color: #9A6068;">Decora&ccedil;&atilde;o</em></div>
+        <div class="vs-hl-sub">Sistema visual como linguagem estrat&eacute;gica</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#5A7A9A;"></div>
+        <div class="vs-hl-product" style="color: #5A7A9A;">Design</div>
+        <div class="vs-hl-title">Design &Eacute; <em style="color: #5A7A9A;">Protocolo</em></div>
+        <div class="vs-hl-sub">Arquitetura visual como sistema operacional</div>
+      </div>
+      <div class="vs-headline-card"><div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#9A7048;"></div>
+        <div class="vs-hl-product" style="color: #9A7048;">Execution</div>
+        <div class="vs-hl-title">Entregar &Eacute; <em style="color: #9A7048;">Decidir</em></div>
+        <div class="vs-hl-sub">Ops criativo com previsibilidade</div>
+      </div>
+    </div>
+
+    <!-- ASCII Fragments -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Fragmentos ASCII</h3>
+    <div class="vs-ascii-grid">
+      <div class="vs-ascii-card"><div class="vs-ascii-product">MSCS</div><pre>    /\
+   /  \
+  /    \
+ /______\
+ |  MS  |
+ |______|</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Oracle</div><pre>  .---.
+ / o o \
+|  ___  |
+ \_____/
+  |___|</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Fronteiristas</div><pre> ---+---
+    |
+----+----
+    |
+ ---+---</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Neuro</div><pre>  /===\
+ | . . |
+ |  ^  |
+  \===/
+   ||</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Style</div><pre> +------+
+ | :  : |
+ | :  : |
+ +------+
+   STYL</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Design</div><pre>  [====]
+  |    |
+  | DS |
+  |    |
+  [====]</pre></div>
+      <div class="vs-ascii-card"><div class="vs-ascii-product">Execution</div><pre>  &gt;&gt;&gt;&gt;&gt;
+  | EX |
+  | EC |
+  &gt;&gt;&gt;&gt;&gt;
+  -----</pre></div>
+    </div>
+
+    <!-- Iteration History -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Hist&oacute;rico de Itera&ccedil;&atilde;o</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Vers&atilde;o</th><th>Mudan&ccedil;a Principal</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>v1</code></td><td>Conceito inicial com fundo s&oacute;lido preto</td><td>Descartada</td></tr>
+        <tr><td><code>v2</code></td><td>Introdu&ccedil;&atilde;o da paleta Chumbo Quente</td><td>Descartada</td></tr>
+        <tr><td><code>v3</code></td><td>Grid wireframe + ghost layers</td><td>Descartada</td></tr>
+        <tr><td><code>v4</code></td><td>Paletas por produto (7 varia&ccedil;&otilde;es)</td><td>Descartada</td></tr>
+        <tr><td><code>v5</code></td><td>ASCII fragments + edge markers</td><td>Descartada</td></tr>
+        <tr><td><code>v6</code></td><td>Consolida&ccedil;&atilde;o final &mdash; sistema atual</td><td style="color: #22C55E;">Ativa</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §12 STUDY 02 — OFFF STORY FACTORY
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="offf-story-factory">
+    <div class="section-header">
+      <div class="section-label">Study 02</div>
+      <h2 class="section-title">OFFF Story Factory</h2>
+      <p class="section-desc">
+        Template de stories para conte&uacute;do editorial baseado no OFFF Barcelona.
+        Formato 1080&times;1920, tipografia Instrument Serif + Inter, paleta Chumbo Puro.
+      </p>
+    </div>
+
+    <!-- Preview Row: Mockup + Specs -->
+    <div class="offf-preview-row">
+      <div class="offf-story-mockup">
+        <div class="osm-marker"></div>
+        <div class="osm-strip osm-strip-top"><span>MSCREATIVE.SYSTEMS</span><span>STORY FACTORY</span></div>
+        <div class="osm-content">
+          <div class="osm-tags">
+            <span class="osm-tag osm-tag-accent">Intelig&ecirc;ncia</span>
+            <span class="osm-tag osm-tag-ghost">Ep. 014</span>
+          </div>
+          <div class="osm-headline">O design n&atilde;o resolve. O design <em>revela.</em></div>
+          <div class="osm-rule"></div>
+          <div class="osm-subtitle">Sistemas criativos que funcionam n&atilde;o decoram &mdash; estruturam a forma como voc&ecirc; v&ecirc; o problema.</div>
+          <div class="osm-speaker">
+            <div class="osm-speaker-initials">MS</div>
+            <div>
+              <div class="osm-speaker-name">Marcel Serrano</div>
+              <div class="osm-speaker-role">Creative Systems Architect</div>
+            </div>
+          </div>
+        </div>
+        <div class="osm-strip osm-strip-bottom"><span>1080&times;1920</span><span>9:16</span></div>
+      </div>
+
+      <div class="offf-preview-info">
+        <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin-bottom: 16px;">Specs de Formato</h3>
+        <table class="ds-table">
+          <tbody>
+            <tr><td>Canvas</td><td><code>1080 &times; 1920 px</code></td></tr>
+            <tr><td>Aspect Ratio</td><td><code>9:16</code></td></tr>
+            <tr><td>Safe Zone Top</td><td><code>120px</code></td></tr>
+            <tr><td>Safe Zone Bottom</td><td><code>160px</code></td></tr>
+            <tr><td>Safe Zone Lateral</td><td><code>64px</code></td></tr>
+            <tr><td>Grid Overlay</td><td><code>20 &times; 20px</code>, opacidade 0.025</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 24px 0 12px;">Paleta &mdash; MSCS Chumbo Puro</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <div class="vs-token" onclick="copyColor('#0A0A0E')"><div class="vs-token-swatch" style="background: #0A0A0E;"></div><div class="vs-token-info"><div class="vs-token-name">BG</div><div class="vs-token-value">#0A0A0E</div></div></div>
+          <div class="vs-token" onclick="copyColor('#6A6A6A')"><div class="vs-token-swatch" style="background: #6A6A6A;"></div><div class="vs-token-info"><div class="vs-token-name">Headline</div><div class="vs-token-value">#6A6A6A</div></div></div>
+          <div class="vs-token" onclick="copyColor('#A85A30')"><div class="vs-token-swatch" style="background: #A85A30;"></div><div class="vs-token-info"><div class="vs-token-name">Emphasis</div><div class="vs-token-value">#A85A30</div></div></div>
+          <div class="vs-token" onclick="copyColor('rgba(130,130,130,0.4)')"><div class="vs-token-swatch" style="background: rgba(130,130,130,0.4);"></div><div class="vs-token-info"><div class="vs-token-name">Subtitle</div><div class="vs-token-value">rgba(130,130,130,0.4)</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin-bottom: 16px;">Tipografia OFFF</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Peso</th><th>Tamanho</th><th>Cor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Headline Sans</td><td>Inter</td><td>300</td><td>16px (miniatura)</td><td>#6A6A6A</td></tr>
+        <tr><td>Headline Serif</td><td>Instrument Serif</td><td>400 italic</td><td>18px (miniatura)</td><td>#A85A30</td></tr>
+        <tr><td>Subtitle</td><td>Inter</td><td>300</td><td>6px (miniatura)</td><td>rgba(130,130,130,0.4)</td></tr>
+        <tr><td>Tag Accent</td><td>Space Mono</td><td>400</td><td>4.5px (miniatura)</td><td>#A85A30</td></tr>
+        <tr><td>Tag Ghost</td><td>Space Mono</td><td>400</td><td>4.5px (miniatura)</td><td>rgba(140,140,140,0.5)</td></tr>
+        <tr><td>Speaker Name</td><td>Inter</td><td>400</td><td>6px (miniatura)</td><td>--ds-text-primary</td></tr>
+        <tr><td>Info Strip</td><td>Space Mono</td><td>400</td><td>5px (miniatura)</td><td>rgba(130,130,130,0.18)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 7 Mandatory Layers -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">7 Camadas Obrigat&oacute;rias</h3>
+    <div class="offf-layer-grid">
+      <div class="offf-layer-card">
+        <div class="olc-num">01</div>
+        <div class="olc-label">Info Strip Top</div>
+        <div class="olc-desc">Barra superior com brand + formato. <code>height: 20px</code></div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">02</div>
+        <div class="olc-label">Tags</div>
+        <div class="olc-desc">1 tag accent + 1 tag ghost m&iacute;nimo. Posicionadas no topo da &aacute;rea de conte&uacute;do.</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">03</div>
+        <div class="olc-label">Headline</div>
+        <div class="olc-desc">Mix Inter 300 + Instrument Serif italic. Palavra-chave em <code>em</code>.</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">04</div>
+        <div class="olc-label">Gradient Rule</div>
+        <div class="olc-desc">Separador <code>linear-gradient(90deg, #A85A30, #6A3818, transparent)</code>.</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">05</div>
+        <div class="olc-label">Subtitle / Body</div>
+        <div class="olc-desc">Texto secund&aacute;rio em Inter 300, opacidade baixa. M&aacute;ximo 3 linhas.</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">06</div>
+        <div class="olc-label">Speaker Card</div>
+        <div class="olc-desc">Iniciais em Instrument Serif + nome + role. Borda accent 0.15.</div>
+      </div>
+      <div class="offf-layer-card">
+        <div class="olc-num">07</div>
+        <div class="olc-label">Info Strip Bottom</div>
+        <div class="olc-desc">Barra inferior com dimens&otilde;es + ratio. <code>height: 20px</code></div>
+      </div>
+    </div>
+
+    <!-- Variation Rules -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Regras de Varia&ccedil;&atilde;o</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Elemento</th><th>Pode Variar</th><th>N&atilde;o Pode</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Headline</td><td>Texto, posi&ccedil;&atilde;o da palavra em destaque</td><td>Fontes, sistema de &ecirc;nfase (Inter + Instrument)</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Tags</td><td>Texto, quantidade (1&ndash;3)</td><td>Estilo visual, posicionamento</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Speaker</td><td>Nome, role, iniciais</td><td>Layout do card, border radius</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Palette</td><td>Nada</td><td>Cores s&atilde;o fixas por template</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Grid</td><td>Nada</td><td>20&times;20px, opacidade 0.025</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Headline Rules Banner -->
+    <div class="vs-override-banner" style="margin-top: 40px; border-left-color: #A85A30;">
+      <div class="vs-label" style="color: #A85A30;">Regras de Headline</div>
+      <p>
+        A headline OFFF usa <strong>Inter 300</strong> como base e <strong>Instrument Serif italic</strong>
+        para a palavra de &ecirc;nfase. Sempre exatamente uma palavra em <code>&lt;em&gt;</code>.
+        A palavra enfatizada carrega o conceito central. Sem ALL CAPS &mdash; casing natural.
+      </p>
+    </div>
+
+    <!-- Ingest Protocol -->
+    <div class="vs-override-banner" style="margin-top: 20px; border-left-color: #A85A30; background: linear-gradient(135deg, rgba(168,90,48,0.04), rgba(168,90,48,0.01));">
+      <div class="vs-label" style="color: #A85A30;">Protocolo de Ingest</div>
+      <p>
+        Toda story OFFF come&ccedil;a com um <strong>insight extra&iacute;do</strong> de conte&uacute;do existente
+        (palestra, artigo, entrevista). O insight vira headline. O contexto vira subtitle.
+        O autor original vira speaker card. Nunca inventar atribui&ccedil;&atilde;o.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §13 STUDY 03 — CORMORANT GARAMOND
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="typo-cormorant">
+    <div class="section-header">
+      <div class="section-label">Study 03</div>
+      <h2 class="section-title">Cormorant Garamond</h2>
+      <p class="section-desc">
+        Typo C &mdash; stack accent para pe&ccedil;as que precisam de voz cl&aacute;ssica.
+        Drop caps, texto vertical, icosaedro centralizado. Uso restrito a contextos de alta solenidade.
+      </p>
+    </div>
+
+    <!-- Demo Row: Mockup + Info -->
+    <div class="cormorant-demo">
+      <div class="cormorant-mockup">
+        <div class="cm-headline">A beleza est&aacute; no <em>sistema,</em> n&atilde;o na superf&iacute;cie</div>
+        <div class="cm-rule"></div>
+        <div class="cm-drop">
+          <span class="cm-drop-cap">Q</span>
+          <span class="cm-drop-text">Quando a estrutura &eacute; bonita, o resultado &eacute; inevit&aacute;vel. A tipografia cl&aacute;ssica n&atilde;o decora &mdash; ela governa o ritmo visual.</span>
+        </div>
+      </div>
+
+      <div class="cormorant-info">
+        <!-- Type Stack Table -->
+        <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin-bottom: 16px;">Type Stack</h3>
+        <table class="ds-table">
+          <thead>
+            <tr><th>Papel</th><th>Fonte</th><th>Peso</th><th>Uso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Headline</td><td>Cormorant Garamond</td><td>300</td><td>T&iacute;tulos editoriais de alto impacto</td></tr>
+            <tr><td>Emphasis</td><td>Cormorant Garamond italic</td><td>600</td><td>Palavra-chave em destaque</td></tr>
+            <tr><td>Drop Cap</td><td>Cormorant Garamond</td><td>700</td><td>Primeira letra de par&aacute;grafo, 36px</td></tr>
+            <tr><td>Body Editorial</td><td>DM Sans</td><td>300</td><td>Texto corrido de apoio</td></tr>
+            <tr><td>Labels</td><td>Space Mono</td><td>400</td><td>Metadados e tags</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Exclusive Elements -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Elementos Exclusivos</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label" style="color: #A85A30;">Rule Thin</div>
+        <div class="vs-li-desc">Separador de <code>1px</code>, cor <code>rgba(168,90,48,0.12)</code>. Mais sutil que o gradient rule padr&atilde;o.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label" style="color: #A85A30;">Drop Cap</div>
+        <div class="vs-li-desc">Cormorant 700, <code>font-size: 36px</code>, <code>line-height: 0.8</code>. Cor emphasis a <code>0.12</code> opacidade.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label" style="color: #A85A30;">Vertical Text</div>
+        <div class="vs-li-desc"><code>writing-mode: vertical-rl</code>. Cormorant italic 300, ancorado na borda esquerda. Decorativo.</div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label" style="color: #A85A30;">Icosaedro Centralizado</div>
+        <div class="vs-li-desc">Wireframe 3D centralizado no fundo. Opacidade <code>0.04</code>. Rota&ccedil;&atilde;o lenta. Nunca domina a composi&ccedil;&atilde;o.</div>
+      </div>
+    </div>
+
+    <!-- Usage Context Banner -->
+    <div class="vs-override-banner" style="margin-top: 40px; border-left-color: #A85A30;">
+      <div class="vs-label" style="color: #A85A30;">Contexto de Uso</div>
+      <p>
+        Typo C &eacute; reservada para: artigos longos no Substack, capas de newsletter,
+        pe&ccedil;as de manifesto, e qualquer formato que exija <strong>voz editorial cl&aacute;ssica</strong>.
+        Nunca usar em carousels padr&atilde;o, stories, ou interfaces de produto.
+        Misturar Cormorant com Anton no mesmo quadro &eacute; viola&ccedil;&atilde;o de protocolo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §14 EDITORIAL DUAL-STACK SYSTEM
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="editorial-system">
+    <div class="section-header">
+      <div class="section-label">Se&ccedil;&atilde;o 14</div>
+      <h2 class="section-title">Editorial Dual-Stack System</h2>
+      <p class="section-desc">
+        Duas fam&iacute;lias tipogr&aacute;ficas coexistem no ecossistema. Produto usa Anton + DM Sans.
+        Editorial usa IBM Plex Sans + Libre Caslon Text. Nunca misturar.
+      </p>
+    </div>
+
+    <!-- Side-by-side Comparison -->
+    <div class="eds-comparison">
+      <div class="eds-col product">
+        <div class="eds-badge">Product Stack &mdash; Typo A</div>
+        <div class="eds-headline">Infraestrutura do <span>Improviso</span></div>
+        <hr class="eds-rule">
+        <div class="eds-body">Existe uma diferen&ccedil;a entre improvisar e ter infraestrutura de improviso. Uma &eacute; aposta. A outra &eacute; arquitetura.</div>
+        <div class="eds-stack">Anton + DM Sans + Space Mono</div>
+      </div>
+      <div class="eds-col editorial">
+        <div class="eds-badge">Editorial Stack &mdash; Typo B</div>
+        <div class="eds-headline">O design n&atilde;o resolve. O design <em>revela.</em></div>
+        <hr class="eds-rule">
+        <div class="eds-body">Sistemas criativos que funcionam n&atilde;o decoram &mdash; estruturam a forma como voc&ecirc; v&ecirc; o problema antes de tentar resolv&ecirc;-lo.</div>
+        <div class="eds-stack">IBM Plex Sans + Libre Caslon Text + Space Mono</div>
+      </div>
+    </div>
+
+    <!-- Type Stacks Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin-bottom: 16px;">Type Stacks</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Stack</th><th>Headline</th><th>Body</th><th>Label</th><th>Accent/Emphasis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Produto (Typo A)</code></td>
+          <td>Anton 400, ALL CAPS, -0.02em</td>
+          <td>DM Sans 400, 0.85 opacity</td>
+          <td>Space Mono 400, ALL CAPS, 0.2em</td>
+          <td>Cor emphasis do produto</td>
+        </tr>
+        <tr>
+          <td><code>Editorial (Typo B)</code></td>
+          <td>IBM Plex Sans 300, sentence case</td>
+          <td>IBM Plex Sans 300, 0.4 opacity</td>
+          <td>Space Mono 400, ALL CAPS, 0.2em</td>
+          <td>Libre Caslon Text italic 400</td>
+        </tr>
+        <tr>
+          <td><code>Accent (Typo C)</code></td>
+          <td>Cormorant Garamond 300</td>
+          <td>DM Sans 300</td>
+          <td>Space Mono 400</td>
+          <td>Cormorant italic 600</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Live Type Samples -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Amostras Vivas</h3>
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div class="offf-font-sample">
+        <div class="ofs-preview" style="font-family: 'Anton', sans-serif; font-size: 28px; text-transform: uppercase; letter-spacing: -0.02em; color: #6B6358;">Infraestrutura <span style="color: #9A7A28;">Criativa</span></div>
+        <div class="ofs-meta">Typo A &mdash; Anton + DM Sans</div>
+      </div>
+      <div class="offf-font-sample">
+        <div class="ofs-preview" style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 24px; color: #6A6A6A;">O design n&atilde;o resolve. O design <span style="font-family: 'Libre Caslon Text', serif; font-style: italic; color: #A85A30; font-size: 27px;">revela.</span></div>
+        <div class="ofs-meta">Typo B &mdash; IBM Plex Sans + Libre Caslon Text</div>
+      </div>
+      <div class="offf-font-sample">
+        <div class="ofs-preview" style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 26px; color: #6A6A6A;">A beleza est&aacute; no <span style="font-style: italic; font-weight: 600; color: #A85A30;">sistema</span></div>
+        <div class="ofs-meta">Typo C &mdash; Cormorant Garamond</div>
+      </div>
+    </div>
+
+    <!-- Routing Matrix -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Matriz de Roteamento</h3>
+    <div class="eds-routing-grid">
+      <div class="eds-route-card">
+        <div class="eds-rc-arrow">&rarr;</div>
+        <div>
+          <div class="eds-rc-context">Carousel / Story Produto</div>
+          <div class="eds-rc-stack">Typo A &mdash; Product Stack</div>
+          <div class="eds-rc-fonts">Anton + DM Sans + Space Mono</div>
+        </div>
+      </div>
+      <div class="eds-route-card">
+        <div class="eds-rc-arrow">&rarr;</div>
+        <div>
+          <div class="eds-rc-context">Story Editorial / OFFF</div>
+          <div class="eds-rc-stack">Typo B &mdash; Editorial Stack</div>
+          <div class="eds-rc-fonts">IBM Plex Sans + Libre Caslon Text + Space Mono</div>
+        </div>
+      </div>
+      <div class="eds-route-card">
+        <div class="eds-rc-arrow">&rarr;</div>
+        <div>
+          <div class="eds-rc-context">Newsletter / Substack</div>
+          <div class="eds-rc-stack">Typo B ou Typo C</div>
+          <div class="eds-rc-fonts">Depende do tom: institucional (B) ou manifesto (C)</div>
+        </div>
+      </div>
+      <div class="eds-route-card">
+        <div class="eds-rc-arrow">&rarr;</div>
+        <div>
+          <div class="eds-rc-context">Landing Page / Site</div>
+          <div class="eds-rc-stack">Typo A &mdash; Product Stack</div>
+          <div class="eds-rc-fonts">Anton + DM Sans + Space Mono</div>
+        </div>
+      </div>
+      <div class="eds-route-card">
+        <div class="eds-rc-arrow">&rarr;</div>
+        <div>
+          <div class="eds-rc-context">Manifesto / Artigo Longo</div>
+          <div class="eds-rc-stack">Typo C &mdash; Accent Stack</div>
+          <div class="eds-rc-fonts">Cormorant Garamond + DM Sans + Space Mono</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS Tokens Code Block -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">CSS Tokens</h3>
+    <div class="ds-code-block" style="background: var(--ds-bg-surface); border: 1px solid var(--ds-border-subtle); border-radius: 10px; overflow: hidden;">
+      <div class="ds-code-header" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--ds-border-subtle);">
+        <span style="font-family: var(--ds-font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ds-accent-gold);">CSS &mdash; Dual-Stack Tokens</span>
+        <button onclick="copyCodeBlock(this)" style="font-family: var(--ds-font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ds-text-muted); background: none; border: 1px solid var(--ds-border-subtle); padding: 4px 12px; border-radius: 4px; cursor: pointer;">Copy</button>
+      </div>
+      <pre style="padding: 16px 20px; overflow-x: auto; font-family: var(--ds-font-label); font-size: 12px; line-height: 1.6; color: var(--ds-text-body);"><code>/* Product Stack (Typo A) */
+--ds-font-display:  'Anton', sans-serif;
+--ds-font-body:     'DM Sans', sans-serif;
+--ds-font-label:    'Space Mono', monospace;
+
+/* Editorial Stack (Typo B) */
+--ds-ed-font-headline:  'IBM Plex Sans', sans-serif;  /* wt 300 */
+--ds-ed-font-emphasis:  'Libre Caslon Text', serif;    /* italic 400 */
+--ds-ed-font-body:      'IBM Plex Sans', sans-serif;   /* wt 300 */
+--ds-ed-font-label:     'Space Mono', monospace;
+
+/* Accent Stack (Typo C) */
+--ds-tc-font:           'Cormorant Garamond', serif;
+/* Weights: 300 (headline) / 600 italic (emphasis) / 700 (drop cap) */</code></pre>
+    </div>
+
+    <!-- Don'ts Grid -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Don'ts</h3>
+    <div class="rules-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">Anton + Libre Caslon no mesmo quadro</div>
+        <div class="rule-reason">Product e Editorial n&atilde;o coexistem visualmente.</div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">Cormorant em carousel padr&atilde;o</div>
+        <div class="rule-reason">Typo C &eacute; reservada para pe&ccedil;as de alta solenidade.</div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">IBM Plex Sans em ALL CAPS</div>
+        <div class="rule-reason">Editorial nunca grita. Sentence case sempre.</div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">Mais de um stack por pe&ccedil;a</div>
+        <div class="rule-reason">Cada pe&ccedil;a usa exatamente um stack tipogr&aacute;fico.</div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">Instrument Serif fora do OFFF</div>
+        <div class="rule-reason">Fonte exclusiva do template Story Factory.</div>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-badge">Don't</div>
+        <div class="rule-text">Substituir Space Mono por outro mono</div>
+        <div class="rule-reason">Space Mono &eacute; o &uacute;nico monospace do ecossistema.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       §14.1 EDITORIAL FORMATS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="editorial-formats-spec">
+    <div class="section-header">
+      <div class="section-label">Se&ccedil;&atilde;o 14.1</div>
+      <h2 class="section-title">Formatos Editoriais</h2>
+      <p class="section-desc">
+        Especifica&ccedil;&otilde;es de canvas, safe zones e elementos especiais para cada formato editorial do ecossistema.
+      </p>
+    </div>
+
+    <!-- 7-Format Specs Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin-bottom: 16px;">Specs por Formato</h3>
+    <div style="overflow-x: auto;">
+      <table class="ds-table">
+        <thead>
+          <tr><th>Formato</th><th>Dimens&otilde;es</th><th>Ratio</th><th>Stack</th><th>Uso Principal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Story</td><td><code>1080 &times; 1920</code></td><td>9:16</td><td>Typo B (Editorial)</td><td>Instagram Stories, OFFF Factory</td></tr>
+          <tr><td>Carousel Slide</td><td><code>1080 &times; 1080</code></td><td>1:1</td><td>Typo A (Product)</td><td>Instagram Carousel</td></tr>
+          <tr><td>Carousel Cover</td><td><code>1080 &times; 1080</code></td><td>1:1</td><td>Typo A + Override</td><td>Slide de capa com Chumbo Quente</td></tr>
+          <tr><td>Newsletter Header</td><td><code>1200 &times; 630</code></td><td>~1.9:1</td><td>Typo B ou C</td><td>Substack header image</td></tr>
+          <tr><td>LinkedIn</td><td><code>1200 &times; 627</code></td><td>~1.9:1</td><td>Typo B (Editorial)</td><td>Posts LinkedIn</td></tr>
+          <tr><td>Substack Header</td><td><code>1456 &times; 180</code></td><td>~8:1</td><td>Typo B (Editorial)</td><td>Banner da publica&ccedil;&atilde;o</td></tr>
+          <tr><td>OG Image</td><td><code>1200 &times; 630</code></td><td>~1.9:1</td><td>Typo A (Product)</td><td>Open Graph / social share</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Safe Zones Table -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Safe Zones</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Formato</th><th>Top</th><th>Bottom</th><th>Lateral</th><th>Nota</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Story (9:16)</td><td><code>120px</code></td><td><code>160px</code></td><td><code>64px</code></td><td>Bottom maior por UI do Instagram</td></tr>
+        <tr><td>Carousel (1:1)</td><td><code>80px</code></td><td><code>80px</code></td><td><code>64px</code></td><td>Uniforme</td></tr>
+        <tr><td>Newsletter</td><td><code>40px</code></td><td><code>40px</code></td><td><code>48px</code></td><td>Margem compacta</td></tr>
+        <tr><td>LinkedIn</td><td><code>48px</code></td><td><code>48px</code></td><td><code>56px</code></td><td>Compat&iacute;vel com crop mobile</td></tr>
+        <tr><td>OG Image</td><td><code>60px</code></td><td><code>60px</code></td><td><code>80px</code></td><td>Prever crop de plataformas</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Special Elements Grid -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Elementos Especiais</h3>
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Speaker Card</div>
+        <div class="vs-li-desc">
+          Iniciais em Instrument Serif italic, <code>24&times;24px</code>.
+          Nome em Inter 400, role em Space Mono 4px.
+          Border <code>rgba(168,90,48,0.15)</code>, <code>border-radius: 6px</code>.
+          Exclusivo de stories OFFF.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Pull Quote</div>
+        <div class="vs-li-desc">
+          Cormorant Garamond italic 600 para citação em destaque.
+          <code>border-left: 3px solid emphasis</code>.
+          Usado em newsletter e artigos longos (Typo C).
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Kicker / Tag</div>
+        <div class="vs-li-desc">
+          Space Mono <code>11px</code>, ALL CAPS, <code>letter-spacing: 0.18em</code>.
+          Border <code>1px solid</code> com opacidade 0.25 da cor emphasis.
+          Presente em todos os formatos.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Badge</div>
+        <div class="vs-li-desc">
+          Space Mono <code>10px</code>, ALL CAPS, <code>letter-spacing: 0.2em</code>.
+          Background <code>rgba(emphasis, 0.05)</code>, <code>padding: 3px 10px</code>.
+          Classifica conte&uacute;do por tipo (Intelig&ecirc;ncia, An&aacute;lise, Manifesto).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-text">MSCREATIVE.SYSTEMS <span class="footer-accent">DESIGN SYSTEM V3.0</span></span>
+    <span class="footer-text">Design n&atilde;o &eacute; prefer&ecirc;ncia. &Eacute; <span class="footer-accent">protocolo</span>.</span>
+  </footer>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Copiado!</div>
+
+<script src="js/ds-nav.js"></script>
+</body>
+</html>
