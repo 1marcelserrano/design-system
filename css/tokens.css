@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════════════════════
+   MSCREATIVE.SYSTEMS™ — UNIFIED DESIGN TOKENS V3.0
+   Single source of truth for all visual properties.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* === GLOBAL STRUCTURAL ===
+     Grid, borders, spacing, layout
+     ────────────────────────────────────────────────────────── */
+  --ds-grid-color:          rgba(255, 255, 255, 0.025);
+  --ds-grid-size:           54px;
+  --ds-border-subtle:       rgba(255, 255, 255, 0.06);
+  --ds-sidebar-width:       280px;
+  --ds-radius-sm:           2px;
+  --ds-radius-md:           4px;
+
+  /* === PRODUCT STACK — TYPOGRAPHY (Typo A) ===
+     Anton + DM Sans + Space Mono
+     ────────────────────────────────────────────────────────── */
+  --ds-font-display:        'Anton', sans-serif;
+  --ds-font-body:           'DM Sans', sans-serif;
+  --ds-font-label:          'Space Mono', monospace;
+
+  /* === EDITORIAL STACK — TYPOGRAPHY (Typo B) ===
+     IBM Plex Sans + Libre Caslon Text + Space Mono
+     All clamp sizes from MD spec §8
+     ────────────────────────────────────────────────────────── */
+
+  /* Families */
+  --ds-ed-font-headline:    'IBM Plex Sans', sans-serif;
+  --ds-ed-font-emphasis:    'Libre Caslon Text', serif;
+  --ds-ed-font-body:        'IBM Plex Sans', sans-serif;
+  --ds-ed-font-label:       'Space Mono', monospace;
+
+  /* Weights */
+  --ds-ed-w-light:          300;
+  --ds-ed-w-regular:        400;
+  --ds-ed-w-medium:         500;
+  --ds-ed-w-display:        700;   /* apenas drop cap */
+
+  /* Sizes (fluid clamps) */
+  --ds-ed-h1-size:          clamp(36px, 4.5vw, 54px);
+  --ds-ed-emphasis-size:    clamp(42px, 5.2vw, 62px);
+  --ds-ed-h2-size:          clamp(28px, 3.2vw, 38px);
+  --ds-ed-subtitle-size:    clamp(16px, 1.8vw, 19px);
+  --ds-ed-body-size:        clamp(15px, 1.6vw, 17px);
+  --ds-ed-quote-size:       clamp(22px, 2.6vw, 28px);
+  --ds-ed-label-size:       clamp(9px, 0.85vw, 11px);
+  --ds-ed-meta-size:        clamp(8px, 0.75vw, 10px);
+  --ds-ed-initials-size:    clamp(24px, 2.5vw, 28px);
+  --ds-ed-dropcap-size:     clamp(80px, 9vw, 120px);
+
+  /* Line heights */
+  --ds-ed-lh-tight:         1.12;
+  --ds-ed-lh-snug:          1.2;
+  --ds-ed-lh-normal:        1.5;
+  --ds-ed-lh-body:          1.65;
+
+  /* Tracking */
+  --ds-ed-track-headline:   -0.02em;
+  --ds-ed-track-label:       0.18em;
+  --ds-ed-track-kicker:      0.25em;
+  --ds-ed-track-vertical:    0.3em;
+
+  /* === ACCENT STACK — TYPO C ===
+     Cormorant Garamond — high-fashion serif
+     ────────────────────────────────────────────────────────── */
+  --ds-tc-font:             'Cormorant Garamond', serif;
+  --ds-tc-w-light:          300;
+  --ds-tc-w-regular:        400;
+  --ds-tc-w-semibold:       600;
+  --ds-tc-w-bold:           700;
+  --ds-tc-headline-size:    18px;
+  --ds-tc-headline-lh:      1.08;
+  --ds-tc-headline-tracking: -0.01em;
+  --ds-tc-dropcap-size:     36px;
+  --ds-tc-dropcap-lh:       0.8;
+  --ds-tc-body-italic-size: 7px;
+  --ds-tc-body-italic-lh:   1.4;
+  --ds-tc-rule-opacity:     0.12;
+
+  /* === BASE PALETTE ===
+     Core backgrounds, text, and surface colors
+     ────────────────────────────────────────────────────────── */
+  --ds-bg-primary:          #0A0C10;
+  --ds-bg-secondary:        #12141A;
+  --ds-bg-surface:          #1A1D26;
+  --ds-bg-surface-hover:    #22262F;
+  --ds-text-primary:        #B2A898;
+  --ds-text-body:           rgba(178, 168, 152, 0.85);
+  --ds-text-muted:          rgba(178, 168, 152, 0.5);
+
+  /* === PRODUCT ACCENT PALETTE (Chumbo Quente) ===
+     Gold system for product-level accents
+     ────────────────────────────────────────────────────────── */
+  --ds-accent-gold:         #D4AF37;
+  --ds-accent-gold-dark:    #8B6914;
+
+  /* === EDITORIAL PALETTE (Chumbo Puro + Electric Orange) ===
+     All --ds-ed-* color tokens
+     ────────────────────────────────────────────────────────── */
+
+  /* Backgrounds */
+  --ds-ed-bg:               linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
+
+  /* Text */
+  --ds-ed-text-headline:    #6A6A6A;
+  --ds-ed-text-emphasis:    #A85A30;
+  --ds-ed-text-body:        rgba(130, 130, 130, 0.4);
+  --ds-ed-text-label:       rgba(130, 130, 130, 0.18);
+  --ds-ed-text-label-accent: rgba(168, 90, 48, 0.2);
+
+  /* Accents */
+  --ds-ed-accent-primary:   #A85A30;
+  --ds-ed-accent-secondary: #6A3818;
+  --ds-ed-accent-rule:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+
+  /* Ghosts / structure / glitch */
+  --ds-ed-grid-line:        rgba(255, 255, 255, 0.025);
+  --ds-ed-ghost-1:          rgba(168, 90, 48, 0.06);
+  --ds-ed-ghost-2:          rgba(168, 90, 48, 0.04);
+  --ds-ed-ghost-3:          rgba(168, 90, 48, 0.025);
+  --ds-ed-glitch:           rgba(168, 90, 48, 0.07);
+  --ds-ed-ascii:            rgba(168, 90, 48, 0.035);
+
+  /* === SEMANTIC ===
+     Status colors
+     ────────────────────────────────────────────────────────── */
+  --ds-success:             #2ECC71;
+  --ds-error:               #E74C3C;
+  --ds-warning:             #F39C12;
+  --ds-info:                #3498DB;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PRODUCT-SCOPED PALETTES
+   Activated via [data-product="name"] attribute selectors.
+   Each product overrides: --p-bg, --p-headline, --p-emphasis,
+   --p-subtitle, --p-rule-start, --p-rule-end,
+   --p-wireframe-1, --p-wireframe-2, --p-identity.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── MSCS (master brand) ─────────────────────────────────── */
+[data-product="mscs"] {
+  --p-bg:            linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
+  --p-headline:      #6A6A6A;
+  --p-emphasis:      #A85A30;
+  --p-subtitle:      rgba(130, 130, 130, 0.4);
+  --p-rule-start:    #A85A30;
+  --p-rule-end:      #6A3818;
+  --p-wireframe-1:   rgba(106, 106, 106, 0.08);
+  --p-wireframe-2:   rgba(168, 90, 48, 0.06);
+  --p-identity:      #A85A30;
+}
+
+/* ── Oracle ──────────────────────────────────────────────── */
+[data-product="oracle"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #12100A 100%);
+  --p-headline:      #5E5545;
+  --p-emphasis:      #8A6A18;
+  --p-subtitle:      rgba(94, 85, 69, 0.4);
+  --p-rule-start:    #8A6A18;
+  --p-rule-end:      #5A4010;
+  --p-wireframe-1:   rgba(94, 85, 69, 0.08);
+  --p-wireframe-2:   rgba(138, 106, 24, 0.06);
+  --p-identity:      #8A6A18;
+}
+
+/* ── Fronteiristas ───────────────────────────────────────── */
+[data-product="fronteiristas"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #111010 100%);
+  --p-headline:      #5A5550;
+  --p-emphasis:      #8A7A62;
+  --p-subtitle:      rgba(90, 85, 80, 0.4);
+  --p-rule-start:    #8A7A62;
+  --p-rule-end:      #5A5040;
+  --p-wireframe-1:   rgba(90, 85, 80, 0.08);
+  --p-wireframe-2:   rgba(138, 122, 98, 0.06);
+  --p-identity:      #8A7A62;
+}
+
+/* ── Neuro ───────────────────────────────────────────────── */
+[data-product="neuro"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #0E0E18 100%);
+  --p-headline:      #4A4460;
+  --p-emphasis:      #5A9AAA;
+  --p-subtitle:      rgba(74, 68, 96, 0.4);
+  --p-rule-start:    #5A9AAA;
+  --p-rule-end:      #3A5A6A;
+  --p-wireframe-1:   rgba(74, 68, 96, 0.08);
+  --p-wireframe-2:   rgba(90, 154, 170, 0.06);
+  --p-identity:      #5A9AAA;
+}
+
+/* ── Style ───────────────────────────────────────────────── */
+[data-product="style"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #131114 100%);
+  --p-headline:      #5B4C50;
+  --p-emphasis:      #9A6068;
+  --p-subtitle:      rgba(91, 76, 80, 0.4);
+  --p-rule-start:    #9A6068;
+  --p-rule-end:      #6A3A42;
+  --p-wireframe-1:   rgba(91, 76, 80, 0.08);
+  --p-wireframe-2:   rgba(154, 96, 104, 0.06);
+  --p-identity:      #9A6068;
+}
+
+/* ── Design ──────────────────────────────────────────────── */
+[data-product="design"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #0E1018 100%);
+  --p-headline:      #4A5060;
+  --p-emphasis:      #5A7A9A;
+  --p-subtitle:      rgba(74, 80, 96, 0.4);
+  --p-rule-start:    #5A7A9A;
+  --p-rule-end:      #3A4A6A;
+  --p-wireframe-1:   rgba(74, 80, 96, 0.08);
+  --p-wireframe-2:   rgba(90, 122, 154, 0.06);
+  --p-identity:      #5A7A9A;
+}
+
+/* ── Execution ───────────────────────────────────────────── */
+[data-product="execution"] {
+  --p-bg:            linear-gradient(145deg, #0A0C10 0%, #131008 100%);
+  --p-headline:      #5A5040;
+  --p-emphasis:      #9A7048;
+  --p-subtitle:      rgba(90, 80, 64, 0.4);
+  --p-rule-start:    #9A7048;
+  --p-rule-end:      #6A4828;
+  --p-wireframe-1:   rgba(90, 80, 64, 0.08);
+  --p-wireframe-2:   rgba(154, 112, 72, 0.06);
+  --p-identity:      #9A7048;
+}
