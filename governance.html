@@ -112,16 +112,16 @@
       <div class="section-header">
         <div class="section-label">Se&ccedil;&atilde;o 15</div>
         <h2 class="section-title">Do's &amp; Don'ts &mdash; Product Stack</h2>
-        <p class="section-desc">Regras absolutas para o stack de produto (Anton + DM Sans + Space Mono). Viola&ccedil;&atilde;o invalida a pe&ccedil;a.</p>
+        <p class="section-desc">Regras absolutas para o stack de produto (Fraunces + Inter Tight + IBM Plex Mono &mdash; Post-Digital Hybrid, DEC-004). Viola&ccedil;&atilde;o invalida a pe&ccedil;a.</p>
       </div>
       <h3 class="section-group-label" style="color: var(--ds-success);">DO</h3>
       <div class="rules-grid">
         <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
-          <div class="rule-text">Usar Anton ALL CAPS para headlines e nomes de produto. letter-spacing: -0.02em.</div></div>
+          <div class="rule-text">Usar Fraunces ALL CAPS para headlines e nomes de produto. Aplicar <code>font-variation-settings: &quot;opsz&quot; 144</code> em display e <code>&quot;opsz&quot; 24</code> em editorial. letter-spacing: -0.02em.</div></div>
         <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
-          <div class="rule-text">Usar DM Sans 400/700 para body text. Opacidade 0.85 no modo dark.</div></div>
+          <div class="rule-text">Usar Inter Tight 400/500/600/700 para body text. Pesos calibrados para UI de alta densidade.</div></div>
         <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
-          <div class="rule-text">Usar Space Mono ALL CAPS com tracking 0.2em para labels, tiers e metadados.</div></div>
+          <div class="rule-text">Usar IBM Plex Mono ALL CAPS com tracking 0.2em para labels, tiers e metadados.</div></div>
         <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
           <div class="rule-text">Aplicar grid 54&times;54px a 0.025 opacity em todas as superf&iacute;cies escuras.</div></div>
         <div class="rule-card rule-card--do"><span class="rule-badge rule-badge--do">DO</span>
@@ -148,7 +148,7 @@
         <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
           <div class="rule-text">Nunca omitir a textura de grid em superf&iacute;cies escuras. &Eacute; assinatura de sistema.</div></div>
         <div class="rule-card rule-card--dont"><span class="rule-badge rule-badge--dont">DON'T</span>
-          <div class="rule-text">Nunca usar Anton em lowercase. Anton &eacute; exclusivamente ALL CAPS.</div></div>
+          <div class="rule-text">Nunca usar Fraunces sem <code>font-variation-settings: &quot;opsz&quot; N</code>. Sem isso a variable font cai no default e perde warmth. Display: opsz 144. Editorial: opsz 24. Body: opsz 12.</div></div>
       </div>
     </section>
 
@@ -193,7 +193,7 @@
       <div class="decision-tree">
         <div class="dt-node">
           <div class="dt-question">A pe&ccedil;a reconhece produto? (codex card, site UI, navega&ccedil;&atilde;o, CTA)</div>
-          <div style="margin-top: 12px;"><span class="dt-answer dt-answer--produto">SIM &rarr; Stack Produto (Anton + DM Sans + Space Mono)</span></div>
+          <div style="margin-top: 12px;"><span class="dt-answer dt-answer--produto">SIM &rarr; Stack Produto (Fraunces + Inter Tight + IBM Plex Mono)</span></div>
         </div>
         <div class="dt-arrow"></div>
         <div class="dt-node">
@@ -207,8 +207,8 @@
         </div>
       </div>
       <div class="llm-note" style="margin-top: 32px; border-left-color: rgba(178,168,152,0.3);">
-        <strong style="color: var(--ds-text-primary);">Space Mono &eacute; o conector.</strong>
-        Presente nos dois stacks, serve de ponte visual. Quando um carousel editorial termina com CTA de produto (Anton), a Space Mono do info strip segura a continuidade.
+        <strong style="color: var(--ds-text-primary);">Mono codes s&atilde;o os conectores dos dois stacks.</strong>
+        Stack Produto usa IBM Plex Mono; stack Editorial usa Space Mono. Quando um carousel editorial termina com CTA de produto (Fraunces), o info strip mono fecha a continuidade &mdash; embora as famílias sejam distintas, o papel (label, metadado, tech voice) &eacute; o mesmo.
       </div>
     </section>
 
@@ -235,7 +235,8 @@
           <tr><td class="v-version">v2.6</td><td>Speaker card, pull quote, drop cap, vertical text &mdash; elementos editoriais especiais.</td></tr>
           <tr><td class="v-version">v2.7</td><td>Safe zones e margens can&ocirc;nicas por formato. Clamp scale responsiva.</td></tr>
           <tr><td class="v-version">v2.8</td><td>Stack routing formalizado. Decision tree produto vs editorial. Conector Space Mono.</td></tr>
-          <tr class="v-current"><td class="v-version">v3.0</td><td>Reestrutura&ccedil;&atilde;o completa: multi-page, design tokens unificados, code bank, dual-view, LLM guide.</td></tr>
+          <tr><td class="v-version">v3.0</td><td>Reestrutura&ccedil;&atilde;o completa: multi-page, design tokens unificados, code bank, dual-view, LLM guide.</td></tr>
+          <tr class="v-current"><td class="v-version">v3.1</td><td>MS Midnight palette (DEC-001) + Typo A Post-Digital Hybrid (DEC-004). Gold &rarr; Midnight (#A89D80 / #756750); Anton/DM Sans/Space Mono &rarr; Fraunces + Inter Tight + IBM Plex Mono. Gold reservado como cerimonial.</td></tr>
         </tbody>
       </table>
       <p class="next-note">Pr&oacute;ximas itera&ccedil;&otilde;es: motion tokens, dark/light mode editorial, component library exportada, Figma sync autom&aacute;tico.</p>
@@ -274,7 +275,7 @@
           <div class="llm-step-num">4</div>
           <div class="llm-step-content">
             <div class="llm-step-title">Routing tipogr&aacute;fico</div>
-            <div class="llm-step-desc">Reconhecimento de produto &rarr; stack Produto (<span class="llm-code">Anton</span> + <span class="llm-code">DM Sans</span> + <span class="llm-code">Space Mono</span>). Leitura editorial &rarr; stack Editorial (<span class="llm-code">IBM Plex Sans</span> + <span class="llm-code">Libre Caslon Text</span> + <span class="llm-code">Space Mono</span>). Nunca misture os dois stacks no mesmo bloco visual.</div>
+            <div class="llm-step-desc">Reconhecimento de produto &rarr; stack Produto (<span class="llm-code">Fraunces</span> + <span class="llm-code">Inter Tight</span> + <span class="llm-code">IBM Plex Mono</span>). Leitura editorial &rarr; stack Editorial (<span class="llm-code">IBM Plex Sans</span> + <span class="llm-code">Libre Caslon Text</span> + <span class="llm-code">Space Mono</span>). Nunca misture os dois stacks no mesmo bloco visual.</div>
           </div>
         </div>
         <div class="llm-step">

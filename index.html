@@ -114,22 +114,22 @@
           </div>
         </div>
 
-        <!-- Product Typography (Typo A) -->
-        <h3 class="token-group-title">Product Typography (Typo A)</h3>
+        <!-- Product Typography (Typo A) — Post-Digital Hybrid -->
+        <h3 class="token-group-title">Product Typography (Typo A) &middot; Post-Digital Hybrid</h3>
         <div class="token-grid">
           <div class="spec-card">
             <div class="spec-label">--ds-font-display</div>
-            <div class="spec-value">'Anton', sans-serif</div>
-            <div class="spec-desc">Headlines &amp; nomes de produto.</div>
+            <div class="spec-value">'Fraunces', Georgia, serif</div>
+            <div class="spec-desc">Variable font (opsz 9..144). Headlines &amp; nomes de produto.</div>
           </div>
           <div class="spec-card">
             <div class="spec-label">--ds-font-body</div>
-            <div class="spec-value">'DM Sans', sans-serif</div>
+            <div class="spec-value">'Inter Tight', sans-serif</div>
             <div class="spec-desc">Leitura cont&iacute;nua &amp; descri&ccedil;&otilde;es.</div>
           </div>
           <div class="spec-card">
             <div class="spec-label">--ds-font-label</div>
-            <div class="spec-value">'Space Mono', monospace</div>
+            <div class="spec-value">'IBM Plex Mono', monospace</div>
             <div class="spec-desc">Tiers, datas &amp; metadados.</div>
           </div>
         </div>
@@ -198,9 +198,24 @@
             <div class="spec-value">#B2A898</div>
           </div>
           <div class="spec-card">
-            <div class="spec-swatch" style="background: #D4AF37;"></div>
-            <div class="spec-label">--ds-accent-gold</div>
-            <div class="spec-value">#D4AF37</div>
+            <div class="spec-swatch" style="background: #A89D80;"></div>
+            <div class="spec-label">--ds-ms-accent-1</div>
+            <div class="spec-value">#A89D80</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #756750;"></div>
+            <div class="spec-label">--ds-ms-accent-2</div>
+            <div class="spec-value">#756750</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: linear-gradient(145deg, #0C0B08 0%, #16140F 100%); border: 1px solid rgba(255,255,255,0.04);"></div>
+            <div class="spec-label">--ds-ms-bg-gradient</div>
+            <div class="spec-value">#0C0B08 &rarr; #16140F</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-swatch" style="background: #E8C547;"></div>
+            <div class="spec-label">--ds-accent-ceremonial-gold</div>
+            <div class="spec-value">#E8C547 (reservado)</div>
           </div>
         </div>
 
@@ -254,11 +269,22 @@
   --ds-radius-md:           4px;
 
   /* === PRODUCT STACK &mdash; TYPOGRAPHY (Typo A) ===
-     Anton + DM Sans + Space Mono
+     Post-Digital Hybrid &middot; Fraunces + Inter Tight + IBM Plex Mono
+     Migrated 2026-04-20 &middot; DEC-004
      ────────────────────────────────────────────────────────── */
-  --ds-font-display:        'Anton', sans-serif;
-  --ds-font-body:           'DM Sans', sans-serif;
-  --ds-font-label:          'Space Mono', monospace;
+  --ds-font-display:        'Fraunces', Georgia, serif;
+  --ds-font-body:           'Inter Tight', sans-serif;
+  --ds-font-label:          'IBM Plex Mono', monospace;
+
+  /* Fraunces variable-font optical sizes */
+  --ds-fraunces-opsz-display:   144;
+  --ds-fraunces-opsz-editorial:  24;
+  --ds-fraunces-opsz-body:       12;
+
+  /* Legacy (1 ciclo deprecation) */
+  --ds-font-display-legacy: 'Anton', sans-serif;
+  --ds-font-body-legacy:    'DM Sans', sans-serif;
+  --ds-font-label-legacy:   'Space Mono', monospace;
 
   /* === EDITORIAL STACK &mdash; TYPOGRAPHY (Typo B) ===
      IBM Plex Sans + Libre Caslon Text + Space Mono
@@ -329,9 +355,23 @@
   --ds-text-body:           rgba(178, 168, 152, 0.85);
   --ds-text-muted:          rgba(178, 168, 152, 0.5);
 
-  /* === PRODUCT ACCENT PALETTE (Chumbo Quente) ===
-     Gold system for product-level accents
+  /* === MS IDENTITY &middot; MIDNIGHT (DEC-001) ===
+     Paleta institucional MS &mdash; migrada de Gold para Midnight.
+     Narrativa: &quot;Meia-noite: permanência sem performance.
+                 Só quem observa de perto percebe.&quot;
      ────────────────────────────────────────────────────────── */
+  --ds-ms-accent-1:         #A89D80;   /* main identity */
+  --ds-ms-accent-2:         #756750;   /* secondary/hover */
+  --ds-ms-bg-start:         #0C0B08;
+  --ds-ms-bg-end:            #16140F;
+  --ds-ms-bg-gradient:      linear-gradient(145deg, #0C0B08 0%, #16140F 100%);
+  --ds-ms-text-muted:       rgba(168, 157, 128, 0.65);
+
+  /* === CEREMONIAL GOLD (reservado · uso futuro Emblem/selos) === */
+  --ds-accent-ceremonial-gold:      #E8C547;
+  --ds-accent-ceremonial-gold-dark: #B8941F;
+
+  /* === LEGACY GOLD (deprecar &mdash; manter 1 ciclo pra fallback) === */
   --ds-accent-gold:         #D4AF37;
   --ds-accent-gold-dark:    #8B6914;
 
@@ -468,26 +508,26 @@
 
       <div class="view-showcase">
         <div class="type-specimens">
-          <!-- ANTON -->
+          <!-- FRAUNCES -->
           <div class="type-card">
             <div class="type-card-header">
-              <span class="name">Anton &mdash; Display</span>
+              <span class="name">Fraunces &mdash; Display</span>
               <span class="role">Headlines &amp; Nomes de Produto</span>
             </div>
             <div class="type-card-specimen display-font">
               Infraestrutura do Improviso
             </div>
             <div class="type-card-meta">
-              <div class="meta-item">Casing<span>ALL CAPS (sempre)</span></div>
+              <div class="meta-item">Variable<span>opsz 9..144 &middot; ital &middot; 400&ndash;900</span></div>
               <div class="meta-item">Kerning<span>letter-spacing: -0.02em</span></div>
-              <div class="meta-item">Uso<span>Forma arquitetural, n&atilde;o texto</span></div>
+              <div class="meta-item">Uso<span>font-variation-settings: &quot;opsz&quot; 144 (display)</span></div>
             </div>
           </div>
 
-          <!-- DM SANS -->
+          <!-- INTER TIGHT -->
           <div class="type-card">
             <div class="type-card-header">
-              <span class="name">DM Sans &mdash; Body</span>
+              <span class="name">Inter Tight &mdash; Body</span>
               <span class="role">Leitura Cont&iacute;nua &amp; Descri&ccedil;&otilde;es</span>
             </div>
             <div class="type-card-specimen body-font">
@@ -496,16 +536,16 @@
               para um show que ningu&eacute;m sabia quanto tempo ia durar.
             </div>
             <div class="type-card-meta">
-              <div class="meta-item">Pesos<span>400 (Regular) / 700 (Bold)</span></div>
-              <div class="meta-item">Opacidade<span>0.85 no modo Dark</span></div>
-              <div class="meta-item">Contraste<span>Limpo com Anton</span></div>
+              <div class="meta-item">Pesos<span>400 / 500 / 600 / 700</span></div>
+              <div class="meta-item">Tracking<span>tight &mdash; ideal para UI</span></div>
+              <div class="meta-item">Contraste<span>Limpo com Fraunces</span></div>
             </div>
           </div>
 
-          <!-- SPACE MONO -->
+          <!-- IBM PLEX MONO -->
           <div class="type-card">
             <div class="type-card-header">
-              <span class="name">Space Mono &mdash; Labels</span>
+              <span class="name">IBM Plex Mono &mdash; Labels</span>
               <span class="role">Tiers, Datas &amp; Metadados</span>
             </div>
             <div class="type-card-specimen label-font">
@@ -526,18 +566,23 @@
             <span class="ds-code-label">CSS &mdash; Type Specimens</span>
             <button class="ds-code-copy" onclick="copyCodeBlock(this)">Copy</button>
           </div>
-          <pre><code>/* Product Stack (Typo A) */
---ds-font-display:  'Anton', sans-serif;         /* Headlines, ALL CAPS, -0.02em */
---ds-font-body:     'DM Sans', sans-serif;        /* Body, 400/700, opacity 0.85 */
---ds-font-label:    'Space Mono', monospace;       /* Labels, ALL CAPS, 0.2em */
+          <pre><code>/* Product Stack (Typo A) &mdash; Post-Digital Hybrid (DEC-004) */
+--ds-font-display:  'Fraunces', Georgia, serif;          /* variable opsz 9..144 */
+--ds-font-body:     'Inter Tight', sans-serif;            /* 400/500/600/700 */
+--ds-font-label:    'IBM Plex Mono', monospace;           /* 400/600/700 */
 
-/* Editorial Stack (Typo B) */
+/* Fraunces opsz targets &mdash; use via font-variation-settings */
+--ds-fraunces-opsz-display:   144;  /* dramatic display */
+--ds-fraunces-opsz-editorial:  24;  /* quieto editorial */
+--ds-fraunces-opsz-body:       12;  /* body size */
+
+/* Editorial Stack (Typo B) &mdash; preservado */
 --ds-ed-font-headline:  'IBM Plex Sans', sans-serif;
 --ds-ed-font-emphasis:  'Libre Caslon Text', serif;
 --ds-ed-font-body:      'IBM Plex Sans', sans-serif;
 --ds-ed-font-label:     'Space Mono', monospace;
 
-/* Accent Stack (Typo C) */
+/* Accent Stack (Typo C) &mdash; preservado */
 --ds-tc-font: 'Cormorant Garamond', serif;
 /* Weights: 300 / 400 / 600 / 700 */</code></pre>
         </div>
