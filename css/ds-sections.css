@@ -991,12 +991,14 @@ section {
   line-height: 1.5;
 }
 
-.codex-label--design { color: #2563EB; }
-.codex-label--style  { color: #FF4D8C; }
-.codex-label--neuro  { color: #00C9C8; }
-.codex-label--exec   { color: #FF8C00; }
-.codex-label--oracle { color: #D4AF37; }
-.codex-label--mscs   { color: #B2A898; }
+/* Codex labels — cores canônicas Midnight (DEC-005 a DEC-010) */
+.codex-label--design        { color: var(--p-design-accent1); }        /* #909098 — DEC-008 */
+.codex-label--style         { color: var(--p-style-accent1); }         /* #E8397A — DEC-007 */
+.codex-label--neuro         { color: var(--p-neuro-accent1); }         /* #00C9C8 — DEC-010 */
+.codex-label--exec          { color: var(--p-execution-accent1); }     /* #E87800 — DEC-009 */
+.codex-label--oracle        { color: var(--p-oracle-accent-start); }   /* #E8397A — DEC-006 */
+.codex-label--fronteiristas { color: var(--p-fronteiristas-accent1); } /* #B5BF9A — DEC-005 */
+.codex-label--mscs          { color: var(--p-ms-accent1); }            /* #A89D80 — DEC-001 */
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ECO CARDS
