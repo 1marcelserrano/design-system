@@ -399,7 +399,7 @@
             <tr><td>Safe Zone Top</td><td><code>120px</code></td></tr>
             <tr><td>Safe Zone Bottom</td><td><code>160px</code></td></tr>
             <tr><td>Safe Zone Lateral</td><td><code>64px</code></td></tr>
-            <tr><td>Grid Overlay</td><td><code>20 &times; 20px</code>, opacidade 0.025</td></tr>
+            <tr><td>Grid Overlay</td><td><code>54 &times; 54px</code>, opacidade 0.025</td></tr>
           </tbody>
         </table>
 
@@ -420,13 +420,68 @@
         <tr><th>Papel</th><th>Fonte</th><th>Peso</th><th>Tamanho</th><th>Cor</th></tr>
       </thead>
       <tbody>
-        <tr><td>Headline Sans</td><td>IBM Plex Sans</td><td>300</td><td>54px (real) / 16px (miniatura)</td><td>#6A6A6A</td></tr>
-        <tr><td>Headline Serif <code>&lt;em&gt;</code></td><td>Libre Caslon Text</td><td>400 italic</td><td>62px (real) / 18px (miniatura)</td><td>#A85A30</td></tr>
-        <tr><td>Subtitle</td><td>IBM Plex Sans</td><td>300</td><td>19px (real) / 6px (miniatura)</td><td>rgba(130,130,130,0.4)</td></tr>
-        <tr><td>Tag Accent</td><td>Space Mono</td><td>400</td><td>4.5px (miniatura)</td><td>#A85A30</td></tr>
-        <tr><td>Tag Ghost</td><td>Space Mono</td><td>400</td><td>4.5px (miniatura)</td><td>rgba(140,140,140,0.5)</td></tr>
-        <tr><td>Speaker Name</td><td>IBM Plex Sans</td><td>400</td><td>17px (real) / 6px (miniatura)</td><td>--ds-text-primary</td></tr>
-        <tr><td>Info Strip</td><td>Space Mono</td><td>400</td><td>5px (miniatura)</td><td>rgba(130,130,130,0.18)</td></tr>
+        <tr><td>Headline Sans</td><td>IBM Plex Sans</td><td>300</td><td><code>80px</code></td><td>#6A6A6A</td></tr>
+        <tr><td>Headline Serif <code>&lt;em&gt;</code></td><td>Libre Caslon Text</td><td>400 italic</td><td><code>92px</code></td><td>#A85A30</td></tr>
+        <tr><td>Subtitle</td><td>IBM Plex Sans</td><td>300</td><td><code>36px</code></td><td>rgba(130,130,130,0.4)</td></tr>
+        <tr><td>Tag Accent</td><td>Space Mono</td><td>400</td><td><code>22px</code></td><td>#A85A30</td></tr>
+        <tr><td>Tag Ghost</td><td>Space Mono</td><td>400</td><td><code>22px</code></td><td>rgba(140,140,140,0.5)</td></tr>
+        <tr><td>Speaker Name</td><td>IBM Plex Sans</td><td>400</td><td><code>22px</code></td><td>rgba(130,130,130,0.4)</td></tr>
+        <tr><td>Speaker Role</td><td>Space Mono</td><td>400</td><td><code>26px</code></td><td>rgba(168,90,48,0.2)</td></tr>
+        <tr><td>Speaker Initials</td><td>Libre Caslon Text</td><td>italic</td><td><code>44px</code></td><td>#A85A30</td></tr>
+        <tr><td>Info Strip</td><td>Space Mono</td><td>400</td><td><code>18px</code></td><td>rgba(130,130,130,0.18)</td></tr>
+        <tr><td>ASCII Fragments</td><td>Space Mono</td><td>400</td><td><code>16px</code></td><td>rgba(168,90,48,0.035)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Typography per Story Type -->
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Tipografia por Tipo &mdash; Cita&ccedil;&atilde;o</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Tamanho</th><th>Cor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Quote PT-BR</td><td>Libre Caslon Text italic</td><td><code>80px</code></td><td>#6A6A6A</td></tr>
+        <tr><td>Quote Original</td><td>Libre Caslon Text italic</td><td><code>36px</code></td><td>rgba(106,106,106,0.35)</td></tr>
+        <tr><td>Quote Marks &ldquo;</td><td>serif</td><td><code>160px</code></td><td>rgba(168,90,48,0.08)</td></tr>
+        <tr><td>Attribution</td><td>IBM Plex Sans 300</td><td><code>22px</code></td><td>rgba(130,130,130,0.3)</td></tr>
+        <tr><td>Attr Name</td><td>Space Mono 400</td><td><code>22px</code></td><td>#A85A30</td></tr>
+        <tr><td>Gloss</td><td>IBM Plex Sans 300</td><td><code>34px</code></td><td>rgba(130,130,130,0.4)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Tipografia por Tipo &mdash; Lista</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Tamanho</th><th>Cor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>List Number</td><td>IBM Plex Sans 300</td><td><code>36px</code></td><td>rgba(168,90,48,0.25)</td></tr>
+        <tr><td>List Text</td><td>IBM Plex Sans 300</td><td><code>38px</code></td><td>#6A6A6A</td></tr>
+        <tr><td>List <code>&lt;em&gt;</code></td><td>Libre Caslon Text italic</td><td><code>42px</code></td><td>#A85A30</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Tipografia por Tipo &mdash; Framework</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Tamanho</th><th>Cor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Layer Label</td><td>Space Mono 400 uppercase</td><td><code>24px</code></td><td>rgba(130,130,130,0.4)</td></tr>
+        <tr><td>Layer Number</td><td>IBM Plex Sans 300</td><td><code>36px</code></td><td>rgba(130,130,130,0.25)</td></tr>
+        <tr><td>Layer Desc</td><td>IBM Plex Sans 300</td><td><code>34px</code></td><td>#6A6A6A</td></tr>
+        <tr><td>Layer Desc <code>&lt;em&gt;</code></td><td>Libre Caslon Text italic</td><td><code>34px</code></td><td>#A85A30</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #A85A30; margin: 40px 0 16px;">Tipografia por Tipo &mdash; Infogr&aacute;fico</h3>
+    <table class="ds-table">
+      <thead>
+        <tr><th>Papel</th><th>Fonte</th><th>Tamanho</th><th>Cor</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Number Big</td><td>IBM Plex Sans 300</td><td><code>200px</code></td><td>#A85A30</td></tr>
+        <tr><td>Number Label</td><td>Space Mono 400 uppercase</td><td><code>24px</code></td><td>rgba(130,130,130,0.35)</td></tr>
       </tbody>
     </table>
 
@@ -481,7 +536,12 @@
         <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Tags</td><td>Texto, quantidade (1&ndash;3)</td><td>Estilo visual, posicionamento</td></tr>
         <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Speaker</td><td>Nome, role, iniciais</td><td>Layout do card, border radius</td></tr>
         <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Palette</td><td>Nada</td><td>Cores s&atilde;o fixas por template</td></tr>
-        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Grid</td><td>Nada</td><td>20&times;20px, opacidade 0.025</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Grid</td><td>Nada</td><td>54&times;54px, opacidade 0.025</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Icosaedro posi&ccedil;&atilde;o</td><td>Alternar quadrantes, nunca repetir consecutivo</td><td>Cor (sempre accent puro monocrom&aacute;tico)</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Icosaedro speeds</td><td>[0.05&ndash;0.12] por eixo</td><td>&mdash;</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Glitch lines Y</td><td>&plusmn;30px entre consecutivos</td><td>Cor (sempre accent)</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">ASCII conte&uacute;do</td><td>Keyword contextual <code>&blacktriangleright; KEY.SYS &blacktriangleright;&blacktriangleright;&blacktriangleright;</code></td><td>Fonte, cor, opacidade</td></tr>
+        <tr><td style="font-family: var(--ds-font-label); font-size: 11px; color: #A85A30;">Frase editorial top</td><td>Contextual e provocativa</td><td>Posi&ccedil;&atilde;o, fonte</td></tr>
       </tbody>
     </table>
 
@@ -554,26 +614,88 @@
       </div>
     </div>
 
-    <!-- ── STORY TYPE SPECS (aprovado 2026-04-18) ── -->
+    <!-- ── STORY TYPE SPECS (aprovado 2026-04-18, sync V3) ── -->
     <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Specs por Tipo de Story</h3>
 
     <div class="vs-layout-grid">
       <div class="vs-layout-item">
+        <div class="vs-li-label">Insight</div>
+        <div class="vs-li-desc">
+          Headline: IBM Plex Sans 300 <code>80px</code> + Libre Caslon Text italic <code>92px</code> para <code>&lt;em&gt;</code>.
+          Subtitle: IBM Plex Sans 300 <code>36px</code>, <code>rgba(130,130,130,0.4)</code>.
+          Speaker card com iniciais <code>44px</code>, nome <code>22px</code>, role <code>26px</code>.
+        </div>
+      </div>
+      <div class="vs-layout-item">
         <div class="vs-li-label">Cita&ccedil;&atilde;o</div>
         <div class="vs-li-desc">
-          Cita&ccedil;&atilde;o PT-BR: Libre Caslon Text italic <code>56px</code>, cor <code>#6A6A6A</code>.
+          Cita&ccedil;&atilde;o PT-BR: Libre Caslon Text italic <code>80px</code>, cor <code>#6A6A6A</code>.
           Keywords em <code>&lt;em&gt;</code> accent. Quebra por <code>&lt;br&gt;</code>.
-          Atribui&ccedil;&atilde;o: nome em accent, restante <code>rgba(130,130,130,0.3)</code>.
-          Vers&atilde;o original: Libre Caslon Text italic <code>22px</code>, <code>rgba(106,106,106,0.35)</code>.
+          Aspas decorativas: serif <code>160px</code>, <code>rgba(168,90,48,0.08)</code>.
+          Atribui&ccedil;&atilde;o: nome em accent <code>22px</code>, restante <code>rgba(130,130,130,0.3)</code>.
+          Gloss: IBM Plex Sans 300 <code>34px</code>.
+          Vers&atilde;o original: Libre Caslon Text italic <code>36px</code>, <code>rgba(106,106,106,0.35)</code>.
         </div>
       </div>
       <div class="vs-layout-item">
         <div class="vs-li-label">Framework Desconstru&iacute;do</div>
         <div class="vs-li-desc">
-          Layer labels: Space Mono, <code>rgba(130,130,130,0.4)</code>.
-          Layer numbers: <code>rgba(130,130,130,0.25)</code>.
-          Descriptions: <code>#6A6A6A</code>, 1 keyword em <code>&lt;em&gt;</code> accent (Libre Caslon Text italic <code>19px</code>, <code>#A85A30</code>).
+          Layer labels: Space Mono 400 uppercase <code>24px</code>, <code>rgba(130,130,130,0.4)</code>.
+          Layer numbers: IBM Plex Sans 300 <code>36px</code>, <code>rgba(130,130,130,0.25)</code>.
+          Descriptions: IBM Plex Sans 300 <code>34px</code>, <code>#6A6A6A</code>. Keyword em <code>&lt;em&gt;</code> accent (Libre Caslon Text italic <code>34px</code>, <code>#A85A30</code>).
           Container: border <code>rgba(168,90,48,0.06)</code>, bg <code>rgba(168,90,48,0.015)</code>.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Lista</div>
+        <div class="vs-li-desc">
+          N&uacute;mero: IBM Plex Sans 300 <code>36px</code>, <code>rgba(168,90,48,0.25)</code>. Min-width <code>40px</code>.
+          Texto: IBM Plex Sans 300 <code>38px</code>, <code>#6A6A6A</code>, line-height <code>1.4</code>.
+          Keyword em <code>&lt;em&gt;</code>: Libre Caslon Text italic <code>42px</code>, <code>#A85A30</code>.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Infogr&aacute;fico</div>
+        <div class="vs-li-desc">
+          N&uacute;mero grande: IBM Plex Sans 300 <code>200px</code>, <code>#A85A30</code>.
+          Label: Space Mono 400 uppercase <code>24px</code>, <code>rgba(130,130,130,0.35)</code>.
+          Failure Strip: grid de dots <code>16px</code> (<code>--ds-story-fail-dot-size</code>).
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Tese Propriet&aacute;ria</div>
+        <div class="vs-li-desc">
+          Segue tipografia base Headline (<code>80px</code> / <code>92px</code> em) + Subtitle (<code>36px</code>).
+          Tag accent: Ghost Concept ou conceito propriet&aacute;rio. Tag ghost: MSCREATIVE.SYSTEMS&trade;.
+          Headline <code>&lt;em&gt;</code> marca o conceito focal da tese.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPONENTES VISUAIS EXTRAS ── -->
+    <h3 class="subsection-title" style="margin-top: 48px; margin-bottom: 20px;">Componentes Visuais</h3>
+
+    <div class="vs-layout-grid">
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Failure Strip</div>
+        <div class="vs-li-desc">
+          Grid de dots para tipo INFOGR&Aacute;FICO. Dot size: <code>16px</code> (<code>--ds-story-fail-dot-size</code>).
+          Visualiza&ccedil;&atilde;o de dados como padr&atilde;o de pontos preenchidos vs vazios.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Spectrum Bar</div>
+        <div class="vs-li-desc">
+          Barra gradient horizontal para FRAMEWORK tipo espectro.
+          Labels em Space Mono <code>22px</code> (<code>--ds-story-spectrum-label-size</code>).
+          Gradiente accent &rarr; transparente.
+        </div>
+      </div>
+      <div class="vs-layout-item">
+        <div class="vs-li-label">Number Row</div>
+        <div class="vs-li-desc">
+          N&uacute;mero grande (<code>200px</code>) + label lateral (<code>24px</code> uppercase) para INFOGR&Aacute;FICO.
+          N&uacute;mero em accent <code>#A85A30</code>, label em <code>rgba(130,130,130,0.35)</code>.
         </div>
       </div>
     </div>
