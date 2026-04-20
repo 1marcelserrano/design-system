@@ -6,7 +6,7 @@
  *   <script src="js/wireframe-engine.js"></script>
  *   <canvas id="my-canvas" width="300" height="300"
  *           data-geometry="icosaedro"
- *           data-color1="#A85A30" data-color2="#A85A30"
+ *           data-color1="#A89D80" data-color2="#A89D80"
  *           data-speed-x="0.12" data-speed-y="0.16" data-speed-z="0.06"
  *           data-fov="3.5"></canvas>
  *   <script>
@@ -14,10 +14,10 @@
  *     MSCS_Wireframe.initAllGeometries();
  *
  *     // Option B — manual init:
- *     MSCS_Wireframe.initGeometry('my-canvas', 'icosaedro', '#A85A30', '#A85A30', [0.12, 0.16, 0.06], 3.5);
+ *     MSCS_Wireframe.initGeometry('my-canvas', 'icosaedro', '#A89D80', '#A89D80', [0.12, 0.16, 0.06], 3.5);
  *
  *     // Option C — low-level (bring your own loop):
- *     MSCS_Wireframe.renderWireframe('my-canvas', MSCS_Wireframe.GEOMETRIES.icosaedro, '#A85A30', '#A85A30', [0.12, 0.16, 0.06], 3.5);
+ *     MSCS_Wireframe.renderWireframe('my-canvas', MSCS_Wireframe.GEOMETRIES.icosaedro, '#A89D80', '#A89D80', [0.12, 0.16, 0.06], 3.5);
  *   </script>
  *
  * Exposed on window.MSCS_Wireframe:
@@ -323,6 +323,22 @@
     return { vertices: verts, edges: edges };
   })();
 
+  // ── FRONTEIRISTAS: Threshold (Stella Octangula) ──
+  // Two interpenetrating tetrahedra — frontier as intersection of two domains
+  var threshold = (function () {
+    var s = 0.75;
+    return {
+      vertices: [
+        [ s,  s,  s], [-s, -s,  s], [-s,  s, -s], [ s, -s, -s],
+        [-s, -s, -s], [ s,  s, -s], [ s, -s,  s], [-s,  s,  s]
+      ],
+      edges: [
+        [0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3],
+        [4, 5], [4, 6], [4, 7], [5, 6], [5, 7], [6, 7]
+      ]
+    };
+  })();
+
   // ═══════════════════════════════════════════════════════════
   // GEOMETRY REGISTRY
   // ═══════════════════════════════════════════════════════════
@@ -333,7 +349,8 @@
     tensegrity:  tensegrity,
     turbine:     turbine,
     dendritico:  dendritico,
-    gyroscope:   gyroscope
+    gyroscope:   gyroscope,
+    threshold:   threshold
   };
 
   // ═══════════════════════════════════════════════════════════
@@ -343,12 +360,13 @@
   // Study E — Accent Puro Monocromático (aprovado 2026-04-18)
   // c2 = c1 em todos os produtos — presença uniforme em todas as arestas
   var DEFAULTS = {
-    icosaedro:  { color1: '#A85A30', color2: '#A85A30', speeds: [0.12, 0.16, 0.06], fov: 3.5 },
-    mobius:     { color1: '#D4AF37', color2: '#D4AF37', speeds: [0.12, 0.18, 0.04], fov: 3.5 },
-    tensegrity: { color1: '#2563EB', color2: '#2563EB', speeds: [0.13, 0.16, 0.09], fov: 3.5 },
-    turbine:   { color1: '#FF4D8C', color2: '#FF4D8C', speeds: [0.10, 0.25, 0.06], fov: 3.5 },
+    icosaedro:  { color1: '#A89D80', color2: '#A89D80', speeds: [0.12, 0.16, 0.06], fov: 3.5 },
+    mobius:     { color1: '#E8397A', color2: '#E8397A', speeds: [0.12, 0.18, 0.04], fov: 3.5 },
+    tensegrity: { color1: '#909098', color2: '#909098', speeds: [0.13, 0.16, 0.09], fov: 3.5 },
+    turbine:    { color1: '#E8397A', color2: '#E8397A', speeds: [0.10, 0.25, 0.06], fov: 3.5 },
     dendritico: { color1: '#00C9C8', color2: '#00C9C8', speeds: [0.14, 0.22, 0.10], fov: 3.5 },
-    gyroscope: { color1: '#FF8C00', color2: '#FF8C00', speeds: [0.12, 0.18, 0.08], fov: 3.5 }
+    gyroscope:  { color1: '#E87800', color2: '#E87800', speeds: [0.12, 0.18, 0.08], fov: 3.5 },
+    threshold:  { color1: '#B5BF9A', color2: '#B5BF9A', speeds: [0.06, 0.10, 0.04], fov: 3.5 }
   };
 
   // ═══════════════════════════════════════════════════════════
@@ -391,8 +409,8 @@
     return renderWireframe(
       canvasId,
       geo,
-      color1  || def.color1  || '#A85A30',
-      color2  || def.color2  || '#A85A30',
+      color1  || def.color1  || '#A89D80',
+      color2  || def.color2  || '#A89D80',
       speeds  || def.speeds  || [0.12, 0.16, 0.06],
       fov     || def.fov     || 3.5
     );
