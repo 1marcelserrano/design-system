@@ -33,11 +33,12 @@
   --ds-fraunces-opsz-editorial:  24;
   --ds-fraunces-opsz-body:       12;
 
-  /* Legacy stack (Typo A pre-migration) — mantido temporariamente
-     pra consumidores externos e migrações graduais. Deprecar em 1 ciclo. */
-  --ds-font-display-legacy: 'Anton', sans-serif;
-  --ds-font-body-legacy:    'DM Sans', sans-serif;
-  --ds-font-label-legacy:   'Space Mono', monospace;
+  /* Legacy stack (Typo A pre-migration) — DEPRECATED (DEC-017).
+     Preservado como comentário para referência de migração.
+     Remover em PR de limpeza pós-rollout. */
+  /* --ds-font-display-legacy: 'Anton', sans-serif; */
+  /* --ds-font-body-legacy:    'DM Sans', sans-serif; */
+  /* --ds-font-label-legacy:   'Space Mono', monospace; */
 
   /* === EDITORIAL STACK — TYPOGRAPHY (Typo B) ===
      IBM Plex Sans + Libre Caslon Text + Space Mono
@@ -129,12 +130,13 @@
   --ds-accent-ceremonial-gold-dark: #B8941F;
 
   /* === PRODUCT ACCENT PALETTE (Chumbo Quente — LEGACY) ===
-     Gold antigo MSCS — deprecar em 1 ciclo. Consumidores externos
-     que ainda referenciam `--ds-accent-gold` continuam funcionando.
-     Uso estrutural interno já migrou para `--ds-ms-accent-1`.
+     Gold antigo MSCS — DEPRECATED (DEC-017).
+     Migrado para --ds-ms-accent-1 / --p-ms-accent1.
+     Preservado como comentário para referência de migração.
+     Remover em PR de limpeza pós-rollout.
      ────────────────────────────────────────────────────────── */
-  --ds-accent-gold:         #D4AF37;
-  --ds-accent-gold-dark:    #8B6914;
+  /* --ds-accent-gold:         #D4AF37; */
+  /* --ds-accent-gold-dark:    #8B6914; */
 
   /* === EDITORIAL PALETTE (Chumbo Puro + Electric Orange) ===
      All --ds-ed-* color tokens
@@ -170,6 +172,202 @@
   --ds-error:               #E74C3C;
   --ds-warning:             #F39C12;
   --ds-info:                #3498DB;
+
+
+  /* ═══════════════════════════════════════════════════════════
+     CANONICAL TOKENS — DEC-001 a DEC-018 (2026-04-20)
+     Fonte da verdade: KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md
+     ═══════════════════════════════════════════════════════════ */
+
+  /* ──────────────────────────────────────────────
+     TIPOGRAFIA GLOBAL — helpers (DEC-004/012)
+     Fraunces display/subheading invariantes em todos os 7 produtos.
+  ────────────────────────────────────────────── */
+
+  /* Display (opsz 144 = dramático máximo) */
+  --ds-display-opsz:        144;
+  --ds-display-weight:      900;
+  --ds-display-lh:          1.0;
+  --ds-display-tracking:    -0.03em;
+
+  /* Subheading display */
+  --ds-subheading-opsz:     72;
+  --ds-subheading-weight:   700;
+  --ds-subheading-lh:       1.1;
+
+  /* Editorial quieto (Fraunces recuando) */
+  --ds-editorial-opsz:      24;
+  --ds-editorial-weight:    500;
+
+
+  /* ──────────────────────────────────────────────
+     MS · MSCREATIVE.SYSTEMS  [DEC-001/004]
+  ────────────────────────────────────────────── */
+  --p-ms-accent1:       #A89D80;
+  --p-ms-accent2:       #756750;
+  --p-ms-bg-start:      #0C0B08;
+  --p-ms-bg-end:        #16140F;
+  --p-ms-gradient:      linear-gradient(160deg, #0C0B08 0%, #16140F 100%);
+  --p-ms-body-weight:   400;
+  --p-ms-body-style:    normal;
+  --p-ms-body-lh:       1.6;
+  --p-ms-mono-weight:   400;
+
+
+  /* ──────────────────────────────────────────────
+     FRONTEIRISTAS  [DEC-005]
+  ────────────────────────────────────────────── */
+  --p-fronteiristas-accent1:     #B5BF9A;
+  --p-fronteiristas-accent2:     #7A8562;
+  --p-fronteiristas-bg-start:    #141210;
+  --p-fronteiristas-bg-end:      #1E1C18;
+  --p-fronteiristas-gradient:    linear-gradient(160deg, #141210 0%, #1E1C18 100%);
+  --p-fronteiristas-body-weight: 400;
+  --p-fronteiristas-body-style:  normal;
+  --p-fronteiristas-body-lh:     1.7;
+  --p-fronteiristas-mono-weight: 400;
+
+
+  /* ──────────────────────────────────────────────
+     CREATIVE ORACLE  [DEC-006]
+  ────────────────────────────────────────────── */
+  --p-oracle-accent-start:  #E8397A;
+  --p-oracle-accent-end:    #E87800;
+  --p-oracle-gradient:      linear-gradient(135deg, #E8397A 0%, #E87800 100%);
+  --p-oracle-bg-start:      #0F1008;
+  --p-oracle-bg-end:        #1E1A08;
+  --p-oracle-bg-gradient:   linear-gradient(160deg, #0F1008 0%, #1E1A08 100%);
+  --p-oracle-body-weight:   400;
+  --p-oracle-body-style:    italic;
+  --p-oracle-body-lh:       1.5;
+  --p-oracle-mono-weight:   400;
+
+
+  /* ──────────────────────────────────────────────
+     NEURO CODEX  [DEC-010]
+  ────────────────────────────────────────────── */
+  --p-neuro-accent1:     #00C9C8;
+  --p-neuro-accent2:     #007A7A;
+  --p-neuro-bg-start:    #060214;
+  --p-neuro-bg-end:      #0D0828;
+  --p-neuro-gradient:    linear-gradient(160deg, #060214 0%, #0D0828 100%);
+  --p-neuro-body-weight: 400;
+  --p-neuro-body-style:  normal;
+  --p-neuro-body-lh:     1.5;
+  --p-neuro-mono-weight: 600;
+
+
+  /* ──────────────────────────────────────────────
+     STYLE CODEX  [DEC-007]
+  ────────────────────────────────────────────── */
+  --p-style-accent1:     #E8397A;
+  --p-style-accent2:     #F55A2A;
+  --p-style-bg-start:    #180A12;
+  --p-style-bg-end:      #261018;
+  --p-style-gradient:    linear-gradient(160deg, #180A12 0%, #261018 100%);
+  --p-style-body-weight: 600;
+  --p-style-body-style:  italic;
+  --p-style-body-lh:     1.4;
+  --p-style-mono-weight: 400;
+
+
+  /* ──────────────────────────────────────────────
+     DESIGN CODEX  [DEC-008]
+  ────────────────────────────────────────────── */
+  --p-design-accent1:     #909098;
+  --p-design-accent2:     #525258;
+  --p-design-bg-start:    #080808;
+  --p-design-bg-end:      #101014;
+  --p-design-gradient:    linear-gradient(160deg, #080808 0%, #101014 100%);
+  --p-design-body-weight: 500;
+  --p-design-body-style:  normal;
+  --p-design-body-lh:     1.55;
+  --p-design-mono-weight: 400;
+
+
+  /* ──────────────────────────────────────────────
+     EXECUTION CODEX  [DEC-009]
+  ────────────────────────────────────────────── */
+  --p-execution-accent1:     #E87800;
+  --p-execution-accent2:     #BF4800;
+  --p-execution-bg-start:    #0E0A06;
+  --p-execution-bg-end:      #1A1006;
+  --p-execution-gradient:    linear-gradient(160deg, #0E0A06 0%, #1A1006 100%);
+  --p-execution-body-weight: 500;
+  --p-execution-body-style:  normal;
+  --p-execution-body-lh:     1.5;
+  --p-execution-mono-weight: 700;
+
+
+  /* ──────────────────────────────────────────────
+     EMBLEM CERIMONIAL  [DEC-013]
+  ────────────────────────────────────────────── */
+  --emblem-gold:       #E8C547;
+  --emblem-shadow:     #B8941F;
+  --emblem-gradient:   linear-gradient(135deg, #E8C547 0%, #B8941F 100%);
+
+
+  /* ──────────────────────────────────────────────
+     M4 MASCOT  [DEC-015]
+  ────────────────────────────────────────────── */
+  --m4-orange:         #FF3B00;
+  --m4-dark-orange:    #CC2E00;
+
+  --m4-nocturne-body:   #D97A5E;
+  --m4-nocturne-patas:  #A85F46;
+  --m4-nocturne-eyes:   #0B1220;
+  --m4-nocturne-clouds: #A8AFBF;
+  --m4-nocturne-stars:  #E7EAF0;
+  --m4-nocturne-scene:  #0B1220;
+
+  --m4-shoe-ms-1:             #A89D80;
+  --m4-shoe-ms-2:             #756750;
+  --m4-shoe-fronteiristas-1:  #B5BF9A;
+  --m4-shoe-fronteiristas-2:  #7A8562;
+  --m4-shoe-oracle-1:         #E8397A;
+  --m4-shoe-oracle-2:         #E87800;
+  --m4-shoe-neuro-1:          #00C9C8;
+  --m4-shoe-neuro-2:          #007A7A;
+  --m4-shoe-style-1:          #E8397A;
+  --m4-shoe-style-2:          #F55A2A;
+  --m4-shoe-design-1:         #909098;
+  --m4-shoe-design-2:         #525258;
+  --m4-shoe-execution-1:      #E87800;
+  --m4-shoe-execution-2:      #BF4800;
+  --m4-shoe-emblem-1:         #E8C547;
+  --m4-shoe-emblem-2:         #B8941F;
+  --m4-shoe-neutral-1:        #404040;
+  --m4-shoe-neutral-2:        #282828;
+
+
+  /* ──────────────────────────────────────────────
+     GOVERNANÇA  [DEC-011/013]
+  ────────────────────────────────────────────── */
+  --gov-separator:          rgba(168, 157, 128, 0.25);
+  --gov-separator-strong:   rgba(168, 157, 128, 0.50);
+  --gov-ms-logo:            #A89D80;
+  --gov-ms-attribution:     #756750;
+  --gov-ms-attribution-bg:  transparent;
+
+
+  /* ──────────────────────────────────────────────
+     SUBPRODUTOS — HERANÇA  [DEC-014]
+  ────────────────────────────────────────────── */
+  --p-kb-indicator:         linear-gradient(135deg, #E8397A 0%, #E87800 100%);
+
+  --p-skill-style-accent:          #E8397A;
+  --p-skill-style-accent2:         #F55A2A;
+  --p-skill-neuro-accent:          #00C9C8;
+  --p-skill-neuro-accent2:         #007A7A;
+  --p-skill-fronteiristas-accent:  #B5BF9A;
+  --p-skill-fronteiristas-accent2: #7A8562;
+  --p-skill-design-accent:         #909098;
+  --p-skill-design-accent2:        #525258;
+  --p-skill-execution-accent:      #E87800;
+  --p-skill-execution-accent2:     #BF4800;
+
+  --p-skill-transversal-accent:    #A89D80;
+  --p-skill-transversal-accent2:   #756750;
 }
 
 
