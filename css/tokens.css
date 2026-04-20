@@ -18,11 +18,26 @@
   --ds-radius-md:           4px;
 
   /* === PRODUCT STACK — TYPOGRAPHY (Typo A) ===
-     Anton + DM Sans + Space Mono
+     Post-Digital Hybrid · Fraunces + Inter Tight + IBM Plex Mono
+     Migrated 2026-04-20 · DEC-004
      ────────────────────────────────────────────────────────── */
-  --ds-font-display:        'Anton', sans-serif;
-  --ds-font-body:           'DM Sans', sans-serif;
-  --ds-font-label:          'Space Mono', monospace;
+  --ds-font-display:        'Fraunces', Georgia, serif;
+  --ds-font-body:           'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-font-label:          'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Fraunces variable-font optical sizes.
+     opsz 144 = display dramático; opsz 24 = editorial quieto;
+     opsz 12 = body. Sem font-variation-settings, Fraunces cai
+     no default (opsz padrão) e perde warmth. */
+  --ds-fraunces-opsz-display:   144;
+  --ds-fraunces-opsz-editorial:  24;
+  --ds-fraunces-opsz-body:       12;
+
+  /* Legacy stack (Typo A pre-migration) — mantido temporariamente
+     pra consumidores externos e migrações graduais. Deprecar em 1 ciclo. */
+  --ds-font-display-legacy: 'Anton', sans-serif;
+  --ds-font-body-legacy:    'DM Sans', sans-serif;
+  --ds-font-label-legacy:   'Space Mono', monospace;
 
   /* === EDITORIAL STACK — TYPOGRAPHY (Typo B) ===
      IBM Plex Sans + Libre Caslon Text + Space Mono
