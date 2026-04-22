@@ -14,7 +14,7 @@ jobs:
     name: HTML Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Basic HTML sanity
         run: |
           set -e
@@ -31,7 +31,7 @@ jobs:
     name: CSS Validate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Verifica balanceamento de chaves
         run: |
           set -e
@@ -52,7 +52,7 @@ jobs:
     name: Secret Scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Pattern scan
@@ -70,7 +70,7 @@ jobs:
     name: Markdown Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Verifica links internos
         run: |
           set -e
