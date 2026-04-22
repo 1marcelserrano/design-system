@@ -1,0 +1,81 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  html-check:
+    name: HTML Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Basic HTML sanity
+        run: |
+          set -e
+          fail=0
+          for f in $(find . -maxdepth 2 -name "*.html" -not -path "./node_modules/*"); do
+            # Parseia-rápido: precisa de <!doctype ou <!DOCTYPE, <html, </html>
+            grep -qiE '^<!doctype html' "$f" || { echo "❌ $f: missing doctype"; fail=1; }
+            grep -qiE '<html' "$f" || { echo "❌ $f: missing <html>"; fail=1; }
+            grep -qiE '</html>' "$f" || { echo "❌ $f: missing </html>"; fail=1; }
+          done
+          exit $fail
+
+  css-validate:
+    name: CSS Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verifica balanceamento de chaves
+        run: |
+          set -e
+          fail=0
+          for f in $(find css -name "*.css"); do
+            opens=$(tr -cd '{' < "$f" | wc -c)
+            closes=$(tr -cd '}' < "$f" | wc -c)
+            if [ "$opens" -ne "$closes" ]; then
+              echo "❌ $f: chaves desbalanceadas ($opens abre, $closes fecha)"
+              fail=1
+            else
+              echo "✓ $f"
+            fi
+          done
+          exit $fail
+
+  secret-scan:
+    name: Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Pattern scan
+        run: |
+          set -e
+          echo "Scanning for secret patterns…"
+          patterns='sk-[a-zA-Z0-9]{20,}|anthropic_api_key|ghp_[a-zA-Z0-9]{30,}|gho_[a-zA-Z0-9]{30,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----|xoxb-[0-9]+-[0-9]+|AIza[0-9A-Za-z_-]{35}'
+          if grep -rEn "$patterns" --include="*.html" --include="*.css" --include="*.js" --include="*.json" --include="*.md" --exclude-dir=.git --exclude-dir=node_modules . ; then
+            echo "❌ Possível secret detectado."
+            exit 1
+          fi
+          echo "✓ Nenhum secret detectado."
+
+  markdown-check:
+    name: Markdown Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verifica links internos
+        run: |
+          set -e
+          fail=0
+          for f in README.md CONTRIBUTING.md SECURITY.md CHANGELOG.md; do
+            [ -f "$f" ] || { echo "❌ Arquivo obrigatório ausente: $f"; fail=1; }
+          done
+          exit $fail

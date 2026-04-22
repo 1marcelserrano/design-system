@@ -1,0 +1,46 @@
+name: ✨ Feature / Token proposal
+description: Sugerir nova feature, novo token ou mudança de governança
+title: "[FEAT] "
+labels: ["enhancement", "triage"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Tipo de proposta
+      options:
+        - Novo token (color / typography / spacing / radius / shadow)
+        - Novo componente HTML/CSS
+        - Mudança em governance.html (do/don't)
+        - Novo template / study
+        - Melhoria em engine JS
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivação
+      description: Qual problema resolve? Que uso downstream justifica?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta detalhada
+      description: Nome do token, valor, escopo, exemplo de uso
+    validations:
+      required: true
+  - type: dropdown
+    id: breaking
+    attributes:
+      label: Breaking change?
+      options:
+        - "Não — aditivo (minor bump)"
+        - "Sim — remove ou renomeia público (major bump)"
+        - "Ajuste de valor (patch bump)"
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas

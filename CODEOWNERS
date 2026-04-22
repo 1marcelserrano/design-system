@@ -1,0 +1,25 @@
+# CODEOWNERS — MSCREATIVE.SYSTEMS™ Design System
+# Review obrigatório nos paths abaixo.
+
+# Default
+*                           @1marcelserrano
+
+# Source-of-truth canônico — review crítico
+/css/tokens.css             @1marcelserrano
+/docs/CANONICAL_REFERENCE.md @1marcelserrano
+/governance.html            @1marcelserrano
+
+# Superfícies públicas
+/index.html                 @1marcelserrano
+/formats.html               @1marcelserrano
+/products.html              @1marcelserrano
+/studies.html               @1marcelserrano
+
+# Engines
+/js/                        @1marcelserrano
+
+# Governança
+/.github/                   @1marcelserrano
+/LICENSE                    @1marcelserrano
+/SECURITY.md                @1marcelserrano
+/CHANGELOG.md               @1marcelserrano

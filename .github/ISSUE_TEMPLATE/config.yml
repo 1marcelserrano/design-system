@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Vulnerabilidade de segurança
+    url: https://github.com/1marcelserrano/design-system/security/advisories/new
+    about: Reportar em canal privado — NÃO abrir issue pública.
+  - name: 💬 Dúvidas gerais
+    url: https://github.com/1marcelserrano/design-system/discussions
+    about: Use Discussions para perguntas, ideias e uso downstream.

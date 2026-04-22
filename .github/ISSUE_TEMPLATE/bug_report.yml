@@ -1,0 +1,53 @@
+name: 🐛 Bug report
+description: Reportar defeito em token, componente ou superfície do DS
+title: "[BUG] "
+labels: ["bug", "triage"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área afetada
+      options:
+        - Tokens (css/tokens.css)
+        - Tipografia / Editorial
+        - Navegação (ds-nav.js)
+        - Wireframe engine (wireframe-engine.js)
+        - Governance (do/don't)
+        - Superfície HTML (index/formats/products/studies)
+        - Templates / Studies
+        - Deploy Vercel
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: describe
+    attributes:
+      label: Descrição
+      description: O que aconteceu? O que era esperado?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Abrir …
+        2. Clicar em …
+        3. Ver erro …
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser / OS
+      placeholder: Chrome 131 / macOS 15
+  - type: input
+    id: commit
+    attributes:
+      label: Commit SHA (ou URL Vercel)
+      placeholder: abc1234 ou design-system-beta.vercel.app/...
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshots / vídeo
+      description: Cole imagens ou link de vídeo se houver evidência visual
