@@ -829,7 +829,7 @@
         <tr>
           <td><code>Editorial (Typo B)</code></td>
           <td>IBM Plex Sans 300, sentence case</td>
-          <td>IBM Plex Sans 300, 0.4 opacity</td>
+          <td>IBM Plex Sans 300, <code>--ds-text-body</code> (color explicit)</td>
           <td>Space Mono 400, ALL CAPS, 0.2em</td>
           <td>Libre Caslon Text italic 400</td>
         </tr>
@@ -842,6 +842,19 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Contrast Adjustment Note -->
+    <div style="margin: 32px 0; padding: 16px; background: rgba(168, 90, 48, 0.08); border-left: 3px solid #A85A30; border-radius: 4px;">
+      <p style="font-family: var(--ds-font-label); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #A85A30; margin: 0 0 8px;">Ajuste de Contraste — DEC-018 (2026-04-23)</p>
+      <p style="font-family: var(--ds-font-body); font-size: 14px; line-height: 1.6; color: var(--ds-text-primary); margin: 0;">
+        A hierarquia tipográfica Editorial (Typo B) agora usa <strong>tokens de cor explícitos</strong> em vez de opacidade inline.
+        Razão: opacidade sobre fundos escuros com múltiplas superfícies (<code>bg-primary</code> / <code>bg-surface</code> / <code>bg-secondary</code>)
+        produz contraste imprevisível. Tokens de cor são fonte única da verdade.
+      </p>
+      <p style="font-family: var(--ds-font-label); font-size: 10px; color: rgba(168, 90, 48, 0.65); margin: 12px 0 0;">
+        <strong>Novos tokens:</strong> <code>--ds-text-secondary</code> (0.65 α) · <code>--ds-text-muted</code> (0.38 α, antes 0.5 α)
+      </p>
+    </div>
 
     <!-- Live Type Samples -->
     <h3 style="font-family: var(--ds-font-label); font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ds-accent-gold); margin: 40px 0 16px;">Amostras Vivas</h3>
