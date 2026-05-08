@@ -146,7 +146,8 @@
   --ds-ed-bg:               linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
 
   /* Text */
-  --ds-ed-text-headline:    #6A6A6A;
+  --ds-ed-text-headline:    #9A7048; /* DEC-019: cobre queimado em headline palco escuro */
+  --ds-ed-text-headline-legacy: #6A6A6A; /* mantido como fallback histórico */
   --ds-ed-text-emphasis:    #A85A30;
   --ds-ed-text-body:        rgba(130, 130, 130, 0.4);
   --ds-ed-text-label:       rgba(130, 130, 130, 0.18);
@@ -382,7 +383,8 @@
 /* ── MSCS (master brand) ─────────────────────────────────── */
 [data-product="mscs"] {
   --p-bg:            linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
-  --p-headline:      #6A6A6A;
+  --p-headline:      #9A7048; /* DEC-019: cobre queimado em headline palco escuro */
+  --p-headline-legacy: #6A6A6A; /* mantido como fallback histórico */
   --p-emphasis:      #A85A30;
   --p-subtitle:      rgba(130, 130, 130, 0.4);
   --p-rule-start:    #A85A30;
