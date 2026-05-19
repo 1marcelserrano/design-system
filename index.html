@@ -183,6 +183,32 @@
           </div>
         </div>
 
+        <!-- IG Carousel Typography -->
+        <h3 class="token-group-title">IG Carousel Typography</h3>
+        <p class="section-desc">Subset operacional Typo B com pisos de legibilidade calibrados pro canvas IG 1080&times;1350.</p>
+        <div class="token-grid">
+          <div class="spec-card">
+            <div class="spec-label">--ds-ig-cover-size</div>
+            <div class="spec-value">96px</div>
+            <div class="spec-desc">Headline de capa &mdash; IBM Plex Sans.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ig-headline-size</div>
+            <div class="spec-value">64px</div>
+            <div class="spec-desc">Headline de slide de conte&uacute;do.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ig-body-size</div>
+            <div class="spec-value">32px</div>
+            <div class="spec-desc">PISO de legibilidade do body no feed mobile.</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-label">--ds-ig-safe-lateral</div>
+            <div class="spec-value">100px</div>
+            <div class="spec-desc">Margem lateral segura do canvas nativo.</div>
+          </div>
+        </div>
+
         <!-- Base Palette -->
         <h3 class="token-group-title">Base Palette</h3>
         <div class="token-grid">
@@ -347,6 +373,47 @@
   --ds-tc-body-italic-size: 7px;
   --ds-tc-body-italic-lh:   1.4;
   --ds-tc-rule-opacity:     0.12;
+
+  /* === IG CAROUSEL TYPOGRAPHY (Subset operacional Typo B) ===
+     Pisos de legibilidade calibrados para canvas nativo 1080&times;1350.
+     Aplicam a slides Instagram Carousel (formats.html &sect;8).
+     ────────────────────────────────────────────────────────── */
+
+  /* Sizes (px no canvas nativo 1080&times;1350) */
+  --ds-ig-cover-size:           96px;
+  --ds-ig-cover-em-size:        108px;
+  --ds-ig-headline-size:        64px;
+  --ds-ig-headline-em-size:     72px;
+  --ds-ig-quote-size:           72px;
+  --ds-ig-veredicto-size:       44px;
+  --ds-ig-body-size:            32px;
+  --ds-ig-body-em-size:         34px;
+  --ds-ig-aside-size:           28px;
+  --ds-ig-number-big-size:      180px;
+  --ds-ig-number-label-size:    26px;
+  --ds-ig-kicker-size:          26px;
+  --ds-ig-label-size:           24px;
+  --ds-ig-card-name-size:       32px;
+  --ds-ig-card-initials-size:   44px;
+  --ds-ig-slide-idx-size:       24px;
+  --ds-ig-strip-size:           13px;
+
+  /* Line heights */
+  --ds-ig-lh-cover:             1.1;
+  --ds-ig-lh-headline:          1.2;
+  --ds-ig-lh-body:              1.5;
+  --ds-ig-lh-veredicto:         1.35;
+  --ds-ig-lh-aside:             1.45;
+
+  /* Safe zones (px) */
+  --ds-ig-safe-top:             140px;
+  --ds-ig-safe-bottom:          200px;
+  --ds-ig-safe-lateral:         100px;
+  --ds-ig-strip-height:         56px;
+
+  /* Density */
+  --ds-ig-max-words-slide:      80;  /* Teto recomendado por slide */
+  --ds-ig-rule-width:           280px;
 
   /* === BASE PALETTE ===
      Core backgrounds, text, and surface colors
