@@ -15,18 +15,20 @@ Consumido como submódulo pela sede `mscreative.systems` e por projetos de clien
 
 | Pasta / Arquivo | Conteúdo |
 |-----------------|----------|
-| `css/` | Tokens, shell, seções, editorial, story-tokens |
-| `js/` | Navigation + wireframe-engine |
+| `src/` | Código servido (superfícies HTML + `css/` + `js/` + `templates/` + `studies/`) |
+| `src/css/` | Tokens, shell, seções, editorial, story-tokens |
+| `src/js/` | Navigation + wireframe-engine |
+| `src/index.html` · `src/formats.html` · `src/products.html` · `src/studies.html` · `src/governance.html` | Superfícies públicas do DS |
 | `docs/` | `CANONICAL_REFERENCE.md` · story doc |
-| `studies/` · `templates/` | Estudos de caso e templates reutilizáveis |
-| `index.html` · `formats.html` · `products.html` · `studies.html` · `governance.html` | Superfícies públicas do DS (servidas da raiz) |
 | `CLAUDE.md` · `AGENTS.md` | Contexto operacional para agentes de IA |
+
+> **Deploy:** o site é servido a partir de `src/` via `vercel.json` (rewrites). A raiz do repo guarda fundação/governança.
 
 ## Arquivos canônicos
 
-- **`css/tokens.css`** — source-of-truth dos tokens (cores, tipografia, spacing, radius, shadows)
+- **`src/css/tokens.css`** — source-of-truth dos tokens (cores, tipografia, spacing, radius, shadows)
 - **`docs/CANONICAL_REFERENCE.md`** — referência normativa da v3.0 (Era Midnight)
-- **`governance.html`** — governança visual (regras de uso, do/don't)
+- **`src/governance.html`** — governança visual (regras de uso, do/don't)
 
 ## Uso como submódulo
 
@@ -39,10 +41,10 @@ Ou consumo direto via Vercel: [design-system-beta.vercel.app](https://design-sys
 
 ## Desenvolvimento
 
-Projeto estático (HTML/CSS/JS vanilla). Não requer build — servir local:
+Projeto estático (HTML/CSS/JS vanilla). Não requer build — servir local a partir de `src/`:
 
 ```bash
-python3 -m http.server 8080
+python3 -m http.server 8080 --directory src
 # http://localhost:8080
 ```
 
@@ -51,7 +53,7 @@ python3 -m http.server 8080
 - Ler [CONTRIBUTING.md](./CONTRIBUTING.md) antes de abrir PR
 - Conventional Commits obrigatório
 - Branch naming: `feat/<escopo>`, `fix/<escopo>`, `docs/<escopo>`, `tokens/<escopo>`
-- Qualquer mudança em `css/tokens.css` exige bump de versão em `CHANGELOG.md`
+- Qualquer mudança em `src/css/tokens.css` exige bump de versão em `CHANGELOG.md`
 
 ## Segurança
 

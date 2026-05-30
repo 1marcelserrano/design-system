@@ -15,8 +15,8 @@
 
 # Estatísticas de linguagem (GitHub Linguist):
 # estudos são exploração/conteúdo, não código de produção
-studies/**         linguist-documentation
-templates/**       linguist-vendored
+src/studies/**     linguist-documentation
+src/templates/**   linguist-vendored
 docs/**            linguist-documentation
 
 # Garante que arquivos binários, se algum dia entrarem, não sofram diff textual

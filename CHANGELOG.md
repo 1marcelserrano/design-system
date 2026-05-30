@@ -4,6 +4,14 @@ Todo release notável documentado aqui. Formato: [Keep a Changelog](https://keep
 
 ## [Unreleased]
 
+### Changed
+- **Taxonomia:** código servido movido para `src/` (superfícies, `css/`, `js/`, `templates/`, `studies/`);
+  fundação/governança e `docs/` permanecem na raiz. Histórico preservado via `git mv`.
+- `studies/editorial_typography/` → `src/studies/editorial-typography/` (kebab-case), arquivos e links internos.
+
+### Added
+- `vercel.json` — rewrites mapeando a raiz pública do deploy para `src/`.
+
 ## [Governance 1.0.0] — 2026-04-22
 
 ### Added

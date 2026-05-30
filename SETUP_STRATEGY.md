@@ -43,11 +43,15 @@ o drift de versão e adicionar a camada de contexto para agentes.
 - README + CHANGELOG alinhados à **v3.0 Midnight** (resolve drift #1 e #5).
 - CI `validate.yml` ampliado para cobrir `studies/` (resolve #4).
 
-### Fase 1 — Taxonomia
-- Repo já separa durável (`css/`, `js/`, `docs/`, superfícies) de processo (`studies/`).
-- ⚠️ HTMLs de superfície e `css/`/`js/` são **irmãos servidos da raiz**; toda
-  referência é relativa e nua. Mover exige reescrever referências + `vercel.json`.
-  Qualquer `git mv` de superfície só após confirmação explícita + mitigação de deploy.
+### Fase 1 — Taxonomia ✅
+- **Código servido movido para `src/`** (superfícies HTML + `css/` + `js/` + `templates/`
+  + `studies/`), via `git mv` (histórico preservado). Fundação/governança ficam na raiz; `docs/` na raiz.
+- **`vercel.json`** adicionado com rewrites mapeando a raiz pública → `src/` (deploy transparente).
+- **kebab-case em `studies/`**: `editorial_typography/` → `editorial-typography/` e os 9
+  `editorial_study_*.html` → `editorial-study-*.html`; 8 links internos atualizados.
+- Referências reescritas: README, CONTRIBUTING, CLAUDE.md, CODEOWNERS, CI `css-validate`,
+  `.gitattributes`, `docs/CANONICAL_REFERENCE.md`, texto em `src/formats.html`.
+- ⚠️ **Não verificável no sandbox:** comportamento do deploy Vercel. Ver "Ações manuais".
 
 ### Fase 2 — Convenções
 - Conventional Commits + branch naming já documentados em `CONTRIBUTING.md`.
@@ -59,5 +63,10 @@ o drift de versão e adicionar a camada de contexto para agentes.
 
 ## Ações manuais do dono (fora do sandbox)
 
-- Conferir que o deploy Vercel continua apontando para a raiz após qualquer mudança.
-- Caso a Fase 1 mova superfícies: aplicar o `vercel.json` proposto e validar URLs.
+- **Validar o deploy Vercel** após o merge: o `vercel.json` faz rewrite de `/` → `/src/index.html`
+  e `/(.*)` → `/src/$1`. Conferir que `https://design-system-beta.vercel.app/` e as páginas
+  (`/products.html`, etc.) carregam, e que `css/`/`js/` resolvem. Não consegui testar isto no sandbox.
+- **Alternativa ao `vercel.json`** (se preferir): no painel Vercel, definir *Root Directory = `src`*
+  e remover o `vercel.json`. Ambos resolvem; o `vercel.json` mantém a config versionada no repo.
+- **Submódulos downstream:** projetos que consomem este repo e referenciam `css/…` por caminho
+  fixo precisam passar a apontar para `src/css/…`.

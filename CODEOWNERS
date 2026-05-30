@@ -5,18 +5,18 @@
 *                           @1marcelserrano
 
 # Source-of-truth canônico — review crítico
-/css/tokens.css             @1marcelserrano
+/src/css/tokens.css          @1marcelserrano
 /docs/CANONICAL_REFERENCE.md @1marcelserrano
-/governance.html            @1marcelserrano
+/src/governance.html         @1marcelserrano
 
 # Superfícies públicas
-/index.html                 @1marcelserrano
-/formats.html               @1marcelserrano
-/products.html              @1marcelserrano
-/studies.html               @1marcelserrano
+/src/index.html             @1marcelserrano
+/src/formats.html           @1marcelserrano
+/src/products.html          @1marcelserrano
+/src/studies.html           @1marcelserrano
 
 # Engines
-/js/                        @1marcelserrano
+/src/js/                    @1marcelserrano
 
 # Governança
 /.github/                   @1marcelserrano

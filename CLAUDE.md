@@ -10,14 +10,14 @@ Design system **canônico** da **MSCREATIVE.SYSTEMS™**. É a fonte da verdade
 submódulo pela sede `mscreative.systems` e por projetos de cliente.
 
 - **Era atual:** v3.0 — **Midnight** (paleta cream warm, Gold reservado a selos cerimoniais).
-- **Site público:** servido da **raiz** via Vercel → https://design-system-beta.vercel.app
+- **Site público:** código em `src/`, servido via Vercel (`vercel.json` rewrites) → https://design-system-beta.vercel.app
 - **Stack:** HTML/CSS/JS **vanilla**. **Não há build, bundler ou dependências de runtime.**
 
 ## Como rodar / verificar
 
 ```bash
-# Servir local (não há build)
-python3 -m http.server 8080   # http://localhost:8080
+# Servir local (não há build) — a partir de src/
+python3 -m http.server 8080 --directory src   # http://localhost:8080
 
 # Sanidade rápida antes de commitar (espelha o CI .github/workflows/validate.yml)
 # 1. HTML tem doctype/<html>/</html>
@@ -30,9 +30,9 @@ python3 -m http.server 8080   # http://localhost:8080
 
 | Arquivo | Papel | Regra |
 |---------|-------|-------|
-| `css/tokens.css` | Source-of-truth dos tokens | Toda mudança → entrada no `CHANGELOG.md` + bump SemVer |
+| `src/css/tokens.css` | Source-of-truth dos tokens | Toda mudança → entrada no `CHANGELOG.md` + bump SemVer |
 | `docs/CANONICAL_REFERENCE.md` | Referência normativa | Nunca editar sem editar `tokens.css` junto |
-| `governance.html` | Regras visuais (do/don't) | Alteração exige justificativa no PR |
+| `src/governance.html` | Regras visuais (do/don't) | Alteração exige justificativa no PR |
 
 ## Convenções (não-negociáveis)
 
@@ -44,9 +44,10 @@ python3 -m http.server 8080   # http://localhost:8080
 - **CSS:** kebab-case, sempre `var(--token-name)`, **sem valores mágicos inline**.
 - **JS:** vanilla ES2022+, sem frameworks, JSDoc em funções públicas.
 - **Idioma:** docs e commits em **português (pt-BR)**.
-- **Caminhos:** HTMLs de superfície e `css/`/`js/` são **irmãos servidos da raiz**.
+- **Caminhos:** dentro de `src/`, os HTMLs de superfície e `css/`/`js/` são **irmãos**.
   Toda referência é relativa e nua (`href="css/tokens.css"`, `href="formats.html#..."`).
-  **Não mova esses arquivos sem ajustar todas as referências + config de deploy.**
+  A raiz pública do deploy é mapeada para `src/` via `vercel.json`.
+  **Não mova esses arquivos sem ajustar todas as referências + `vercel.json`.**
 
 ## Tabus / legado intocável
 
