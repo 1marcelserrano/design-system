@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS YEY · Web Player · MSCREATIVE.SYSTEMS™</title>
+
+  <!-- Google Fonts — MSCREATIVE.SYSTEMS Typography (DEC-004): Fraunces + Inter Tight + IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- SELF-CONTAINED: design-system tokens + base inlined (no external CSS dependency).
+       Source of truth remains css/tokens.css + css/ds-shell.css in the repo. -->
+  <style>
+    /* ─── DS tokens used by this player (subset of tokens.css · MS Midnight) ─── */
+    :root {
+      --ds-font-display: 'Fraunces', Georgia, serif;
+      --ds-font-body:    'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ds-font-label:   'IBM Plex Mono', 'Courier New', monospace;
+      --ds-radius-md:    4px;
+      /* MS · MSCREATIVE.SYSTEMS palette (DEC-001) */
+      --p-ms-accent1:    #A89D80;
+      --p-ms-accent2:    #756750;
+      --p-ms-bg-start:   #0C0B08;
+      --p-ms-bg-end:     #16140F;
+
+      --yey-1:        var(--p-ms-accent1);
+      --yey-2:        var(--p-ms-accent2);
+      --yey-bg-start: var(--p-ms-bg-start);
+      --yey-bg-end:   var(--p-ms-bg-end);
+      --yey-line:     rgba(168, 157, 128, 0.14);
+      --yey-line-soft:rgba(168, 157, 128, 0.07);
+      --yey-text:     #B2A898;
+      --yey-muted:    rgba(178, 168, 152, 0.55);
+      --yey-faint:    rgba(178, 168, 152, 0.32);
+    }
+
+    /* ─── reset + base (subset of ds-shell.css) ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--ds-font-body);
+      background: linear-gradient(160deg, var(--yey-bg-start) 0%, var(--yey-bg-end) 100%) fixed;
+      color: var(--yey-text);
+      line-height: 1.6; min-height: 100vh; font-size: 16px; font-weight: 400;
+      background-attachment: fixed; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(168,157,128,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,157,128,0.022) 1px, transparent 1px);
+      background-size: 54px 54px; pointer-events: none; z-index: 0;
+    }
+    a { color: inherit; }
+
+    .kicker {
+      font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--yey-2);
+    }
+    .spotify-frame { border-radius: 14px; overflow: hidden; border: 1px solid var(--yey-line); }
+    .embed-note {
+      font-family: var(--ds-font-label); font-size: 9px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--yey-faint); margin-top: 10px;
+    }
+    .embed-note a { color: var(--yey-2); }
+
+    /* ─── artwork (album cover; CSS monogram fallback) ─── */
+    .artwork {
+      aspect-ratio: 1; border-radius: 8px; position: relative; overflow: hidden;
+      border: 1px solid var(--yey-line);
+      background:
+        radial-gradient(120% 120% at 18% 12%, rgba(168,157,128,0.34) 0%, transparent 48%),
+        radial-gradient(140% 140% at 88% 92%, rgba(117,103,80,0.45) 0%, transparent 52%),
+        linear-gradient(150deg, #15130D 0%, #0C0B08 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .artwork::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(168,157,128,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(168,157,128,0.05) 1px, transparent 1px);
+      background-size: 22px 22px; mix-blend-mode: overlay;
+    }
+    .artwork .mono {
+      font-family: var(--ds-font-display); font-variation-settings: "opsz" 144;
+      font-weight: 900; font-size: clamp(48px, 9vw, 76px); letter-spacing: -0.04em;
+      color: rgba(178,168,152,0.92); line-height: 0.85; text-align: center; z-index: 1;
+      text-transform: uppercase;
+    }
+    .artwork .mono small { display: block; font-family: var(--ds-font-label); font-weight: 400;
+      font-size: 10px; letter-spacing: 0.4em; color: var(--yey-2); margin-top: 10px; }
+
+    /* per-song cover art (auto-pulled from Spotify oEmbed) + monogram fallback */
+    .artwork .cover-img, .thumb .cover-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3;
+    }
+    .thumb {
+      position: relative; overflow: hidden; border-radius: 4px; flex: none;
+      border: 1px solid var(--yey-line); background: linear-gradient(150deg, #15130D, #0C0B08);
+    }
+    .thumb .thumb-mono {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--ds-font-display); font-weight: 900; font-size: 12px;
+      letter-spacing: -0.02em; color: var(--yey-faint);
+    }
+
+    /* ─── EDITORIAL player (liner-notes / magazine) ─── */
+    .ed { max-width: 980px; margin: 0 auto; padding: 56px clamp(20px,5vw,40px) 120px; position: relative; z-index: 1; }
+    .ed-masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px solid var(--yey-line); padding-bottom: 18px; margin-bottom: 48px;
+    }
+    .ed-masthead .m-left { font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--yey-1); }
+    .ed-masthead .m-right { font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yey-faint); }
+
+    .ed-hero { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+    .ed-title {
+      font-family: var(--ds-font-display); font-variation-settings: "opsz" 144;
+      font-weight: 900; font-size: clamp(56px, 9vw, 104px); line-height: 0.9;
+      letter-spacing: -0.03em; text-transform: uppercase; color: var(--yey-text);
+      margin: 14px 0 18px;
+    }
+    .ed-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--yey-1), var(--yey-2));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .ed-sub { font-size: 17px; line-height: 1.7; color: var(--yey-muted); max-width: 460px; }
+    .ed-rule { width: 120px; height: 3px; margin: 22px 0;
+      background: linear-gradient(90deg, var(--yey-1), var(--yey-2)); border-radius: 2px; }
+
+    .ed-section-label { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; }
+    .ed-section-label::after { content: ''; flex: 1; height: 1px; background: var(--yey-line-soft); }
+
+    .ed-tracklist { list-style: none; margin: 14px 0 0; }
+    .ed-track {
+      display: grid; grid-template-columns: 40px 52px 1fr auto auto; gap: 18px; align-items: center;
+      padding: 16px 4px; border-bottom: 1px solid var(--yey-line-soft); cursor: pointer;
+      transition: background 0.18s ease, padding 0.18s ease;
+    }
+    .ed-track:hover { background: rgba(168,157,128,0.04); padding-left: 12px; }
+    .ed-track .thumb { width: 52px; height: 52px; }
+    .ed-track .n { font-family: var(--ds-font-label); font-size: 13px; color: var(--yey-2); }
+    .ed-track .t { font-size: 17px; color: var(--yey-text); font-weight: 500; }
+    .ed-track .t small { display: block; font-size: 12px; color: var(--yey-faint); font-weight: 400; margin-top: 2px; }
+    .ed-track .d { font-family: var(--ds-font-label); font-size: 12px; color: var(--yey-muted); }
+    .ed-track .play { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--yey-line);
+      display: flex; align-items: center; justify-content: center; color: var(--yey-1);
+      opacity: 0; transition: opacity 0.18s ease; }
+    .ed-track:hover .play { opacity: 1; }
+
+    .ed-embed { margin-top: 56px; }
+    .ed-embed .kicker { margin-bottom: 14px; display: block; }
+
+    .yey-foot { max-width: 980px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px) 60px; position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      font-family: var(--ds-font-label); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--yey-faint); }
+    .yey-foot b { color: var(--yey-2); font-weight: 400; }
+
+    @media (max-width: 760px) {
+      .ed-hero { grid-template-columns: 1fr; gap: 28px; }
+      .ed-track { grid-template-columns: 28px 44px 1fr auto; }
+      .ed-track .thumb { width: 44px; height: 44px; }
+      .ed-track .play { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="ed">
+    <div class="ed-masthead">
+      <div class="m-left">MS YEY — Discografia / IA</div>
+      <div class="m-right">MSCREATIVE.SYSTEMS™ · Player</div>
+    </div>
+
+    <div class="ed-hero">
+      <div class="artwork cover-album">
+        <div class="mono">MS<br>YEY<small>LP · IA</small></div>
+      </div>
+      <div>
+        <div class="kicker">Álbum · <span class="js-year">2025</span></div>
+        <h1 class="ed-title">Álbum&nbsp;<em>MS&nbsp;YEY</em></h1>
+        <div class="ed-rule"></div>
+        <p class="ed-sub">Música gerada por IA, curada e dirigida por Marcel Serrano.
+           Uma coleção que vive entre o sintético e o autoral — toca direto do Spotify abaixo.</p>
+      </div>
+    </div>
+
+    <div class="ed-section-label"><span class="kicker">Tracklist</span></div>
+    <ol class="ed-tracklist" id="ed-tracks"></ol>
+
+    <div class="ed-embed">
+      <span class="kicker">Ouça agora</span>
+      <div class="spotify-frame" id="embed"></div>
+      <div class="embed-note">Player oficial · áudio real via Spotify · <a href="https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic" target="_blank" rel="noopener">abrir no Spotify ↗</a></div>
+    </div>
+  </main>
+
+  <div class="yey-foot">
+    <span>MS YEY · Web Player</span>
+    <span>Paleta <b>MS Midnight</b> · MSCREATIVE.SYSTEMS™ DS v3.0</span>
+  </div>
+
+  <script>
+  /* ════════════════════════════════════════════════════════════════════
+     DADOS DO ÁLBUM — EDITE AQUI
+     ────────────────────────────────────────────────────────────────────
+     Uma capa por música: cole em `spotify` o link do Spotify de CADA música
+     (track, single ou álbum dela). A capa é puxada automática via oEmbed no
+     navegador; vazio = usa a capa do álbum. Troque títulos/durações/links
+     pelos reais. Pode fixar imagem manual com `cover: 'url-ou-arquivo'`.
+     ════════════════════════════════════════════════════════════════════ */
+  const ALBUM = {
+    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link) — usado no embed
+    title: 'MS YEY',
+    year:  '2025',
+    tracks: [
+      { title: 'Faixa 01', sub: 'MS YEY', dur: '3:42', spotify: 'https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic' },
+      { title: 'Faixa 02', sub: 'MS YEY', dur: '2:58', spotify: '' },
+      { title: 'Faixa 03', sub: 'MS YEY', dur: '4:11', spotify: '' },
+      { title: 'Faixa 04', sub: 'MS YEY', dur: '3:27', spotify: '' },
+      { title: 'Faixa 05', sub: 'MS YEY', dur: '3:05', spotify: '' },
+      { title: 'Faixa 06', sub: 'MS YEY', dur: '4:33', spotify: '' },
+    ],
+  };
+
+  /* shared text */
+  document.querySelector('.ed-title').innerHTML = `Álbum&nbsp;<em>${ALBUM.title}</em>`;
+  document.querySelectorAll('.js-year').forEach(el => el.textContent = ALBUM.year);
+
+  const playIco = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+
+  /* tracklist */
+  const edList = document.getElementById('ed-tracks');
+  ALBUM.tracks.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.className = 'ed-track';
+    li.innerHTML = `
+      <span class="n">${String(i + 1).padStart(2, '0')}</span>
+      <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
+      <span class="t">${t.title}<small>${t.sub || 'MS YEY'}</small></span>
+      <span class="d">${t.dur}</span>
+      <span class="play">${playIco}</span>`;
+    edList.appendChild(li);
+  });
+
+  /* Spotify embed (real audio, client-side) */
+  (function () {
+    const f = document.createElement('iframe');
+    f.src = `https://open.spotify.com/embed/album/${ALBUM.id}?utm_source=generator&theme=0`;
+    f.width = '100%'; f.height = '352'; f.frameBorder = '0'; f.loading = 'lazy';
+    f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    f.style.display = 'block';
+    document.getElementById('embed').appendChild(f);
+  })();
+
+  /* ─── Cover art · auto-pull from Spotify (oEmbed, client-side) ───────────
+     Uma capa por música. Sem link na faixa → usa a capa do álbum. Fallback
+     final: monograma. Roda no navegador (o Spotify responde ao oEmbed lá). */
+  const ALBUM_URL = 'https://open.spotify.com/album/' + ALBUM.id;
+  const _coverCache = {};
+  async function fetchCover(url) {
+    if (!url) return null;
+    if (url in _coverCache) return _coverCache[url];
+    try {
+      const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(url));
+      const j = await r.json();
+      _coverCache[url] = j.thumbnail_url || null;
+    } catch (e) { _coverCache[url] = null; }
+    return _coverCache[url];
+  }
+  function setCover(el, url) {
+    if (!el || !url) return;
+    let img = el.querySelector('img.cover-img');
+    if (!img) { img = new Image(); img.className = 'cover-img'; img.alt = ''; el.appendChild(img); }
+    img.src = url;
+  }
+  fetchCover(ALBUM_URL).then(u => { if (u) document.querySelectorAll('.cover-album').forEach(el => setCover(el, u)); });
+  ALBUM.tracks.forEach((t, i) => {
+    fetchCover(t.cover || t.spotify || ALBUM_URL).then(u => {
+      document.querySelectorAll('[data-cover-track="' + i + '"]').forEach(el => setCover(el, u));
+    });
+  });
+  </script>
+</body>
+</html>
