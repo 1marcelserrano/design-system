@@ -156,16 +156,31 @@
     .artwork .mono small { display: block; font-family: var(--ds-font-label); font-weight: 400;
       font-size: 10px; letter-spacing: 0.4em; color: var(--yey-2); margin-top: 10px; }
 
+    /* per-song cover art (auto-pulled from Spotify oEmbed) + monogram fallback */
+    .artwork .cover-img, .thumb .cover-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3;
+    }
+    .thumb {
+      position: relative; overflow: hidden; border-radius: 4px; flex: none;
+      border: 1px solid var(--yey-line); background: linear-gradient(150deg, #15130D, #0C0B08);
+    }
+    .thumb .thumb-mono {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--ds-font-display); font-weight: 900; font-size: 12px;
+      letter-spacing: -0.02em; color: var(--yey-faint);
+    }
+
     .ed-section-label { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; }
     .ed-section-label::after { content: ''; flex: 1; height: 1px; background: var(--yey-line-soft); }
 
     .ed-tracklist { list-style: none; margin: 14px 0 0; }
     .ed-track {
-      display: grid; grid-template-columns: 40px 1fr auto auto; gap: 18px; align-items: center;
+      display: grid; grid-template-columns: 40px 52px 1fr auto auto; gap: 18px; align-items: center;
       padding: 16px 4px; border-bottom: 1px solid var(--yey-line-soft); cursor: pointer;
       transition: background 0.18s ease, padding 0.18s ease;
     }
     .ed-track:hover { background: rgba(168,157,128,0.04); padding-left: 12px; }
+    .ed-track .thumb { width: 52px; height: 52px; }
     .ed-track .n { font-family: var(--ds-font-label); font-size: 13px; color: var(--yey-2); }
     .ed-track .t { font-size: 17px; color: var(--yey-text); font-weight: 500; }
     .ed-track .t small { display: block; font-size: 12px; color: var(--yey-faint); font-weight: 400; margin-top: 2px; }
@@ -180,7 +195,8 @@
 
     @media (max-width: 760px) {
       .ed-hero { grid-template-columns: 1fr; gap: 28px; }
-      .ed-track { grid-template-columns: 28px 1fr auto; }
+      .ed-track { grid-template-columns: 28px 44px 1fr auto; }
+      .ed-track .thumb { width: 44px; height: 44px; }
       .ed-track .play { display: none; }
     }
 
@@ -241,8 +257,9 @@
     .im-side-head h3 { font-family: var(--ds-font-display); font-variation-settings:"opsz" 24;
       font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: -0.01em; color: var(--yey-text); }
     .im-queue { list-style: none; overflow-y: auto; max-height: 300px; margin-right: -8px; padding-right: 8px; }
-    .im-q { display: grid; grid-template-columns: 22px 1fr auto; gap: 14px; align-items: center;
+    .im-q { display: grid; grid-template-columns: 22px 40px 1fr auto; gap: 14px; align-items: center;
       padding: 11px 8px; border-radius: 8px; cursor: pointer; transition: background 0.18s ease; }
+    .im-q .thumb { width: 40px; height: 40px; }
     .im-q:hover { background: rgba(168,157,128,0.06); }
     .im-q.playing { background: rgba(168,157,128,0.10); }
     .im-q .n { font-family: var(--ds-font-label); font-size: 11px; color: var(--yey-faint); }
@@ -294,9 +311,10 @@
     .cs-meta .data span b { color: var(--yey-1); font-weight: 500; }
 
     .cs-list { font-family: var(--ds-font-label); }
-    .cs-row { display: grid; grid-template-columns: 32px 1fr 80px 56px; gap: 10px; align-items: center;
+    .cs-row { display: grid; grid-template-columns: 32px 38px 1fr 80px 56px; gap: 10px; align-items: center;
       padding: 10px 16px; border-bottom: 1px solid var(--yey-line-soft); cursor: pointer;
       transition: background 0.15s ease; }
+    .cs-row .thumb { width: 38px; height: 38px; }
     .cs-row:hover { background: rgba(168,157,128,0.05); }
     .cs-row.playing { background: rgba(168,157,128,0.09); }
     .cs-row .idx { font-size: 11px; color: var(--yey-faint); }
@@ -327,7 +345,7 @@
     .cs-embed .kicker { display:block; margin-bottom: 12px; }
 
     @media (max-width: 560px) {
-      .cs-row { grid-template-columns: 28px 1fr 56px; }
+      .cs-row { grid-template-columns: 28px 38px 1fr 56px; }
       .cs-row .wave { display: none; }
     }
 
@@ -363,7 +381,7 @@
         </div>
 
         <div class="ed-hero">
-          <div class="artwork">
+          <div class="artwork cover-album">
             <div class="mono">MS<br>YEY<small id="ed-cover-cap">LP · IA</small></div>
           </div>
           <div>
@@ -392,7 +410,7 @@
         <div class="im-backdrop"></div>
         <div class="im-card">
           <div class="im-cover">
-            <div class="artwork">
+            <div class="artwork cover-album cover-now">
               <div class="mono">MS<br>YEY<small>LP · IA</small></div>
             </div>
             <div>
@@ -437,7 +455,7 @@
           </div>
 
           <div class="cs-head">
-            <div class="artwork"><div class="mono">MS<br>YEY</div></div>
+            <div class="artwork cover-album"><div class="mono">MS<br>YEY</div></div>
             <div class="cs-meta">
               <div class="k">Album · IA</div>
               <h2 class="js-album-title">MS YEY</h2>
@@ -482,16 +500,21 @@
          Spotify (fonte de verdade do áudio) já mostra as faixas corretas.
      ════════════════════════════════════════════════════════════════════ */
   const ALBUM = {
-    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link)
+    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link) — usado no embed
     title: 'MS YEY',                            // ← troque pelo título real do álbum
     year:  '2025',                              // ← ano de lançamento
-    tracks: [                                   // ← troque pelos títulos/durações reais
-      { title: 'Faixa 01',  sub: 'MS YEY', dur: '3:42' },
-      { title: 'Faixa 02',  sub: 'MS YEY', dur: '2:58' },
-      { title: 'Faixa 03',  sub: 'MS YEY', dur: '4:11' },
-      { title: 'Faixa 04',  sub: 'MS YEY', dur: '3:27' },
-      { title: 'Faixa 05',  sub: 'MS YEY', dur: '3:05' },
-      { title: 'Faixa 06',  sub: 'MS YEY', dur: '4:33' },
+    // ── UMA CAPA POR MÚSICA ──────────────────────────────────────────────
+    // Cole em `spotify` o link de CADA música (track, single ou álbum dela).
+    // A capa real é puxada automaticamente do Spotify (oEmbed) quando você abre
+    // no navegador. Vazio = usa a capa do álbum como fallback. Pode também fixar
+    // uma imagem manual com `cover: 'https://… ou arquivo.jpg'`.
+    tracks: [                                   // ← troque títulos/durações/links pelos reais
+      { title: 'Faixa 01', sub: 'MS YEY', dur: '3:42', spotify: 'https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic' },
+      { title: 'Faixa 02', sub: 'MS YEY', dur: '2:58', spotify: '' },
+      { title: 'Faixa 03', sub: 'MS YEY', dur: '4:11', spotify: '' },
+      { title: 'Faixa 04', sub: 'MS YEY', dur: '3:27', spotify: '' },
+      { title: 'Faixa 05', sub: 'MS YEY', dur: '3:05', spotify: '' },
+      { title: 'Faixa 06', sub: 'MS YEY', dur: '4:33', spotify: '' },
     ],
   };
 
@@ -523,7 +546,8 @@
     li.className = 'ed-track';
     li.innerHTML = `
       <span class="n">${String(i + 1).padStart(2, '0')}</span>
-      <span class="t">${t.title}<small>${t.sub}</small></span>
+      <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
+      <span class="t">${t.title}<small>${t.sub || 'MS YEY'}</small></span>
       <span class="d">${t.dur}</span>
       <span class="play">${playIco}</span>`;
     edList.appendChild(li);
@@ -536,13 +560,15 @@
     li.className = 'im-q' + (i === 0 ? ' playing' : '');
     li.innerHTML = `
       <span class="n">${i === 0 ? playIco : String(i + 1).padStart(2, '0')}</span>
-      <span class="t">${t.title}<small>${t.sub}</small></span>
+      <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
+      <span class="t">${t.title}<small>${t.sub || 'MS YEY'}</small></span>
       <span class="d">${t.dur}</span>`;
     li.addEventListener('click', () => {
       imQueue.querySelectorAll('.im-q').forEach(x => x.classList.remove('playing'));
       li.classList.add('playing');
       document.getElementById('im-title').textContent = t.title;
       document.getElementById('im-dur').textContent = t.dur;
+      if (t.coverUrl) setCover(document.querySelector('.cover-now'), t.coverUrl);
     });
     imQueue.appendChild(li);
   });
@@ -558,6 +584,7 @@
     const bars = [6, 12, 4, 14, 8].map(v => v + Math.round(Math.random() * 4));
     row.innerHTML = `
       <span class="idx">${String(i + 1).padStart(2, '0')}</span>
+      <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
       <span class="name">${t.title}</span>
       ${waveBars(bars)}
       <span class="len">${t.dur}</span>`;
@@ -569,6 +596,39 @@
     csList.appendChild(row);
   });
   document.getElementById('cs-now').textContent = `${ALBUM.tracks[0].title} — ${ALBUM.tracks[0].sub}`;
+
+  /* ─── Cover art · auto-pull from Spotify (oEmbed, client-side) ───────────
+     Uma capa por música. Para cada faixa, busca a thumbnail real do Spotify a
+     partir do seu link (track/single/álbum). Sem link → usa a capa do álbum.
+     Roda no navegador (o Spotify responde ao oEmbed lá). Fallback: monograma. */
+  const ALBUM_URL = 'https://open.spotify.com/album/' + ALBUM.id;
+  const _coverCache = {};
+  async function fetchCover(url) {
+    if (!url) return null;
+    if (url in _coverCache) return _coverCache[url];
+    try {
+      const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(url));
+      const j = await r.json();
+      _coverCache[url] = j.thumbnail_url || null;
+    } catch (e) { _coverCache[url] = null; }
+    return _coverCache[url];
+  }
+  function setCover(el, url) {
+    if (!el || !url) return;
+    let img = el.querySelector('img.cover-img');
+    if (!img) { img = new Image(); img.className = 'cover-img'; img.alt = ''; el.appendChild(img); }
+    img.src = url;
+  }
+  // album-level cover → editorial hero, console head, immersive default
+  fetchCover(ALBUM_URL).then(u => { if (u) document.querySelectorAll('.cover-album').forEach(el => setCover(el, u)); });
+  // per-song covers → row thumbnails (+ immersive now-playing for the first track)
+  ALBUM.tracks.forEach((t, i) => {
+    fetchCover(t.cover || t.spotify || ALBUM_URL).then(u => {
+      t.coverUrl = u;
+      document.querySelectorAll('[data-cover-track="' + i + '"]').forEach(el => setCover(el, u));
+      if (i === 0) setCover(document.querySelector('.cover-now'), u);
+    });
+  });
 
   /* ─── Spotify embeds (one per variant; lazy) ───────────────────────── */
   document.getElementById('embed-ed').appendChild(spotifyEmbed('352'));
