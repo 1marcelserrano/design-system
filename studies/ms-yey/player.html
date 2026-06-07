@@ -65,7 +65,7 @@
     }
     .embed-note a { color: var(--yey-2); }
 
-    /* ─── artwork (album cover; CSS monogram fallback) ─── */
+    /* ─── artwork (artist photo; CSS monogram fallback) ─── */
     .artwork {
       aspect-ratio: 1; border-radius: 8px; position: relative; overflow: hidden;
       border: 1px solid var(--yey-line);
@@ -89,22 +89,10 @@
     }
     .artwork .mono small { display: block; font-family: var(--ds-font-label); font-weight: 400;
       font-size: 10px; letter-spacing: 0.4em; color: var(--yey-2); margin-top: 10px; }
+    /* artist photo (auto-pulled from Spotify oEmbed) overlays the monogram */
+    .artwork .cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3; }
 
-    /* per-song cover art (auto-pulled from Spotify oEmbed) + monogram fallback */
-    .artwork .cover-img, .thumb .cover-img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3;
-    }
-    .thumb {
-      position: relative; overflow: hidden; border-radius: 4px; flex: none;
-      border: 1px solid var(--yey-line); background: linear-gradient(150deg, #15130D, #0C0B08);
-    }
-    .thumb .thumb-mono {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      font-family: var(--ds-font-display); font-weight: 900; font-size: 12px;
-      letter-spacing: -0.02em; color: var(--yey-faint);
-    }
-
-    /* ─── EDITORIAL player (liner-notes / magazine) ─── */
+    /* ─── EDITORIAL frame (liner-notes / magazine) ─── */
     .ed { max-width: 980px; margin: 0 auto; padding: 56px clamp(20px,5vw,40px) 120px; position: relative; z-index: 1; }
     .ed-masthead {
       display: flex; justify-content: space-between; align-items: baseline;
@@ -128,29 +116,14 @@
     .ed-sub { font-size: 17px; line-height: 1.7; color: var(--yey-muted); max-width: 460px; }
     .ed-rule { width: 120px; height: 3px; margin: 22px 0;
       background: linear-gradient(90deg, var(--yey-1), var(--yey-2)); border-radius: 2px; }
+    .ed-stats { display: flex; gap: 28px; margin-top: 20px; font-family: var(--ds-font-label);
+      font-size: 11px; letter-spacing: 0.06em; color: var(--yey-muted); }
+    .ed-stats b { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yey-2); margin-bottom: 4px; font-weight: 400; }
 
-    .ed-section-label { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; }
+    .ed-section-label { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; }
     .ed-section-label::after { content: ''; flex: 1; height: 1px; background: var(--yey-line-soft); }
 
-    .ed-tracklist { list-style: none; margin: 14px 0 0; }
-    .ed-track {
-      display: grid; grid-template-columns: 40px 52px 1fr auto auto; gap: 18px; align-items: center;
-      padding: 16px 4px; border-bottom: 1px solid var(--yey-line-soft); cursor: pointer;
-      transition: background 0.18s ease, padding 0.18s ease;
-    }
-    .ed-track:hover { background: rgba(168,157,128,0.04); padding-left: 12px; }
-    .ed-track .thumb { width: 52px; height: 52px; }
-    .ed-track .n { font-family: var(--ds-font-label); font-size: 13px; color: var(--yey-2); }
-    .ed-track .t { font-size: 17px; color: var(--yey-text); font-weight: 500; }
-    .ed-track .t small { display: block; font-size: 12px; color: var(--yey-faint); font-weight: 400; margin-top: 2px; }
-    .ed-track .d { font-family: var(--ds-font-label); font-size: 12px; color: var(--yey-muted); }
-    .ed-track .play { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--yey-line);
-      display: flex; align-items: center; justify-content: center; color: var(--yey-1);
-      opacity: 0; transition: opacity 0.18s ease; }
-    .ed-track:hover .play { opacity: 1; }
-
-    .ed-embed { margin-top: 56px; }
-    .ed-embed .kicker { margin-bottom: 14px; display: block; }
+    .ed-embed .spotify-frame { min-height: 420px; }
 
     .yey-foot { max-width: 980px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px) 60px; position: relative; z-index: 1;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
@@ -160,9 +133,6 @@
 
     @media (max-width: 760px) {
       .ed-hero { grid-template-columns: 1fr; gap: 28px; }
-      .ed-track { grid-template-columns: 28px 44px 1fr auto; }
-      .ed-track .thumb { width: 44px; height: 44px; }
-      .ed-track .play { display: none; }
     }
   </style>
 </head>
@@ -175,25 +145,27 @@
     </div>
 
     <div class="ed-hero">
-      <div class="artwork cover-album">
-        <div class="mono">MS<br>YEY<small>LP · IA</small></div>
+      <div class="artwork cover-artist">
+        <div class="mono">MS<br>YEY<small>ARTISTA</small></div>
       </div>
       <div>
-        <div class="kicker">Álbum · <span class="js-year">2025</span></div>
-        <h1 class="ed-title">Álbum&nbsp;<em>MS&nbsp;YEY</em></h1>
+        <div class="kicker">Artista · Discografia completa</div>
+        <h1 class="ed-title"><em>MS&nbsp;YEY</em></h1>
         <div class="ed-rule"></div>
         <p class="ed-sub">Música gerada por IA, curada e dirigida por Marcel Serrano.
-           Uma coleção que vive entre o sintético e o autoral — toca direto do Spotify abaixo.</p>
+           Todas as músicas do artista, direto do Spotify — atualiza sozinho a cada novo lançamento.</p>
+        <div class="ed-stats">
+          <div><b>Fonte</b>Spotify</div>
+          <div><b>Catálogo</b>Completo</div>
+          <div><b>Áudio</b>Real</div>
+        </div>
       </div>
     </div>
 
-    <div class="ed-section-label"><span class="kicker">Tracklist</span></div>
-    <ol class="ed-tracklist" id="ed-tracks"></ol>
-
+    <div class="ed-section-label"><span class="kicker">Todas as músicas</span></div>
     <div class="ed-embed">
-      <span class="kicker">Ouça agora</span>
       <div class="spotify-frame" id="embed"></div>
-      <div class="embed-note">Player oficial · áudio real via Spotify · <a href="https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic" target="_blank" rel="noopener">abrir no Spotify ↗</a></div>
+      <div class="embed-note">Player oficial do artista · áudio real via Spotify · <a class="artist-link" href="#" target="_blank" rel="noopener">abrir no Spotify ↗</a></div>
     </div>
   </main>
 
@@ -204,84 +176,47 @@
 
   <script>
   /* ════════════════════════════════════════════════════════════════════
-     DADOS DO ÁLBUM — EDITE AQUI
+     CONFIG — EDITE AQUI
      ────────────────────────────────────────────────────────────────────
-     Uma capa por música: cole em `spotify` o link do Spotify de CADA música
-     (track, single ou álbum dela). A capa é puxada automática via oEmbed no
-     navegador; vazio = usa a capa do álbum. Troque títulos/durações/links
-     pelos reais. Pode fixar imagem manual com `cover: 'url-ou-arquivo'`.
+     Modo ARTISTA: o embed oficial do artista lista e toca TODA a discografia
+     do MS YEY (atualiza sozinho a cada lançamento). A foto do artista é
+     puxada automática via oEmbed do Spotify (no navegador). Fallback: monograma.
      ════════════════════════════════════════════════════════════════════ */
-  const ALBUM = {
-    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link) — usado no embed
-    title: 'MS YEY',
-    year:  '2025',
-    tracks: [
-      { title: 'Faixa 01', sub: 'MS YEY', dur: '3:42', spotify: 'https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic' },
-      { title: 'Faixa 02', sub: 'MS YEY', dur: '2:58', spotify: '' },
-      { title: 'Faixa 03', sub: 'MS YEY', dur: '4:11', spotify: '' },
-      { title: 'Faixa 04', sub: 'MS YEY', dur: '3:27', spotify: '' },
-      { title: 'Faixa 05', sub: 'MS YEY', dur: '3:05', spotify: '' },
-      { title: 'Faixa 06', sub: 'MS YEY', dur: '4:33', spotify: '' },
-    ],
+  const ARTIST = {
+    id:   '7qU1gSTJhYOgw6SDqyyGb8',   // Spotify artist id (MS YEY)
+    name: 'MS YEY',
   };
+  const ARTIST_URL = 'https://open.spotify.com/artist/' + ARTIST.id;
 
-  /* shared text */
-  document.querySelector('.ed-title').innerHTML = `Álbum&nbsp;<em>${ALBUM.title}</em>`;
-  document.querySelectorAll('.js-year').forEach(el => el.textContent = ALBUM.year);
+  /* artist link in the note */
+  document.querySelector('.artist-link').href = ARTIST_URL;
+  document.querySelector('.ed-title').innerHTML = `<em>${ARTIST.name.replace(/ /g, '&nbsp;')}</em>`;
 
-  const playIco = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-
-  /* tracklist */
-  const edList = document.getElementById('ed-tracks');
-  ALBUM.tracks.forEach((t, i) => {
-    const li = document.createElement('li');
-    li.className = 'ed-track';
-    li.innerHTML = `
-      <span class="n">${String(i + 1).padStart(2, '0')}</span>
-      <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
-      <span class="t">${t.title}<small>${t.sub || 'MS YEY'}</small></span>
-      <span class="d">${t.dur}</span>
-      <span class="play">${playIco}</span>`;
-    edList.appendChild(li);
-  });
-
-  /* Spotify embed (real audio, client-side) */
+  /* Spotify ARTIST embed (full discography, real audio, client-side) */
   (function () {
     const f = document.createElement('iframe');
-    f.src = `https://open.spotify.com/embed/album/${ALBUM.id}?utm_source=generator&theme=0`;
-    f.width = '100%'; f.height = '352'; f.frameBorder = '0'; f.loading = 'lazy';
+    f.src = `https://open.spotify.com/embed/artist/${ARTIST.id}?utm_source=generator&theme=0`;
+    f.width = '100%'; f.height = '420'; f.frameBorder = '0'; f.loading = 'lazy';
     f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.style.display = 'block';
     document.getElementById('embed').appendChild(f);
   })();
 
-  /* ─── Cover art · auto-pull from Spotify (oEmbed, client-side) ───────────
-     Uma capa por música. Sem link na faixa → usa a capa do álbum. Fallback
-     final: monograma. Roda no navegador (o Spotify responde ao oEmbed lá). */
-  const ALBUM_URL = 'https://open.spotify.com/album/' + ALBUM.id;
-  const _coverCache = {};
-  async function fetchCover(url) {
-    if (!url) return null;
-    if (url in _coverCache) return _coverCache[url];
+  /* ─── Artist photo · auto-pull from Spotify (oEmbed, client-side) ─────────
+     Roda no navegador (o Spotify responde ao oEmbed lá). Fallback: monograma. */
+  (async function () {
     try {
-      const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(url));
+      const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent(ARTIST_URL));
       const j = await r.json();
-      _coverCache[url] = j.thumbnail_url || null;
-    } catch (e) { _coverCache[url] = null; }
-    return _coverCache[url];
-  }
-  function setCover(el, url) {
-    if (!el || !url) return;
-    let img = el.querySelector('img.cover-img');
-    if (!img) { img = new Image(); img.className = 'cover-img'; img.alt = ''; el.appendChild(img); }
-    img.src = url;
-  }
-  fetchCover(ALBUM_URL).then(u => { if (u) document.querySelectorAll('.cover-album').forEach(el => setCover(el, u)); });
-  ALBUM.tracks.forEach((t, i) => {
-    fetchCover(t.cover || t.spotify || ALBUM_URL).then(u => {
-      document.querySelectorAll('[data-cover-track="' + i + '"]').forEach(el => setCover(el, u));
-    });
-  });
+      if (j && j.thumbnail_url) {
+        document.querySelectorAll('.cover-artist').forEach(el => {
+          let img = el.querySelector('img.cover-img');
+          if (!img) { img = new Image(); img.className = 'cover-img'; img.alt = ARTIST.name; el.appendChild(img); }
+          img.src = j.thumbnail_url;
+        });
+      }
+    } catch (e) { /* keep monogram fallback */ }
+  })();
   </script>
 </body>
 </html>
