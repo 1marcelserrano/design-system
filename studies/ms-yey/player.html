@@ -58,14 +58,13 @@
       font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.28em;
       text-transform: uppercase; color: var(--yey-2);
     }
-    .spotify-frame { border-radius: 14px; overflow: hidden; border: 1px solid var(--yey-line); }
     .embed-note {
       font-family: var(--ds-font-label); font-size: 9px; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--yey-faint); margin-top: 10px;
+      text-transform: uppercase; color: var(--yey-faint); margin-top: 14px;
     }
     .embed-note a { color: var(--yey-2); }
 
-    /* ─── artwork (album cover; CSS monogram fallback) ─── */
+    /* ─── artwork (album / now-playing cover; CSS monogram fallback) ─── */
     .artwork {
       aspect-ratio: 1; border-radius: 8px; position: relative; overflow: hidden;
       border: 1px solid var(--yey-line);
@@ -79,7 +78,7 @@
       content: ''; position: absolute; inset: 0;
       background-image: linear-gradient(rgba(168,157,128,0.05) 1px, transparent 1px),
                         linear-gradient(90deg, rgba(168,157,128,0.05) 1px, transparent 1px);
-      background-size: 22px 22px; mix-blend-mode: overlay;
+      background-size: 22px 22px; mix-blend-mode: overlay; z-index: 4; pointer-events: none;
     }
     .artwork .mono {
       font-family: var(--ds-font-display); font-variation-settings: "opsz" 144;
@@ -90,10 +89,36 @@
     .artwork .mono small { display: block; font-family: var(--ds-font-label); font-weight: 400;
       font-size: 10px; letter-spacing: 0.4em; color: var(--yey-2); margin-top: 10px; }
 
-    /* per-song cover art (auto-pulled from Spotify oEmbed) + monogram fallback */
+    /* per-song cover art (auto-pulled from Spotify oEmbed) — fades in over monogram */
     .artwork .cover-img, .thumb .cover-img {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3;
     }
+    /* now-playing cover cross-fade as the track changes */
+    .np-art .cover-img { transition: opacity 0.45s ease; }
+    .np-art .cover-img.is-out { opacity: 0; }
+
+    /* "agora tocando" badge on the big cover */
+    .np-badge {
+      position: absolute; left: 12px; bottom: 12px; z-index: 5;
+      display: none; align-items: center; gap: 7px;
+      padding: 6px 11px; border-radius: 999px;
+      background: rgba(12,11,8,0.72); border: 1px solid var(--yey-line);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      font-family: var(--ds-font-label); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--yey-1);
+    }
+    .np-art.is-playing .np-badge { display: inline-flex; }
+
+    /* equalizer bars (used in badge + active track row) */
+    .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; }
+    .eq i { width: 2px; height: 100%; background: currentColor; transform-origin: bottom;
+            animation: eqbar 0.9s ease-in-out infinite; }
+    .eq i:nth-child(2) { animation-delay: 0.15s; }
+    .eq i:nth-child(3) { animation-delay: 0.30s; }
+    .eq i:nth-child(4) { animation-delay: 0.45s; }
+    @keyframes eqbar { 0%,100% { transform: scaleY(0.28); } 50% { transform: scaleY(1); } }
+    .is-paused .eq i { animation-play-state: paused; }
+
     .thumb {
       position: relative; overflow: hidden; border-radius: 4px; flex: none;
       border: 1px solid var(--yey-line); background: linear-gradient(150deg, #15130D, #0C0B08);
@@ -105,7 +130,7 @@
     }
 
     /* ─── EDITORIAL player (liner-notes / magazine) ─── */
-    .ed { max-width: 980px; margin: 0 auto; padding: 56px clamp(20px,5vw,40px) 120px; position: relative; z-index: 1; }
+    .ed { max-width: 980px; margin: 0 auto; padding: 56px clamp(20px,5vw,40px) 140px; position: relative; z-index: 1; }
     .ed-masthead {
       display: flex; justify-content: space-between; align-items: baseline;
       border-bottom: 1px solid var(--yey-line); padding-bottom: 18px; margin-bottom: 48px;
@@ -114,6 +139,7 @@
     .ed-masthead .m-right { font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yey-faint); }
 
     .ed-hero { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+    .np-left { display: flex; flex-direction: column; gap: 18px; }
     .ed-title {
       font-family: var(--ds-font-display); font-variation-settings: "opsz" 144;
       font-weight: 900; font-size: clamp(56px, 9vw, 104px); line-height: 0.9;
@@ -129,6 +155,48 @@
     .ed-rule { width: 120px; height: 3px; margin: 22px 0;
       background: linear-gradient(90deg, var(--yey-1), var(--yey-2)); border-radius: 2px; }
 
+    /* ─── transport (now-playing controls) ─── */
+    .np-transport { display: flex; flex-direction: column; gap: 12px; }
+    .np-meta { min-height: 38px; }
+    .np-now-title {
+      font-family: var(--ds-font-display); font-variation-settings: "opsz" 40;
+      font-weight: 600; font-size: 18px; line-height: 1.15; color: var(--yey-text);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .np-now-sub { font-family: var(--ds-font-label); font-size: 10px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--yey-faint); margin-top: 4px; }
+
+    .np-seek { display: flex; align-items: center; gap: 10px; }
+    .np-time { font-family: var(--ds-font-label); font-size: 11px; color: var(--yey-muted);
+      font-variant-numeric: tabular-nums; flex: none; min-width: 34px; }
+    .np-time.np-cur { text-align: right; }
+    .np-bar { flex: 1; height: 4px; border-radius: 999px; background: var(--yey-line);
+      position: relative; cursor: pointer; }
+    .np-bar:hover { height: 6px; }
+    .np-fill { position: absolute; inset: 0 auto 0 0; width: 0%; border-radius: 999px;
+      background: linear-gradient(90deg, var(--yey-1), var(--yey-2)); }
+    .np-fill::after { content: ''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%);
+      width: 10px; height: 10px; border-radius: 50%; background: var(--yey-1);
+      opacity: 0; transition: opacity 0.15s ease; }
+    .np-bar:hover .np-fill::after { opacity: 1; }
+
+    .np-ctrls { display: flex; align-items: center; gap: 10px; margin-top: 2px; }
+    .np-btn {
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+      background: transparent; border: 1px solid var(--yey-line); color: var(--yey-text);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+    }
+    .np-btn:hover { border-color: var(--yey-1); color: var(--yey-1); }
+    .np-btn.np-play {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--yey-1), var(--yey-2));
+      border-color: transparent; color: #0C0B08;
+    }
+    .np-btn.np-play:hover { filter: brightness(1.08); color: #0C0B08; }
+    .np-btn svg { width: 18px; height: 18px; }
+    .np-btn.np-play svg { width: 20px; height: 20px; }
+
     .ed-section-label { display: flex; align-items: center; gap: 14px; margin: 0 0 8px; }
     .ed-section-label::after { content: ''; flex: 1; height: 1px; background: var(--yey-line-soft); }
 
@@ -139,18 +207,21 @@
       transition: background 0.18s ease, padding 0.18s ease;
     }
     .ed-track:hover { background: rgba(168,157,128,0.04); padding-left: 12px; }
+    .ed-track.is-active { background: rgba(168,157,128,0.06); padding-left: 12px; }
+    .ed-track.is-active .t { color: var(--yey-1); }
     .ed-track .thumb { width: 52px; height: 52px; }
-    .ed-track .n { font-family: var(--ds-font-label); font-size: 13px; color: var(--yey-2); }
+    .ed-track .n { font-family: var(--ds-font-label); font-size: 13px; color: var(--yey-2);
+      display: flex; align-items: center; justify-content: center; }
+    .ed-track.is-active .n .num { display: none; }
+    .ed-track .n .eq { display: none; color: var(--yey-1); }
+    .ed-track.is-active .n .eq { display: inline-flex; }
     .ed-track .t { font-size: 17px; color: var(--yey-text); font-weight: 500; }
     .ed-track .t small { display: block; font-size: 12px; color: var(--yey-faint); font-weight: 400; margin-top: 2px; }
     .ed-track .d { font-family: var(--ds-font-label); font-size: 12px; color: var(--yey-muted); }
     .ed-track .play { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--yey-line);
       display: flex; align-items: center; justify-content: center; color: var(--yey-1);
       opacity: 0; transition: opacity 0.18s ease; }
-    .ed-track:hover .play { opacity: 1; }
-
-    .ed-embed { margin-top: 56px; }
-    .ed-embed .kicker { margin-bottom: 14px; display: block; }
+    .ed-track:hover .play, .ed-track.is-active .play { opacity: 1; }
 
     .yey-foot { max-width: 980px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px) 60px; position: relative; z-index: 1;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
@@ -175,25 +246,44 @@
     </div>
 
     <div class="ed-hero">
-      <div class="artwork cover-album">
-        <div class="mono">MS<br>YEY<small>LP · IA</small></div>
+      <div class="np-left">
+        <div class="artwork np-art cover-now" id="np-art">
+          <div class="mono">MS<br>YEY<small>LP · IA</small></div>
+          <span class="np-badge"><span class="eq"><i></i><i></i><i></i><i></i></span> tocando</span>
+        </div>
+
+        <div class="np-transport">
+          <div class="np-meta">
+            <div class="np-now-title" id="np-title">—</div>
+            <div class="np-now-sub" id="np-sub">selecione uma faixa</div>
+          </div>
+          <div class="np-seek">
+            <span class="np-time np-cur" id="np-cur">0:00</span>
+            <div class="np-bar" id="np-bar"><div class="np-fill" id="np-fill"></div></div>
+            <span class="np-time np-dur" id="np-dur">0:00</span>
+          </div>
+          <div class="np-ctrls">
+            <button class="np-btn" id="np-prev" title="Anterior" aria-label="Anterior"></button>
+            <button class="np-btn np-play" id="np-toggle" title="Tocar" aria-label="Tocar"></button>
+            <button class="np-btn" id="np-next" title="Próxima" aria-label="Próxima"></button>
+          </div>
+        </div>
       </div>
+
       <div>
         <div class="kicker">Álbum · <span class="js-year">2025</span></div>
         <h1 class="ed-title">Álbum&nbsp;<em>MS&nbsp;YEY</em></h1>
         <div class="ed-rule"></div>
         <p class="ed-sub">Música gerada por IA, curada e dirigida por Marcel Serrano.
-           Uma coleção que vive entre o sintético e o autoral — toca direto do Spotify abaixo.</p>
+           Uma coleção que vive entre o sintético e o autoral — toque faixa a faixa abaixo.</p>
       </div>
     </div>
 
     <div class="ed-section-label"><span class="kicker">Tracklist</span></div>
     <ol class="ed-tracklist" id="ed-tracks"></ol>
 
-    <div class="ed-embed">
-      <span class="kicker">Ouça agora</span>
-      <div class="spotify-frame" id="embed"></div>
-      <div class="embed-note">Player oficial · áudio real via Spotify · <a href="https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic" target="_blank" rel="noopener">abrir no Spotify ↗</a></div>
+    <div class="embed-note">
+      Player próprio · áudio completo hospedado · <a href="https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic" target="_blank" rel="noopener">abrir no Spotify ↗</a>
     </div>
   </main>
 
@@ -202,26 +292,31 @@
     <span>Paleta <b>MS Midnight</b> · MSCREATIVE.SYSTEMS™ DS v3.0</span>
   </div>
 
+  <audio id="np-audio" preload="metadata"></audio>
+
   <script>
   /* ════════════════════════════════════════════════════════════════════
      DADOS DO ÁLBUM — EDITE AQUI
      ────────────────────────────────────────────────────────────────────
-     Uma capa por música: cole em `spotify` o link do Spotify de CADA música
-     (track, single ou álbum dela). A capa é puxada automática via oEmbed no
-     navegador; vazio = usa a capa do álbum. Troque títulos/durações/links
-     pelos reais. Pode fixar imagem manual com `cover: 'url-ou-arquivo'`.
+     • audio:   caminho do arquivo de áudio COMPLETO da faixa. Convenção:
+                coloque os arquivos em studies/ms-yey/audio/ (01.mp3, 02.mp3…)
+                e o player toca a música inteira. Pode ser URL externa também.
+     • spotify: link do Spotify de CADA música (track/single). A CAPA é puxada
+                automática daí (oEmbed) e troca na arte grande enquanto toca.
+                Vazio → usa a capa do álbum.
+     • cover:   (opcional) fixa uma imagem manual (url ou arquivo local).
      ════════════════════════════════════════════════════════════════════ */
   const ALBUM = {
-    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link) — usado no embed
+    id:    '3cx2RJJEgmhGCKpxr62Zic',           // Spotify album id (do seu link)
     title: 'MS YEY',
     year:  '2025',
     tracks: [
-      { title: 'Faixa 01', sub: 'MS YEY', dur: '3:42', spotify: 'https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic' },
-      { title: 'Faixa 02', sub: 'MS YEY', dur: '2:58', spotify: '' },
-      { title: 'Faixa 03', sub: 'MS YEY', dur: '4:11', spotify: '' },
-      { title: 'Faixa 04', sub: 'MS YEY', dur: '3:27', spotify: '' },
-      { title: 'Faixa 05', sub: 'MS YEY', dur: '3:05', spotify: '' },
-      { title: 'Faixa 06', sub: 'MS YEY', dur: '4:33', spotify: '' },
+      { title: 'Faixa 01', sub: 'MS YEY', dur: '3:42', audio: 'audio/01.mp3', spotify: 'https://open.spotify.com/album/3cx2RJJEgmhGCKpxr62Zic', cover: '' },
+      { title: 'Faixa 02', sub: 'MS YEY', dur: '2:58', audio: 'audio/02.mp3', spotify: '', cover: '' },
+      { title: 'Faixa 03', sub: 'MS YEY', dur: '4:11', audio: 'audio/03.mp3', spotify: '', cover: '' },
+      { title: 'Faixa 04', sub: 'MS YEY', dur: '3:27', audio: 'audio/04.mp3', spotify: '', cover: '' },
+      { title: 'Faixa 05', sub: 'MS YEY', dur: '3:05', audio: 'audio/05.mp3', spotify: '', cover: '' },
+      { title: 'Faixa 06', sub: 'MS YEY', dur: '4:33', audio: 'audio/06.mp3', spotify: '', cover: '' },
     ],
   };
 
@@ -229,37 +324,40 @@
   document.querySelector('.ed-title').innerHTML = `Álbum&nbsp;<em>${ALBUM.title}</em>`;
   document.querySelectorAll('.js-year').forEach(el => el.textContent = ALBUM.year);
 
-  const playIco = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  /* ─── SVG icons ─── */
+  const ICON = {
+    play:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>',
+    prev:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 6h2v12H7zM20 6v12L9 12z"/></svg>',
+    next:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 6h2v12h-2zM4 6l11 6L4 18z"/></svg>',
+  };
+  document.getElementById('np-prev').innerHTML   = ICON.prev;
+  document.getElementById('np-next').innerHTML   = ICON.next;
+  document.getElementById('np-toggle').innerHTML = ICON.play;
 
-  /* tracklist */
+  /* ─── tracklist ─── */
   const edList = document.getElementById('ed-tracks');
   ALBUM.tracks.forEach((t, i) => {
     const li = document.createElement('li');
     li.className = 'ed-track';
+    li.dataset.index = i;
     li.innerHTML = `
-      <span class="n">${String(i + 1).padStart(2, '0')}</span>
+      <span class="n"><span class="num">${String(i + 1).padStart(2, '0')}</span><span class="eq"><i></i><i></i><i></i><i></i></span></span>
       <span class="thumb" data-cover-track="${i}"><span class="thumb-mono">MS</span></span>
       <span class="t">${t.title}<small>${t.sub || 'MS YEY'}</small></span>
       <span class="d">${t.dur}</span>
-      <span class="play">${playIco}</span>`;
+      <span class="play">${ICON.play}</span>`;
+    li.addEventListener('click', () => selectTrack(i, true));
     edList.appendChild(li);
   });
-
-  /* Spotify embed (real audio, client-side) */
-  (function () {
-    const f = document.createElement('iframe');
-    f.src = `https://open.spotify.com/embed/album/${ALBUM.id}?utm_source=generator&theme=0`;
-    f.width = '100%'; f.height = '352'; f.frameBorder = '0'; f.loading = 'lazy';
-    f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-    f.style.display = 'block';
-    document.getElementById('embed').appendChild(f);
-  })();
 
   /* ─── Cover art · auto-pull from Spotify (oEmbed, client-side) ───────────
      Uma capa por música. Sem link na faixa → usa a capa do álbum. Fallback
      final: monograma. Roda no navegador (o Spotify responde ao oEmbed lá). */
   const ALBUM_URL = 'https://open.spotify.com/album/' + ALBUM.id;
-  const _coverCache = {};
+  const _coverCache = {};        // url → thumbnail_url
+  const trackCover = {};         // index → resolved cover (cached for hero swap)
+
   async function fetchCover(url) {
     if (!url) return null;
     if (url in _coverCache) return _coverCache[url];
@@ -270,18 +368,133 @@
     } catch (e) { _coverCache[url] = null; }
     return _coverCache[url];
   }
-  function setCover(el, url) {
+  function setThumb(el, url) {
     if (!el || !url) return;
     let img = el.querySelector('img.cover-img');
     if (!img) { img = new Image(); img.className = 'cover-img'; img.alt = ''; el.appendChild(img); }
     img.src = url;
   }
-  fetchCover(ALBUM_URL).then(u => { if (u) document.querySelectorAll('.cover-album').forEach(el => setCover(el, u)); });
+
+  /* pre-resolve every track cover (thumbnails + cache for the big now-playing art) */
   ALBUM.tracks.forEach((t, i) => {
     fetchCover(t.cover || t.spotify || ALBUM_URL).then(u => {
-      document.querySelectorAll('[data-cover-track="' + i + '"]').forEach(el => setCover(el, u));
+      trackCover[i] = u || null;
+      document.querySelectorAll('[data-cover-track="' + i + '"]').forEach(el => setThumb(el, u));
+      if (i === current && u) paintHero(u);   // refresh hero if it landed late
     });
   });
+
+  /* ─── now-playing artwork swap (cross-fade) ─── */
+  const npArt = document.getElementById('np-art');
+  function paintHero(url) {
+    if (!url) return;
+    let img = npArt.querySelector('img.cover-img');
+    if (!img) { img = new Image(); img.className = 'cover-img is-out'; img.alt = ''; npArt.appendChild(img); }
+    if (img.src === url) { img.classList.remove('is-out'); return; }
+    img.classList.add('is-out');
+    img.onload = () => img.classList.remove('is-out');
+    img.src = url;
+  }
+
+  /* ════════════════ PLAYER ════════════════ */
+  const audio   = document.getElementById('np-audio');
+  const elTitle = document.getElementById('np-title');
+  const elSub   = document.getElementById('np-sub');
+  const elCur   = document.getElementById('np-cur');
+  const elDur   = document.getElementById('np-dur');
+  const elFill  = document.getElementById('np-fill');
+  const elBar   = document.getElementById('np-bar');
+  const elToggle= document.getElementById('np-toggle');
+  let current = 0;
+  let loadedOnce = false;
+
+  const fmt = s => {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60), x = Math.floor(s % 60);
+    return m + ':' + String(x).padStart(2, '0');
+  };
+
+  function markActive(i) {
+    document.querySelectorAll('.ed-track').forEach(el => el.classList.remove('is-active'));
+    const row = document.querySelector('.ed-track[data-index="' + i + '"]');
+    if (row) row.classList.add('is-active');
+  }
+
+  function selectTrack(i, autoplay) {
+    current = i;
+    const t = ALBUM.tracks[i];
+    loadedOnce = true;
+    markActive(i);
+
+    // hero artwork follows the track (cached cover, or resolve on the fly)
+    if (trackCover[i]) paintHero(trackCover[i]);
+    else fetchCover(t.cover || t.spotify || ALBUM_URL).then(u => { trackCover[i] = u; if (current === i) paintHero(u); });
+
+    elTitle.textContent = t.title;
+    elSub.textContent   = (t.sub || 'MS YEY') + ' · faixa ' + String(i + 1).padStart(2, '0');
+    elCur.textContent   = '0:00';
+    elDur.textContent   = t.dur || '0:00';
+    elFill.style.width  = '0%';
+
+    audio.src = t.audio || '';
+    if (autoplay && t.audio) play();
+    else setToggle(false);
+  }
+
+  function setToggle(playing) {
+    elToggle.innerHTML = playing ? ICON.pause : ICON.play;
+    elToggle.title = playing ? 'Pausar' : 'Tocar';
+    npArt.classList.toggle('is-playing', playing);
+    npArt.classList.toggle('is-paused', !playing);
+  }
+
+  function play() {
+    if (!ALBUM.tracks[current].audio) {
+      elSub.textContent = 'áudio em breve — adicione ' + ALBUM.tracks[current].audio;
+      return;
+    }
+    audio.play().then(() => setToggle(true)).catch(() => {
+      elSub.textContent = 'arquivo não encontrado — confira ' + ALBUM.tracks[current].audio;
+      setToggle(false);
+    });
+  }
+  function pause() { audio.pause(); setToggle(false); }
+
+  elToggle.addEventListener('click', () => {
+    if (!loadedOnce) { selectTrack(0, true); return; }
+    if (audio.paused) play(); else pause();
+  });
+  document.getElementById('np-prev').addEventListener('click', () => {
+    selectTrack((current - 1 + ALBUM.tracks.length) % ALBUM.tracks.length, !audio.paused || loadedOnce);
+  });
+  document.getElementById('np-next').addEventListener('click', () => {
+    selectTrack((current + 1) % ALBUM.tracks.length, !audio.paused || loadedOnce);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    elFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    elCur.textContent  = fmt(audio.currentTime);
+  });
+  audio.addEventListener('loadedmetadata', () => {
+    if (isFinite(audio.duration)) elDur.textContent = fmt(audio.duration);
+  });
+  audio.addEventListener('ended', () => {
+    selectTrack((current + 1) % ALBUM.tracks.length, true);
+  });
+  audio.addEventListener('error', () => {
+    if (audio.src) { elSub.textContent = 'arquivo não encontrado — confira ' + ALBUM.tracks[current].audio; setToggle(false); }
+  });
+
+  elBar.addEventListener('click', (e) => {
+    if (!audio.duration) return;
+    const r = elBar.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+  });
+
+  /* preload the first track (cover + title) without autoplay */
+  selectTrack(0, false);
+  loadedOnce = false;   // first click on play should start track 0 cleanly
   </script>
 </body>
 </html>
