@@ -1,0 +1,33 @@
+# .gitattributes — MSCREATIVE.SYSTEMS™ Design System
+# Normaliza tratamento de arquivos no Git (EOL, diff, linguist).
+
+# Normalização de fim de linha — texto sempre LF no repo
+* text=auto eol=lf
+
+# Tipos de texto explícitos do projeto (vanilla HTML/CSS/JS)
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+
+# Estatísticas de linguagem (GitHub Linguist):
+# estudos são exploração/conteúdo, não código de produção
+src/studies/**     linguist-documentation
+src/templates/**   linguist-vendored
+docs/**            linguist-documentation
+
+# Garante que arquivos binários, se algum dia entrarem, não sofram diff textual
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+*.mp4   binary

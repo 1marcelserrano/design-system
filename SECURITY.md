@@ -33,13 +33,13 @@ Este repositório é **público** e consumido como **submódulo** por projetos M
 ### In-scope
 - XSS via tokens/HTML templates
 - Injeção de CSS maliciosa que exfiltra dados
-- Dependências `js/` vulneráveis
+- Dependências `src/js/` vulneráveis
 - Conteúdo publicado no deploy Vercel que exponha credenciais
 
 ### Out-of-scope
 - Ataques em infraestrutura Vercel (reportar à Vercel)
 - Rate-limit do deploy público
-- Conteúdo de rascunho em `studies/`
+- Conteúdo de rascunho em `src/studies/`
 
 ## Secrets
 

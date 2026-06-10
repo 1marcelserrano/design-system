@@ -34,7 +34,7 @@ Tipos aceitos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 
 ## Regras críticas
 
-### Tokens (`css/tokens.css`)
+### Tokens (`src/css/tokens.css`)
 - Qualquer alteração exige entrada em `CHANGELOG.md`
 - Bumps SemVer:
   - **Major** — remoção ou rename de token público
@@ -45,7 +45,7 @@ Tipos aceitos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 - Toda mudança de tokens propaga para o CANONICAL
 - Nunca edite o CANONICAL sem editar `tokens.css`
 
-### Governance (`governance.html`)
+### Governance (`src/governance.html`)
 - Regras visuais (do/don't) são normativas
 - Alterações requerem justificativa no corpo do PR
 

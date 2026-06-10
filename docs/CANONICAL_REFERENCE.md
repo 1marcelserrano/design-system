@@ -6,9 +6,9 @@
 
 Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **computacional** do design system:
 
-- **Tokens CSS:** [`css/tokens.css`](../css/tokens.css)
-- **Shell/Sections:** [`css/ds-shell.css`](../css/ds-shell.css), [`css/ds-sections.css`](../css/ds-sections.css)
-- **HTMLs:** `index.html`, `products.html`, `formats.html`, `governance.html`, `studies.html`
+- **Tokens CSS:** [`src/css/tokens.css`](../src/css/tokens.css)
+- **Shell/Sections:** [`src/css/ds-shell.css`](../src/css/ds-shell.css), [`src/css/ds-sections.css`](../src/css/ds-sections.css)
+- **HTMLs:** `src/index.html`, `src/products.html`, `src/formats.html`, `src/governance.html`, `src/studies.html`
 - **Deploy:** https://design-system-beta.vercel.app/
 
 A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
