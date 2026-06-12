@@ -14,7 +14,7 @@ Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **compu
 A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
 
 - **Spec principal:** `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md` (living doc, consolida v3.0 — Era Midnight)
-- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-020)
+- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-023)
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
 
 ## Decisões integradas na v3.0
@@ -39,6 +39,7 @@ A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecos
 | DEC-020 | Lima Ácida acento principal (2026-06-12) | `#B4C636` substitui terracota `#A85A30` (→ `--ds-ed-accent-legacy`) — contraste máximo em fundo escuro + sobrevivência em thumbnail |
 | DEC-021 | Quartet ácido (2026-06-12) | Neuro `#45D6A4` · Style `#F2638C` · Design `#FFA428` · Execution `#9D6BF5` (pares escuros derivados; legados DEC-007/008/009/010 comentados) |
 | DEC-022 | Oracle pôr-do-sol ácido (2026-06-12) | `--p-oracle-gradient`: `#FFA428` → `#F2638C` → `#9D6BF5` (novo `-mid`); kb-indicator e tênis M4 seguem; label do Oracle vira gradient-clip |
+| DEC-023 | Sentence case padrão (2026-06-12) | Caps restrito a wordmark, siglas e kickers mono (B2); fontes intocadas (A1) — 45 uppercase removidos do chrome, 70 preservados (kickers/mockups/estudos) |
 
 ## Versões arquivadas
 
