@@ -37,6 +37,7 @@ A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecos
 | DEC-017 | Tokens canônicos | Nomenclatura `--p-{name}-*`, legados comentados |
 | DEC-018 | Consolidação doc v3 | Living doc único em `DESIGN_MSCREATIVE.SYSTEMS.md` |
 | DEC-020 | Lima Ácida acento principal (2026-06-12) | `#B4C636` substitui terracota `#A85A30` (→ `--ds-ed-accent-legacy`) — contraste máximo em fundo escuro + sobrevivência em thumbnail |
+| DEC-021 | Quartet ácido (2026-06-12) | Neuro `#45D6A4` · Style `#F2638C` · Design `#FFA428` · Execution `#9D6BF5` (pares escuros derivados; legados DEC-007/008/009/010 comentados; Oracle/kb-indicator pendentes de mockup) |
 
 ## Versões arquivadas
 

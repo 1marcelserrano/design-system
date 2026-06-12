@@ -255,8 +255,9 @@
   /* ──────────────────────────────────────────────
      NEURO CODEX  [DEC-010]
   ────────────────────────────────────────────── */
-  --p-neuro-accent1:     #00C9C8;
-  --p-neuro-accent2:     #007A7A;
+  --p-neuro-accent1:     #45D6A4;   /* menta ácida — DEC-021 */
+  --p-neuro-accent2:     #1F8A63;
+  /* legado DEC-010: accent1 #00C9C8 · accent2 #007A7A (turquesa) */
   --p-neuro-bg-start:    #060214;
   --p-neuro-bg-end:      #0D0828;
   --p-neuro-gradient:    linear-gradient(160deg, #060214 0%, #0D0828 100%);
@@ -269,8 +270,9 @@
   /* ──────────────────────────────────────────────
      STYLE CODEX  [DEC-007]
   ────────────────────────────────────────────── */
-  --p-style-accent1:     #E8397A;
-  --p-style-accent2:     #F55A2A;
+  --p-style-accent1:     #F2638C;   /* toranja ácida — DEC-021 */
+  --p-style-accent2:     #B23358;
+  /* legado DEC-007: accent1 #E8397A · accent2 #F55A2A (rosa/laranja) */
   --p-style-bg-start:    #180A12;
   --p-style-bg-end:      #261018;
   --p-style-gradient:    linear-gradient(160deg, #180A12 0%, #261018 100%);
@@ -283,8 +285,9 @@
   /* ──────────────────────────────────────────────
      DESIGN CODEX  [DEC-008]
   ────────────────────────────────────────────── */
-  --p-design-accent1:     #909098;
-  --p-design-accent2:     #525258;
+  --p-design-accent1:     #FFA428;   /* tangerina ácida — DEC-021 */
+  --p-design-accent2:     #C77400;
+  /* legado DEC-008: accent1 #909098 · accent2 #525258 (cinza) */
   --p-design-bg-start:    #080808;
   --p-design-bg-end:      #101014;
   --p-design-gradient:    linear-gradient(160deg, #080808 0%, #101014 100%);
@@ -297,8 +300,9 @@
   /* ──────────────────────────────────────────────
      EXECUTION CODEX  [DEC-009]
   ────────────────────────────────────────────── */
-  --p-execution-accent1:     #E87800;
-  --p-execution-accent2:     #BF4800;
+  --p-execution-accent1:     #9D6BF5;   /* violeta elétrica — DEC-021 */
+  --p-execution-accent2:     #6A3CCB;
+  /* legado DEC-009: accent1 #E87800 · accent2 #BF4800 (laranja queimado) */
   --p-execution-bg-start:    #0E0A06;
   --p-execution-bg-end:      #1A1006;
   --p-execution-gradient:    linear-gradient(160deg, #0E0A06 0%, #1A1006 100%);
@@ -364,16 +368,16 @@
   ────────────────────────────────────────────── */
   --p-kb-indicator:         linear-gradient(135deg, #E8397A 0%, #E87800 100%);
 
-  --p-skill-style-accent:          #E8397A;
-  --p-skill-style-accent2:         #F55A2A;
-  --p-skill-neuro-accent:          #00C9C8;
-  --p-skill-neuro-accent2:         #007A7A;
+  --p-skill-style-accent:          #F2638C;   /* herda DEC-021 */
+  --p-skill-style-accent2:         #B23358;
+  --p-skill-neuro-accent:          #45D6A4;   /* herda DEC-021 */
+  --p-skill-neuro-accent2:         #1F8A63;
   --p-skill-fronteiristas-accent:  #B5BF9A;
   --p-skill-fronteiristas-accent2: #7A8562;
-  --p-skill-design-accent:         #909098;
-  --p-skill-design-accent2:        #525258;
-  --p-skill-execution-accent:      #E87800;
-  --p-skill-execution-accent2:     #BF4800;
+  --p-skill-design-accent:         #FFA428;   /* herda DEC-021 */
+  --p-skill-design-accent2:        #C77400;
+  --p-skill-execution-accent:      #9D6BF5;   /* herda DEC-021 */
+  --p-skill-execution-accent2:     #6A3CCB;
 
   --p-skill-transversal-accent:    #A89D80;
   --p-skill-transversal-accent2:   #756750;
