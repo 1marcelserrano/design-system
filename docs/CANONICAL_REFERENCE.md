@@ -14,7 +14,7 @@ Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **compu
 A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
 
 - **Spec principal:** `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md` (living doc, consolida v3.0 — Era Midnight)
-- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-018)
+- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-020)
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
 
 ## Decisões integradas na v3.0
@@ -36,6 +36,7 @@ A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecos
 | DEC-015 | M4 Mascot | `--m4-*` (shoes, nocturne, body canônico #FF3B00) |
 | DEC-017 | Tokens canônicos | Nomenclatura `--p-{name}-*`, legados comentados |
 | DEC-018 | Consolidação doc v3 | Living doc único em `DESIGN_MSCREATIVE.SYSTEMS.md` |
+| DEC-020 | Lima Ácida acento principal (2026-06-12) | `#B4C636` substitui terracota `#A85A30` (→ `--ds-ed-accent-legacy`) — contraste máximo em fundo escuro + sobrevivência em thumbnail |
 
 ## Versões arquivadas
 

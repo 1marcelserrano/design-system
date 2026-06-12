@@ -32,7 +32,7 @@
 }
 .product-marker {
   position: absolute; left: 0; top: 0; width: 3px; height: 100%; z-index: 6;
-  background: linear-gradient(180deg, rgba(168,90,48,0.12) 0%, transparent 40%);
+  background: linear-gradient(180deg, rgba(180,198,54,0.12) 0%, transparent 40%);
 }
 .layer-ghost { position: absolute; z-index: 0; pointer-events: none; border-radius: 2px; }
 .glitch-line { position: absolute; left: 0; width: 100%; height: 1px; z-index: 5; pointer-events: none; }
@@ -40,7 +40,7 @@
   position: absolute; z-index: 3; pointer-events: none;
   font-family: var(--ds-ed-font-label, 'Space Mono', monospace);
   letter-spacing: 0.15em; white-space: nowrap;
-  color: var(--ds-ed-ascii, rgba(168,90,48,0.035));
+  color: var(--ds-ed-ascii, rgba(180,198,54,0.035));
 }
 
 /* ── Info strips (top / bottom) ── */
@@ -53,13 +53,13 @@
 }
 .info-strip--top {
   top: 0;
-  background: linear-gradient(180deg, rgba(168,90,48,0.015) 0%, rgba(168,90,48,0.005) 100%);
-  border-bottom: 1px solid rgba(168,90,48,0.06);
+  background: linear-gradient(180deg, rgba(180,198,54,0.015) 0%, rgba(180,198,54,0.005) 100%);
+  border-bottom: 1px solid rgba(180,198,54,0.06);
 }
 .info-strip--bot {
   bottom: 0;
-  background: linear-gradient(0deg, rgba(168,90,48,0.01) 0%, rgba(168,90,48,0.005) 100%);
-  border-top: 1px solid rgba(168,90,48,0.06);
+  background: linear-gradient(0deg, rgba(180,198,54,0.01) 0%, rgba(180,198,54,0.005) 100%);
+  border-top: 1px solid rgba(180,198,54,0.06);
 }
 .info-strip__sig { opacity: 0.18; }
 .info-strip__right { display: flex; align-items: center; gap: 14px; }
@@ -71,9 +71,9 @@
   text-transform: uppercase; border-radius: 2px;
 }
 .tag--accent {
-  color: var(--ds-ed-accent-primary, #A85A30);
-  border: 1px solid rgba(168,90,48,0.25);
-  background: rgba(168,90,48,0.04);
+  color: var(--ds-ed-accent-primary, #B4C636);
+  border: 1px solid rgba(180,198,54,0.25);
+  background: rgba(180,198,54,0.04);
 }
 .tag--ghost {
   color: rgba(140,140,140,0.5);
@@ -83,16 +83,16 @@
 
 /* ── Speaker card ── */
 .speaker-card {
-  border-top: 1px solid rgba(168,90,48,0.06);
-  border-bottom: 1px solid rgba(168,90,48,0.06);
+  border-top: 1px solid rgba(180,198,54,0.06);
+  border-bottom: 1px solid rgba(180,198,54,0.06);
   display: flex; align-items: center;
 }
 .sc-initials {
   display: flex; align-items: center; justify-content: center;
   font-family: var(--ds-ed-font-emphasis, 'Libre Caslon Text', serif);
   font-style: italic;
-  color: var(--ds-ed-accent-primary, #A85A30);
-  border: 1px solid rgba(168,90,48,0.15); flex-shrink: 0;
+  color: var(--ds-ed-accent-primary, #B4C636);
+  border: 1px solid rgba(180,198,54,0.15); flex-shrink: 0;
 }
 .sc-info { display: flex; flex-direction: column; gap: 4px; }
 .sc-name {
@@ -103,7 +103,7 @@
 .sc-role {
   font-family: var(--ds-ed-font-label, 'Space Mono', monospace);
   text-transform: uppercase; letter-spacing: 0.2em;
-  color: var(--ds-ed-text-label-accent, rgba(168,90,48,0.2));
+  color: var(--ds-ed-text-label-accent, rgba(180,198,54,0.2));
 }
 
 /* ── Headline / emphasis / rule / subtitle ── */
@@ -116,11 +116,11 @@
 .headline em {
   font-family: var(--ds-ed-font-emphasis, 'Libre Caslon Text', serif);
   font-style: italic; font-weight: 400;
-  color: var(--ds-ed-text-emphasis, #A85A30);
+  color: var(--ds-ed-text-emphasis, #B4C636);
 }
 .rule {
   height: 1px; border: none;
-  background: var(--ds-ed-accent-rule, linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%));
+  background: var(--ds-ed-accent-rule, linear-gradient(90deg, #B4C636 0%, #6A7820 50%, transparent 100%));
 }
 .subtitle {
   font-family: var(--ds-ed-font-body, 'IBM Plex Sans', sans-serif);

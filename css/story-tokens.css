@@ -31,17 +31,17 @@
 
   /* ── Ghost layers ── */
   --ds-story-ghost-1-inset:      -8px;
-  --ds-story-ghost-1-color:      rgba(168, 90, 48, 0.06);
+  --ds-story-ghost-1-color:      rgba(180, 198, 54, 0.06);
   --ds-story-ghost-2-inset:      -16px;
-  --ds-story-ghost-2-color:      rgba(168, 90, 48, 0.04);
+  --ds-story-ghost-2-color:      rgba(180, 198, 54, 0.04);
   --ds-story-ghost-3-inset:      -24px;
-  --ds-story-ghost-3-color:      rgba(168, 90, 48, 0.025);
+  --ds-story-ghost-3-color:      rgba(180, 198, 54, 0.025);
 
   /* ── Glitch lines ── */
-  --ds-story-glitch-color:       rgba(168, 90, 48, 0.07);
+  --ds-story-glitch-color:       rgba(180, 198, 54, 0.07);
 
   /* ── ASCII fragments ── */
-  --ds-story-ascii-color:        rgba(168, 90, 48, 0.035);
+  --ds-story-ascii-color:        rgba(180, 198, 54, 0.035);
   --ds-story-ascii-size:         16px;   /* was 10px */
 
   /* ── Icosaedro ── */
@@ -50,25 +50,25 @@
   --ds-story-poly-size-default:  280px;
   --ds-story-poly-size-max:      320px;
   /* Study E — Accent Puro Monocromático (aprovado 2026-04-18) */
-  --ds-story-poly-color-1:       #A85A30;
-  --ds-story-poly-color-2:       #A85A30;  /* c2 = c1 — monocromático */
+  --ds-story-poly-color-1:       #B4C636;
+  --ds-story-poly-color-2:       #B4C636;  /* c2 = c1 — monocromático */
 
   /* ── Info strips ── */
   --ds-story-strip-font-size:    18px;   /* was 10px — mobile-first */
   --ds-story-strip-tracking:     1.5px;  /* was 0.18em — fixed px for mobile */
   --ds-story-strip-color:        rgba(130, 130, 130, 0.18);
-  --ds-story-strip-border:       rgba(168, 90, 48, 0.06);
-  --ds-story-strip-bg-top:       linear-gradient(180deg, rgba(168,90,48,0.015) 0%, rgba(168,90,48,0.005) 100%);
-  --ds-story-strip-bg-bottom:    linear-gradient(0deg, rgba(168,90,48,0.01) 0%, rgba(168,90,48,0.005) 100%);
+  --ds-story-strip-border:       rgba(180, 198, 54, 0.06);
+  --ds-story-strip-bg-top:       linear-gradient(180deg, rgba(180,198,54,0.015) 0%, rgba(180,198,54,0.005) 100%);
+  --ds-story-strip-bg-bottom:    linear-gradient(0deg, rgba(180,198,54,0.01) 0%, rgba(180,198,54,0.005) 100%);
 
   /* ── Tags ── */
   --ds-story-tag-font-size:      22px;   /* was 10px */
   --ds-story-tag-tracking:       1.5px;  /* was 0.18em */
   --ds-story-tag-padding:        10px 20px; /* was 6px 14px */
   --ds-story-tag-radius:         3px;    /* was 2px */
-  --ds-story-tag-accent-color:   #A85A30;
-  --ds-story-tag-accent-border:  rgba(168, 90, 48, 0.25);
-  --ds-story-tag-accent-bg:      rgba(168, 90, 48, 0.04);
+  --ds-story-tag-accent-color:   #B4C636;
+  --ds-story-tag-accent-border:  rgba(180, 198, 54, 0.25);
+  --ds-story-tag-accent-bg:      rgba(180, 198, 54, 0.04);
   --ds-story-tag-ghost-color:    rgba(140, 140, 140, 0.5);
   --ds-story-tag-ghost-border:   rgba(255, 255, 255, 0.04);
   --ds-story-tag-ghost-bg:       rgba(140, 140, 140, 0.06);
@@ -83,11 +83,11 @@
   --ds-story-headline-em-font:   'Libre Caslon Text', serif;  /* Typo B */
   --ds-story-headline-em-size:   92px;   /* was 62px */
   --ds-story-headline-em-weight: 400;
-  --ds-story-headline-em-color:  #A85A30;
+  --ds-story-headline-em-color:  #B4C636;
 
   /* ── Rule ── */
   --ds-story-rule-height:        1px;
-  --ds-story-rule-gradient:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+  --ds-story-rule-gradient:      linear-gradient(90deg, #B4C636 0%, #6A7820 50%, transparent 100%);
 
   /* ── Subtitle ── */
   --ds-story-subtitle-font:      'IBM Plex Sans', sans-serif;  /* Typo B */
@@ -98,18 +98,18 @@
 
   /* ── Speaker card ── */
   --ds-story-speaker-gap:        28px;
-  --ds-story-speaker-border:     rgba(168, 90, 48, 0.06);
+  --ds-story-speaker-border:     rgba(180, 198, 54, 0.06);
   --ds-story-speaker-init-size:  80px;   /* was 64px */
   --ds-story-speaker-init-font:  'Libre Caslon Text', serif;  /* Typo B */
   --ds-story-speaker-init-fsize: 44px;   /* was 28px */
-  --ds-story-speaker-init-color: #A85A30;
-  --ds-story-speaker-init-border: rgba(168, 90, 48, 0.15);
+  --ds-story-speaker-init-color: #B4C636;
+  --ds-story-speaker-init-border: rgba(180, 198, 54, 0.15);
   --ds-story-speaker-name-font:  'IBM Plex Sans', sans-serif;  /* Typo B */
   --ds-story-speaker-name-size:  22px;   /* was 17px */
   --ds-story-speaker-name-color: rgba(130, 130, 130, 0.4);
   --ds-story-speaker-role-font:  'Space Mono', monospace;
   --ds-story-speaker-role-size:  26px;   /* was 9px */
-  --ds-story-speaker-role-color: rgba(168, 90, 48, 0.2);
+  --ds-story-speaker-role-color: rgba(180, 198, 54, 0.2);
 
   /* ── MS Signature ── */
   --ds-story-sig-width:          32px;

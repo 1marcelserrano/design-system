@@ -3,7 +3,7 @@
 **Status:** Canônico (validado em produção — OFFF Barcelona 2026, 5 stories publicados)
 **Formato:** 1080 × 1920px (Instagram Story 9:16)
 **Stack tipográfico:** Inter + Instrument Serif + Space Mono
-**Paleta:** Chumbo Puro + Electric Orange
+**Paleta:** Chumbo Puro + Lima Ácida (DEC-020 · 2026-06-12 — terracota #A85A30 vira acento legado)
 **Tokens:** `css/story-tokens.css` (namespace `--ds-story-*`)
 **Template:** `templates/story.html`
 
@@ -39,16 +39,16 @@ https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=L
 |---|---|---|
 | Background | `linear-gradient(145deg, #0A0A0E, #111114)` | Body |
 | Headline | `#6A6A6A` | Inter Light base |
-| Emphasis `<em>` | `#A85A30` | Instrument Serif italic |
+| Emphasis `<em>` | `#B4C636` | Instrument Serif italic |
 | Subtitle | `rgba(130,130,130, 0.4)` | Inter Light body |
-| Rule gradient | `#A85A30 → #6A3818 → transparent` | Divider |
-| Tag accent | `#A85A30` @ border `rgba(168,90,48, 0.25)` | Speaker tag |
+| Rule gradient | `#B4C636 → #6A7820 → transparent` | Divider |
+| Tag accent | `#B4C636` @ border `rgba(180,198,54, 0.25)` | Speaker tag |
 | Tag ghost | `rgba(140,140,140, 0.5)` @ border `rgba(255,255,255, 0.04)` | Context tags |
 | Info strip | `rgba(130,130,130, 0.18)` | Top/bottom metadata |
-| ASCII fragment | `rgba(168,90,48, 0.035)` | Decorative texture |
+| ASCII fragment | `rgba(180,198,54, 0.035)` | Decorative texture |
 | Ghost layers | `0.06 / 0.04 / 0.025` | Border-only echoes |
-| Wireframe | `#A85A30 / #6A3818` | Icosaedro gradient |
-| Speaker card | `rgba(168,90,48, 0.15)` border | Attribution |
+| Wireframe | `#B4C636 / #6A7820` | Icosaedro gradient |
+| Speaker card | `rgba(180,198,54, 0.15)` border | Attribution |
 
 ---
 

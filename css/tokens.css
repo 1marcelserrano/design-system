@@ -139,8 +139,10 @@
   /* --ds-accent-gold:         #D4AF37; */
   /* --ds-accent-gold-dark:    #8B6914; */
 
-  /* === EDITORIAL PALETTE (Chumbo Puro + Electric Orange) ===
+  /* === EDITORIAL PALETTE (Chumbo Puro + Lima Ácida) ===
      All --ds-ed-* color tokens
+     DEC-020 (2026-06-12): lima ácida #B4C636 vira acento principal —
+     contraste máximo em fundo escuro + sobrevivência em thumbnail.
      ────────────────────────────────────────────────────────── */
 
   /* Backgrounds */
@@ -148,23 +150,29 @@
 
   /* Text */
   --ds-ed-text-headline:    #6A6A6A;
-  --ds-ed-text-emphasis:    #A85A30;
+  --ds-ed-text-emphasis:    #B4C636;
   --ds-ed-text-body:        rgba(130, 130, 130, 0.4);
   --ds-ed-text-label:       rgba(130, 130, 130, 0.18);
-  --ds-ed-text-label-accent: rgba(168, 90, 48, 0.2);
+  --ds-ed-text-label-accent: rgba(180, 198, 54, 0.2);
 
   /* Accents */
-  --ds-ed-accent-primary:   #A85A30;
-  --ds-ed-accent-secondary: #6A3818;
-  --ds-ed-accent-rule:      linear-gradient(90deg, #A85A30 0%, #6A3818 50%, transparent 100%);
+  --ds-ed-accent-primary:   #B4C636;
+  --ds-ed-accent-secondary: #6A7820;
+  --ds-ed-accent-rule:      linear-gradient(90deg, #B4C636 0%, #6A7820 50%, transparent 100%);
+
+  /* Acento legado — Terracota (DEC-020 · 2026-06-12).
+     Peças antigas continuam válidas; peça nova não usa
+     sem pedido explícito. Não deletar. */
+  --ds-ed-accent-legacy:      #A85A30;
+  --ds-ed-accent-legacy-dark: #6A3818;
 
   /* Ghosts / structure / glitch */
   --ds-ed-grid-line:        rgba(255, 255, 255, 0.025);
-  --ds-ed-ghost-1:          rgba(168, 90, 48, 0.06);
-  --ds-ed-ghost-2:          rgba(168, 90, 48, 0.04);
-  --ds-ed-ghost-3:          rgba(168, 90, 48, 0.025);
-  --ds-ed-glitch:           rgba(168, 90, 48, 0.07);
-  --ds-ed-ascii:            rgba(168, 90, 48, 0.035);
+  --ds-ed-ghost-1:          rgba(180, 198, 54, 0.06);
+  --ds-ed-ghost-2:          rgba(180, 198, 54, 0.04);
+  --ds-ed-ghost-3:          rgba(180, 198, 54, 0.025);
+  --ds-ed-glitch:           rgba(180, 198, 54, 0.07);
+  --ds-ed-ascii:            rgba(180, 198, 54, 0.035);
 
   /* === SEMANTIC ===
      Status colors
@@ -384,13 +392,13 @@
 [data-product="mscs"] {
   --p-bg:            linear-gradient(145deg, #0A0A0E 0%, #111114 100%);
   --p-headline:      #6A6A6A;
-  --p-emphasis:      #A85A30;
+  --p-emphasis:      #B4C636;
   --p-subtitle:      rgba(130, 130, 130, 0.4);
-  --p-rule-start:    #A85A30;
-  --p-rule-end:      #6A3818;
+  --p-rule-start:    #B4C636;
+  --p-rule-end:      #6A7820;
   --p-wireframe-1:   rgba(106, 106, 106, 0.08);
-  --p-wireframe-2:   rgba(168, 90, 48, 0.06);
-  --p-identity:      #A85A30;
+  --p-wireframe-2:   rgba(180, 198, 54, 0.06);
+  --p-identity:      #B4C636;
 }
 
 /* ── Oracle ──────────────────────────────────────────────── */

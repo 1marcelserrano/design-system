@@ -1062,9 +1062,9 @@ section {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .vs-override-banner {
-  background: linear-gradient(135deg, rgba(168,90,48,0.08), rgba(168,90,48,0.02));
-  border: 1px solid rgba(168,90,48,0.15);
-  border-left: 3px solid #A85A30;
+  background: linear-gradient(135deg, rgba(180,198,54,0.08), rgba(180,198,54,0.02));
+  border: 1px solid rgba(180,198,54,0.15);
+  border-left: 3px solid #B4C636;
   border-radius: 8px;
   padding: 20px 24px;
   margin-bottom: 40px;
@@ -1075,7 +1075,7 @@ section {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #A85A30;
+  color: #B4C636;
   margin-bottom: 8px;
 }
 
@@ -1308,7 +1308,7 @@ section {
   height: 356px;
   background: linear-gradient(145deg, #0A0A0E, #111114);
   border-radius: 12px;
-  border: 1px solid rgba(168,90,48,0.15);
+  border: 1px solid rgba(180,198,54,0.15);
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -1371,8 +1371,8 @@ section {
 }
 
 .offf-story-mockup .osm-tag-accent {
-  color: #A85A30;
-  border: 1px solid rgba(168,90,48,0.25);
+  color: #B4C636;
+  border: 1px solid rgba(180,198,54,0.25);
 }
 
 .offf-story-mockup .osm-tag-ghost {
@@ -1392,14 +1392,14 @@ section {
 .offf-story-mockup .osm-headline em {
   font-family: 'Libre Caslon Text', serif;
   font-style: italic;
-  color: #A85A30;
+  color: #B4C636;
   font-size: 18px;
   font-weight: 400;
 }
 
 .offf-story-mockup .osm-rule {
   height: 1px;
-  background: linear-gradient(90deg, #A85A30, #6A3818, transparent);
+  background: linear-gradient(90deg, #B4C636, #6A7820, transparent);
   margin-bottom: 10px;
 }
 
@@ -1418,14 +1418,14 @@ section {
   gap: 6px;
   padding: 6px 8px;
   background: rgba(10,10,14,0.8);
-  border: 1px solid rgba(168,90,48,0.15);
+  border: 1px solid rgba(180,198,54,0.15);
   border-radius: 6px;
 }
 
 .offf-story-mockup .osm-speaker-initials {
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(168,90,48,0.25);
+  border: 1px solid rgba(180,198,54,0.25);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -1433,7 +1433,7 @@ section {
   font-family: 'Libre Caslon Text', serif;
   font-style: italic;
   font-size: 10px;
-  color: #A85A30;
+  color: #B4C636;
 }
 
 .offf-story-mockup .osm-speaker-name {
@@ -1457,7 +1457,7 @@ section {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, rgba(168,90,48,0.12), transparent);
+  background: linear-gradient(to bottom, rgba(180,198,54,0.12), transparent);
 }
 
 .offf-preview-row {
@@ -1488,7 +1488,7 @@ section {
 .offf-layer-card .olc-num {
   font-family: var(--ds-font-display);
   font-size: 20px;
-  color: rgba(168,90,48,0.3);
+  color: rgba(180,198,54,0.3);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -1498,7 +1498,7 @@ section {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #A85A30;
+  color: #B4C636;
   margin-bottom: 6px;
 }
 
@@ -1520,7 +1520,7 @@ section {
 .offf-variation-table td:first-child {
   font-family: var(--ds-font-label);
   font-size: 11px;
-  color: #A85A30;
+  color: #B4C636;
 }
 
 .offf-font-sample {
@@ -1562,7 +1562,7 @@ section {
   height: 320px;
   background: linear-gradient(145deg, #0A0A0E, #111114);
   border-radius: 10px;
-  border: 1px solid rgba(168,90,48,0.12);
+  border: 1px solid rgba(180,198,54,0.12);
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -1596,12 +1596,12 @@ section {
 .cormorant-mockup .cm-headline em {
   font-style: italic;
   font-weight: 600;
-  color: #A85A30;
+  color: #B4C636;
 }
 
 .cormorant-mockup .cm-rule {
   height: 1px;
-  background: rgba(168,90,48,0.12);
+  background: rgba(180,198,54,0.12);
   margin-bottom: 10px;
   position: relative;
 }
@@ -1618,7 +1618,7 @@ section {
   font-weight: 700;
   font-size: 36px;
   line-height: 0.8;
-  color: rgba(168,90,48,0.12);
+  color: rgba(180,198,54,0.12);
 }
 
 .cormorant-mockup .cm-drop-text {
@@ -1662,7 +1662,7 @@ section {
 }
 
 .eds-col.product::before { background: linear-gradient(180deg, rgba(154,122,40,0.4), transparent); }
-.eds-col.editorial::before { background: linear-gradient(180deg, rgba(168,90,48,0.4), transparent); }
+.eds-col.editorial::before { background: linear-gradient(180deg, rgba(180,198,54,0.4), transparent); }
 
 .eds-col .eds-badge {
   font-family: var(--ds-font-label);
@@ -1673,7 +1673,7 @@ section {
 }
 
 .eds-col.product .eds-badge { color: #9A7A28; }
-.eds-col.editorial .eds-badge { color: #A85A30; }
+.eds-col.editorial .eds-badge { color: #B4C636; }
 
 .eds-col .eds-headline {
   font-size: 22px;
@@ -1704,7 +1704,7 @@ section {
   font-style: italic;
   font-weight: 400;
   font-size: 25px;
-  color: #A85A30;
+  color: #B4C636;
 }
 
 .eds-col .eds-rule {
@@ -1714,7 +1714,7 @@ section {
 }
 
 .eds-col.product .eds-rule { background: linear-gradient(90deg, #9A7A28, #6A5418 60%, transparent); height: 2px; }
-.eds-col.editorial .eds-rule { background: linear-gradient(90deg, #A85A30, #6A3818 50%, transparent); }
+.eds-col.editorial .eds-rule { background: linear-gradient(90deg, #B4C636, #6A7820 50%, transparent); }
 
 .eds-col .eds-body {
   font-size: 13px;
@@ -1755,7 +1755,7 @@ section {
 .eds-route-card .eds-rc-arrow {
   font-family: var(--ds-font-label);
   font-size: 14px;
-  color: #A85A30;
+  color: #B4C636;
   flex-shrink: 0;
   margin-top: 2px;
 }

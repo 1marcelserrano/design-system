@@ -4,6 +4,9 @@ Todo release notável documentado aqui. Formato: [Keep a Changelog](https://keep
 
 ## [Unreleased]
 
+### Changed
+- **DEC-020 (2026-06-12)** — Lima ácida `#B4C636` vira acento principal do DS V3.0 (paleta editorial + escopo MSCS): contraste máximo em fundo escuro + sobrevivência em thumbnail. Terracota `#A85A30` vira acento legado (`--ds-ed-accent-legacy` / `--ds-ed-accent-legacy-dark`) — peças antigas continuam válidas. Par escuro do gradiente: `#6A3818` → `#6A7820`. Estudos datados em `studies/editorial_typography/` preservados na era terracota.
+
 ## [Governance 1.0.0] — 2026-04-22
 
 ### Added
