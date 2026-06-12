@@ -1016,7 +1016,7 @@ section {
 .codex-label--style         { color: var(--p-style-accent1); }         /* #F2638C toranja ácida — DEC-021 */
 .codex-label--neuro         { color: var(--p-neuro-accent1); }         /* #45D6A4 menta ácida — DEC-021 */
 .codex-label--exec          { color: var(--p-execution-accent1); }     /* #9D6BF5 violeta elétrica — DEC-021 */
-.codex-label--oracle        { color: var(--p-oracle-accent-start); }   /* #E8397A — DEC-006 */
+.codex-label--oracle        { background: var(--p-oracle-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }   /* gradiente DEC-022 — cor única colidiria com Design (start) ou Style (mid) */
 .codex-label--fronteiristas { color: var(--p-fronteiristas-accent1); } /* #B5BF9A — DEC-005 */
 .codex-label--mscs          { color: var(--p-ms-accent1); }            /* #A89D80 — DEC-001 */
 

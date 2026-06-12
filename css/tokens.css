@@ -240,9 +240,11 @@
   /* ──────────────────────────────────────────────
      CREATIVE ORACLE  [DEC-006]
   ────────────────────────────────────────────── */
-  --p-oracle-accent-start:  #E8397A;
-  --p-oracle-accent-end:    #E87800;
-  --p-oracle-gradient:      linear-gradient(135deg, #E8397A 0%, #E87800 100%);
+  --p-oracle-accent-start:  #FFA428;   /* tangerina ácida — DEC-022 */
+  --p-oracle-accent-mid:    #F2638C;   /* toranja ácida — DEC-022 */
+  --p-oracle-accent-end:    #9D6BF5;   /* violeta elétrica — DEC-022 */
+  --p-oracle-gradient:      linear-gradient(135deg, #FFA428 0%, #F2638C 50%, #9D6BF5 100%);
+  /* legado DEC-006: start #E8397A · end #E87800 · gradiente rosa→laranja */
   --p-oracle-bg-start:      #0F1008;
   --p-oracle-bg-end:        #1E1A08;
   --p-oracle-bg-gradient:   linear-gradient(160deg, #0F1008 0%, #1E1A08 100%);
@@ -337,16 +339,17 @@
   --m4-shoe-ms-2:             #756750;
   --m4-shoe-fronteiristas-1:  #B5BF9A;
   --m4-shoe-fronteiristas-2:  #7A8562;
-  --m4-shoe-oracle-1:         #E8397A;
-  --m4-shoe-oracle-2:         #E87800;
-  --m4-shoe-neuro-1:          #00C9C8;
-  --m4-shoe-neuro-2:          #007A7A;
-  --m4-shoe-style-1:          #E8397A;
-  --m4-shoe-style-2:          #F55A2A;
-  --m4-shoe-design-1:         #909098;
-  --m4-shoe-design-2:         #525258;
-  --m4-shoe-execution-1:      #E87800;
-  --m4-shoe-execution-2:      #BF4800;
+  --m4-shoe-oracle-1:         #FFA428;   /* tênis seguem DEC-021/022 */
+  --m4-shoe-oracle-2:         #9D6BF5;
+  --m4-shoe-neuro-1:          #45D6A4;
+  --m4-shoe-neuro-2:          #1F8A63;
+  --m4-shoe-style-1:          #F2638C;
+  --m4-shoe-style-2:          #B23358;
+  --m4-shoe-design-1:         #FFA428;
+  --m4-shoe-design-2:         #C77400;
+  --m4-shoe-execution-1:      #9D6BF5;
+  --m4-shoe-execution-2:      #6A3CCB;
+  /* legado DEC-015: oracle #E8397A/#E87800 · neuro #00C9C8/#007A7A · style #E8397A/#F55A2A · design #909098/#525258 · execution #E87800/#BF4800 */
   --m4-shoe-emblem-1:         #E8C547;
   --m4-shoe-emblem-2:         #B8941F;
   --m4-shoe-neutral-1:        #404040;
@@ -366,7 +369,7 @@
   /* ──────────────────────────────────────────────
      SUBPRODUTOS — HERANÇA  [DEC-014]
   ────────────────────────────────────────────── */
-  --p-kb-indicator:         linear-gradient(135deg, #E8397A 0%, #E87800 100%);
+  --p-kb-indicator:         linear-gradient(135deg, #FFA428 0%, #F2638C 50%, #9D6BF5 100%);   /* segue o Oracle — DEC-022 */
 
   --p-skill-style-accent:          #F2638C;   /* herda DEC-021 */
   --p-skill-style-accent2:         #B23358;
