@@ -2,7 +2,7 @@
 
 **Status:** Canônico (validado em produção — OFFF Barcelona 2026, 5 stories publicados)
 **Formato:** 1080 × 1920px (Instagram Story 9:16)
-**Stack tipográfico:** Inter + Instrument Serif + Space Mono
+**Stack tipográfico:** Fraunces (headline + ênfase italic) + Inter Tight (corpo) + IBM Plex Mono (labels) — registro editorial unificado (DEC-024)
 **Paleta:** Chumbo Puro + Lima Ácida (DEC-020 · 2026-06-12 — terracota #A85A30 vira acento legado)
 **Tokens:** `css/story-tokens.css` (namespace `--ds-story-*`)
 **Template:** `templates/story.html`
@@ -11,24 +11,24 @@
 
 ## Tipografia
 
-**Stack:** IBM Plex Sans + Libre Caslon Text + Space Mono (Typo B editorial)
+**Stack:** Fraunces (headline + ênfase italic) + Inter Tight (corpo) + IBM Plex Mono (labels) — registro editorial unificado, DEC-024
 **Escala:** Mobile-first (canvas 1080px ÷3 on phones → ~360px CSS). Min absolute: 16px.
 
 | Papel | Font | Peso | Tamanho | Token |
 |---|---|---|---|---|
-| Headline base | IBM Plex Sans | 300 (Light) | **80px** | `--ds-story-headline-size` |
-| Headline emphasis `<em>` | Libre Caslon Text | italic 400 | **92px** | `--ds-story-headline-em-size` |
-| Subtitle | IBM Plex Sans | 300 | **36px** | `--ds-story-subtitle-size` |
-| Tags / labels / strips | Space Mono | 400 | **22px** uppercase | `--ds-story-tag-font-size` |
-| Info strips | Space Mono | 400 | **18px** | `--ds-story-strip-font-size` |
-| ASCII fragments | Space Mono | 400 | **16px** | `--ds-story-ascii-size` |
-| Speaker initials | Libre Caslon Text | italic | **44px** (box 80×80) | `--ds-story-speaker-init-fsize` |
-| Speaker name | IBM Plex Sans | 400 | **22px** | `--ds-story-speaker-name-size` |
-| Speaker role | Space Mono | 400 | **26px** uppercase | `--ds-story-speaker-role-size` |
+| Headline base | Fraunces (opsz 36) | 360 | **80px** | `--ds-story-headline-size` |
+| Headline emphasis `<em>` | Fraunces italic | italic 400 | **92px** | `--ds-story-headline-em-size` |
+| Subtitle | Inter Tight | 300 | **36px** | `--ds-story-subtitle-size` |
+| Tags / labels / strips | IBM Plex Mono | 400 | **22px** uppercase | `--ds-story-tag-font-size` |
+| Info strips | IBM Plex Mono | 400 | **18px** | `--ds-story-strip-font-size` |
+| ASCII fragments | IBM Plex Mono | 400 | **16px** | `--ds-story-ascii-size` |
+| Speaker initials | Fraunces italic | italic | **44px** (box 80×80) | `--ds-story-speaker-init-fsize` |
+| Speaker name | Inter Tight | 400 | **22px** | `--ds-story-speaker-name-size` |
+| Speaker role | IBM Plex Mono | 400 | **26px** uppercase | `--ds-story-speaker-role-size` |
 
 Google Fonts (copiar exatamente):
 ```
-https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap
+https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@400;600;700&display=swap
 ```
 
 ---
@@ -38,9 +38,9 @@ https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=L
 | Token | Valor | Uso |
 |---|---|---|
 | Background | `linear-gradient(145deg, #0A0A0E, #111114)` | Body |
-| Headline | `#6A6A6A` | Inter Light base |
-| Emphasis `<em>` | `#B4C636` | Instrument Serif italic |
-| Subtitle | `rgba(130,130,130, 0.4)` | Inter Light body |
+| Headline | `#6A6A6A` | Fraunces base (opsz 36) |
+| Emphasis `<em>` | `#B4C636` | Fraunces italic |
+| Subtitle | `rgba(130,130,130, 0.4)` | Inter Tight body |
 | Rule gradient | `#B4C636 → #6A7820 → transparent` | Divider |
 | Tag accent | `#B4C636` @ border `rgba(180,198,54, 0.25)` | Speaker tag |
 | Tag ghost | `rgba(140,140,140, 0.5)` @ border `rgba(255,255,255, 0.04)` | Context tags |

@@ -40,16 +40,34 @@
   /* --ds-font-body-legacy:    'DM Sans', sans-serif; */
   /* --ds-font-label-legacy:   'Space Mono', monospace; */
 
-  /* === EDITORIAL STACK — TYPOGRAPHY (Typo B) ===
-     IBM Plex Sans + Libre Caslon Text + Space Mono
-     All clamp sizes from MD spec §8
+  /* === EDITORIAL STACK — TYPOGRAPHY (Typo B → DEC-024) ===
+     Fraunces unificado: Fraunces governa headline e ênfase nos dois
+     registros via eixo óptico opsz. Registro editorial = opsz 24–36 /
+     wght 340–400 (quieto), ênfase em Fraunces italic. Inter Tight é o
+     corpo universal. IBM Plex Mono é o único monoespaçado.
+     Caixa permanece sentence case (DEC-023).
+     All clamp sizes from MD spec §8 (tamanhos preservados).
      ────────────────────────────────────────────────────────── */
 
-  /* Families */
-  --ds-ed-font-headline:    'IBM Plex Sans', sans-serif;
-  --ds-ed-font-emphasis:    'Libre Caslon Text', serif;
-  --ds-ed-font-body:        'IBM Plex Sans', sans-serif;
-  --ds-ed-font-label:       'Space Mono', monospace;
+  /* Families (DEC-024 · 2026-06-17) */
+  --ds-ed-font-headline:    'Fraunces', Georgia, serif;
+  --ds-ed-font-emphasis:    'Fraunces', Georgia, serif;   /* aplicar font-style: italic */
+  --ds-ed-font-body:        'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ds-ed-font-label:       'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Fraunces optical-size targets para o registro editorial.
+     opsz 24 = body editorial; opsz 36 = headline editorial quieto.
+     Sem font-variation-settings a variable font cai no default. */
+  --ds-ed-opsz-headline:    36;
+  --ds-ed-opsz-body:        24;
+
+  /* Legacy editorial stack (Typo B pre-DEC-024) — DEPRECATED (DEC-017).
+     Preservado como comentário para referência de migração.
+     Remover em PR de limpeza pós-rollout. */
+  /* --ds-ed-font-headline-legacy: 'IBM Plex Sans', sans-serif; */
+  /* --ds-ed-font-emphasis-legacy: 'Libre Caslon Text', serif; */
+  /* --ds-ed-font-body-legacy:     'IBM Plex Sans', sans-serif; */
+  /* --ds-ed-font-label-legacy:    'Space Mono', monospace; */
 
   /* Weights */
   --ds-ed-w-light:          300;

@@ -1,6 +1,8 @@
 # EDITORIAL TYPOGRAPHY SYSTEM — V1
 
-**Status:** DRAFT · aguardando aprovação
+> ⚠️ **SUPERSEDED por DEC-024 (2026-06-17).** Este documento descreve o stack editorial Typo B (IBM Plex Sans + Libre Caslon Text + Space Mono), retirado pela decisão DEC-024 — Fraunces unificado. Mantido como **registro histórico de época** (era V2.2). Para o sistema vigente, ver `docs/CANONICAL_REFERENCE.md` (DEC-024) e `CHANGELOG.md`. Não usar como referência de produção.
+
+**Status:** SUPERSEDED (DEC-024) · originalmente DRAFT · aguardando aprovação
 **Parent system:** MSCREATIVE.SYSTEMS™ Design System V2.2
 **Escopo:** subsistema tipográfico editorial. Coexiste com o stack de produto. Não substitui.
 **Data:** 2026-04-18
