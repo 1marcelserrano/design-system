@@ -13,9 +13,11 @@ Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **compu
 
 A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
 
-- **Spec principal:** `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md` (living doc, consolida v3.0 — Era Midnight)
+- **DESIGN.md portável:** `MD FILES/KNOWLEDGE/DESIGN.md` (v3.2 — auto-contido, Claude Design ready; cor reconciliada a DEC-020/021/022/023). Artefato de upload / input persistente.
+- **Pipeline Design Codex™:** `MD FILES/KNOWLEDGE/PROCEDURAL_DESIGN_CODEX_PIPELINE.md` (método de 6 passos: extrair brand system → DESIGN.md → 4 buckets → iterar → validar WCAG → export).
 - **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024)
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
+- **Living-doc v3.1 pré-portável** (arquivado): `MD FILES/_archive/2026-06-19_design_md_portable/`
 
 ## Decisões integradas na v3.0
 
