@@ -15,7 +15,7 @@ A spec **textual** (humana) canônica agora vive **neste repo** (versionada, com
 
 - **DESIGN.md portável:** [`docs/DESIGN.md`](./DESIGN.md) (v3.2 — auto-contido, Claude Design ready; cor reconciliada a DEC-020/021/022/023). Working copy de upload: `MD FILES/KNOWLEDGE/DESIGN.md` (gitignored, espelhada daqui).
 - **Pipeline Design Codex™:** [`docs/PROCEDURAL_DESIGN_CODEX_PIPELINE.md`](./PROCEDURAL_DESIGN_CODEX_PIPELINE.md) (método de 6 passos: extrair brand system → DESIGN.md → 4 buckets → iterar → validar WCAG → export).
-- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024) — ainda externa (gitignored); candidata a versionar aqui num próximo passo.
+- **Decisões:** `MSCS_OS/05_operations/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024) — versionada no repo `MSCS_OS` (lar dos canônicos de conteúdo). Working copy: `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (gitignored, espelhada de lá).
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
 - **Living-doc v3.1 pré-portável** (arquivado): `MD FILES/_archive/2026-06-19_design_md_portable/`
 
