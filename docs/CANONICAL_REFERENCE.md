@@ -11,11 +11,11 @@ Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **compu
 - **HTMLs:** `index.html`, `products.html`, `formats.html`, `governance.html`, `studies.html`
 - **Deploy:** https://design-system-beta.vercel.app/
 
-A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
+A spec **textual** (humana) canônica agora vive **neste repo** (versionada, com backup git), em `docs/`. Reverte a parte de "fora do repo" da DEC-018/commit `114e4de`: apontar pra `KNOWLEDGE/` (gitignored) deixava o entregável sem backup. A cópia em `KNOWLEDGE/` segue como working copy de upload do Claude Design, espelhada deste repo.
 
-- **DESIGN.md portável:** `MD FILES/KNOWLEDGE/DESIGN.md` (v3.2 — auto-contido, Claude Design ready; cor reconciliada a DEC-020/021/022/023). Artefato de upload / input persistente.
-- **Pipeline Design Codex™:** `MD FILES/KNOWLEDGE/PROCEDURAL_DESIGN_CODEX_PIPELINE.md` (método de 6 passos: extrair brand system → DESIGN.md → 4 buckets → iterar → validar WCAG → export).
-- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024)
+- **DESIGN.md portável:** [`docs/DESIGN.md`](./DESIGN.md) (v3.2 — auto-contido, Claude Design ready; cor reconciliada a DEC-020/021/022/023). Working copy de upload: `MD FILES/KNOWLEDGE/DESIGN.md` (gitignored, espelhada daqui).
+- **Pipeline Design Codex™:** [`docs/PROCEDURAL_DESIGN_CODEX_PIPELINE.md`](./PROCEDURAL_DESIGN_CODEX_PIPELINE.md) (método de 6 passos: extrair brand system → DESIGN.md → 4 buckets → iterar → validar WCAG → export).
+- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024) — ainda externa (gitignored); candidata a versionar aqui num próximo passo.
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
 - **Living-doc v3.1 pré-portável** (arquivado): `MD FILES/_archive/2026-06-19_design_md_portable/`
 
@@ -56,7 +56,7 @@ Ver README naquele diretório para detalhes do motivo e conteúdo.
 
 Ao editar este repo, sempre:
 
-1. Verificar consistência com `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md`
+1. Verificar consistência com [`docs/DESIGN.md`](./DESIGN.md) (spec textual canônica in-repo)
 2. Consultar `DECISIONS_DESIGN_SYSTEM.md` antes de introduzir novos tokens
 3. Nunca reativar tokens legados comentados (`--ds-accent-gold`, `--ds-font-*-legacy`)
 4. Novos produtos/codexes exigem DEC dedicado antes de virar token em `tokens.css`
