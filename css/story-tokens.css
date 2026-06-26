@@ -1,7 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
    STORY TOKENS — MSCREATIVE.SYSTEMS™
    Format: 1080 × 1920px (Instagram Story 9:16)
-   Stack: IBM Plex Sans + Libre Caslon Text + Space Mono (Typo B editorial)
+   Stack: Fraunces (headline + emphasis italic) + Inter Tight (body) +
+          IBM Plex Mono (labels) — registro editorial unificado (DEC-024)
    Palette: Chumbo Puro + Electric Orange
    Scale: Mobile-first (canvas ÷3 on phones → ~360px CSS)
    Min absolute: 16px (decorative), 18px (readable text)
@@ -74,13 +75,14 @@
   --ds-story-tag-ghost-bg:       rgba(140, 140, 140, 0.06);
 
   /* ── Headline ── */
-  --ds-story-headline-font:      'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-headline-font:      'Fraunces', Georgia, serif;  /* DEC-024 · opsz 36 wght 360 */
+  --ds-story-headline-vsettings: 'opsz' 36;
   --ds-story-headline-size:      80px;   /* was 54px */
-  --ds-story-headline-weight:    300;
+  --ds-story-headline-weight:    360;    /* DEC-024 editorial wght 340–400 (era 300) */
   --ds-story-headline-lh:        1.12;
   --ds-story-headline-tracking:  -0.02em;
   --ds-story-headline-color:     #6A6A6A;
-  --ds-story-headline-em-font:   'Libre Caslon Text', serif;  /* Typo B */
+  --ds-story-headline-em-font:   'Fraunces', Georgia, serif;  /* DEC-024 · italic */
   --ds-story-headline-em-size:   92px;   /* was 62px */
   --ds-story-headline-em-weight: 400;
   --ds-story-headline-em-color:  #B4C636;
@@ -90,7 +92,7 @@
   --ds-story-rule-gradient:      linear-gradient(90deg, #B4C636 0%, #6A7820 50%, transparent 100%);
 
   /* ── Subtitle ── */
-  --ds-story-subtitle-font:      'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-subtitle-font:      'Inter Tight', sans-serif;  /* DEC-024 · corpo universal */
   --ds-story-subtitle-size:      36px;   /* was 19px */
   --ds-story-subtitle-weight:    300;
   --ds-story-subtitle-lh:        1.5;    /* was 1.65 */
@@ -100,14 +102,14 @@
   --ds-story-speaker-gap:        28px;
   --ds-story-speaker-border:     rgba(180, 198, 54, 0.06);
   --ds-story-speaker-init-size:  80px;   /* was 64px */
-  --ds-story-speaker-init-font:  'Libre Caslon Text', serif;  /* Typo B */
+  --ds-story-speaker-init-font:  'Fraunces', Georgia, serif;  /* DEC-024 · italic */
   --ds-story-speaker-init-fsize: 44px;   /* was 28px */
   --ds-story-speaker-init-color: #B4C636;
   --ds-story-speaker-init-border: rgba(180, 198, 54, 0.15);
-  --ds-story-speaker-name-font:  'IBM Plex Sans', sans-serif;  /* Typo B */
+  --ds-story-speaker-name-font:  'Inter Tight', sans-serif;  /* DEC-024 */
   --ds-story-speaker-name-size:  22px;   /* was 17px */
   --ds-story-speaker-name-color: rgba(130, 130, 130, 0.4);
-  --ds-story-speaker-role-font:  'Space Mono', monospace;
+  --ds-story-speaker-role-font:  'IBM Plex Mono', monospace;  /* DEC-024 */
   --ds-story-speaker-role-size:  26px;   /* was 9px */
   --ds-story-speaker-role-color: rgba(180, 198, 54, 0.2);
 

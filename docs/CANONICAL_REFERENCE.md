@@ -11,11 +11,13 @@ Este repositório (`1marcelserrano/design-system`) é a fonte da verdade **compu
 - **HTMLs:** `index.html`, `products.html`, `formats.html`, `governance.html`, `studies.html`
 - **Deploy:** https://design-system-beta.vercel.app/
 
-A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecossistema:
+A spec **textual** (humana) canônica agora vive **neste repo** (versionada, com backup git), em `docs/`. Reverte a parte de "fora do repo" da DEC-018/commit `114e4de`: apontar pra `KNOWLEDGE/` (gitignored) deixava o entregável sem backup. A cópia em `KNOWLEDGE/` segue como working copy de upload do Claude Design, espelhada deste repo.
 
-- **Spec principal:** `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md` (living doc, consolida v3.0 — Era Midnight)
-- **Decisões:** `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-023)
+- **DESIGN.md portável:** [`docs/DESIGN.md`](./DESIGN.md) (v3.2 — auto-contido, Claude Design ready; cor reconciliada a DEC-020/021/022/023). Working copy de upload: `MD FILES/KNOWLEDGE/DESIGN.md` (gitignored, espelhada daqui).
+- **Pipeline Design Codex™:** [`docs/PROCEDURAL_DESIGN_CODEX_PIPELINE.md`](./PROCEDURAL_DESIGN_CODEX_PIPELINE.md) (método de 6 passos: extrair brand system → DESIGN.md → 4 buckets → iterar → validar WCAG → export).
+- **Decisões:** `MSCS_OS/05_operations/DECISIONS_DESIGN_SYSTEM.md` (DEC-001 a DEC-024) — versionada no repo `MSCS_OS` (lar dos canônicos de conteúdo). Working copy: `MD FILES/KNOWLEDGE/DECISIONS_DESIGN_SYSTEM.md` (gitignored, espelhada de lá).
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
+- **Living-doc v3.1 pré-portável** (arquivado): `MD FILES/_archive/2026-06-19_design_md_portable/`
 
 ## Decisões integradas na v3.0
 
@@ -40,6 +42,7 @@ A spec **textual** (humana) canônica vive fora deste repo, no workspace do ecos
 | DEC-021 | Quartet ácido (2026-06-12) | Neuro `#45D6A4` · Style `#F2638C` · Design `#FFA428` · Execution `#9D6BF5` (pares escuros derivados; legados DEC-007/008/009/010 comentados) |
 | DEC-022 | Oracle pôr-do-sol ácido (2026-06-12) | `--p-oracle-gradient`: `#FFA428` → `#F2638C` → `#9D6BF5` (novo `-mid`); kb-indicator e tênis M4 seguem; label do Oracle vira gradient-clip |
 | DEC-023 | Sentence case padrão (2026-06-12) | Caps restrito a wordmark, siglas e kickers mono (B2); fontes intocadas (A1) — 45 uppercase removidos do chrome, 70 preservados (kickers/mockups/estudos) |
+| DEC-024 | Fraunces unificado (2026-06-17) | Fraunces governa headline e ênfase nos dois registros via `opsz`. Typo B (IBM Plex Sans + Libre Caslon Text + Space Mono) **superseded** → `--ds-ed-font-*` repontados (Fraunces / Fraunces italic / Inter Tight / IBM Plex Mono); legados comentados (DEC-017). Registro produto = opsz 144 / wght 700–900; editorial = opsz 24–36 / wght 340–400. Cormorant (Typo C) reservada a manifesto/longform. Caixa intocada (DEC-023). Estudos em `studies/` preservados na era Typo B |
 
 ## Versões arquivadas
 
@@ -53,7 +56,7 @@ Ver README naquele diretório para detalhes do motivo e conteúdo.
 
 Ao editar este repo, sempre:
 
-1. Verificar consistência com `MD FILES/DESIGN_MSCREATIVE.SYSTEMS.md`
+1. Verificar consistência com [`docs/DESIGN.md`](./DESIGN.md) (spec textual canônica in-repo)
 2. Consultar `DECISIONS_DESIGN_SYSTEM.md` antes de introduzir novos tokens
 3. Nunca reativar tokens legados comentados (`--ds-accent-gold`, `--ds-font-*-legacy`)
 4. Novos produtos/codexes exigem DEC dedicado antes de virar token em `tokens.css`
