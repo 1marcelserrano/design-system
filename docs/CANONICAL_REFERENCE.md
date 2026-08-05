@@ -19,6 +19,20 @@ A spec **textual** (humana) canônica agora vive **neste repo** (versionada, com
 - **M4 Mascot spec:** `MD FILES/PROJECTS/MSCS/MSCREATIVESYSTEMS/05_Company/M4_Mascot/SPEC.md` (v3.0 com DEC-015)
 - **Living-doc v3.1 pré-portável** (arquivado): `MD FILES/_archive/2026-06-19_design_md_portable/`
 
+## MSCS DS V5.2 — camada paralela (2026-08-05)
+
+O sistema de dois modos **Tradutor / Veredicto** vive em [`../DESIGN_SYSTEM.md`](../DESIGN_SYSTEM.md),
+implementado em [`../css/ms-v5.css`](../css/ms-v5.css) e [`../js/rabisco.js`](../js/rabisco.js),
+verificado por [`../tools/contrast.mjs`](../tools/contrast.mjs).
+
+Não substitui a Era Midnight. Prefixo `--ms-*` contra `--ds-*`/`--p-*`: os dois convivem sem
+colisão de nome, e as superfícies públicas listadas acima seguem servidas pelo v3.0. **Qual dos
+dois governa o site é decisão em aberto** — ver `DESIGN_SYSTEM.md` §10.4. Enquanto ela não existir,
+não migrar superfície pública para `--ms-*` sem DEC dedicado.
+
+Os hex do V5.2 são autoridade do `DESIGN_SYSTEM.md`; `css/ms-v5.css` é a implementação, e o
+verificador falha se os dois divergirem. Alterar um exige alterar o outro no mesmo commit.
+
 ## Decisões integradas na v3.0
 
 | DEC | Tema | Impacto neste repo |

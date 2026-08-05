@@ -1,0 +1,237 @@
+/* ═══════════════════════════════════════════════════════════
+   MSCS DS V5.2 — SISTEMA DE DOIS MODOS
+   Tradutor (papel com contorno) · Veredicto (preto elétrico)
+
+   Spec: ../DESIGN_SYSTEM.md
+   Prefixo próprio (--ms-*). Não colide com os tokens da Era
+   Midnight (--ds-* / --p-*) em css/tokens.css, que seguem
+   servindo as superfícies públicas. Ver DESIGN_SYSTEM.md §10.4.
+
+   Razões WCAG nos comentários medidas contra --ms-surface do
+   modo. Verificável por `node tools/contrast.mjs`.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ============ MODO TRADUTOR · papel com contorno · default ============ */
+:root {
+  --ms-bg:        #F2EFE7;  /* papel */
+  --ms-surface:   #FAF8F3;  /* papel elevado */
+  --ms-contorno:  #1A1410;  /* preto quente. 3px, fecha a forma. 17.18:1 */
+  --ms-ink:       #1A1410;  /* 17.18:1 sobre surface */
+  --ms-muted:     #4A463D;  /* corpo longo. 8.85:1 */
+  --ms-label:     #6E6E26;  /* oliva. 5.05:1 em mono 12px */
+  --ms-terra:     #C48F41;  /* ocre. Apoio e rabisco, não carrega texto */
+
+  --ms-vivo-1:    #FF3B00;  /* laranja M4. Ação. Tinta por cima: 5.10:1 */
+  --ms-vivo-2:    #155BB0;  /* azul. Termo-chave. 6.27:1 */
+  --ms-vivo-ink:  #1A1410;
+
+  --ms-shadow:    0 10px 28px rgba(26,20,16,.20), 0 2px 6px rgba(26,20,16,.12);
+  --ms-radius:    0px;
+  --ms-hairline:  1px solid rgba(26,20,16,.16);
+  --ms-measure:   64ch;
+
+  --ms-font-display:"Fraunces", Georgia, serif;
+  --ms-font-body:   "Inter Tight", system-ui, sans-serif;
+  --ms-font-mono:   "IBM Plex Mono", ui-monospace, monospace;
+
+  --ms-space-1:8px; --ms-space-2:16px; --ms-space-3:24px;
+  --ms-space-4:40px; --ms-space-5:64px; --ms-space-6:104px;
+
+  /* Grão de papel — camada real, não filtro (§5) */
+  --ms-grao-blend:   multiply;
+  --ms-grao-opacity: .38;
+}
+
+/* ============ MODO VEREDICTO · preto elétrico · raro ============ */
+[data-modo="veredicto"] {
+  --ms-bg:        #0B0908;  /* preto quente chapado */
+  --ms-surface:   #141210;  /* 1.06:1 do fundo. Ver §3 */
+  --ms-contorno:  #E85A6B;  /* no escuro o contorno sai em coral */
+  --ms-ink:       #F2EFE7;  /* 16.26:1 */
+  --ms-muted:     #B9BDC9;  /* 9.95:1 */
+  --ms-label:     #8C93A8;  /* 6.10:1 */
+  --ms-terra:     #8C93A8;
+
+  --ms-vivo-1:    #E85A6B;  /* coral. Ação. Tinta por cima: 5.78:1 */
+  --ms-vivo-2:    #4B53E0;  /* cobalto. Campo. 3.21:1 do fundo, 5.06:1 com tinta clara */
+  --ms-vivo-3:    #6BC4E8;  /* ciano. Termo-chave. 9.51:1 */
+  --ms-vivo-ink:  #0B0908;
+
+  --ms-shadow:    0 10px 28px rgba(0,0,0,.60), 0 2px 6px rgba(0,0,0,.40);
+  --ms-hairline:  1px solid rgba(242,239,231,.14);
+
+  --ms-grao-blend:   overlay;
+  --ms-grao-opacity: .30;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CAMPO E LAYOUT (§7)
+   Uma coluna de leitura, nunca grade de colunas.
+   ═══════════════════════════════════════════════════════════ */
+
+.ms-campo {
+  position: relative;
+  background: var(--ms-bg);
+  color: var(--ms-ink);
+  font-family: var(--ms-font-body);
+  padding: var(--ms-space-5) 8%;   /* margens largas, ~8% da largura */
+}
+
+.ms-coluna {
+  max-width: var(--ms-measure);
+  margin-inline: auto;
+}
+
+/* A separação entre blocos vem de vazio, não de régua. */
+.ms-coluna > * + * { margin-top: var(--ms-space-4); }
+
+/* Chrome travado no topo à esquerda: monograma + LABEL · 0N/NN.
+   Nunca carrega dado que apodrece por hora (§9). */
+.ms-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  font-family: var(--ms-font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ms-label);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTORNO E ELEVAÇÃO (§5, §3)
+   3px sólido fechando a forma nos quatro lados. A sombra é
+   tingida com a tinta do modo — nunca neutra.
+   No Veredicto a superfície está a 1.06:1 do fundo: sem a
+   sombra, o card desaparece. É decisão, não margem de erro.
+   ═══════════════════════════════════════════════════════════ */
+
+.ms-card {
+  background: var(--ms-surface);
+  border: 3px solid var(--ms-contorno);
+  border-radius: var(--ms-radius);
+  box-shadow: var(--ms-shadow);
+  padding: var(--ms-space-4);
+}
+
+.ms-hairline { border: 0; border-top: var(--ms-hairline); }
+
+/* ═══════════════════════════════════════════════════════════
+   ESCALA TIPOGRÁFICA (§6)
+   Fraunces sempre em opsz 9. Fora de 9 ela afina e deixa de
+   ser a nossa (§2). O eixo WONK não é servido pelo endpoint
+   do Google — não usar sem hospedar o arquivo variável.
+   ═══════════════════════════════════════════════════════════ */
+
+.ms-display-xl,
+.ms-display-l,
+.ms-titulo,
+.ms-citacao {
+  font-family: var(--ms-font-display);
+  font-variation-settings: "opsz" 9;
+  color: var(--ms-ink);
+}
+
+/* Regra de ruptura: um Display XL por peça, no mínimo quatro
+   vezes o corpo. Peça com dois displays não tem nenhum (§6). */
+.ms-display-xl { font-weight: 900; font-size: 96px; line-height: .98; letter-spacing: -.03em; }
+.ms-display-l  { font-weight: 700; font-size: 44px; line-height: 1.14; letter-spacing: -.015em; }
+.ms-titulo     { font-weight: 600; font-size: 30px; line-height: 1.20; letter-spacing: -.01em; }
+.ms-citacao    { font-weight: 400; font-size: 22px; line-height: 1.40; font-style: italic; }
+
+/* Corpo longo nunca em serifa (§9). */
+.ms-corpo       { font-family: var(--ms-font-body); font-weight: 400; font-size: 18px; line-height: 1.55; color: var(--ms-muted); }
+.ms-corpo-curto { font-family: var(--ms-font-body); font-weight: 400; font-size: 15px; line-height: 1.50; color: var(--ms-muted); }
+
+/* Título nunca em mono (§9). Label é o único papel do mono. */
+.ms-label {
+  font-family: var(--ms-font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ms-label);
+}
+
+/* No corpo, cada ponto final quebra linha, e nenhuma palavra
+   fica sozinha na última linha (§7, §9). A quebra é feita na
+   composição; aqui só se impede a viúva de escapar. */
+.ms-corpo, .ms-corpo-curto { text-wrap: pretty; }
+.ms-display-xl, .ms-display-l, .ms-titulo { text-wrap: balance; }
+
+/* ═══════════════════════════════════════════════════════════
+   ELEMENTOS-ASSINATURA (§8)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Termo-chave em guilhemés. Azul no Tradutor, ciano no
+   Veredicto. De 1 a 3 por peça. O ::before/::after carrega o
+   guilhemé para que a marcação não dependa de digitação. */
+.ms-termo {
+  color: var(--ms-vivo-2);
+  font-weight: 500;
+}
+[data-modo="veredicto"] .ms-termo { color: var(--ms-vivo-3); }
+.ms-termo::before { content: "«"; }
+.ms-termo::after  { content: "»"; }
+
+/* Ação. O laranja é fundo, nunca texto: sobre papel dá 3.37:1,
+   reprova como texto corrido e passa como área com tinta
+   escura por cima (5.10:1). Link e termo-chave são do azul (§4). */
+.ms-acao {
+  display: inline-block;
+  background: var(--ms-vivo-1);
+  color: var(--ms-vivo-ink);
+  border: 3px solid var(--ms-contorno);
+  border-radius: var(--ms-radius);   /* nunca pílula (§9) */
+  box-shadow: var(--ms-shadow);
+  padding: var(--ms-space-2) var(--ms-space-3);
+  font-family: var(--ms-font-body);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+/* Campo e estrutura. Só existe no Veredicto, onde o cobalto
+   tem função exclusiva. Tinta clara por cima: 5.06:1. */
+[data-modo="veredicto"] .ms-campo-estrutura {
+  background: var(--ms-vivo-2);
+  color: var(--ms-ink);
+}
+
+/* Grão de papel — camada real (feTurbulence), não filtro.
+   O SVG vive no documento; esta classe só o assenta. */
+.ms-grao {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: var(--ms-grao-blend);
+  opacity: var(--ms-grao-opacity);
+}
+
+/* Rabisco — textura primária. Gerado por js/rabisco.js com
+   semente fixa. Nunca nasce sob o texto: a zona de texto é
+   rejeitada no gerador, não coberta por tarja depois (§5). */
+.ms-rabisco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* O desenho entra inteiro, na cor em que nasceu. O sistema faz
+   moldura para ele em vez de tingi-lo (§7, §9). */
+.ms-desenho {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--ms-contorno);
+  border-radius: var(--ms-radius);
+  box-shadow: var(--ms-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-rabisco, .ms-grao { transition: none; animation: none; }
+}

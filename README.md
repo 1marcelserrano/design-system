@@ -15,9 +15,10 @@ Consumido como submódulo pela sede `mscreative.systems` e por projetos de clien
 
 | Pasta / Arquivo | Conteúdo |
 |-----------------|----------|
-| `css/` | Tokens, shell, seções, editorial, story-tokens |
-| `js/` | Navigation + wireframe-engine |
+| `css/` | Tokens, shell, seções, editorial, story-tokens, `ms-v5.css` |
+| `js/` | Navigation + wireframe-engine + rabisco |
 | `docs/` | `CANONICAL_REFERENCE.md` · story doc |
+| `tools/` | `contrast.mjs` — verificador WCAG dos tokens V5.2 |
 | `studies/` · `templates/` | Estudos de caso e templates reutilizáveis |
 | `index.html` · `formats.html` · `products.html` · `studies.html` · `governance.html` | Superfícies públicas do DS |
 
@@ -26,6 +27,31 @@ Consumido como submódulo pela sede `mscreative.systems` e por projetos de clien
 - **`css/tokens.css`** — source-of-truth dos tokens (cores, tipografia, spacing, radius, shadows)
 - **`docs/CANONICAL_REFERENCE.md`** — referência normativa da versão 2.2
 - **`governance.html`** — governança visual (regras de uso, do/don't)
+
+## MSCS DS V5.2 — sistema de dois modos
+
+`DESIGN_SYSTEM.md` é a spec do sistema de dois modos: **Tradutor** (papel com contorno, default) e
+**Veredicto** (preto elétrico, raro — teto de 1 em 10 peças). Entra como **camada paralela**: os
+tokens usam prefixo próprio `--ms-*`, não colidem com `--ds-*`/`--p-*` da Era Midnight, e as
+superfícies públicas seguem servidas pelo V3.0. Qual dos dois governa o site é decisão em aberto
+(`DESIGN_SYSTEM.md` §10.4).
+
+| Arquivo | Papel |
+|---|---|
+| [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) | Spec normativa V5.2 |
+| [`css/ms-v5.css`](./css/ms-v5.css) | Tokens dos dois modos, escala tipográfica, contorno, sombra tingida |
+| [`js/rabisco.js`](./js/rabisco.js) | Textura primária — gerador determinístico, semente `20260805` |
+| [`tools/contrast.mjs`](./tools/contrast.mjs) | Verifica os hex do CSS contra as razões documentadas |
+
+```bash
+node tools/contrast.mjs   # 21 pares conferem com o DESIGN_SYSTEM.md
+```
+
+Trocar de modo é um atributo no elemento raiz:
+
+```html
+<body data-modo="veredicto">
+```
 
 ## Uso como submódulo
 
